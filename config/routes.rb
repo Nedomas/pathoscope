@@ -4,10 +4,10 @@ Pathoscope::Application.routes.draw do
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
 ***REMOVED*** You can have the root of your site routed with "root"
-***REMOVED*** root 'welcome#index'
+  root 'explore#index'
 
 ***REMOVED*** Example of regular route:
-***REMOVED***   get 'products/:id' => 'catalog#view'
+  get 'explore' => 'explore#index'
 
 ***REMOVED*** Example of named route that can be invoked with purchase_url(id: product.id)
 ***REMOVED***   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -40,7 +40,7 @@ Pathoscope::Application.routes.draw do
 ***REMOVED***       get 'recent', on: :collection
 ***REMOVED*** ***REMOVED***
 ***REMOVED*** ***REMOVED***
-  
+
 ***REMOVED*** Example resource route with concerns:
 ***REMOVED***   concern :toggleable do
 ***REMOVED***     post 'toggle'

@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, v***REMOVED***or/assets/stylesheets,
+ * or v***REMOVED***or/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bourbon";
+@import "neat";
+
+@import "neat-helpers";
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+// Change the grid settings
+$visual-grid: true;
+/* $column: 90px; */
+/* $gutter: 30px; */
+$grid-columns: 16;
+$max-width: em(768);
+
+// Define your breakpoints
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+$black: hsla(223, 19%, 19%, 1);
+$white: hlsa(0, 99%, 0%, 0);
+$montserrat: 'Montserrat', sans-serif;
+
+body {
+  font: normal 100% $helvetica;
+  color: $black;
+  background-color: $white;
+}
+
+div.page-wrapper {
+  @include outer-container();
+}
+
+.left {
+  @include span-columns(6);
+  float: left;
+  height: 100px;
+  /* border-right: 1px solid $black; */
+
+  .logo {
+    display: block;
+    width: 75px;
+    height: 75px;
+    background: url("logo.png") center no-repeat;
+    background-size: contain;
+    margin: 1em 0 3em 95px;
+  }
+
+  header {
+    text-align: right;
+    text-transform: uppercase;
+    font: 1.05em $montserrat;
+  }
+}
+
+.right {
+  @include span-columns(9);
+  float: right;
+
+  nav {
+    @include pad(2.75em 0 3em);
+    @include row();
+    height: 10em;
+
+    ul {
+      float: right;
+      li {
+        @include inline-block;
+        margin-left: golden-ratio(1em, 1);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $black;
+      font: 0.95em $montserrat;
+      &:hover, &.active {
+        border-bottom: 0.175em solid $black;
+      }
+    }
+  }
+}
+
+.circle {
+  border-radius: 9999em;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
