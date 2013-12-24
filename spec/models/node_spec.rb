@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Node do
-  p***REMOVED***ing "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.create!(username: 'Dakota', email: 'having@somelaughs.com',
+    password: 'mademefeelliketheone') }
+  let(:path) { Path.create!(title: 'Aerospace') }
+  let(:url) { 'http://en.wikipedia.org/wiki/Aerospace_engineering' }
+
+  it 'should build all parts' do
+    binding.pry
+***REMOVED***
 ***REMOVED***

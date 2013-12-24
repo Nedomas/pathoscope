@@ -1,4 +1,5 @@
 Pathoscope::Application.routes.draw do
+  devise_for :users
   get "explore/index"
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".

@@ -1,3 +1,3 @@
-class Path < ActiveRecord::Base
+class Link < ActiveRecord::Base
   has_many :nodes
 ***REMOVED***
