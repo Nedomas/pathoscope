@@ -14,6 +14,10 @@ gem 'uglifier'
 
 gem 'neat'
 gem 'slim'
+gem 'faraday'
+gem 'nokogiri'
+gem 'pismo'
+gem 'webmock'
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 
@@ -43,6 +47,9 @@ gem 'devise'
 
 group :development, :test do
   gem 'pry'
+***REMOVED***
+
+group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
 ***REMOVED***

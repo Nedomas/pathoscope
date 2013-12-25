@@ -25,15 +25,18 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
     arel (4.0.1)
     atomic (1.1.14)
+    awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -42,6 +45,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     database_cleaner (1.2.0)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -52,6 +57,9 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    fast-stemmer (1.0.2)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.1)
@@ -66,13 +74,23 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    multipart-post (1.2.0)
     neat (1.5.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pismo (0.7.4)
+      awesome_print
+      chronic
+      fast-stemmer
+      nokogiri
+      sanitize
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -110,6 +128,9 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    safe_yaml (0.9.7)
+    sanitize (2.0.6)
+      nokogiri (>= 1.4.4)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -147,6 +168,9 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    webmock (1.16.1)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -155,10 +179,13 @@ DEPENDENCIES
   ancestry
   database_cleaner
   devise
+  faraday
   jbuilder
   jquery-rails
   neat
+  nokogiri
   pg
+  pismo
   pry
   puma
   rails
@@ -168,3 +195,4 @@ DEPENDENCIES
   slim
   turbolinks
   uglifier
+  webmock
