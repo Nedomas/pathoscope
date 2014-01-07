@@ -1,5 +1,5 @@
 Pathoscope::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => 'sessions'}
   get "explore" => 'explore#index', as: 'explore_index'
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".

@@ -1,4 +1,28 @@
 div#pathoscope-dialog
 
 div#pathoscope-login
-  | Login bitch
+  section.logo
+  header
+    h1
+      | You need to login to add this link
+  section.login
+    input.email type='text' placeholder='Email'
+    input.password type='password' placeholder='Password'
+    section.red-button
+      a.login-button href='#' Login
+  section.sign-up
+    p
+      | Don't have an account?
+    p
+      = link_to 'Sign up', new_user_registration_url
+
+div#pathoscope-success
+  section.logo
+  header
+    h1
+      | Success! Path has been added
+    h2
+      | Check out paths others have taken before you at this point in their journey
+  section.paths
+  section.red-button
+    = link_to 'Show more', root_url

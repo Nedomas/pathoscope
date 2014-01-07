@@ -7,6 +7,7 @@ class Node < ActiveRecord::Base
 
   class << self
     def build(url, path, user)
+      url = clean_url(url)
       link = Link.find_or_create_by(url: url)
 
       find_by(link_id: link.id, path_id: path.id, user_id: user.id) ||
@@ -16,6 +17,10 @@ class Node < ActiveRecord::Base
 
     def last_in_path(path, user)
       where(path_id: path.id, user_id: user.id).last
+***REMOVED***
+
+    def clean_url(url)
+      url.sub(/(\/)+$/, '').sub(/(#)+$/, '')
 ***REMOVED***
 ***REMOVED***
 

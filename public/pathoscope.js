@@ -53,6 +53,7 @@ var Pathoscope = (function(){
     var bookmarklet_url = $('script').last().attr('src');
     var current_url = window.location.href;
 
+    console.log('initing');
     create(bookmarklet_url, current_url).then(function(resp) {
       show(resp);
     }).fail(function(err) {
@@ -74,8 +75,8 @@ var Pathoscope = (function(){
 
   var show = function(resp) {
     $('#pathoscope-dialog').dialog({
-      height: 300,
-      width: 300,
+      height: 500,
+      width: 500,
       modal: true
     });
 
@@ -87,13 +88,71 @@ var Pathoscope = (function(){
   };
 
   var successForm = function(data) {
-    alert('logged');
+    var html = $('div#pathoscope-success').last().clone();
+    app***REMOVED***Paths(html, data.paths);
+    html.show();
+    $('#pathoscope-dialog').html(html);
+  };
+
+  var app***REMOVED***Paths = function(html, paths_json) {
+    var paths = JSON.parse(paths_json);
+    var list = $('<ul></ul>')
+
+    $.each(paths, function(index, path) {
+      list.app***REMOVED***("<li>" +
+        "<div class='score circle'>" +
+          path.count +
+        "</div>" +
+        "<div class='meta'>" +
+          "<section class='title'>" +
+            path.title +
+          "</section>" +
+          "<section class='url'>" +
+            "<a href='" + path.url + "'>" +
+              path.url +
+            "</a>" +
+          "</section>" +
+        "</div>" +
+      "</li>");
+    });
+
+    html.find('.paths').html(list)
   };
 
   var loginForm = function() {
-    var html = $('#pathoscope-login').clone();
+    var html = $('div#pathoscope-login').last().clone();
     html.show();
     $('#pathoscope-dialog').html(html);
+    html.find('.login-button').click(login);
+  };
+
+  var login = function() {
+    var email = $('#pathoscope-login .email').last().val();
+    var password = $('#pathoscope-login .password').last().val();
+
+    var data = {
+      remote: true,
+      commit: "Sign in",
+      utf8: "✓",
+      user: {
+        remember_me: 1,
+        password: password,
+        email: email
+      }
+    };
+
+    return $.ajax({
+      type: 'POST',
+      url: server + '/users/sign_in.json',
+      xhrFields: { withCredentials: true },
+      data: data,
+      success: function(resp) {
+        init();
+      },
+      error: function(e) {
+        alert('Auth failed');
+      }
+    });
   };
 
   var error = function(err) {
