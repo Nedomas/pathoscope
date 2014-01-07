@@ -1,0 +1,4 @@
+development:
+  SERVER: 'http://localhost:3000'
+production:
+  SERVER: 'http://pathoscope.herokuapp.com'
