@@ -17,7 +17,7 @@ gem 'slim'
 gem 'faraday'
 gem 'nokogiri'
 gem 'pismo'
-gem 'webmock'
+gem 'rack-cors', require: 'rack/cors'
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 
@@ -50,6 +50,7 @@ group :development, :test do
 ***REMOVED***
 
 group :test do
+  gem 'webmock'
   gem 'rspec-rails'
   gem 'database_cleaner'
 ***REMOVED***

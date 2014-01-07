@@ -5,7 +5,7 @@ describe Node do
     password: 'mademefeelliketheone') }
   let(:second_user) { User.create!(username: 'Mayer',
     email: 'john@mayer.com', password: 'wildfire') }
-  let(:path) { Path.create!(title: 'Aerospace') }
+  let(:aerospace_path) { Path.create!(title: 'Aerospace') }
   let(:wiki_url) { 'http://en.wikipedia.org/wiki/Aerospace_engineering' }
   let(:lecture_url) { 'http://freevideolectures.com/Course/2303/Aircraft-Systems-Engineering' }
 
@@ -15,23 +15,30 @@ describe Node do
 ***REMOVED***
 
   it 'should build all parts' do
-    Node.build(wiki_url, path, user)
+    Node.build(wiki_url, aerospace_path, user)
     link = Link.last
     expect(link.url).to eq(wiki_url)
-    expect(link.title).to eq('Mocked title')
+  ***REMOVED*** expect(link.title).to eq('Mocked title')
 ***REMOVED***
 
   it 'should build different nodes with same link' do
-    first_node = Node.build(wiki_url, path, user)
-    second_node = Node.build(wiki_url, path, second_user)
+    first_node = Node.build(wiki_url, aerospace_path, user)
+    second_node = Node.build(wiki_url, aerospace_path, second_user)
     expect(Link.count).to eq(1)
     expect(first_node.link_id).to eq(second_node.link_id)
 ***REMOVED***
 
-  it 'should go down the tree for single user on a single path' do
-    first_node = Node.build(wiki_url, path, user)
-    second_node = Node.build(lecture_url, path, user)
+  it 'should go down the tree for single user on a single aerospace_path' do
+    first_node = Node.build(wiki_url, aerospace_path, user)
+    second_node = Node.build(lecture_url, aerospace_path, user)
     expect(first_node.ancestry).to eq(nil)
     expect(second_node.ancestry).to eq("#{first_node.id}")
 ***REMOVED***
+
+  it 'should be careful of duplicates' do
+    first_node = Node.build(wiki_url, aerospace_path, user)
+    second_node = Node.build(wiki_url, aerospace_path, user)
+    expect(first_node == second_node).to eq(true)
+***REMOVED***
+
 ***REMOVED***

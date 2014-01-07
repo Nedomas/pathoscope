@@ -6,22 +6,14 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
-    div.page-wrapper
-      section.left
-        a.logo.circle href='/'
-        section.paths
-          header Top paths
-      section.right
-        nav
-          ul
-            li
-              a href='/' Explore
-            li
-              a href='/' My path
-            li
-              a href='/' Account
-            li
-              a href='/' Logout
-        section.content
-          = yield
+    div#page-wrapper
+      nav
+        section
+          a.logo href='/'
+        section.seperator
+      section.content.cf
+        - flash.each do |name, msg|
+          = content_tag :div, msg, class: name
+        = yield
       br.cf
+      footer

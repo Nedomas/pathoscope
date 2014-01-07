@@ -12,100 +12,173 @@
  *= require_tree .
  */
 
-@import "bourbon";
-@import "neat";
-
-@import "neat-helpers";
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 // Change the grid settings
-$visual-grid: true;
+// $visual-grid: true;
 /* $column: 90px; */
 /* $gutter: 30px; */
 $grid-columns: 16;
-$max-width: em(768);
 
-// Define your breakpoints
+@import "bourbon";
+@import "neat";
+@import "neat-helpers";
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+$max-width: em(768);
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
 
 $black: hsla(223, 19%, 19%, 1);
 $white: hlsa(0, 99%, 0%, 0);
+$main-color: hsla(0, 62.34%, 69.80%, 1);
+$dark-grey: hsla(180, 4.81%, 36.67%, 1);
+$light-grey: hsla(180, 5.52%, 68.04%, 1);
 $montserrat: 'Montserrat', sans-serif;
 
 body {
   font: normal 100% $helvetica;
   color: $black;
   background-color: $white;
+  overflow-x: hidden;
 }
 
-div.page-wrapper {
-  @include outer-container();
+#page-wrapper {
+  @include outer-container;
 }
 
-.left {
-  @include span-columns(6);
-  float: left;
-  height: 100px;
-  /* border-right: 1px solid $black; */
+nav {
+  padding-top: 1em;
+  height: 11.5em;
+  background-color: $white;
+  display: block;
 
   .logo {
     display: block;
-    width: 75px;
-    height: 75px;
-    background: url("logo.png") center no-repeat;
+    height: 3.5em;
+    width: 3.5em;
+    background: url('logo.png') center no-repeat;
     background-size: contain;
-    margin: 1em 0 3em 95px;
+    margin: 0 auto;
   }
 
-  header {
-    text-align: right;
-    text-transform: uppercase;
-    font: 1.05em $montserrat;
+  .seperator {
+    width: 100%;
+    position: absolute;
+    height: 3em;
+    margin: 1em 0;
+    background-color: $main-color;
+    margin-left: -1000px;
+    margin-right: -1000px;
+    padding-left: 1000px;
+    padding-right: 1000px;
   }
 }
 
+h1 {
+  font-family: $montserrat;
+  font-size: 2em !important;
+  color: $dark-grey;
+  text-align: center;
+  line-height: 1.8em;
+}
+
+.sublink {
+  font: normal 1em $montserrat;
+  color: $light-grey;
+  text-align: center;
+  display: block;
+}
+
+.explore {
+  padding-top: 2.5em;
+}
+
+.left {
+  @include span-columns(4);
+}
+
 .right {
-  @include span-columns(9);
-  float: right;
+  @include span-columns(12);
+  border-left: 10px solid $main-color;
+  padding-left: 2em;
+}
 
-  nav {
-    @include pad(2.75em 0 3em);
-    @include row();
-    height: 10em;
+.path-back {
+  font: normal 1.1em $montserrat;
+  color: $light-grey;
+  display: block;
+  text-decoration: none;
+}
 
-    ul {
-      float: right;
-      li {
-        @include inline-block;
-        margin-left: golden-ratio(1em, 1);
-      }
-    }
+li.link {
+  list-style-type: none;
+  font-family: $montserrat;
+  height: 7em;
 
-    a {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: $black;
-      font: 0.95em $montserrat;
-      &:hover, &.active {
-        border-bottom: 0.175em solid $black;
-      }
-    }
+  .score {
+    border: 3px solid $main-color;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    margin: 1em;
+    font-size: 1.3em;
+    color: $light-grey;
+    display: inline-block;
+  }
+
+  .meta {
+    width: 20em;
+    display: inline-block;
+    /* display: table; */
+  }
+
+  .deeper {
+    display: inline-block;
+    padding-left: 1.5em;
+  }
+
+  a.path-forward {
+    font-size: 2em;
+    color: $light-grey;
+    text-decoration: none;
+    /* line-height: 5em; */
+  }
+
+  .title {
+    font-size: 0.8em;
+    color: $dark-grey;
+    word-wrap: break-word;
+    padding-top: 2em;
+  }
+
+  a.url {
+    font-size: 0.9em;
+    color: $light-grey;
+    word-wrap: break-word;
+    line-height: 1.2em;
+    text-decoration: none;
   }
 }
 
 .circle {
-  border-radius: 9999em;
+  border-radius: 1000em;
 }
 
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+.dead-***REMOVED*** {
+  text-align: center;
+  font-family: $montserrat;
+  font-size: 1.5em;
+  height: 10em;
+  line-height: 10em;
+}
+
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
 }
 
 .cf:after {
-    clear: both;
+  clear: both;
 }
 
 /**
@@ -113,5 +186,35 @@ div.page-wrapper {
  * Include this rule to trigger hasLayout and contain floats.
  */
 .cf {
-    *zoom: 1;
+  *zoom: 1;
 }
+
+footer {
+  height: 5em;
+}
+
+li.path {
+  list-style-type: none;
+  height: 3em;
+
+  a {
+    font: normal 1.2em $montserrat;
+    color: $light-grey;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  a.bookmark {
+    display: inline-block;
+    font-size: 0.2em;
+    color: red;
+  }
+}
+
+.searchbox {
+  margin: 0 0 1.8em;
+  height: 3em;
+  padding-top: 0.2em;
+  text-align: center;
+}
+

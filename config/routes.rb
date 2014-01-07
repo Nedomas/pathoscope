@@ -1,14 +1,23 @@
 Pathoscope::Application.routes.draw do
   devise_for :users
-  get "explore/index"
+  get "explore" => 'explore#index', as: 'explore_index'
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
 ***REMOVED*** You can have the root of your site routed with "root"
-  root 'explore#index'
+  root 'paths#index'
 
 ***REMOVED*** Example of regular route:
-  get 'explore' => 'explore#index'
+  get 'paths' => 'paths#index', as: 'paths_index'
+  get 'bookmarks/create' => 'bookmarks#create', as: 'bookmarks_create'
+  get 'bookmarks/templates' => 'bookmarks#templates'
+
+***REMOVED*** get 'explore' => 'explore#index'
+  get 'explore/:id' => 'explore#show', as: 'explore'
+  get 'paths/:id' => 'paths#show', as: 'paths'
+
+  post 'paths/create' => 'paths#create', as: 'paths_create'
+***REMOVED*** resources :explore
 
 ***REMOVED*** Example of named route that can be invoked with purchase_url(id: product.id)
 ***REMOVED***   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

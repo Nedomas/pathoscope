@@ -1,0 +1,16 @@
+h1 Explore paths
+
+section.explore
+  article.left
+    = form_tag({ action: :create }, class: :search) do
+      = text_field_tag(:title, nil, class: :searchbox, placeholder: 'Search or create')
+
+    ul
+    - @paths.each do |path|
+      li.path
+        = link_to path.title, paths_path(path)
+        = link_to path.title, bookmark_js(path), class: 'bookmark'
+  article.line
+  article.right
+    div.dead-***REMOVED***
+      | Stuff
