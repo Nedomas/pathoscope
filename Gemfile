@@ -1,3 +1,4 @@
+ruby '2.0.0'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -18,6 +19,7 @@ gem 'faraday'
 gem 'nokogiri'
 gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
+gem 'rails_12factor'
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 
