@@ -1,6 +1,7 @@
 var Pathoscope = (function(){
 
-  var server = 'http://localhost:3000';
+  <% binding.pry %>
+  var server = '<%= Rails.root_url %>';
 
   var loadjQuery = function() {
     load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadjQueryUI);

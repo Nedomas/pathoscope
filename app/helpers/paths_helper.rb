@@ -3,7 +3,7 @@ module PathsHelper
    %Q(javascript:
     (function(){
       s = document.createElement('script');
-      s.src = 'http://localhost:3000/pathoscope.js?path_id=#{path.id}';
+      s.src = '#{root_url}pathoscope.js?path_id=#{path.id}';
       document.body.app***REMOVED***Child(s);
     })();
    ).delete(' ')
