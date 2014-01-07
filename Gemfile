@@ -19,7 +19,7 @@ gem 'faraday'
 gem 'nokogiri'
 gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 
