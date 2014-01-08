@@ -110,9 +110,13 @@ header {
 }
 
 main {
+  nav {
+    height: 5em;
+  }
+
   nav.searchbox {
     text-align: center;
-    padding: 1.8em 0 2.5em;
+    line-height: 5em;
 
     input {
       height: 2.5em;
@@ -128,8 +132,6 @@ main {
   }
 
   nav.breadcrumbs {
-    padding: 1.8em 1em 2.5em;
-
     li {
       @include inline-block;
       margin-right: golden-ratio(1em, 1);
@@ -144,6 +146,7 @@ main {
       text-decoration: none;
       color: $black;
       font: bold 0.8em $helvetica;
+      line-height: 5em;
       &:hover {
         border-bottom: 0.175em solid $black;
       }
@@ -158,16 +161,22 @@ main {
   article.explore {
     padding-top: 3em;
 
-    section.current {
+    section {
       width: 35em;
       margin: 0 auto;
+    }
 
+    section.current {
       .meta {
         vertical-align: top;
         height: 6em;
         display: inline-block;
         width: 29em;
         padding-left: 2em;
+
+        a {
+          text-decoration: none;
+        }
 
         .title {
           font: bold 1.2em $helvetica;
@@ -181,6 +190,52 @@ main {
         .url {
           display: block;
           color: $black;
+        }
+
+        .comments {
+          display: block;
+          color: $red;
+        }
+      }
+    }
+
+    section.deeper {
+      padding-top: 2em;
+
+      h1 {
+        text-align: center;
+        font: bold 2em $helvetica;
+        padding-bottom: 1em;
+      }
+
+      .meta {
+        vertical-align: top;
+        height: 6em;
+        display: inline-block;
+        width: 29em;
+        padding-left: 2em;
+
+        a {
+          text-decoration: none;
+        }
+
+        .title {
+          font: bold 1.2em $helvetica;
+        }
+
+        .description {
+          padding-top: 0.5em;
+          font: 1em $helvetica;
+        }
+
+        .url {
+          display: block;
+          color: $black;
+        }
+
+        .comments {
+          display: block;
+          color: $red;
         }
       }
     }
