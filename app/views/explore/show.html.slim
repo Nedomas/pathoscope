@@ -1,6 +1,38 @@
-header
-  h1 = @current_link.title
-  a.sublink href="#{@current_link.url}" = @current_link.url
+nav.breadcrumbs
+  ul
+    li
+      a href='/' All paths
+    li
+      a href='/' Programming
+    li
+      a href='/' Design
+    li
+      a href='/' ...
+article.explore.ext***REMOVED***full
+  section.current
+    div.box
+    div.meta
+      h1.title
+        | Try ruby way nigga
+      p.description
+        | Its gonna be awesome she said
+      a.url href='/' http://www.google.lt
+      a.comments href='/' Comments
+  section.deeper
+    h1
+      | Deeper paths
+    ul
+      li
+        div.box
+        div.meta
+          h1.title
+          p.description
+          a href='/' http://www.google.lt
+          a.comments href='/' Comments
 
-= r***REMOVED***er partial: 'shared/exploration', locals: { back_collection: @back_collection,
-  forward_links: @forward_links }
+/header
+/  h1 = @current_link.title
+/  a.sublink href="#{@current_link.url}" = @current_link.url
+/
+/= r***REMOVED***er partial: 'shared/exploration', locals: { back_collection: @back_collection,
+/  forward_links: @forward_links }

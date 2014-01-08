@@ -8,18 +8,39 @@ html
     = csrf_meta_tags
   body
     div#page-wrapper
-      nav
-        section
-          a.logo href='/'
-        section.seperator
-          section.management
-            - if user_signed_in?
-              = link_to 'Log out', destroy_user_session_path, method: :delete
-            - else
-              = link_to 'Log in', new_user_session_path
-      section.content.cf
-        - flash.each do |name, msg|
-          = content_tag :div, msg, class: name
+      header.ext***REMOVED***full
+        nav
+          ul
+            li
+              a href='/' All paths
+            li
+              a href='/' Your paths
+            li
+              a href='/' Profile
+            li
+              a href='/' Logout
+        section.splash
+          a.app href='/'
+          a.logo-text href='/' Pathoscope
+          aside
+            | install application by dragging the icon to the bookmarks bar
+      main
         = yield
-      br.cf
-      footer
+      footer.ext***REMOVED***full
+        | Foots
+
+      / nav
+      /   section
+      /     a.logo href='/'
+      /   section.seperator
+      /     section.management
+      /       - if user_signed_in?
+      /         = link_to 'Log out', destroy_user_session_path, method: :delete
+      /       - else
+      /         = link_to 'Log in', new_user_session_path
+      / section.content.cf
+      /   - flash.each do |name, msg|
+      /     = content_tag :div, msg, class: name
+      /   = yield
+      / br.cf
+      / footer
