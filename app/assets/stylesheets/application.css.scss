@@ -92,14 +92,18 @@ header {
   .splash {
     .app {
       display: block;
-      height: 10em;
+      height: 17em;
+      background: url('prototype.png') center no-repeat;
+      background-size: contain;
+      color: $red;
+      /* font-size: 0.0001em; */
     }
 
     .logo-text {
       display: block;
       font: bold 2em $helvetica;
       text-align: center;
-      padding: 1em 0;
+      padding: 0 0 1em;
     }
 
     aside {
@@ -202,6 +206,11 @@ main {
     section.deeper {
       padding-top: 2em;
 
+      li {
+        padding-bottom: 4em;
+        list-style-type: none;
+      }
+
       h1 {
         text-align: center;
         font: bold 2em $helvetica;
@@ -212,7 +221,7 @@ main {
         vertical-align: top;
         height: 6em;
         display: inline-block;
-        width: 29em;
+        width: 20em;
         padding-left: 2em;
 
         a {
@@ -237,6 +246,28 @@ main {
           display: block;
           color: $red;
         }
+      }
+
+      .deeper {
+        vertical-align: top;
+        display: inline-block;
+        padding-left: 1.5em;
+        padding-top: 2em;
+
+        a {
+          font: bold 1.5em $helvetica;
+          text-decoration: none;
+          color: $black;
+        }
+/*   .deeper { */
+/*     display: inline-block; */
+/*     padding-left: 1.5em; */
+/*  */
+/*   a.path-forward { */
+/*     font-size: 2em; */
+/*     color: $light-grey; */
+/*     text-decoration: none; */
+/*     /* line-height: 5em; */
       }
     }
 
