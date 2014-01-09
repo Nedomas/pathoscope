@@ -19,8 +19,13 @@ class PathsController < ApplicationController
       flash[:alert] = "#{path.title} path already exists"
     else
       title = params[:title].capitalize
-      path = Path.create(title: title)
-      flash[:notice] = "Path #{path.title} has been created"
+      path = Path.new(title: title)
+
+      if path.save
+        flash[:notice] = "Path #{path.title} has been created"
+      else
+        flash[:error] = path.errors.full_messages.to_sentence
+  ***REMOVED***
 ***REMOVED***
 
     redirect_to root_url

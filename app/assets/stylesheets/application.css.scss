@@ -40,7 +40,7 @@ $montserrat: 'Montserrat', sans-serif;
 body {
   font: normal 100% $helvetica;
   color: $black;
-  background-color: $white;
+  /* background-color: $grey; */
   overflow-x: hidden;
 }
 
@@ -69,8 +69,11 @@ header {
   }
 
   nav {
+    @include row();
     height: 3em;
     ul {
+      float: right;
+      display: inline-block;
       margin: 0 2em;
       list-style-type: none;
 
@@ -86,6 +89,24 @@ header {
           border-bottom: 0.175em solid $white;
         }
       }
+    }
+
+    a.small-logo-text {
+      float: left;
+      display: inline-block;
+      font: bold 1em $helvetica;
+    }
+
+    a.small-app {
+      float: left;
+      display: inline-block;
+      margin-top: -2em;
+      margin-right: 1em;
+      height: 5em;
+      width: 5em;
+      background: url('prototype.png') center no-repeat;
+      background-size: contain;
+      color: $red;
     }
   }
 
@@ -112,6 +133,25 @@ header {
     }
   }
 }
+
+.errors .notice, .errors .error {
+  margin: 2em auto 1em;
+  text-align: center;
+  padding: 1em;
+  width: 20em;
+  border-radius: 0.8em;
+}
+
+.notice {
+  background: #dff0d8;
+  color: #3c763d;
+}
+
+.error {
+  background: #f2dede;
+  color: #a94442;
+}
+
 
 main {
   nav {
@@ -159,7 +199,6 @@ main {
 
   article {
     display: block;
-    background-color: $grey;
   }
 
   article.explore {
@@ -299,7 +338,6 @@ main {
 }
 
 footer {
-  background-color: $grey;
   height: 5em;
 }
 

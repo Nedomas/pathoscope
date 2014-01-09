@@ -10,37 +10,30 @@ html
     div#page-wrapper
       header.ext***REMOVED***full
         nav
+          - unless current_page?(root_url)
+            a.small-app href="#{bookmark_js}"
+            a.small-logo-text href='/' Pathoscope
           ul
             li
-              a href='/' All paths
+              = link_to 'All paths', paths_index_path
             li
-              a href='/' Your paths
+              a href='#' Your paths
             li
-              a href='/' Profile
+              a href='#' Profile
             li
-              a href='/' Logout
-        section.splash
-          a.app href="#{bookmark_js}" Pathoscope
-          a.logo-text href='/' Pathoscope
-          aside
-            | install application by dragging the icon to the bookmarks bar
+              - if user_signed_in?
+                = link_to 'Log out', destroy_user_session_path, method: :delete
+              - else
+                = link_to 'Log in', new_user_session_path
+        - if current_page?(root_url)
+          section.splash
+            a.app href="#{bookmark_js}" Pathoscope
+            a.logo-text href='/' Pathoscope
+            aside
+              | install application by dragging the icon to the bookmarks bar
+      section.errors
+        - flash.each do |name, msg|
+          = content_tag :p, msg, class: name
       main
         = yield
       footer.ext***REMOVED***full
-        | Foots
-
-      / nav
-      /   section
-      /     a.logo href='/'
-      /   section.seperator
-      /     section.management
-      /       - if user_signed_in?
-      /         = link_to 'Log out', destroy_user_session_path, method: :delete
-      /       - else
-      /         = link_to 'Log in', new_user_session_path
-      / section.content.cf
-      /   - flash.each do |name, msg|
-      /     = content_tag :div, msg, class: name
-      /   = yield
-      / br.cf
-      / footer

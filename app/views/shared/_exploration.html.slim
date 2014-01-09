@@ -11,10 +11,10 @@ article.explore.ext***REMOVED***full
   section.current
     div.box
     div.meta
-      h2.title = @current_link.title
+      h2.title = current_link.title
       p.description
         | Its gonna be awesome she said
-      = link_to @current_link.url, @current_link.url, { class: 'url' }
+      = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
       a.comments href='/' Comments (1)
   section.deeper
     h1

@@ -1,5 +1,6 @@
 class Path < ActiveRecord::Base
   has_many :nodes
+  validates_presence_of :title
 
   def roots
     nodes.roots.order(:id)
