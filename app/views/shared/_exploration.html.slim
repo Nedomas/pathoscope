@@ -26,7 +26,7 @@ article.explore.ext***REMOVED***full
           p.title
             = link.title
           p.url
-            = link.url
+            = link.url[0..60]
         span.nodes
           | 15
         /div.box style="background: url('#{link.image_path}') center no-repeat;"

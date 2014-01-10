@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// dont = require turbolinks
 // dont = require_tree .
