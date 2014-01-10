@@ -11,7 +11,7 @@ class PathsController < ApplicationController
   def show
     @path = Path.find(params[:id])
     @forward_links = Explore.root_links(@path)
-    @back_collection = { 'Paths index' => paths_index_url }
+    @back_collection = {}
 ***REMOVED***
 
   def create
