@@ -81,6 +81,20 @@ header {
         margin-right: golden-ratio(1em, 1);
       }
 
+      .nodes {
+        background: url('flickr.png') left no-repeat;
+        background-size: contain;
+        padding-left: 1.5em;
+        font: bold 0.8em $helvetica;
+      }
+
+      .paths {
+        background: url('prototype.png') left no-repeat;
+        background-size: contain;
+        padding-left: 1.5em;
+        font: bold 0.8em $helvetica;
+      }
+
       a {
         text-transform: uppercase;
         font: bold 0.8em $helvetica;

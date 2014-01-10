@@ -5,4 +5,7 @@ class Path < ActiveRecord::Base
   def roots
     nodes.roots.order(:id)
 ***REMOVED***
+
+  def image_path
+***REMOVED***
 ***REMOVED***

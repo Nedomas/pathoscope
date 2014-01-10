@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   def create
     query = URI::parse(params[:bookmarklet]).query
     data = Rack::Utils.parse_nested_query(query)
-    path = Path.find(data['path_id'])
+    path = Path.find(1) # TODO
     url = params[:href]
 
   ***REMOVED*** # check if its from our app

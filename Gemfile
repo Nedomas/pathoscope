@@ -22,7 +22,9 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'newrelic_rpm'
+gem 'faye-websocket', '0.4.7'
 gem 'webshot'
+gem 'andand'
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 

@@ -2,7 +2,6 @@ class Node < ActiveRecord::Base
   has_one :link
   belongs_to :path
   belongs_to :user
-  after_create :get_thumbnail
 
   has_ancestry cache_depth: true
 
@@ -37,7 +36,4 @@ class Node < ActiveRecord::Base
     Path.find(path_id)
 ***REMOVED***
 
-  def get_thumbnail
-    binding.pry
-***REMOVED***
 ***REMOVED***
