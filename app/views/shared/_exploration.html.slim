@@ -17,17 +17,24 @@ article.explore.ext***REMOVED***full
       = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
       a.comments href='/' Comments (1)
   section.deeper
-    h1
-      | Deeper paths
+    section.circles
     ul
     - forward_links.each do |link|
       li
-        div.box style="background: url('#{link.image_path}') center no-repeat;"
-        div.meta
-          h2.title = link.title
-          p.description
-            | Its gonna be awesome she said
-          = link_to link.url, link.url, { class: 'url' }
-          a.comments href='/' Comments (1)
-          div.deeper
-            = link_to '>', explore_path(link), { class: 'forward' }
+        span.box style="background: url('#{link.image_path}') center no-repeat;"
+        span.meta
+          p.title
+            = link.title
+          p.url
+            = link.url
+        span.nodes
+          | 15
+        /div.box style="background: url('#{link.image_path}') center no-repeat;"
+        /div.meta
+        /  h2.title = link.title
+        /  p.description
+        /    | Its gonna be awesome she said
+        /  = link_to link.url, link.url, { class: 'url' }
+        /  a.comments href='/' Comments (1)
+        /  div.deeper
+        /    = link_to '>', explore_path(link), { class: 'forward' }

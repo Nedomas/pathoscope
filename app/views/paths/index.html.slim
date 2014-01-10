@@ -5,6 +5,10 @@ nav.searchbox
     button.secondary Create
 article.paths.ext***REMOVED***full
   ul
-    - @paths.each do |path|
-      li
-        = link_to path.title, paths_path(path)
+    - @paths.each_with_index do |path, i|
+      li style="background-color: #{COLORS[i]}"
+        span.icon
+        span.title
+          = link_to path.title, paths_path(path)
+        span.nodes
+          | 173
