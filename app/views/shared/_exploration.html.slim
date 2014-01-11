@@ -9,32 +9,45 @@ nav.breadcrumbs
 
 article.explore.ext***REMOVED***full
   section.current
-    div.box style="background: url('#{current_link.image_path}') center no-repeat;"
-    div.meta
-      h2.title = current_link.title
-      p.description
-        | Its gonna be awesome she said
-      = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
-      a.comments href='/' Comments (1)
+    div.static
+      div.box style="background-color: #{COLORS.first}"
+      div.meta
+        h2.title = current_link.title
+        p.description
+          = current_link.description
+        = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
+        a.comments-button href='/' Comments (1)
+    div.comments
+      ul
+        li.comment
+          div.info
+            span.name
+              | John Mayer
+            span.time
+              | 2014-01-01 12:10
+          p.text
+            | I like it the way it is, dont touch it, Aerospace activity is very diverse, with a multitude of commercial, industrial and military applications.
+        li.comment
+          div.info
+            span.name
+              | John Mayer
+            span.time
+              | 2014-01-01 12:10
+          p.text
+            | I like it the way it is, dont touch it
+
   section.deeper
     section.circles
     ul
     - forward_links.each do |link|
-      li
+      li.link
         span.box style="background: url('#{link.image_path}') center no-repeat;"
         span.meta
-          p.title
-            = link.title
-          p.url
-            = link.url[0..60]
+          div.aligner
+            p.title
+              = link_to link.title, explore_path(link)
+            p.url
+              = link_to link.url[0..60], link.url
+        div.triangle
         span.nodes
           | 15
-        /div.box style="background: url('#{link.image_path}') center no-repeat;"
-        /div.meta
-        /  h2.title = link.title
-        /  p.description
-        /    | Its gonna be awesome she said
-        /  = link_to link.url, link.url, { class: 'url' }
-        /  a.comments href='/' Comments (1)
-        /  div.deeper
-        /    = link_to '>', explore_path(link), { class: 'forward' }

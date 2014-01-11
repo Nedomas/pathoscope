@@ -223,45 +223,90 @@ main {
   article.explore {
     padding-top: 3em;
 
-    /* section { */
-    /*   width: 35em; */
-    /*   margin: 0 auto; */
-    /* } */
+   section.current {
+     @include row();
 
-    section.current {
-      .meta {
-        vertical-align: top;
-        height: 6em;
-        display: inline-block;
-        width: 29em;
-        padding-left: 2em;
+     .static {
+       @include row();
+     }
 
-        a {
-          text-decoration: none;
-        }
+     .box {
+       width: 15em;
+       height: 15em;
+       float: left;
+       background: url('rocket.png') center no-repeat;
+       background-size: 5em 5em;
+     }
 
-        .title {
-          font: bold 1.2em $helvetica;
-        }
+     .meta {
+       vertical-align: top;
+       height: 6em;
+       display: inline-block;
+       width: 29em;
+       padding-left: 2em;
 
-        .description {
-          padding-top: 0.5em;
-          font: 1em $helvetica;
-        }
+       a {
+         text-decoration: none;
+       }
 
-        .url {
-          display: block;
-          color: $black;
-        }
+       .title {
+         font: bold 1.2em $helvetica;
+       }
 
-        .comments {
-          display: block;
-          color: $red;
-        }
-      }
-    }
+       .description {
+         padding-top: 0.5em;
+         font: 1em $helvetica;
+       }
 
-    section.deeper {
+       .url {
+         display: block;
+         color: $black;
+       }
+
+       .comments-button {
+         display: block;
+         background-color: $red;
+         width: 11em;
+         color: $white;
+         text-align: center;
+         padding: 0.7em;
+         margin: 1em;
+         border-radius: 0.4em;
+         font: 0.8em $helvetica;
+         text-transform: uppercase;
+       }
+     }
+
+     .comments {
+       margin-left: 15em;
+
+       li {
+         padding: 1em;
+
+         .info {
+           @include row();
+           padding-bottom: 1em;
+         }
+
+         .name {
+           float: left;
+           font: bold 1em $helvetica;
+         }
+
+         .time {
+           float: right;
+           font: 0.8em $helvetica;
+         }
+
+         .text {
+           font: 0.9em $helvetica;
+           line-height: 1.3em;
+         }
+       }
+     }
+   }
+
+   section.deeper {
       .circles {
         display: block;
         height: 6em;
@@ -270,44 +315,6 @@ main {
       }
 
       padding-top: 2em;
-
-
-      /* h1 { */
-      /*   text-align: center; */
-      /*   font: bold 2em $helvetica; */
-      /*   padding-bottom: 1em; */
-      /* } */
-
-      /* .meta { */
-      /*   vertical-align: top; */
-      /*   height: 6em; */
-      /*   display: inline-block; */
-      /*   width: 20em; */
-      /*   padding-left: 2em; */
-
-      /*   a { */
-      /*     text-decoration: none; */
-      /*   } */
-
-      /*   .title { */
-      /*     font: bold 1.2em $helvetica; */
-      /*   } */
-
-      /*   .description { */
-      /*     padding-top: 0.5em; */
-      /*     font: 1em $helvetica; */
-      /*   } */
-
-      /*   .url { */
-      /*     display: block; */
-      /*     color: $black; */
-      /*   } */
-
-      /*   .comments { */
-      /*     display: block; */
-      /*     color: $red; */
-      /*   } */
-      /* } */
 
       .deeper {
         vertical-align: top;
@@ -323,130 +330,84 @@ main {
       }
     }
 
-    /* .box { */
-    /*   display: inline-block; */
-    /*   height: 6em; */
-    /*   width: 6em; */
-    /*   background-color: $dark-grey; */
-    /* } */
-  }
+ }
 
   article.paths {
     padding-top: 2em;
-    li {
-      /* @include row(); */
-      height: 5em;
-      width: 100%;
-      margin: .5em;
+  }
+}
+
+article {
+  li.path, li.link {
+    @include row();
+    padding-bottom: 4em;
+    list-style-type: none;
+    height: 5em;
+    width: 100%;
+    margin: 2em;
+    background-color: $grey;
+    color: $black;
+    border-radius: 2em;
+
+    .meta {
+      display: table;
       float: left;
-      position: relative;
-      border-radius: 1em;
-
-      .icon {
-        display: inline-block;
-        width: 5em;
-        height: 5em;
-        float: left;
-        background: url('rocket.png') center no-repeat;
-        background-size: 3em 3em;
-        -webkit-filter: invert(100%);
-      }
-
-      .title {
-        display: inline-block;
-        height: 5em;
-        float: left;
-        padding-left: 1em;
-      }
-
-      .nodes {
-        display: inline-block;
-        height: 5em;
-        float: right;
-        padding: 2em;
-        color: $white;
-        background: url('flickr.png') left no-repeat;
-        background-size: 2em 2em;
-        padding-left: 2.5em;
-      }
-
-      .triangle {
-        width: 0;
-        height: 0;
-        border-top: 2.5em solid $white;
-        border-bottom: 2.5em solid $white;
-
-        /* border-left: 60px solid green; */
-        float: right;
-      }
-
-      a {
-        font: bold 1.1em $helvetica;
-        line-height: 5em;
-        text-decoration: none;
-        color: $white;
-      }
+      height: 5em;
+      padding-left: 1em;
     }
 
-    /* li:after { */
-    /*   content: ''; */
-    /*   display: block; */
-    /*   width: 10px; */
-    /*   position: absolute; */
-    /*   right: -10px; */
-    /*   height: 100%; */
-    /*   top: 0; */
-    /*   background: transparent url('data:image/svg+xml; charset=utf-8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 20" preserveAspectRatio="none"><path d="m0,0 l10,10 l-10,10 l-0,-20z" stroke-width="1.5" fill="#000"/></svg>') 0 0 no-repeat; */
-    /* } */
+    .nodes {
+      display: inline-block;
+      height: 5em;
+      float: right;
+      padding: 2em;
+      background: url('flickr.png') left no-repeat;
+      background-size: 2em 2em;
+      padding-left: 2.5em;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-top: 2.5em solid $white;
+      border-bottom: 2.5em solid $white;
+
+      border-left: 1.25em solid $grey;
+      float: right;
+    }
+
+    .aligner {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    a {
+      font: bold 1.1em $helvetica;
+      text-decoration: none;
+      color: $black;
+    }
+
+    .box {
+      width: 5em;
+      height: 5em;
+      float: left;
+      border-radius: 1000em;
+    }
+  }
+
+  li.path {
+    .box {
+      background: url('rocket2.png') center no-repeat;
+      background-size: 3em 3em;
+    }
+  }
+
+  li.link {
+    .meta .url a {
+      font: normal 0.8em $helvetica;
+    }
   }
 }
-
-li.link {
-  @include row();
-  padding-bottom: 4em;
-  list-style-type: none;
-  height: 5em;
-  width: 100%;
-  margin: 2em;
-  background-color: $grey;
-
-  .box {
-    display: inline-block;
-    width: 5em;
-    height: 5em;
-    float: left;
-    background: url('rocket.png') center no-repeat;
-    background-size: 3em 3em;
-    -webkit-filter: invert(100%);
-  }
-
-  .meta {
-    display: inline-block;
-    height: 5em;
-    float: left;
-    padding: 1.5em 0 0 2em;
-  }
-
-  .nodes {
-    display: inline-block;
-    height: 5em;
-    float: right;
-    padding: 2em;
-    background: url('flickr.png') left no-repeat;
-    background-size: 2em 2em;
-    padding-left: 2.5em;
-  }
-
-  .title {
-    font: bold 0.9em $helvetica;
-    text-decoration: none;
-  }
-
-  .url {
-    font: 0.8em $helvetica;
-  }
-}
-
 
 footer {
   height: 5em;
@@ -454,8 +415,6 @@ footer {
 
 .user {
   text-align: center;
-  /* margin: 0 auto; */
-  /* width: 10em; */
 
   h2 {
     text-align: center;

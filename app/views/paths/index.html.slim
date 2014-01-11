@@ -5,11 +5,13 @@ nav.inputbox
 article.paths.ext***REMOVED***full
   ul
     - @paths.each_with_index do |path, i|
-      li style="background-color: #{COLORS[i]}"
-        span.icon
-        span.title
-          = link_to path.title, paths_path(path)
-        div.triangle style="border-left: 1.25em solid #{COLORS[i]}"
+      li.path
+        span.box style="background-color: #{COLORS[i]}"
+        span.meta
+          div.aligner
+            p.title
+              = link_to path.title, paths_path(path)
+        div.triangle
         span.nodes
           | 173
 article.links.ext***REMOVED***full
@@ -22,22 +24,28 @@ script#unordered-list-template type="text/template"
   ul id='{{ id }}'
 
 script#path-item-template type="text/template"
-  li style="background-color: #{COLORS.first}"
-    span.icon
-    span.title
-      a href='/paths/{{ id }}'
-        | {{ title }}
-    div.triangle style="border-left: 1.25em solid #{COLORS.first}"
+  li.path
+    span.box style="background-color: #{COLORS.first}"
+    span.meta
+      div.aligner
+        p.title
+          a href='/paths/{{ id }}'
+            | {{ title }}
+    div.triangle
     span.nodes
       | 173
 
 script#link-item-template type="text/template"
   li.link
-    span.box style="background: url('/thumbnails/6.png') center no-repeat;"
+    span.box style="background-color: #{COLORS.first}"
     span.meta
-      p.title
-        | {{ title }}
-      p.url
-        | {{ url }}
+      div.aligner
+        p.title
+          a href='/explore/{{ id }}'
+            | {{ title }}
+        p.url
+          a href='{{ url }}'
+            | {{ url }}
+    div.triangle
     span.nodes
       | 15

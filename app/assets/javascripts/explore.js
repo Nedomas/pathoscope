@@ -47,7 +47,7 @@ var Inputbox = (function() {
 
     // Paths
     paths_DOM.app***REMOVED***(_.template(header, { title: 'Paths' }));
-    paths_DOM.app***REMOVED***(_.template(unordered_list, { id: 'path-list' }));
+    paths_DOM.app***REMOVED***(_.template(unordered_list, { id: 'path-list', klass: 'paths' }));
     var list = $('#path-list');
 
     _.each(data.paths, function(path) {
@@ -63,7 +63,7 @@ var Inputbox = (function() {
     var list = $('#link-list');
 
     _.each(data.links, function(link) {
-      list.app***REMOVED***(_.template(link_item, { title: link.title, url: link.url }));
+      list.app***REMOVED***(_.template(link_item, { id: link.id, title: link.title, url: link.url }));
     });
 
 

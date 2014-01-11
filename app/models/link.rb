@@ -22,4 +22,8 @@ class Link < ActiveRecord::Base
   def image_path
     "/thumbnails/#{id}.png"
 ***REMOVED***
+
+  def description
+
+***REMOVED***
 ***REMOVED***
