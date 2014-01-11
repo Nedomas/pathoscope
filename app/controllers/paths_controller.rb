@@ -14,20 +14,4 @@ class PathsController < ApplicationController
     @back_collection = {}
 ***REMOVED***
 
-  def create
-    if path = Path.find_by(title: params[:title])
-      flash[:alert] = "#{path.title} path already exists"
-    else
-      title = params[:title].capitalize
-      path = Path.new(title: title)
-
-      if path.save
-        flash[:notice] = "Path #{path.title} has been created"
-      else
-        flash[:error] = path.errors.full_messages.to_sentence
-  ***REMOVED***
-***REMOVED***
-
-    redirect_to root_url
-***REMOVED***
 ***REMOVED***

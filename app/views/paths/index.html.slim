@@ -1,8 +1,7 @@
-nav.searchbox
-  = form_tag({ action: :create }) do
-    = text_field_tag(:title, nil)
-    button.primary Find
-    button.secondary Create
+nav.inputbox
+  = text_field_tag(:field, nil)
+  button.primary#find Find
+  button.secondary#create Create
 article.paths.ext***REMOVED***full
   ul
     - @paths.each_with_index do |path, i|
@@ -13,3 +12,32 @@ article.paths.ext***REMOVED***full
         div.triangle style="border-left: 1.25em solid #{COLORS[i]}"
         span.nodes
           | 173
+article.links.ext***REMOVED***full
+
+script#header-template type="text/template"
+  h2
+    | {{ title }}
+
+script#unordered-list-template type="text/template"
+  ul id='{{ id }}'
+
+script#path-item-template type="text/template"
+  li style="background-color: #{COLORS.first}"
+    span.icon
+    span.title
+      a href='/paths/{{ id }}'
+        | {{ title }}
+    div.triangle style="border-left: 1.25em solid #{COLORS.first}"
+    span.nodes
+      | 173
+
+script#link-item-template type="text/template"
+  li.link
+    span.box style="background: url('/thumbnails/6.png') center no-repeat;"
+    span.meta
+      p.title
+        | {{ title }}
+      p.url
+        | {{ url }}
+    span.nodes
+      | 15

@@ -19,6 +19,5 @@ class ExploreController < ApplicationController
         obj[path.title] = paths_path(path)
   ***REMOVED***
 ***REMOVED***
-
 ***REMOVED***
 ***REMOVED***

@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lodash.min
+//= require explore
 // dont = require turbolinks
 // dont = require_tree .
+
+_.templateSettings = {
+  evaluate:    /\{\{#([\s\S]+?)\}\}/g,            // {{# console.log("stuff") }}
+  interpolate: /\{\{[^#\{]([\s\S]+?)[^\}]\}\}/g,  // {{ title }}
+  escape:      /\{\{\{([\s\S]+?)\}\}\}/g,         // {{{ title }}}
+};

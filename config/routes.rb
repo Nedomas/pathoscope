@@ -16,7 +16,9 @@ Pathoscope::Application.routes.draw do
   get 'explore/:id' => 'explore#show', as: 'explore'
   get 'paths/:id' => 'paths#show', as: 'paths'
 
-  post 'paths/create' => 'paths#create', as: 'paths_create'
+***REMOVED*** post 'paths/create' => 'paths#create', as: 'paths_create'
+  post 'input/search' => 'input#search'
+  post 'input/create' => 'input#create'
 ***REMOVED*** resources :explore
 
 ***REMOVED*** Example of named route that can be invoked with purchase_url(id: product.id)

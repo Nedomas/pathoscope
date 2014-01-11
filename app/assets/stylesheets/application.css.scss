@@ -22,7 +22,7 @@ $grid-columns: 16;
 @import "bourbon";
 @import "neat";
 @import "neat-helpers";
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+/* @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700); */
 
 $max-width: em(768);
 $tablet: new-breakpoint(max-width 768px 8);
@@ -177,7 +177,7 @@ main {
     height: 5em;
   }
 
-  nav.searchbox {
+  nav.inputbox {
     text-align: center;
     line-height: 5em;
 
@@ -271,51 +271,6 @@ main {
 
       padding-top: 2em;
 
-      li {
-        @include row();
-        padding-bottom: 4em;
-        list-style-type: none;
-        height: 5em;
-        width: 100%;
-        margin: 2em;
-        background-color: $grey;
-      }
-
-      .box {
-        display: inline-block;
-        width: 5em;
-        height: 5em;
-        float: left;
-        background: url('rocket.png') center no-repeat;
-        background-size: 3em 3em;
-        -webkit-filter: invert(100%);
-      }
-
-      .meta {
-        display: inline-block;
-        height: 5em;
-        float: left;
-        padding: 1.5em 0 0 2em;
-      }
-
-      .nodes {
-        display: inline-block;
-        height: 5em;
-        float: right;
-        padding: 2em;
-        background: url('flickr.png') left no-repeat;
-        background-size: 2em 2em;
-        padding-left: 2.5em;
-      }
-
-      .title {
-        font: bold 0.9em $helvetica;
-        text-decoration: none;
-      }
-
-      .url {
-        font: 0.8em $helvetica;
-      }
 
       /* h1 { */
       /*   text-align: center; */
@@ -445,6 +400,53 @@ main {
     /* } */
   }
 }
+
+li.link {
+  @include row();
+  padding-bottom: 4em;
+  list-style-type: none;
+  height: 5em;
+  width: 100%;
+  margin: 2em;
+  background-color: $grey;
+
+  .box {
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    float: left;
+    background: url('rocket.png') center no-repeat;
+    background-size: 3em 3em;
+    -webkit-filter: invert(100%);
+  }
+
+  .meta {
+    display: inline-block;
+    height: 5em;
+    float: left;
+    padding: 1.5em 0 0 2em;
+  }
+
+  .nodes {
+    display: inline-block;
+    height: 5em;
+    float: right;
+    padding: 2em;
+    background: url('flickr.png') left no-repeat;
+    background-size: 2em 2em;
+    padding-left: 2.5em;
+  }
+
+  .title {
+    font: bold 0.9em $helvetica;
+    text-decoration: none;
+  }
+
+  .url {
+    font: 0.8em $helvetica;
+  }
+}
+
 
 footer {
   height: 5em;
