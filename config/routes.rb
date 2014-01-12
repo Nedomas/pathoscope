@@ -1,4 +1,6 @@
 Pathoscope::Application.routes.draw do
+  get "comments/create"
+  get 'comments/index'
   devise_for :users, :controllers => {:sessions => 'sessions'}
   get "explore" => 'explore#index', as: 'explore_index'
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.

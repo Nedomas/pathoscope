@@ -16,25 +16,8 @@ article.explore.ext***REMOVED***full
         p.description
           = current_link.description
         = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
-        a.comments-button href='/' Comments (1)
+        a.comments-button href='#' = "Show comments (#{current_link.comments.count})"
     div.comments
-      ul
-        li.comment
-          div.info
-            span.name
-              | John Mayer
-            span.time
-              | 2014-01-01 12:10
-          p.text
-            | I like it the way it is, dont touch it, Aerospace activity is very diverse, with a multitude of commercial, industrial and military applications.
-        li.comment
-          div.info
-            span.name
-              | John Mayer
-            span.time
-              | 2014-01-01 12:10
-          p.text
-            | I like it the way it is, dont touch it
 
   section.deeper
     section.circles
@@ -51,3 +34,18 @@ article.explore.ext***REMOVED***full
         div.triangle
         span.nodes
           | 15
+
+script#comment-template type="text/template"
+  li.comment
+    div.info
+      span.name
+        | {{ name }}
+      span.time
+        | {{ time }}
+    p.text
+      | {{ content }}
+
+script#new-comment-template type="text/template"
+  section.new-comment
+    = text_area_tag(:content)
+    button#post Post

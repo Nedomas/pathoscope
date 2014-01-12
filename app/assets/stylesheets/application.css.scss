@@ -266,7 +266,7 @@ main {
        .comments-button {
          display: block;
          background-color: $red;
-         width: 11em;
+         width: 14em;
          color: $white;
          text-align: center;
          padding: 0.7em;
@@ -303,6 +303,25 @@ main {
            line-height: 1.3em;
          }
        }
+
+       .new-comment {
+         margin: 1em;
+         /* margin: 2em 0 1em 1em; */
+
+       ***REMOVED***content {
+           width: 80%;
+           max-width: 100%;
+           height: 3em;
+           margin: 0 1em 1em 0;
+         }
+
+       ***REMOVED***post {
+           padding: 0.5em;
+           margin-top: 0.2em;
+           width: 15%;
+         }
+       }
+
      }
    }
 

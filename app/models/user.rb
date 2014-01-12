@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :paths
   has_many :nodes
+  has_many :comments
 ***REMOVED***
