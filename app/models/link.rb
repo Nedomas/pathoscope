@@ -2,7 +2,6 @@ class Link < ActiveRecord::Base
   has_many :nodes
   after_create :get_title!, :get_thumbnail!
   fuzzily_searchable :title
-  acts_as_commentable
 
   def get_title!
     doc = Pismo::Document.new(url)

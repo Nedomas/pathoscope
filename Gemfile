@@ -34,7 +34,6 @@ gem 'hpricot'
 gem 'htmlentities'
 gem 'wikipedia'
 
-gem 'acts_as_commentable'
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 
