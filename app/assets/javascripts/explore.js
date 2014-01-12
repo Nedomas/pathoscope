@@ -76,12 +76,11 @@ var Inputbox = (function() {
 })();
 
 var Comments = (function() {
-  var DOM, showing, unordered_list, location, comments_button, count;
+  var DOM, showing, list, location, comments_button, count;
 
   var init = function() {
     comments_button = $('.comments-button');
-    DOM = $('.comments');
-    unordered_list = $('#unordered-list-template').html();
+    list = $('.comments ul');
     location = window.location.pathname;
 
     $(document).on('click', 'button#post', post);
@@ -90,11 +89,11 @@ var Comments = (function() {
 
   var toggle = function() {
     if (showing) {
-      DOM.hide();
+      list.hide();
       showing = false;
       comments_button.text('Show comments (' + count + ')');
     } else {
-      DOM.show();
+      list.show();
       repaint();
       showing = true;
       comments_button.text('Hide comments');
@@ -107,9 +106,7 @@ var Comments = (function() {
 
       var comment_item = $('#comment-template').html();
 
-      DOM.html('');
-      DOM.app***REMOVED***(_.template(unordered_list, { id: 'comment-list' }));
-      var list = $('#comment-list');
+      list.html('');
 
       _.each(resp.comments, function(comment) {
         var vars = {
@@ -123,7 +120,7 @@ var Comments = (function() {
 
       if (resp.logged_in) {
         var new_comment_template = $('#new-comment-template').html();
-        DOM.app***REMOVED***(_.template(new_comment_template));
+        list.app***REMOVED***(_.template(new_comment_template));
       }
     });
   };

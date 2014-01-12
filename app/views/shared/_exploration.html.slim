@@ -16,8 +16,9 @@ article.explore.ext***REMOVED***full
         p.description
           = current_link.description
         = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
-        a.comments-button href='#' = "Show comments (#{current_link.comments.count})"
     div.comments
+      a.comments-button href='#' = "Show comments (#{current_link.comments.count})"
+      ul
 
   section.deeper
     section.circles

@@ -262,6 +262,11 @@ main {
          display: block;
          color: $black;
        }
+     }
+
+
+     .comments {
+       margin-left: 15em;
 
        .comments-button {
          display: block;
@@ -270,15 +275,12 @@ main {
          color: $white;
          text-align: center;
          padding: 0.7em;
-         margin: 1em;
+         margin: 1em auto;
          border-radius: 0.4em;
          font: 0.8em $helvetica;
          text-transform: uppercase;
+         text-decoration: none;
        }
-     }
-
-     .comments {
-       margin-left: 15em;
 
        li {
          padding: 1em;
