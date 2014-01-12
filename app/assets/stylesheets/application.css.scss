@@ -82,14 +82,14 @@ header {
       }
 
       .nodes {
-        background: url('flickr.png') left no-repeat;
+        background: url('smallwhitetop.png') left no-repeat;
         background-size: contain;
-        padding-left: 1.5em;
+        padding-left: 2.7em;
         font: bold 0.8em $helvetica;
       }
 
       .paths {
-        background: url('prototype.png') left no-repeat;
+        background: url('shieldwhitetop.png') left no-repeat;
         background-size: contain;
         padding-left: 1.5em;
         font: bold 0.8em $helvetica;
@@ -117,7 +117,7 @@ header {
       margin-right: 1em;
       height: 5em;
       width: 5em;
-      background: url('prototype.png') center no-repeat;
+      background: url('beseseliu.png') center no-repeat;
       background-size: contain;
       color: $red;
     }
@@ -127,8 +127,8 @@ header {
     .app {
       display: block;
       height: 17em;
-      background: url('prototype.png') center no-repeat;
-      background-size: contain;
+      background: url('pathoscopelogo.png') center no-repeat;
+      background-size: 25em 25em;
       color: $red;
       /* font-size: 0.0001em; */
     }
@@ -309,9 +309,9 @@ main {
    section.deeper {
       .circles {
         display: block;
-        height: 6em;
-        background: url('flickr.png') center no-repeat;
-        background-size: 4em 4em;
+        height: 3em;
+        background: url('doublered.png') center no-repeat;
+        background-size: contain;
       }
 
       padding-top: 2em;
@@ -361,9 +361,10 @@ article {
       height: 5em;
       float: right;
       padding: 2em;
-      background: url('flickr.png') left no-repeat;
-      background-size: 2em 2em;
+      background: url('smallwhitetop.png') left no-repeat;
+      background-size: 2em 1.4em;
       padding-left: 2.5em;
+      /* -webkit-filter: invert(100%); */
     }
 
     .triangle {
