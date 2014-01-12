@@ -7,9 +7,15 @@ class InputController < ApplicationController
     links_by_url = Link.where('url LIKE ?', "%#{term}%")
     links = (links_by_title + links_by_url).uniq
 
+    counts = {
+      path: paths.each_with_object({}) { |p, obj| obj[p.id] = p.nodes.count },
+      link: links.each_with_object({}) { |l, obj| obj[l.id] = l.nodes.count }
+    }
+
     r***REMOVED***er json: {
       paths: paths,
-      links: links
+      links: links,
+      counts: counts
     }
 ***REMOVED***
 

@@ -17,7 +17,7 @@ html
             li
               = link_to 'All paths', paths_index_path
             li
-              a href='#' Your paths
+              = link_to 'Your paths', ego_index_path
             - if user_signed_in?
               li
                 = link_to 'Profile', edit_user_registration_path

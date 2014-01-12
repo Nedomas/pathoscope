@@ -51,7 +51,12 @@ var Inputbox = (function() {
     var list = $('#path-list');
 
     _.each(data.paths, function(path) {
-      list.app***REMOVED***(_.template(path_item, { id: path.id, title: path.title, color: path.color }));
+      list.app***REMOVED***(_.template(path_item, {
+        id: path.id,
+        title: path.title,
+        color: path.color,
+        count: data.counts.path[path.id]
+      }));
     });
 
     // Links
@@ -67,7 +72,8 @@ var Inputbox = (function() {
         id: link.id,
         title: link.title,
         url: link.url,
-        image_path: '/thumbnails/' + link.id + '.png'
+        image_path: '/thumbnails/' + link.id + '.png',
+        count: data.counts.link[link.id]
       }));
     });
 

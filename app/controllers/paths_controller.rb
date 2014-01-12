@@ -3,9 +3,6 @@ class PathsController < ApplicationController
 
   def index
     @paths = Path.all
-    @root_links_in_paths = Path.all.each_with_object({}) do |path, obj|
-      obj[path] = Explore.root_links(path)
-***REMOVED***
 ***REMOVED***
 
   def show

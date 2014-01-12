@@ -1,0 +1,13 @@
+article.paths.ext***REMOVED***full
+  ul
+    - @paths.each do |path|
+      li.path
+        a.div-link href="#{ego_road_path(path)}"
+        span.box class='background-#{path.color}'
+        span.meta
+          div.aligner
+            p.title
+              = path.title
+        div.triangle
+        span.nodes
+          = path.nodes.count
