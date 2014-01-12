@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :paths
   has_many :nodes
   has_many :comments
+
+  def paths_count
+    nodes.map(&:path).uniq.count
+***REMOVED***
 ***REMOVED***

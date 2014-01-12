@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     comments.each do |comment|
       obj = {
-        name: comment.user.email,
+        name: comment.user.username,
         content: comment.content,
         time: comment.created_at
       }

@@ -4,16 +4,17 @@ nav.inputbox
   button.secondary#create Create
 article.paths.ext***REMOVED***full
   ul
-    - @paths.each_with_index do |path, i|
+    - @paths.each do |path|
       li.path
-        span.box style="background-color: #{COLORS[i]}"
+        a.div-link href="#{paths_path(path)}"
+        span.box class='background-#{path.color}'
         span.meta
           div.aligner
             p.title
-              = link_to path.title, paths_path(path)
+              = path.title
         div.triangle
         span.nodes
-          | 173
+          = path.nodes.count
 article.links.ext***REMOVED***full
 
 script#header-template type="text/template"
@@ -22,27 +23,27 @@ script#header-template type="text/template"
 
 script#path-item-template type="text/template"
   li.path
-    span.box style="background-color: #{COLORS.first}"
+    a.div-link href='/paths/{{ id }}'
+    span.box class='background-{{ color }}'
     span.meta
       div.aligner
         p.title
-          a href='/paths/{{ id }}'
-            | {{ title }}
+          | {{ title }}
     div.triangle
     span.nodes
-      | 173
+      | {{ count }}
 
 script#link-item-template type="text/template"
   li.link
-    span.box style="background-color: #{COLORS.first}"
+    a.div-link href='/explore/{{ id }}'
+    span.box.background-link style="background: url('{{ image_path }}') center no-repeat;"
     span.meta
       div.aligner
         p.title
-          a href='/explore/{{ id }}'
-            | {{ title }}
+          | {{ title }}
         p.url
           a href='{{ url }}'
             | {{ url }}
     div.triangle
     span.nodes
-      | 15
+      | {{ count }}

@@ -22,9 +22,9 @@ html
               li
                 = link_to 'Profile', edit_user_registration_path
               li.nodes
-                | 34
+                = current_user.nodes.count
               li.paths
-                | 3
+                = current_user.paths_count
               li
                 = link_to 'Log out', destroy_user_session_path, method: :delete
             - else

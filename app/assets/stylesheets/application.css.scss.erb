@@ -223,111 +223,109 @@ main {
   article.explore {
     padding-top: 3em;
 
-   section.current {
-     @include row();
+    section.current {
+      @include row();
 
-     .static {
-       @include row();
-     }
+      .static {
+        @include row();
+      }
 
-     .box {
-       width: 15em;
-       height: 15em;
-       float: left;
-       background: url('rocket.png') center no-repeat;
-       background-size: 5em 5em;
-     }
+      .box {
+        width: 15em;
+        height: 15em;
+        float: left;
+        background-size: contain !important;
+      }
 
-     .meta {
-       vertical-align: top;
-       height: 6em;
-       display: inline-block;
-       width: 29em;
-       padding-left: 2em;
+      .meta {
+        vertical-align: top;
+        height: 6em;
+        display: inline-block;
+        width: 29em;
+        padding-left: 2em;
 
-       a {
-         text-decoration: none;
-       }
+        a {
+          text-decoration: none;
+        }
 
-       .title {
-         font: bold 1.2em $helvetica;
-       }
+        .title {
+          font: bold 1.2em $helvetica;
+        }
 
-       .description {
-         padding-top: 0.5em;
-         font: 1em $helvetica;
-       }
+        .description {
+          padding-top: 0.5em;
+          font: 1em $helvetica;
+        }
 
-       .url {
-         display: block;
-         color: $black;
-       }
-     }
+        .url {
+          display: block;
+          color: $black;
+        }
+      }
 
 
-     .comments {
-       margin-left: 15em;
+      .comments {
+        margin-left: 15em;
 
-       .comments-button {
-         display: block;
-         background-color: $red;
-         width: 14em;
-         color: $white;
-         text-align: center;
-         padding: 0.7em;
-         margin: 1em auto;
-         border-radius: 0.4em;
-         font: 0.8em $helvetica;
-         text-transform: uppercase;
-         text-decoration: none;
-       }
+        .comments-button {
+          display: block;
+          background-color: $red;
+          width: 14em;
+          color: $white;
+          text-align: center;
+          padding: 0.7em;
+          margin: 1em auto;
+          border-radius: 0.4em;
+          font: 0.8em $helvetica;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
 
-       li {
-         padding: 1em;
+        li {
+          padding: 1em;
 
-         .info {
-           @include row();
-           padding-bottom: 1em;
-         }
+          .info {
+            @include row();
+            padding-bottom: 1em;
+          }
 
-         .name {
-           float: left;
-           font: bold 1em $helvetica;
-         }
+          .name {
+            float: left;
+            font: bold 1em $helvetica;
+          }
 
-         .time {
-           float: right;
-           font: 0.8em $helvetica;
-         }
+          .time {
+            float: right;
+            font: 0.8em $helvetica;
+          }
 
-         .text {
-           font: 0.9em $helvetica;
-           line-height: 1.3em;
-         }
-       }
+          .text {
+            font: 0.9em $helvetica;
+            line-height: 1.3em;
+          }
+        }
 
-       .new-comment {
-         margin: 1em;
-         /* margin: 2em 0 1em 1em; */
+        .new-comment {
+          margin: 1em;
 
-       ***REMOVED***content {
-           width: 80%;
-           max-width: 100%;
-           height: 3em;
-           margin: 0 1em 1em 0;
-         }
+        ***REMOVED***content {
+            width: 80%;
+            max-width: 100%;
+            height: 3em;
+            margin: 0 1em 1em 0;
+          }
 
-       ***REMOVED***post {
-           padding: 0.5em;
-           margin-top: 0.2em;
-           width: 15%;
-         }
-       }
+        ***REMOVED***post {
+            padding: 0.5em;
+            margin-top: 0.2em;
+            width: 15%;
+          }
+        }
 
-     }
-   }
+      }
+    }
 
-   section.deeper {
+    section.deeper {
       .circles {
         display: block;
         height: 3em;
@@ -369,6 +367,7 @@ article {
     background-color: $grey;
     color: $black;
     border-radius: 2em;
+    position: relative;
 
     .meta {
       display: table;
@@ -403,7 +402,7 @@ article {
       vertical-align: middle;
     }
 
-    a {
+    .title {
       font: bold 1.1em $helvetica;
       text-decoration: none;
       color: $black;
@@ -422,6 +421,7 @@ article {
       background: url('rocket2.png') center no-repeat;
       background-size: 3em 3em;
     }
+
   }
 
   li.link {
@@ -429,6 +429,19 @@ article {
       font: normal 0.8em $helvetica;
     }
   }
+}
+
+a.div-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-decoration: none; /* No underlines on the link */
+  z-index: 10; /* Places the link above everything else in the div */
+  background-color: #FFF; /* Fix to make div clickable in IE */
+  opacity: 0; /* Fix to make div clickable in IE */
+  filter: alpha(opacity=1); /* Fix to make div clickable in IE */
 }
 
 footer {
@@ -473,4 +486,25 @@ footer {
  */
 .cf {
   *zoom: 1;
+}
+
+<% COLORS = %w(
+  hsla(140, 43%, 47%, 0.7)
+  hsla(196, 100%, 37%, 0.7)
+  hsla(30, 86%, 53%, 0.7)
+  hsla(10, 86%, 53%, 0.7)
+  hsla(204, 71%, 77%, 0.7)
+) * 10 %>
+$bgColors: (<%= COLORS.join(' ') %>);
+
+$i: 0;
+@each $color in $bgColors {
+  .background-#{$i} {
+    background-color: $color !important;
+  }
+  $i: $i + 1;
+}
+
+.background-link {
+  background-color: $grey !important;
 }

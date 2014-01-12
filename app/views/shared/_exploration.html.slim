@@ -10,14 +10,14 @@ nav.breadcrumbs
 article.explore.ext***REMOVED***full
   section.current
     div.static
-      div.box style="background-color: #{COLORS.first}"
+      div.box class="background-#{current_link.color}" style="background: url('#{current_link.image_path}') center no-repeat;"
       div.meta
         h2.title = current_link.title
         p.description
           = current_link.description
         = link_to current_link.url, current_link.url, { class: 'url' } rescue nil
     div.comments
-      a.comments-button href='#' = "Show comments (#{current_link.comments.count})"
+      a.comments-button href='#' = "Comments (#{current_link.comments.count})"
       ul
 
   section.deeper
@@ -25,16 +25,17 @@ article.explore.ext***REMOVED***full
     ul
     - forward_links.each do |link|
       li.link
+        a.div-link href="#{explore_path(link)}"
         span.box style="background: url('#{link.image_path}') center no-repeat;"
         span.meta
           div.aligner
             p.title
-              = link_to link.title, explore_path(link)
+              = link.title
             p.url
               = link_to link.url[0..60], link.url
         div.triangle
         span.nodes
-          | 15
+          = link.nodes.count
 
 script#comment-template type="text/template"
   li.comment

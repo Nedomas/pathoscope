@@ -51,7 +51,7 @@ var Inputbox = (function() {
     var list = $('#path-list');
 
     _.each(data.paths, function(path) {
-      list.app***REMOVED***(_.template(path_item, { id: path.id, title: path.title }));
+      list.app***REMOVED***(_.template(path_item, { id: path.id, title: path.title, color: path.color }));
     });
 
     // Links
@@ -63,7 +63,12 @@ var Inputbox = (function() {
     var list = $('#link-list');
 
     _.each(data.links, function(link) {
-      list.app***REMOVED***(_.template(link_item, { id: link.id, title: link.title, url: link.url }));
+      list.app***REMOVED***(_.template(link_item, {
+        id: link.id,
+        title: link.title,
+        url: link.url,
+        image_path: '/thumbnails/' + link.id + '.png'
+      }));
     });
 
 
@@ -91,7 +96,7 @@ var Comments = (function() {
     if (showing) {
       list.hide();
       showing = false;
-      comments_button.text('Show comments (' + count + ')');
+      comments_button.text('Comments (' + count + ')');
     } else {
       list.show();
       repaint();

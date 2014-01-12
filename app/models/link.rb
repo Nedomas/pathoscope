@@ -2,6 +2,7 @@ class Link < ActiveRecord::Base
   has_many :nodes
   after_create :get_title!, :get_thumbnail!
   fuzzily_searchable :title
+  has_many :comments, as: :commentable
 
   def get_title!
     doc = Pismo::Document.new(url)
@@ -24,6 +25,9 @@ class Link < ActiveRecord::Base
 ***REMOVED***
 
   def description
+***REMOVED***
 
+  def color
+    'link'
 ***REMOVED***
 ***REMOVED***

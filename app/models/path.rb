@@ -9,5 +9,6 @@ class Path < ActiveRecord::Base
 ***REMOVED***
 
   def image_path
+    '/assets/rocket2.png'
 ***REMOVED***
 ***REMOVED***

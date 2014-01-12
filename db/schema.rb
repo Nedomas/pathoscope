@@ -11,7 +11,7 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112140218) do
+ActiveRecord::Schema.define(version: 20140112164430) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140112140218) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.integer  "color"
 ***REMOVED***
 
   create_table "trigrams", force: true do |t|
