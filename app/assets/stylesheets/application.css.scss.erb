@@ -23,13 +23,17 @@ $grid-columns: 16;
 @import "bourbon";
 @import "neat";
 @import "neat-helpers";
-/* @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700); */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+$helvetica: 'Open Sans', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Handlee:400,700);
+$logo-font: 'Handlee', sans-serif;
 
 $max-width: em(768);
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
 
 $black: hsla(223, 19%, 19%, 1);
+$less-black: hsla(223, 19%, 19%, 0.7);
 $white: #FFF;
 $red: #E95353;
 $grey: #F2F0EB;
@@ -74,12 +78,13 @@ header {
     ul {
       float: right;
       display: inline-block;
-      margin: 0 2em;
+      /* margin: 0 2em; */
       list-style-type: none;
 
       li {
         @include inline-block;
-        margin-right: golden-ratio(1em, 1);
+        margin-left: golden-ratio(1em, 1);
+        margin-top: 0.1em;
       }
 
       .nodes {
@@ -108,7 +113,7 @@ header {
     a.small-logo-text {
       float: left;
       display: inline-block;
-      font: bold 1em $helvetica;
+      font: 1.3em $logo-font;
     }
 
     a.small-app {
@@ -136,9 +141,9 @@ header {
 
     .logo-text {
       display: block;
-      font: bold 2em $helvetica;
+      font: 4em $logo-font;
       text-align: center;
-      padding: 0 0 1em;
+      margin: -0.5em 0 0;
     }
 
     aside {
@@ -171,6 +176,37 @@ header {
   color: #8a6d3b;
 }
 
+input {
+  outline: 0;
+  border: 1px solid $dark-grey;
+  border-radius: 4px;
+  padding: 0.5em;
+  color: $less-black;
+
+  &:focus {
+    border-color: $less-black;
+    outline: 0;
+  }
+}
+
+button {
+  margin-left: 1.5em;
+  color: $white;
+  text-align: center;
+  padding: 0.8em 1em;
+  border-radius: 0.4em;
+  font: 0.9em $helvetica;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: $less-black;
+  color: $white;
+
+  &:hover {
+    background-color: $red;
+  }
+}
 
 main {
   padding-top: 1em;
@@ -187,18 +223,16 @@ main {
       width: 15em;
     }
 
-    button {
-      height: 2.5em;
-      width: 5em;
-      margin-left: 1em;
-    }
-
   }
 
   nav.breadcrumbs {
     li {
       @include inline-block;
       margin-right: golden-ratio(1em, 1);
+      border-radius: 0.3em;
+      height: 2em;
+      padding: 0.3em 1em 0;
+      text-align: center;
     }
 
     a:before {
@@ -208,11 +242,20 @@ main {
     a {
       text-transform: uppercase;
       text-decoration: none;
-      color: $black;
-      font: bold 0.8em $helvetica;
-      line-height: 5em;
+      color: $white;
+      font: normal 0.8em $helvetica;
       &:hover {
-        border-bottom: 0.175em solid $black;
+        border-bottom: 0.1em solid $white;
+      }
+    }
+
+    .breadcrumb-all {
+      a {
+        color: $black;
+        font: bold 0.8em $helvetica;
+        &:hover {
+          border-bottom: 0.1em solid $black;
+        }
       }
     }
   }
@@ -235,14 +278,14 @@ main {
         width: 15em;
         height: 15em;
         float: left;
+        border-radius: 1em;
         background-size: contain !important;
       }
 
       .meta {
         vertical-align: top;
-        height: 6em;
         display: inline-block;
-        width: 29em;
+        width: 33em;
         padding-left: 2em;
 
         a {
@@ -251,16 +294,21 @@ main {
 
         .title {
           font: bold 1.2em $helvetica;
+          a {
+            color: $black;
+          }
         }
 
         .description {
           padding-top: 0.5em;
-          font: 1em $helvetica;
+          font: 0.9em $helvetica;
+          line-height: 1.5em;
         }
 
         .url {
           display: block;
-          color: $black;
+          padding-top: 0.3em;
+          color: $less-black;
         }
       }
 
@@ -280,6 +328,8 @@ main {
           font: 0.8em $helvetica;
           text-transform: uppercase;
           text-decoration: none;
+          border: none;
+          outline: none;
         }
 
         li {
@@ -404,7 +454,7 @@ article {
     }
 
     .title {
-      font: bold 1.1em $helvetica;
+      font: bold 0.9em $helvetica;
       text-decoration: none;
       color: $black;
     }
@@ -418,6 +468,10 @@ article {
   }
 
   li.path {
+    .title {
+      font: bold 1.1em $helvetica;
+    }
+
     .box {
       background: url('rocket2.png') center no-repeat;
       background-size: 3em 3em;
@@ -428,6 +482,11 @@ article {
   li.link {
     .meta .url a {
       font: normal 0.8em $helvetica;
+    }
+
+    .url a {
+      color: $less-black;
+      text-decoration: none;
     }
   }
 }

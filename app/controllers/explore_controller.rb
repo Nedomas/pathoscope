@@ -9,15 +9,22 @@ class ExploreController < ApplicationController
     nodes = @current_link.nodes
     parents = nodes.map(&:parent).compact
 
+    zero_depth_nodes = nodes.select { |node| node.ancestry_depth == 0 }
+    parent_paths = zero_depth_nodes.map(&:path).uniq
+
     if parents.present?
       @back_collection = parents.each_with_object({}) do |parent, obj|
-        obj[parent.path.title] = parent.link
+        obj[parent.path] = parent.link
   ***REMOVED***
     else
       paths = nodes.map(&:path).uniq
       @back_collection = paths.each_with_object({}) do |path, obj|
-        obj[path.title] = paths_path(path)
+        obj[path] = paths_path(path)
   ***REMOVED***
+***REMOVED***
+
+    parent_paths.each do |parent_path|
+      @back_collection[parent_path] = parent_path
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***

@@ -1,11 +1,20 @@
 module ApplicationHelper
   def explore_link(resource, parameters = {})
-    if resource.is_a?(String)
+    case resource
+    when Path
+      if params[:controller] == 'ego'
+        ego_road_path(resource)
+      else
+        paths_path(resource)
+  ***REMOVED***
+    when Link
+      if params[:controller] == 'ego'
+        ego_link_path(resource)
+      else
+        explore_path(resource)
+  ***REMOVED***
+    when String
       resource
-    elsif params[:controller]
-      ego_link_path(resource)
-    else
-      explore_path(resource)
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***

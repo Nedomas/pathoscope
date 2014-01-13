@@ -28,12 +28,12 @@ class EgoController < ApplicationController
 
     if parents.present?
       @back_collection = parents.each_with_object({}) do |parent, obj|
-        obj[parent.path.title] = parent.link
+        obj[parent.path] = parent.link
   ***REMOVED***
     else
       paths = nodes.map(&:path).uniq
       @back_collection = paths.each_with_object({}) do |path, obj|
-        obj[path.title] = paths_path(path)
+        obj[path] = paths_path(path)
   ***REMOVED***
 ***REMOVED***
 ***REMOVED***

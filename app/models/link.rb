@@ -24,10 +24,8 @@ class Link < ActiveRecord::Base
     "/thumbnails/#{id}.png"
 ***REMOVED***
 
-  def description
-***REMOVED***
-
   def color
     'link'
 ***REMOVED***
+
 ***REMOVED***

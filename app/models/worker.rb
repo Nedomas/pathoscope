@@ -24,5 +24,12 @@ class Worker
         path.update_attribute(:description, wiki.first)
   ***REMOVED***
 ***REMOVED***
+
+    def update_link_descriptions
+      Link.all.each do |link|
+        doc = Pismo::Document.new(link.url)
+        link.update_attributes(title: doc.title, description: doc.lede)
+  ***REMOVED***
+***REMOVED***
 ***REMOVED***
 ***REMOVED***
