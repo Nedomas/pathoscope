@@ -8,6 +8,10 @@ class Path < ActiveRecord::Base
     nodes.roots.order(:id)
 ***REMOVED***
 
+  def roots_for_user(user)
+    user.nodes.roots.where(path: self).order(:id)
+***REMOVED***
+
   def image_path
     '/assets/rocket2.png'
 ***REMOVED***

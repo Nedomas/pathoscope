@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.timeago
+//= require jquery.powertip.min
 //= require lodash.min
 //= require shared
 //= require explore

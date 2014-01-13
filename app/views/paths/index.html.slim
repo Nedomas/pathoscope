@@ -13,7 +13,7 @@ article.paths.ext***REMOVED***full
             p.title
               = path.title
         div.triangle
-        span.nodes
+        span.nodes title="#{path.nodes.count} nodes in this path"
           = path.nodes.count
 article.links.ext***REMOVED***full
 
@@ -30,7 +30,7 @@ script#path-item-template type="text/template"
         p.title
           | {{ title }}
     div.triangle
-    span.nodes
+    span.nodes title='{{ count }} nodes in this path'
       | {{ count }}
 
 script#link-item-template type="text/template"
@@ -45,5 +45,5 @@ script#link-item-template type="text/template"
           a href='{{ url }}'
             | {{ url }}
     div.triangle
-    span.nodes
+    span.nodes title='{{ count }} nodes in this link'
       | {{ count }}

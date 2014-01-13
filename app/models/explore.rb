@@ -12,8 +12,17 @@ class Explore
       link.nodes.map(&:children).flatten.map(&:link)
 ***REMOVED***
 
+    def children_links_for_user(link, user)
+      link.nodes.where(user: user).map(&:children).flatten.map(&:link)
+      link.nodes.map(&:children).flatten.map(&:link)
+***REMOVED***
+
     def root_links(path)
       links(path.roots).uniq
+***REMOVED***
+
+    def root_links_for_user(path, user)
+      links(path.roots_for_user(user)).uniq
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***

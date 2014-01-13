@@ -20,3 +20,31 @@ var private = function(funs) {
   }
   return '({'+list.join(',')+'})';
 };
+
+var App = (function() {
+  var init = function() {
+    $('nav li.nodes').powerTip({
+      placement: 's',
+      smartPlacement: true
+    });
+
+    $('nav li.paths').powerTip({
+      placement: 's',
+      smartPlacement: true
+    });
+
+    $('article .nodes').powerTip({
+      placement: 's',
+      smartPlacement: true
+    });
+  };
+
+  return {
+    init: init,
+    _private: eval(private(arguments))
+  }
+})();
+
+jQuery(function($) {
+  App.init();
+});

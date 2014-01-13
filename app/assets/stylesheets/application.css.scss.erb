@@ -10,6 +10,7 @@
  *
  *= require normalize
  *= require_self
+ *= require jquery.powertip.min
  dont *= require_tree .
  */
 
@@ -433,7 +434,7 @@ article {
 
 a.div-link {
   position: absolute;
-  width: 100%;
+  width: 85%;
   height: 100%;
   top: 0;
   left: 0;
@@ -507,4 +508,8 @@ $i: 0;
 
 .background-link {
   background-color: $grey !important;
+}
+
+#powerTip {
+  font: normal 0.8em $helvetica;
 }

@@ -7,8 +7,9 @@ class EgoController < ApplicationController
 
   def road
     @path = Path.find(params[:id])
-    @forward_links = Explore.root_links(@path)
+    @forward_links = Explore.root_links_for_user(@path, current_user)
     @back_collection = {}
+  ***REMOVED*** binding.pry
 
   ***REMOVED*** r***REMOVED***er layout: 'application'
   ***REMOVED*** r***REMOVED***er partial: 'shared/exploration',
@@ -20,5 +21,21 @@ class EgoController < ApplicationController
 ***REMOVED***
 
   def link
+    @current_link = Link.find(params[:id])
+    @forward_links = Explore.children_links_for_user(@current_link, current_user)
+    nodes = @current_link.nodes
+    parents = nodes.map(&:parent).compact
+
+    if parents.present?
+      @back_collection = parents.each_with_object({}) do |parent, obj|
+        obj[parent.path.title] = parent.link
+  ***REMOVED***
+    else
+      paths = nodes.map(&:path).uniq
+      @back_collection = paths.each_with_object({}) do |path, obj|
+        obj[path.title] = paths_path(path)
+  ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+***REMOVED***
+
