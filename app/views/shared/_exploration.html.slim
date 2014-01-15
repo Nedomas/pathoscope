@@ -9,7 +9,7 @@ nav.breadcrumbs
 article.explore.ext***REMOVED***full
   section.current
     div.static
-      div.box class="background-#{current_link.color}" style="background: url('#{current_link.image_path}') center no-repeat;"
+      div.box class="background-#{current_link.color}" style="background: url('#{current_link.screenshot_path}') center no-repeat;"
       div.meta
         - if current_link.kind_of?(Link)
           h2.title
@@ -30,7 +30,7 @@ article.explore.ext***REMOVED***full
     - forward_links.each do |link|
       li.link
         a.div-link href="#{explore_link(link)}"
-        span.box style="background: url('#{link.image_path}') center no-repeat;"
+        span.box style="background: url('#{link.thumbnail_path}') center no-repeat;"
         span.meta
           div.aligner
             p.title
@@ -55,3 +55,8 @@ script#new-comment-template type="text/template"
   section.new-comment
     = text_area_tag(:content)
     button#post Post
+
+script#login-to-comment-template type="text/template"
+  section.login-to-comment
+    - login_link = link_to 'login', new_user_session_path
+    = "Please #{login_link} to write comments.".html_safe

@@ -72,7 +72,7 @@ var Inputbox = (function() {
         id: link.id,
         title: link.title,
         url: link.url,
-        image_path: '/thumbnails/' + link.id + '.png',
+        thumbnail_path: '/thumbnails/' + link.id + '.png',
         count: data.counts.link[link.id]
       }));
     });
@@ -132,6 +132,9 @@ var Comments = (function() {
       if (resp.logged_in) {
         var new_comment_template = $('#new-comment-template').html();
         list.app***REMOVED***(_.template(new_comment_template));
+      } else {
+        var login_to_comment_template = $('#login-to-comment-template').html();
+        list.app***REMOVED***(_.template(login_to_comment_template));
       }
     });
   };

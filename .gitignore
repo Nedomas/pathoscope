@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 /v***REMOVED***or/bundle
-/public/thumbnails
+/public/thumbnails/*
+/public/screenshots/*

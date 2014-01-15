@@ -17,7 +17,11 @@ class Path < ActiveRecord::Base
     user.nodes.roots.where(path: self).order(:id)
 ***REMOVED***
 
-  def image_path
+  def screenshot_path
+    '/assets/rocket2.png'
+***REMOVED***
+
+  def thumbnail_path
     '/assets/rocket2.png'
 ***REMOVED***
 

@@ -16,12 +16,20 @@ class Link < ActiveRecord::Base
     ws.capture(url, thumbnail_path, width: 200, height: 200, quality: 100)
 ***REMOVED***
 
-  def thumbnail_path
+  def save_thumbnail_path
     "public/thumbnails/#{id}.png"
 ***REMOVED***
 
-  def image_path
+  def save_screenshot_path
+    "public/screenshots/#{id}.png"
+***REMOVED***
+
+  def thumbnail_path
     "/thumbnails/#{id}.png"
+***REMOVED***
+
+  def screenshot_path
+    "/screenshots/#{id}.png"
 ***REMOVED***
 
   def color

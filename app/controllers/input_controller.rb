@@ -20,6 +20,11 @@ class InputController < ApplicationController
 ***REMOVED***
 
   def create
+    unless user_signed_in?
+      flash[:alert] = "You have to login to create a new path"
+      r***REMOVED***er json: true and return
+***REMOVED***
+
     title = params[:title]
 
     if path = Path.find_by(title: title)
