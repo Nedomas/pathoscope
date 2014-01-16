@@ -21,12 +21,19 @@ class Worker
 
     def update_path_descriptions
       Path.all.each do |path|
-        api = "http://en.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&titles=#{path.title}&rvprop=content&rvsection=0&rvparse"
-        resp = Faraday.get(api)
-        wiki = JSON.parse(resp.body)['query']['pages'].values.first['revisions'].first['*']
-        safe_wiki = ActionView::Base.full_sanitizer.sanitize(wiki)
+      ***REMOVED*** api = "http://en.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&titles=#{path.title}&rvprop=content&rvsection=0&rvparse"
+      ***REMOVED*** resp = Faraday.get(api)
+      ***REMOVED*** wiki = JSON.parse(resp.body)['query']['pages'].values.first['revisions'].first['*']
+      ***REMOVED*** safe_wiki = ActionView::Base.full_sanitizer.sanitize(wiki)
       ***REMOVED*** wiki = Wikipedia::article(path.title)
-        path.update_attribute(:description, safe_wiki)
+        resp = RubyWebSearch::Google.search(:query => "define+#{path.title}")
+        definition = resp.results.first[:content]
+        sane_definition = ActionView::Base.full_sanitizer.sanitize(definition)
+      ***REMOVED*** api = "http://www.google.com/dictionary/json?callback=a&sl=en&tl=en&q=#{path.title}"
+      ***REMOVED*** resp = Faraday.get(api)
+      ***REMOVED*** json = resp.body.sub('a(', '').sub(',200,null)', '')
+      ***REMOVED*** definition = JSON.parse(json)["primaries"].last["entries"].last["terms"].last["text"]
+        path.update_attribute(:description, sane_definition)
   ***REMOVED***
 ***REMOVED***
 

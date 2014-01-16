@@ -503,7 +503,8 @@ article {
 
 a.div-link {
   position: absolute;
-  width: 85%;
+  margin-left: 10%;
+  width: 75%;
   height: 100%;
   top: 0;
   left: 0;
@@ -566,12 +567,31 @@ footer {
   hsla(204, 71%, 77%, 0.7)
 ) * 10 %>
 $bgColors: (<%= COLORS.join(' ') %>);
+<% DARKER_COLORS = %w(
+  hsla(140, 43%, 42%, 0.7)
+  hsla(196, 100%, 32%, 0.7)
+  hsla(30, 86%, 48%, 0.7)
+  hsla(10, 86%, 48%, 0.7)
+  hsla(204, 71%, 72%, 0.7)
+) * 10 %>
+$darkerColors: (<%= COLORS.join(' ') %>);
 
 $i: 0;
 @each $color in $bgColors {
   .background-#{$i} {
     background-color: $color !important;
   }
+
+  .breadcrumb-#{$i} {
+    border: 1px solid;
+    $breadcrumb-i: $i + 1;
+    $dark-color: nth($darkerColors, $breadcrumb-i);
+    border-color: $dark-color;
+    &:hover {
+      background-color: $dark-color !important;
+    }
+  }
+
   $i: $i + 1;
 }
 

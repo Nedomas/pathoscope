@@ -25,6 +25,10 @@ class Path < ActiveRecord::Base
     '/assets/rocket2.png'
 ***REMOVED***
 
+  def hover_content
+    "<img src='#{screenshot_path}' height='600'>"
+***REMOVED***
+
   def url
 ***REMOVED***
 ***REMOVED***

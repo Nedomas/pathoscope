@@ -32,6 +32,10 @@ class Link < ActiveRecord::Base
     "/screenshots/#{id}.png"
 ***REMOVED***
 
+  def hover_content
+    "<img src='#{screenshot_path}' height='600'>"
+***REMOVED***
+
   def color
     'link'
 ***REMOVED***

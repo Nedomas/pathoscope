@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mattetti/ruby-web-search.git
+  revision: 6f8c13b2aaeaaf216dfe9ea8159a9af8eb8c7949
+  specs:
+    ruby-web-search (0.0.2)
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -233,6 +240,7 @@ DEPENDENCIES
   rails
   rails_12factor
   rspec-rails
+  ruby-web-search!
   sass-rails
   sdoc
   slim

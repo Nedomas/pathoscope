@@ -3,13 +3,13 @@ nav.breadcrumbs
     li.breadcrumb-all
       = link_to "All paths", paths_index_path
     - back_collection.each do |path, link|
-      li.breadcrumb-path class="background-#{path.color}"
+      li.breadcrumb-path class="background-#{path.color} breadcrumb-#{path.color}"
         = link_to path.title, explore_link(link)
 
 article.explore.ext***REMOVED***full
   section.current
     div.static
-      div.box class="background-#{current_link.color}" style="background: url('#{current_link.screenshot_path}') center no-repeat;"
+      div.box class="background-#{current_link.color}" style="background: url('#{current_link.screenshot_path}') center no-repeat;" title="#{current_link.hover_content}"
       div.meta
         - if current_link.kind_of?(Link)
           h2.title
@@ -30,7 +30,7 @@ article.explore.ext***REMOVED***full
     - forward_links.each do |link|
       li.link
         a.div-link href="#{explore_link(link)}"
-        span.box style="background: url('#{link.thumbnail_path}') center no-repeat;"
+        span.box style="background: url('#{link.thumbnail_path}') center no-repeat;" title="#{link.hover_content}"
         span.meta
           div.aligner
             p.title

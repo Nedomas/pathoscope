@@ -37,6 +37,18 @@ var App = (function() {
       placement: 's',
       smartPlacement: true
     });
+
+    $('.static div.box').powerTip({
+      placement: 's',
+      mouseOnToPopup: true
+      // smartPlacement: true
+    });
+
+    $('li.link span.box').powerTip({
+      placement: 's',
+      mouseOnToPopup: true
+      // smartPlacement: true
+    });
   };
 
   return {
