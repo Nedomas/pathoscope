@@ -46,6 +46,7 @@ gem 'wikipedia'
 gem 'ruby-web-search', git: 'https://github.com/mattetti/ruby-web-search.git'
 
 gem 'capistrano'
+gem 'capistrano-rails'
 
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
