@@ -2,7 +2,7 @@ class PathsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @paths = Path.all
+    @paths = Path.all.sort_by { |path| path.nodes.count }.reverse
 ***REMOVED***
 
   def show
