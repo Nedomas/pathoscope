@@ -11,9 +11,17 @@ class Link < ActiveRecord::Base
 ***REMOVED***
 
   def get_thumbnail!
-  ***REMOVED*** Webshot.capybara_setup!
-  ***REMOVED*** ws = Webshot::Screenshot.new
-  ***REMOVED*** ws.capture(url, save_thumbnail_path, width: 200, height: 200, quality: 100)
+    Webshot.capybara_setup!
+    ws = Webshot::Screenshot.new
+    capture_thumbnail(ws)
+***REMOVED***
+
+  def capture_thumnail(ws)
+    ws.capture(url, save_thumbnail_path, width: 100, height: 100, quality: 100)
+***REMOVED***
+
+  def capture_screenshot(ws)
+    ws.capture(url, save_screenshot_path, width: 768, height: 900, quality: 100)
 ***REMOVED***
 
   def save_thumbnail_path

@@ -6,8 +6,8 @@ class Worker
 
       Link.all.each do |link|
         puts "Getting thumbnail for #{link.url}"
-        ws.capture(link.url, link.save_thumbnail_path, width: 100, height: 100, quality: 100)
-        ws.capture(link.url, link.save_screenshot_path, width: 768, height: 900, quality: 100)
+        link.capture_thumbnail(ws)
+        link.screenshot_thumbnail(ws)
   ***REMOVED***
 
       puts "Done"
