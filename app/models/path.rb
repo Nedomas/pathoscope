@@ -6,7 +6,11 @@ class Path < ActiveRecord::Base
   before_create :add_color
 
   def add_color
-    self.color = Path.last.color.to_i + 1
+    if last_path = Path.last
+      self.color = last_path.color.to_i + 1
+    else
+      self.color = 1
+***REMOVED***
 ***REMOVED***
 
   def roots
