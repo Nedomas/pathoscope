@@ -1,8 +1,12 @@
-ruby '2.0.0'
+ruby '2.1.0'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+gem 'mime-types'
+gem 'rack'
+gem 'bundler'
+gem 'capybara'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -20,10 +24,15 @@ gem 'nokogiri'
 gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails_12factor', group: :production
-gem 'figaro'
+# gem 'figaro'
 gem 'newrelic_rpm'
 
-gem 'faye-websocket', '0.4.7'
+# gem 'websocket-driver', '>= 0.2.0'
+# gem 'multi_json',       '~> 1.0'
+# gem 'cliver',           '~> 0.3.1'
+# gem 'faye-websocket', '0.4.7'
+# gem 'poltergeist'
+# gem 'mini_magick', '~> 3.5.0'
 gem 'webshot'
 
 gem 'andand'
@@ -74,9 +83,3 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
 ***REMOVED***
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
