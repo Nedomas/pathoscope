@@ -7,7 +7,10 @@ class Path < ActiveRecord::Base
 
   def add_color
     if last_path = Path.last
-      self.color = last_path.color.to_i + 1
+      last_color = last_path.color.to_i
+      last_color = -1 if last_color > 4
+
+      self.color = last_color + 1
     else
       self.color = 1
 ***REMOVED***

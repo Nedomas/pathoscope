@@ -1,5 +1,14 @@
 class Worker
   class << self
+    def fix_colors
+      Path.all.order(:updated_at).each do |path|
+        if path.color > 4
+          path.add_color
+          path.save
+    ***REMOVED***
+  ***REMOVED***
+***REMOVED***
+
     def get_thumbnails
       Webshot.capybara_setup!
       ws = Webshot::Screenshot.new
