@@ -16,7 +16,7 @@ class Link < ActiveRecord::Base
     capture_thumbnail(ws)
 ***REMOVED***
 
-  def capture_thumnail(ws)
+  def capture_thumbnail(ws)
     ws.capture(url, save_thumbnail_path, width: 100, height: 100, quality: 100)
 ***REMOVED***
 
