@@ -4,7 +4,7 @@ nav.breadcrumbs
       = link_to "All paths", paths_index_path
     - back_collection.each do |path, link|
       li.breadcrumb-path
-        = link_to path.title, explore_link(link), class: "background-#{path.color}", target: '_blank'
+        = link_to path.title, explore_link(link), class: "background-#{path.color}"
 
 article.explore.ext***REMOVED***full
   section.current
@@ -13,8 +13,8 @@ article.explore.ext***REMOVED***full
       div.meta
         - if current_link.kind_of?(Link)
           h2.title
-            = link_to current_link.title, current_link.url
-          = link_to current_link.url, current_link.url, { class: 'url' }
+            = link_to current_link.title, current_link.url, target: '_blank'
+          = link_to current_link.url, current_link.url, { class: 'url', target: '_blank' }
         - else
           h2.title
             = current_link.title

@@ -25,11 +25,11 @@ class Path < ActiveRecord::Base
 ***REMOVED***
 
   def screenshot_path
-    '/assets/rocket2.png'
+    '/assets/paths/aerospace.png'
 ***REMOVED***
 
   def thumbnail_path
-    '/assets/rocket2.png'
+    '/assets/paths/aerospace.png'
 ***REMOVED***
 
   def hover_content
