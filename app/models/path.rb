@@ -20,8 +20,12 @@ class Path < ActiveRecord::Base
     nodes.roots.order(:id)
 ***REMOVED***
 
-  def roots_for_user(user)
-    user.nodes.roots.where(path: self).order(:id)
+  def root_for_user(user)
+    user.nodes.roots.find_by(path: self)
+***REMOVED***
+
+  def links_for_user(user)
+    Node.sort_by_ancestry(Node.where(path: self, user: user)).map(&:link)
 ***REMOVED***
 
   def screenshot_path

@@ -3,6 +3,10 @@ class EgoController < ApplicationController
 
   def index
     @paths = current_user.paths
+
+  ***REMOVED*** @links = @paths.each_with_object({}) do |path, obj|
+  ***REMOVED***   obj[path] = Explore.links_for_user(path, current_user)
+  ***REMOVED*** ***REMOVED***
 ***REMOVED***
 
   def road

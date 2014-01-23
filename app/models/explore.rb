@@ -24,5 +24,9 @@ class Explore
     def root_links_for_user(path, user)
       links(path.roots_for_user(user)).uniq
 ***REMOVED***
+
+    def links_for_user(path, user)
+      Node.sort_by_ancestry(Node.where(path: path, user: user)).map(&:link)
+***REMOVED***
 ***REMOVED***
 ***REMOVED***

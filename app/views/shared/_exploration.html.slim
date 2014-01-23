@@ -9,7 +9,7 @@ nav.breadcrumbs
 article.explore.ext***REMOVED***full
   section.current
     div.static
-      div.box class="background-#{current_link.color}" style="background: url('#{current_link.screenshot_path}') center no-repeat;" title="#{current_link.hover_content}"
+      a.box href="#{current_link.url}" target='_blank' class="background-#{current_link.color}" style="background: url('#{current_link.screenshot_path}') top no-repeat;"
       div.meta
         - if current_link.kind_of?(Link)
           h2.title
@@ -18,11 +18,13 @@ article.explore.ext***REMOVED***full
         - else
           h2.title
             = current_link.title
-        p.description
-          = current_link.description
+        /p.description
+        /  = current_link.description
     div.comments
-      button.comments-button = "Comments (#{current_link.comments.count})"
       ul
+      section.note-buttons
+        /button.comments-button = "Notes (#{current_link.comments.count})"
+        button.post-open-button = "Post note"
 
   section.deeper
     section.circles

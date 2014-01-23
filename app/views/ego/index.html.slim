@@ -1,13 +1,28 @@
-article.paths.ext***REMOVED***full
-  ul
-    - @paths.each do |path|
-      li.path
-        a.div-link href="#{ego_road_path(path)}"
-        span.box class='background-#{path.color}'
-        span.meta
-          div.aligner
-            p.title
-              = path.title
-        div.triangle
-        span.nodes
-          = path.nodes.count
+article.ego.paths.ext***REMOVED***full
+  - @paths.each do |path|
+    section.path
+      h2 class="background-#{path.color}" style="background: url('#{path.screenshot_path}') left no-repeat; background-size: 20%;"
+        = path.title
+      ul
+        - path.links_for_user(current_user).each do |link|
+          li.link
+            span.meta
+              div.aligner
+                p.title
+                  = link.title.andand.truncate(70)
+                p.url
+                  = link_to link.url.truncate(80), link.url
+            span.nodes
+              = link.nodes.count
+            a.screenshot style="background: url('#{link.screenshot_path}') center no-repeat;"
+
+      /li.path
+      /  a.div-link href="#{ego_road_path(path)}"
+      /  span.box class='background-#{path.color}'
+      /  span.meta
+      /    div.aligner
+      /      p.title
+      /        = path.title
+      /  div.triangle
+      /  span.nodes
+      /    = path.nodes.count
