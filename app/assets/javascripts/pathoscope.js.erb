@@ -7,16 +7,12 @@ var Pathoscope = (function(){
   };
 
   var loadLeanModal = function() {
-    load('head', 'script', server + '/assets/jquery.leanModal.min', loadCSS);
+    load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize);
   };
 
-  // var loadjQueryUI = function() {
-  //   load('head', 'script', "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js", loadjQueryCSS);
-  // };
-
-  // var loadjQueryCSS = function() {
-  //   load('head', 'link', "//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", loadCSS);
-  // };
+  var loadNormalize = function() {
+    load('head', 'link', server + '/assets/public/normalize.css', loadCSS);
+  };
 
   var loadCSS = function() {
     load('head', 'link', server + '/assets/public/popup.css', loadTemplates);
