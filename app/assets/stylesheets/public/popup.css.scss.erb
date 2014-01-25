@@ -36,8 +36,11 @@ $light-grey: hsla(180, 5.52%, 68.04%, 1);
   font: normal 100% $helvetica !important;
   color: $dark-grey;
   width: 450px;
+  height: 400px;
+  overflow: scroll;
   padding-bottom: 4em;
   background-color: $white;
+  z-index: 999999999 !important;
 
   header {
     height: 4em;
@@ -109,12 +112,13 @@ ul {
       width: 13em;
       margin: 0 auto;
     }
+
+    a.new {
+      color: $less-black;
+      font-weight: 400;
+    }
   }
 
-  .new {
-    color: $less-black;
-    font-weight: 400;
-  }
 }
 
 .links, .tag {
@@ -149,20 +153,25 @@ h2, h3 {
 
 h2 {
   font: bold 1.1em $helvetica;
+  padding-bottom: 1em;
 }
 
 h3 {
-  font: bold 0.9em $helvetica;
-  padding: 1em;
+  font: bold 0.75em $helvetica;
+  text-transform: uppercase;
+  color: hsla(222, 18%, 19%, 0.8);
+  padding: 0.5em 0 1.75em;
 }
 
 .link {
   text-decoration: none;
   text-align: center;
+  padding: 1em;
 
   .title {
     font: bold 0.9em $helvetica;
     color: #272c3a;
+    padding-bottom: 0.5em;
   }
 
   .url {

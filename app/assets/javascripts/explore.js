@@ -12,6 +12,12 @@ var Inputbox = (function() {
     });
     find_button.click(executeSearch);
     create_button.click(create);
+
+    $(".static .box").hoverIntent({
+      over: function() { $('.static .box').addClass('open-box'); },
+      timeout: 1000
+    });
+
   };
 
   var executeSearch = function() {

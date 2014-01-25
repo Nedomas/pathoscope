@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require jquery.timeago
 //= require jquery.powertip.min
+//= require jquery.hoverIntent.min
 //= require lodash.min
 //= require shared
 //= require explore
+//= require launching
 // dont = require turbolinks
 // dont = require_tree .

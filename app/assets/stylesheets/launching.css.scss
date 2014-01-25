@@ -1,0 +1,143 @@
+/*
+ *= require normalize
+ *= require_self
+*/
+
+@import "settings";
+body {
+  background-color: #72A470;
+  overflow: hidden;
+}
+
+img {
+  position: relative;
+  width: 100%;
+
+  @include media(min-width 0 max-width 480px) {
+  }
+}
+.cloud {
+  opacity: 0.8;
+}
+
+.login {
+  display: none;
+  padding: 0 1em;
+  color: $white;
+  border: 1px solid $white;
+  border-radius: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font: 0.9em $helvetica;
+  font-weight: 300;
+  height: 3em;
+  line-height: 3em;
+
+  &:hover {
+    background-color: hsla(0, 0%, 100%, 0.1);
+  }
+}
+
+.top {
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  right: 50px;
+}
+
+.or {
+  text-decoration: none;
+  text-transform: uppercase;
+  font: 1em $helvetica;
+  font-weight: 300;
+  padding: 1em;
+  display: none;
+}
+
+@include media(min-width 0 max-width 480px) {
+  nav {
+    display: none;
+  }
+
+  .invite {
+    .or, .login {
+      display: inline-block;
+    }
+  }
+}
+
+.content {
+  position: absolute;
+  top: 160px;
+  text-align: center;
+  color: $white;
+  width: 100%;
+}
+
+header {
+  h1 {
+    font: 5.75em $logo-font;
+
+    @include media(min-width 0 max-width 480px) {
+      font: 3.75em $logo-font;
+    }
+  }
+
+  h2 {
+    margin-top: -0.5em;
+    font: 2.6em $logo-font;
+
+    @include media(min-width 0 max-width 480px) {
+      font: 1.75em $logo-font;
+    }
+  }
+}
+
+.invite {
+  font: 0.9em $helvetica;
+  font-weight: 300;
+  padding-top: 6em;
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  width: 400px;
+  margin-left: -200px;
+
+
+  .email {
+    height: 3em;
+    width: 16em;
+    margin-right: 1em;
+    color: $less-black;
+    border: none;
+    outline: none;
+    padding-left: 1em;
+  }
+
+  a.join {
+    display: inline-block;
+    background-color: $red;
+    border: none;
+    outline: none;
+    color: $white;
+    text-transform: uppercase;
+    text-decoration: none;
+    height: 3em;
+    width: 8em;
+    line-height: 3em;
+
+    &:hover {
+      background-color: $dark-red;
+    }
+  }
+
+  @include media(min-width 0 max-width 480px) {
+    padding: 0;
+    width: 300px;
+    margin-left: -150px;
+
+    a.join {
+      margin-top: 1em;
+    }
+  }
+}

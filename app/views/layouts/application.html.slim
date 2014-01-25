@@ -39,7 +39,7 @@ html
       section.errors
         - flash.each do |name, msg|
           = content_tag :p, msg, class: name
-      main
+      main.application
         = yield
       footer.ext***REMOVED***full
 

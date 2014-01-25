@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Pathoscope
+    = stylesheet_link_tag    "launching", media: "all"
+    = javascript_include_tag "application"
+    = favicon_link_tag '/logo.ico'
+    = csrf_meta_tags
+  body
+    = yield

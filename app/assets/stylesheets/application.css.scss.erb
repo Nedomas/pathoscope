@@ -18,31 +18,8 @@
 // $visual-grid: true;
 /* $column: 90px; */
 /* $gutter: 30px; */
-$grid-columns: 16;
 
-@import "bourbon";
-@import "neat";
-@import "neat-helpers";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&subset=latin,cyrillic-ext);
-// @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-$helvetica: 'Open Sans', sans-serif;
-@import url(http://fonts.googleapis.com/css?family=Handlee:400,700);
-$logo-font: 'Handlee', sans-serif;
-
-$max-width: em(768);
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 4);
-
-$black: hsla(223, 19%, 19%, 1);
-$less-black: hsla(223, 19%, 19%, 0.7);
-$white: #FFF;
-$red: hsla(0, 77%, 62%, 1);
-$dark-red: hsla(0, 77%, 57%, 1);
-$grey: #F2F0EB;
-$main-color: hsla(0, 62.34%, 69.80%, 1);
-$dark-grey: #B3B3B3;
-$light-grey: hsla(180, 5.52%, 68.04%, 1);
-$montserrat: 'Montserrat', sans-serif;
+@import "settings";
 
 body {
   font: normal 100% $helvetica;
@@ -62,95 +39,6 @@ body {
 
 #page-wrapper {
   @include outer-container;
-}
-
-header {
-  background-color: $red;
-  padding: 2.5em 0 1em;
-  color: $white;
-
-  a {
-    color: $white;
-    text-decoration: none;
-  }
-
-  nav {
-    @include row();
-    height: 3em;
-    ul {
-      float: right;
-      display: inline-block;
-      list-style-type: none;
-
-      li {
-        @include inline-block;
-        margin-left: golden-ratio(1em, 1);
-        margin-top: 0.1em;
-        font: 0.8em $helvetica;
-        font-weight: 300;
-      }
-
-      .nodes {
-        background: url('smallwhitetop.png') left no-repeat;
-        background-size: contain;
-        padding-left: 3.2em;
-      }
-
-      .paths {
-        background: url('shieldwhitetop.png') left no-repeat;
-        background-size: contain;
-        padding-left: 2em;
-      }
-
-      a {
-        text-transform: uppercase;
-        &:hover {
-          /* border: 1px solid $white; */
-          border-bottom: .1em solid $white;
-        }
-      }
-    }
-
-    a.small-logo-text {
-      float: left;
-      display: inline-block;
-      font: 1.3em $logo-font;
-    }
-
-    a.small-app {
-      float: left;
-      display: inline-block;
-      margin-top: -2em;
-      margin-right: 1em;
-      height: 5em;
-      width: 5em;
-      background: url('beseseliu.png') center no-repeat;
-      background-size: contain;
-      color: $red;
-    }
-  }
-
-  .splash {
-    .app {
-      display: block;
-      height: 17em;
-      background: url('pathoscopelogo.png') center no-repeat;
-      background-size: 25em 25em;
-      color: $red;
-    }
-
-    .logo-text {
-      display: block;
-      font: 4em $logo-font;
-      text-align: center;
-      margin: -0.5em 0 0;
-    }
-
-    aside {
-      // TODO
-      display: none;
-    }
-  }
 }
 
 .errors .notice, .errors .error, .errors .alert {
@@ -209,7 +97,7 @@ button {
   }
 }
 
-main {
+main.application {
   padding-top: 1em;
   nav {
     height: 5em;
@@ -292,9 +180,9 @@ main {
         @include transition(all 0.6s ease-in);
         transition-delay: 0.5s;
 
-        &:hover {
-          height: 30em;
-        }
+      }
+      .open-box {
+        height: 30em;
       }
 
       .meta {
@@ -446,6 +334,95 @@ main {
   article.paths {
     padding-top: 2em;
   }
+
+  header {
+    background-color: $red;
+    padding: 2.5em 0 1em;
+    color: $white;
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+
+    nav {
+      @include row();
+      height: 3em;
+      ul {
+        float: right;
+        display: inline-block;
+        list-style-type: none;
+
+        li {
+          @include inline-block;
+          margin-left: golden-ratio(1em, 1);
+          margin-top: 0.1em;
+          font: 0.8em $helvetica;
+          font-weight: 300;
+        }
+
+        .nodes {
+          background: url('smallwhitetop.png') left no-repeat;
+          background-size: contain;
+          padding-left: 3.2em;
+        }
+
+        .paths {
+          background: url('shieldwhitetop.png') left no-repeat;
+          background-size: contain;
+          padding-left: 2em;
+        }
+
+        a {
+          text-transform: uppercase;
+          &:hover {
+            /* border: 1px solid $white; */
+            border-bottom: .1em solid $white;
+          }
+        }
+      }
+
+      a.small-logo-text {
+        float: left;
+        display: inline-block;
+        font: 1.3em $logo-font;
+      }
+
+      a.small-app {
+        float: left;
+        display: inline-block;
+        margin-top: -2em;
+        margin-right: 1em;
+        height: 5em;
+        width: 5em;
+        background: url('beseseliu.png') center no-repeat;
+        background-size: contain;
+        color: $red;
+      }
+    }
+
+    .splash {
+      .app {
+        display: block;
+        height: 17em;
+        background: url('pathoscopelogo.png') center no-repeat;
+        background-size: 25em 25em;
+        color: $red;
+      }
+
+      .logo-text {
+        display: block;
+        font: 4em $logo-font;
+        text-align: center;
+        margin: -0.5em 0 0;
+      }
+
+      aside {
+        // TODO
+        display: none;
+      }
+    }
+  }
 }
 
 article.ego {
@@ -519,11 +496,6 @@ article.ego {
       border-top: 1px solid #AAA8A5;
       border-bottom-left-radius: 0.5em;
       border-bottom-right-radius: 0.5em;
-
-      // &:hover {
-      //   height: 30em;
-      //   z-index: 99;
-      // }
     }
   }
 }
@@ -713,3 +685,4 @@ footer {
 #powerTip {
   font: normal 0.8em $helvetica;
 }
+

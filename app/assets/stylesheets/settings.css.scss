@@ -1,0 +1,25 @@
+$grid-columns: 16;
+
+@import "bourbon";
+@import "neat";
+@import "neat-helpers";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&subset=latin,cyrillic-ext);
+$helvetica: 'Open Sans', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Handlee:400,700);
+$logo-font: 'Handlee', sans-serif;
+
+$max-width: em(768);
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+$black: hsla(223, 19%, 19%, 1);
+$less-black: hsla(223, 19%, 19%, 0.7);
+$white: #FFF;
+$red: hsla(0, 77%, 62%, 1);
+$dark-red: hsla(0, 77%, 57%, 1);
+$grey: #F2F0EB;
+$main-color: hsla(0, 62.34%, 69.80%, 1);
+$dark-grey: #B3B3B3;
+$light-grey: hsla(180, 5.52%, 68.04%, 1);
+$montserrat: 'Montserrat', sans-serif;
+

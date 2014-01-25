@@ -1,4 +1,6 @@
 Pathoscope::Application.routes.draw do
+  get "launching/index"
+  get "launching/login"
   get "comments/create"
   get 'comments/index'
   devise_for :users, :controllers => {:sessions => 'sessions'}
