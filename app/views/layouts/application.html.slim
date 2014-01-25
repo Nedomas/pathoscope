@@ -2,10 +2,12 @@ doctype html
 html
   head
     title Pathoscope
+    meta name="viewport" content="initial-scale=1"
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = favicon_link_tag '/logo.ico'
     = csrf_meta_tags
+    = GOOGLE_TRACKER.html_safe
   body
     div#page-wrapper
       header.ext***REMOVED***full
@@ -14,11 +16,11 @@ html
             a.small-app href="#{bookmark_js}"
             a.small-logo-text href='/' Pathoscope
           ul
-            li
-              = link_to 'All paths', paths_index_path
-            li
-              = link_to 'Your paths', ego_index_path
             - if user_signed_in?
+              li
+                = link_to 'All paths', paths_index_path
+              li
+                = link_to 'Your paths', ego_index_path
               li
                 = link_to 'Profile', edit_user_registration_path
               li.nodes title='Points you registered'
@@ -39,7 +41,7 @@ html
       section.errors
         - flash.each do |name, msg|
           = content_tag :p, msg, class: name
-      main.application
+      main
         = yield
       footer.ext***REMOVED***full
 

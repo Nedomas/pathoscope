@@ -135,34 +135,36 @@ var Comments = (function() {
   };
 
   var repaint = function() {
-    $.getJSON('/comments/index', { location: location }, function(resp) {
-      count = resp.comments.length;
+    if (location.match('/paths') || location.match('/explore')) {
+      $.getJSON('/comments/index', { location: location }, function(resp) {
+        count = resp.comments.length;
 
-      var comment_item = $('#comment-template').html();
+        var comment_item = $('#comment-template').html();
 
-      list.html('');
+        list.html('');
 
-      _.each(resp.comments, function(comment) {
-        var vars = {
-          name: comment.name,
-          time: $.timeago(comment.time),
-          content: comment.content
-        };
+        _.each(resp.comments, function(comment) {
+          var vars = {
+            name: comment.name,
+            time: $.timeago(comment.time),
+            content: comment.content
+          };
 
-        list.app***REMOVED***(_.template(comment_item, vars));
-      });
+          list.app***REMOVED***(_.template(comment_item, vars));
+        });
 
-      if (resp.logged_in) {
-        if (post_open) {
-          var new_comment_template = $('#new-comment-template').html();
-          list.app***REMOVED***(_.template(new_comment_template));
+        if (resp.logged_in) {
+          if (post_open) {
+            var new_comment_template = $('#new-comment-template').html();
+            list.app***REMOVED***(_.template(new_comment_template));
+          }
+        } else {
+          var login_to_comment_template = $('#login-to-comment-template').html();
+          list.app***REMOVED***(_.template(login_to_comment_template));
+          post_open_button.hide();
         }
-      } else {
-        var login_to_comment_template = $('#login-to-comment-template').html();
-        list.app***REMOVED***(_.template(login_to_comment_template));
-        post_open_button.hide();
-      }
-    });
+      });
+    }
   };
 
   var post = function() {

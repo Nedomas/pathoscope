@@ -1,22 +1,41 @@
-script src='/assets/jquery.parallax.min.js'
-main.launching
-  ul#scene
-    li.layer data-depth="0.00"
-      = image_tag("launching/bg4.png")
-    li.layer data-depth="0.02"
-      = image_tag("launching/moon3.png")
-    li.layer data-depth="0.20"
-      = image_tag("launching/clouds3.png", class: :cloud)
-    li.layer data-depth="0.50"
-      = image_tag("launching/balloon3.png")
-  nav
-    a.login.top href='#' Login
-  section.content
-    header
-      h1 Pathoscope
-      h2 map your path to mastery
-    section.invite
-      input.email placeholder='awesome@email.com'
-      a.join href='#' Get an invite
-      span.or or
-      a.login href='#' Login
+section.invite
+  = form_tag(action: :get)
+    = text_field_tag 'email', nil, type: :email, class: :email, placeholder: 'awesome@email.com'
+    = submit_tag 'Get an invite', class: 'get-invite'
+    span.or or
+    = link_to 'Log in', new_user_session_path, class: :login
+
+  - flash.each do |name, msg|
+    = content_tag :p, msg, class: name
+
+section.reasoning
+  h2 How it works
+  article.step
+    section.illustration.step1
+    section.explanation
+      h3 Choose your path
+      p
+        | find the place to start for your level of experience in the subject
+        |  and enjoy the resources gathered by other brave souls
+
+  article.step
+    section.explanation
+      h3 Choose your path
+      p
+        | find the place to start for your level of experience in the subject
+        |  and enjoy the resources gathered by other brave souls
+    section.illustration.step2
+
+  article.step
+    section.illustration.step3
+    section.explanation
+      h3 Choose your path
+      p
+        | find the place to start for your level of experience in the subject
+        |  and enjoy the resources gathered by other brave souls
+
+  section.extra-invite
+    p.beta we're doing our beta testing
+    = form_tag(action: :get)
+      = text_field_tag 'email', nil, class: 'extra-email', type: :email, placeholder: 'awesome@email.com'
+      = submit_tag 'Get an invite', class: 'get-invite'

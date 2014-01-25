@@ -2,9 +2,28 @@ doctype html
 html
   head
     title Pathoscope
+    meta name="viewport" content="initial-scale=1"
     = stylesheet_link_tag    "launching", media: "all"
     = javascript_include_tag "application"
     = favicon_link_tag '/logo.ico'
     = csrf_meta_tags
+    = GOOGLE_TRACKER.html_safe
   body
-    = yield
+    script src='/assets/jquery.parallax.min.js'
+    main.launching
+      ul#scene
+        li.layer data-depth="0.00"
+          = image_tag("launching/bg4.png")
+        li.layer data-depth="0.02"
+          = image_tag("launching/moon3.png")
+        li.layer data-depth="0.20"
+          = image_tag("launching/clouds3.png", class: :cloud)
+        li.layer data-depth="0.50"
+          = image_tag("launching/balloon3.png")
+      nav
+        = link_to 'Log in', new_user_session_path, class: 'login top'
+      section.content
+        header
+          h1 Pathoscope
+          h2 we're launching soon
+        = yield

@@ -1,15 +1,21 @@
 Pathoscope::Application.routes.draw do
   get "launching/index"
-  get "launching/login"
+  post "launching/get" => 'launching#get'
+
   get "comments/create"
   get 'comments/index'
-  devise_for :users, :controllers => {:sessions => 'sessions'}
+
+  devise_for :users, controllers: {
+    sessions: 'sessions',
+    registrations: 'registrations'
+  }
+
   get "explore" => 'explore#index', as: 'explore_index'
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
 ***REMOVED*** You can have the root of your site routed with "root"
-  root 'paths#index'
+  root 'launching#index'
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'

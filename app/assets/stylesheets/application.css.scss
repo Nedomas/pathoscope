@@ -1,23 +1,9 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, v***REMOVED***or/assets/stylesheets,
- * or v***REMOVED***or/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require normalize
  *= require_self
  *= require jquery.powertip.min
  dont *= require_tree .
- */
-
-// Change the grid settings
-// $visual-grid: true;
-/* $column: 90px; */
-/* $gutter: 30px; */
+*/
 
 @import "settings";
 
@@ -97,7 +83,96 @@ button {
   }
 }
 
-main.application {
+header {
+  background-color: $red;
+  padding: 2.5em 0 1em;
+  color: $white;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  nav {
+    @include row();
+    height: 3em;
+    ul {
+      float: right;
+      display: inline-block;
+      list-style-type: none;
+
+      li {
+        @include inline-block;
+        margin-left: golden-ratio(1em, 1);
+        margin-top: 0.1em;
+        font: 0.8em $helvetica;
+        font-weight: 300;
+      }
+
+      .nodes {
+        background: url('smallwhitetop.png') left no-repeat;
+        background-size: contain;
+        padding-left: 3.2em;
+      }
+
+      .paths {
+        background: url('shieldwhitetop.png') left no-repeat;
+        background-size: contain;
+        padding-left: 2em;
+      }
+
+      a {
+        text-transform: uppercase;
+        &:hover {
+          /* border: 1px solid $white; */
+          border-bottom: .1em solid $white;
+        }
+      }
+    }
+
+    a.small-logo-text {
+      float: left;
+      display: inline-block;
+      font: 1.3em $logo-font;
+    }
+
+    a.small-app {
+      float: left;
+      display: inline-block;
+      margin-top: -2em;
+      margin-right: 1em;
+      height: 5em;
+      width: 5em;
+      background: url('beseseliu.png') center no-repeat;
+      background-size: contain;
+      color: $red;
+    }
+  }
+
+  .splash {
+    .app {
+      display: block;
+      height: 17em;
+      background: url('pathoscopelogo.png') center no-repeat;
+      background-size: 25em 25em;
+      color: $red;
+    }
+
+    .logo-text {
+      display: block;
+      font: 4em $logo-font;
+      text-align: center;
+      margin: -0.5em 0 0;
+    }
+
+    aside {
+      // TODO
+      display: none;
+    }
+  }
+}
+
+main {
   padding-top: 1em;
   nav {
     height: 5em;
@@ -335,94 +410,6 @@ main.application {
     padding-top: 2em;
   }
 
-  header {
-    background-color: $red;
-    padding: 2.5em 0 1em;
-    color: $white;
-
-    a {
-      color: $white;
-      text-decoration: none;
-    }
-
-    nav {
-      @include row();
-      height: 3em;
-      ul {
-        float: right;
-        display: inline-block;
-        list-style-type: none;
-
-        li {
-          @include inline-block;
-          margin-left: golden-ratio(1em, 1);
-          margin-top: 0.1em;
-          font: 0.8em $helvetica;
-          font-weight: 300;
-        }
-
-        .nodes {
-          background: url('smallwhitetop.png') left no-repeat;
-          background-size: contain;
-          padding-left: 3.2em;
-        }
-
-        .paths {
-          background: url('shieldwhitetop.png') left no-repeat;
-          background-size: contain;
-          padding-left: 2em;
-        }
-
-        a {
-          text-transform: uppercase;
-          &:hover {
-            /* border: 1px solid $white; */
-            border-bottom: .1em solid $white;
-          }
-        }
-      }
-
-      a.small-logo-text {
-        float: left;
-        display: inline-block;
-        font: 1.3em $logo-font;
-      }
-
-      a.small-app {
-        float: left;
-        display: inline-block;
-        margin-top: -2em;
-        margin-right: 1em;
-        height: 5em;
-        width: 5em;
-        background: url('beseseliu.png') center no-repeat;
-        background-size: contain;
-        color: $red;
-      }
-    }
-
-    .splash {
-      .app {
-        display: block;
-        height: 17em;
-        background: url('pathoscopelogo.png') center no-repeat;
-        background-size: 25em 25em;
-        color: $red;
-      }
-
-      .logo-text {
-        display: block;
-        font: 4em $logo-font;
-        text-align: center;
-        margin: -0.5em 0 0;
-      }
-
-      aside {
-        // TODO
-        display: none;
-      }
-    }
-  }
 }
 
 article.ego {
@@ -605,23 +592,87 @@ footer {
 
 .user {
   text-align: center;
+  font: 1em $helvetica;
 
   h2 {
-    text-align: center;
     padding-bottom: 1em;
   }
 
-  div {
-    padding: 1em;
-  }
-
   input {
-    margin-top: 0.5em;
-    padding: 0.5em;
+    font-weight: 300;
+    margin-bottom: 1em;
   }
 
-  a {
-    color: $black;
+  .email, .password {
+    height: 3em;
+    width: 16em;
+    color: $less-black;
+    outline: none;
+    border: 1px solid $grey;
+    padding-left: 1em;
+  }
+
+  .remember-me {
+    padding: 1em 0;
+    font: 0.9em $helvetica;
+  }
+
+  .forgot-password {
+    display: block;
+    padding: 0.75em 0;
+    font: 0.9em $helvetica;
+    text-decoration: none;
+    color: $less-black;
+
+    &:hover {
+      color: $black;
+      text-decoration: underline;
+    }
+  }
+
+  .login, .s***REMOVED***-instructions {
+    display: inline-block;
+    margin-top: 0.5em;
+    border: none;
+    outline: none;
+    color: $white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 0;
+    height: 3em;
+    background-color: $less-black;
+
+    &:hover {
+      background-color: $dark-red;
+    }
+  }
+
+  .login {
+    width: 8em;
+  }
+
+  .s***REMOVED***-instructions {
+    font: 0.8em $helvetica;
+    font-weight: 300;
+    padding: 0 1em;
+  }
+
+***REMOVED***error_explanation {
+    margin: 0 auto 1em;
+    text-align: center;
+    padding: 1em;
+    width: 20em;
+    border-radius: 0.8em;
+    background: hsla(40, 82%, 89%, 1);
+    color: #8a6d3b;
+
+    h2 {
+      font: 1em $helvetica;
+    }
+
+    li {
+      font: 0.9em $helvetica;
+    }
   }
 
 }

@@ -1,4 +1,6 @@
 class InputController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     term = params[:term]
     paths = Path.find_by_fuzzy_title(term)

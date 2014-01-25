@@ -11,7 +11,10 @@ class SessionsController < Devise::SessionsController
     sign_in(scope, resource) unless warden.user(scope) == resource
 
     respond_to do |format|
-      format.any {
+      format.html {
+        redirect_to paths_index_url
+      }
+      format.js {
         r***REMOVED***er json: {
           success: true,
           redirect: stored_location_for(scope) || after_sign_in_path_for(resource)
@@ -21,6 +24,14 @@ class SessionsController < Devise::SessionsController
 ***REMOVED***
 
   def failure
-    return r***REMOVED***er :json => {:success => false, :errors => ["Login failed."]}
+    respond_to do |format|
+      format.html {
+        flash[:alert] = 'You probably mistyped your password'
+        redirect_to new_user_session_url
+      }
+      format.js {
+        r***REMOVED***er :json => {:success => false, :errors => ["Login failed."]}
+      }
+***REMOVED***
 ***REMOVED***
 ***REMOVED***

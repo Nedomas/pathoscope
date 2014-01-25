@@ -6,15 +6,12 @@
 @import "settings";
 body {
   background-color: #72A470;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 img {
   position: relative;
   width: 100%;
-
-  @include media(min-width 0 max-width 480px) {
-  }
 }
 .cloud {
   opacity: 0.8;
@@ -85,7 +82,7 @@ header {
 
   h2 {
     margin-top: -0.5em;
-    font: 2.6em $logo-font;
+    font: 2.65em $logo-font;
 
     @include media(min-width 0 max-width 480px) {
       font: 1.75em $logo-font;
@@ -96,13 +93,12 @@ header {
 .invite {
   font: 0.9em $helvetica;
   font-weight: 300;
-  padding-top: 6em;
+  padding: 6em 0;
   position: absolute;
   top: 160px;
   left: 50%;
   width: 400px;
   margin-left: -200px;
-
 
   .email {
     height: 3em;
@@ -114,21 +110,11 @@ header {
     padding-left: 1em;
   }
 
-  a.join {
-    display: inline-block;
-    background-color: $red;
-    border: none;
-    outline: none;
-    color: $white;
-    text-transform: uppercase;
-    text-decoration: none;
-    height: 3em;
-    width: 8em;
-    line-height: 3em;
-
-    &:hover {
-      background-color: $dark-red;
-    }
+  p {
+    padding: 0.75em;
+    margin: 1em auto 3em;
+    width: 18em;
+    border-radius: .15em;
   }
 
   @include media(min-width 0 max-width 480px) {
@@ -136,8 +122,136 @@ header {
     width: 300px;
     margin-left: -150px;
 
-    a.join {
+    .email {
+      margin: 0;
+    }
+
+    input.join {
       margin-top: 1em;
     }
   }
+}
+
+.get-invite {
+  font: 0.9em $helvetica;
+  display: inline-block;
+  background-color: $red;
+  border: none;
+  outline: none;
+  color: $white;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 3em;
+  width: 8em;
+
+  &:hover {
+    background-color: $dark-red;
+  }
+}
+
+.notice {
+  background-color: HSLA(192, 50%, 75%, 0.7);
+}
+
+.alert {
+  background-color: hsla(0, 77%, 62%, 0.7);
+}
+
+.reasoning {
+  position: absolute;
+  top: 350px;
+  background-color: $white;
+  width: 100%;
+  color: $less-black;
+  padding-top: 2.5em;
+  padding-bottom: 8em;
+  border-top: 1px solid HSLA(105, 18%, 60%, 1);
+
+  h2 {
+    font: 2.5em $helvetica;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .step {
+    padding-top: 3em;
+    width: 80%;
+    margin: 0 auto;
+
+    .illustration {
+      display: inline-block;
+      height: 15em;
+      width: 15em;
+      vertical-align: top;
+
+      @include media(min-width 0 max-width 480px) {
+        height: 10em;
+        width: 10em;
+      }
+    }
+
+    .explanation {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 3em;
+      padding-top: 2em;
+      width: 55%;
+
+      @include media(min-width 0 max-width 480px) {
+        padding-top: 0;
+      }
+
+      h3 {
+        font: 2em $helvetica;
+        font-weight: 300;
+        text-transform: lowercase;
+        padding-bottom: 1em;
+
+        @include media(min-width 0 max-width 480px) {
+          font: 1.3em $helvetica;
+          font-weight: 300;
+        }
+      }
+      p {
+        font: 1em $helvetica;
+      }
+
+    }
+  }
+}
+
+.beta {
+  padding: 1.5em 0 0;
+  font: 1.2em $helvetica;
+  font-weight: 300;
+}
+
+.extra-email {
+  height: 3em;
+  width: 16em;
+  color: $less-black;
+  outline: none;
+  border: 1px solid $grey;
+  padding-left: 1em;
+  margin: 1em;
+
+  @include media(min-width 0 max-width 480px) {
+    display: block;
+    margin: 1em auto;
+  }
+}
+
+.step1 {
+  background: url('launching/step1.png') center no-repeat;
+  background-size: contain;
+}
+
+.step2 {
+  background: url('launching/step2.png') center no-repeat;
+  background-size: contain;
+}
+
+.step3 {
+  background: url('launching/step3.png') center no-repeat;
+  background-size: contain;
 }

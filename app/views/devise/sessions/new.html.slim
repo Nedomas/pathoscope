@@ -1,0 +1,18 @@
+section.user
+  h2 Log in
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    div
+      = f.email_field :email, autofocus: true, class: 'email', placeholder: 'awesome@email.com'
+    div
+      = f.password_field :password, class: 'password', placeholder: 'password'
+
+    - if devise_mapping.rememberable?
+      div.remember-me
+        = f.check_box :remember_me
+        = " "
+        = f.label :remember_me
+    div
+      = f.submit 'Log in', class: 'login'
+
+  = r***REMOVED***er 'devise/shared/links'
