@@ -1,28 +1,41 @@
-div#pathoscope-dialog
+div#pathoscope
+  a#pathoscope-trigger name='pathoscope-dialog' href='#pathoscope-dialog'
+  div#pathoscope-dialog
+    header
+      section.logo
+      section.logo-text Pathoscope
+      section.close
+        a href='#' Close
+    section.content
 
-div#pathoscope-login
-  section.logo
-  header
-    h1
-      | You need to login to add this link
-  section.login
-    input.email type='text' placeholder='Email'
-    input.password type='password' placeholder='Password'
-    section.red-button
-      a.login-button href='#' Login
-  section.sign-up
-    p
-      | Don't have an account?
-    p
-      = link_to 'Sign up', new_user_registration_url
+  div#pathoscope-select-path
+    h1 Select path to tag
+    section.paths
 
-div#pathoscope-success
-  section.logo
-  header
-    h1
-      | Success! Path has been added
-    h2
-      | Check out paths others have taken before you at this point in their journey
-  section.paths
-  section.red-button
-    = link_to 'Show more', root_url
+  div#pathoscope-tagged
+    section.link
+      p.title
+      p.url
+    h2 was tagged to
+    section.tag
+      ul
+        li
+          a href='#'
+    h3 At this point lads chosen to read
+    section.links
+
+  div#pathoscope-login
+    section.logo
+    header
+      h1
+        | You need to login to add this link
+    section.login
+      input.email type='text' placeholder='Email'
+      input.password type='password' placeholder='Password'
+      section.red-button
+        a.login-button href='#' Login
+    section.sign-up
+      p
+        | Don't have an account?
+      p
+        = link_to 'Sign up', new_user_registration_url

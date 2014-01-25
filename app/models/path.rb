@@ -42,4 +42,11 @@ class Path < ActiveRecord::Base
 
   def url
 ***REMOVED***
+
+  def show_title
+    title
+***REMOVED***
+
+  def show_url
+***REMOVED***
 ***REMOVED***

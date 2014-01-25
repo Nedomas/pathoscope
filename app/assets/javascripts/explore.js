@@ -154,6 +154,7 @@ var Comments = (function() {
       } else {
         var login_to_comment_template = $('#login-to-comment-template').html();
         list.app***REMOVED***(_.template(login_to_comment_template));
+        post_open_button.hide();
       }
     });
   };

@@ -1,18 +1,22 @@
 var Pathoscope = (function(){
 
-  var server = '<%= ENV['SERVER'] %>';
+  var server = '<%= SERVER %>';
 
   var loadjQuery = function() {
-    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadjQueryUI);
+    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLeanModal);
   };
 
-  var loadjQueryUI = function() {
-    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js", loadjQueryCSS);
+  var loadLeanModal = function() {
+    load('head', 'script', server + '/assets/jquery.leanModal.min', loadCSS);
   };
 
-  var loadjQueryCSS = function() {
-    load('head', 'link', "//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", loadCSS);
-  };
+  // var loadjQueryUI = function() {
+  //   load('head', 'script', "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js", loadjQueryCSS);
+  // };
+
+  // var loadjQueryCSS = function() {
+  //   load('head', 'link', "//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", loadCSS);
+  // };
 
   var loadCSS = function() {
     load('head', 'link', server + '/assets/public/popup.css', loadTemplates);
@@ -20,7 +24,7 @@ var Pathoscope = (function(){
 
   var loadTemplates = function() {
     $.get(server + '/bookmarks/templates').then(function(templates) {
-      var html = $(templates).find('.content.cf');
+      var html = $(templates).find('main #pathoscope').clone();
       $('body').app***REMOVED***(html);
       init();
     });
@@ -49,72 +53,156 @@ var Pathoscope = (function(){
     document.getElementsByTagName(place)[0].app***REMOVED***Child(element);
   };
 
-  var init = function() {
-    var bookmarklet_url = $('script').last().attr('src');
-    var current_url = window.location.href;
+  var current_url, dialog, content, main_div;
 
-    console.log('initing');
-    create(bookmarklet_url, current_url).then(function(resp) {
+  var init = function() {
+    current_url = window.location.href;
+
+    begin().then(function(resp) {
       show(resp);
     }).fail(function(err) {
       error(err);
     });
   };
 
-  var create = function(bookmarklet_url, current_url) {
+  var close = function() {
+    $('#lean_overlay').click();
+  };
+
+  var begin = function() {
     return $.ajax({
       type: 'GET',
-      url: server + '/bookmarks/create',
+      url: server + '/bookmarks/begin',
       xhrFields: { withCredentials: true },
       data: {
-        href: current_url,
-        bookmarklet: bookmarklet_url
+        href: current_url
+      }
+    });
+  };
+
+  var tag = function(path_id) {
+    return $.ajax({
+      type: 'GET',
+      url: server + '/bookmarks/tag',
+      xhrFields: { withCredentials: true },
+      data: {
+        path_id: path_id,
+        href: current_url
+      }
+    });
+  };
+
+  var links = function(node_id) {
+    return $.ajax({
+      type: 'GET',
+      url: server + '/bookmarks/links',
+      xhrFields: { withCredentials: true },
+      data: {
+        node_id: node_id
       }
     });
   };
 
   var show = function(resp) {
-    $('#pathoscope-dialog').dialog({
-      height: 500,
-      width: 500,
-      modal: true
-    });
+    $('#pathoscope-trigger').leanModal();
+    $('#pathoscope-trigger').click();
+
+    main_div = $('div#pathoscope').last();
+    dialog = main_div.find('#pathoscope-dialog');
+    content = dialog.find('.content');
+    bindings();
 
     if (resp.logged_in) {
-      successForm(resp);
+      selectPath(resp);
     } else {
       loginForm();
     }
   };
 
-  var successForm = function(data) {
-    var html = $('div#pathoscope-success').last().clone();
-    app***REMOVED***Paths(html, data.paths);
-    html.show();
-    $('#pathoscope-dialog').html(html);
+  var bindings = function() {
+    dialog.find('.close').click(close);
+    $(document).on('click', '#pathoscope-select-path li a', clickTagPath);
   };
 
-  var app***REMOVED***Paths = function(html, paths_json) {
-    var paths = JSON.parse(paths_json);
-    var list = $('<ul></ul>')
+  var clickTagPath = function() {
+    var path_id = $(this).data('id');
 
-    $.each(paths, function(index, path) {
-      list.app***REMOVED***("<li>" +
-        "<div class='score circle'>" +
-          path.count +
-        "</div>" +
+    tag(path_id).then(function(resp) {
+      tagged(resp.node_id);
+    });
+  };
+
+  var tagged = function(node_id) {
+    links(node_id).then(function(resp) {
+      var html = main_div.find('#pathoscope-tagged');
+      app***REMOVED***Link(html, resp.link);
+      app***REMOVED***Tag(html, resp.tag);
+      app***REMOVED***Links(html, resp.links)
+      content.html(html);
+    });
+  };
+
+  var app***REMOVED***Link = function(html, link) {
+    html.find('.link .title').html(link.title);
+    html.find('.link .url').html(link.show_url);
+  };
+
+  var app***REMOVED***Tag = function(html, tag) {
+    html.find('.tag a').html(tag.title);
+    html.find('.tag a').addClass('background-' + tag.color);
+  };
+
+  var app***REMOVED***Links = function(html, links) {
+    var list = $('<ul></ul>');
+
+    $.each(links, function(index, link) {
+      var item = $("<li>" +
+        "<div class='thumbnail'></div>" +
         "<div class='meta'>" +
           "<section class='title'>" +
-            path.title +
+            "<a href='" + link.url + "'>" +
+              link.title +
+            "</a>" +
           "</section>" +
           "<section class='url'>" +
-            "<a href='" + path.url + "'>" +
-              path.url +
+            "<a href='" + link.url + "'>" +
+              link.show_url +
             "</a>" +
           "</section>" +
         "</div>" +
       "</li>");
+
+      item.find('.thumbnail').css('background', "url('" + link.thumbnail_path + "') center no-repeat");
+      item.find('.thumbnail').css('background-size', 'contain');
+      list.app***REMOVED***(item);
     });
+
+    html.find('.links').html(list);
+  };
+
+  var selectPath = function(resp) {
+    var html = main_div.find('#pathoscope-select-path');
+    app***REMOVED***Paths(html, resp.paths);
+    content.html(html);
+  };
+
+  var app***REMOVED***Paths = function(html, paths_json) {
+    var paths = JSON.parse(paths_json);
+    var list = $('<ul></ul>');
+
+    $.each(paths, function(index, path) {
+      list.app***REMOVED***("<li>" +
+        "<a href='#' data-id='" + path.id + "' class='background-" + path.color + "'>" +
+          path.title +
+        "</a>" +
+      "</li>");
+    });
+
+    list.app***REMOVED***("<li>" +
+      "<a href='#' data-id='0' class='background-all new'>" +
+        "Choose new path..." +
+      "</a>" +
+    "</li>");
 
     html.find('.paths').html(list)
   };

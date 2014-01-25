@@ -1,10 +1,12 @@
 nav.breadcrumbs
+  - if back_collection.any?
+    span.go-up Go back in path
   ul
-    li.breadcrumb-all
-      = link_to "All paths", paths_index_path
     - back_collection.each do |path, link|
       li.breadcrumb-path
         = link_to path.title, explore_link(link), class: "background-#{path.color}"
+    li.breadcrumb-all
+      a.all-paths href="#{paths_index_path}" All paths
 
 article.explore.ext***REMOVED***full
   section.current
@@ -13,11 +15,11 @@ article.explore.ext***REMOVED***full
       div.meta
         - if current_link.kind_of?(Link)
           h2.title
-            = link_to current_link.title, current_link.url, target: '_blank'
-          = link_to current_link.url, current_link.url, { class: 'url', target: '_blank' }
+            = link_to current_link.show_title, current_link.url, target: '_blank'
+          = link_to current_link.show_url, current_link.url, { class: 'url', target: '_blank' }
         - else
           h2.title
-            = current_link.title
+            = current_link.show_title
         /p.description
         /  = current_link.description
     div.comments
@@ -36,9 +38,9 @@ article.explore.ext***REMOVED***full
         span.meta
           div.aligner
             p.title
-              = link.title.truncate(70)
+              = link.show_title
             p.url
-              = link_to link.url.truncate(80), link.url
+              = link_to link.show_url, link.url
         div.triangle
         span.nodes title="#{link.nodes.count} nodes in this path"
           = link.nodes.count

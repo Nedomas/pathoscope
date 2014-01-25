@@ -1,69 +1,217 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&subset=latin,cyrillic-ext);
+$helvetica: 'Open Sans', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Handlee:400,700);
+$logo-font: 'Handlee', sans-serif;
+
+@import "bourbon";
+@import "neat";
+@import "neat-helpers";
 
 $black: hsla(223, 19%, 19%, 1);
-$white: hlsa(0, 99%, 0%, 0);
+$less-black: hsla(223, 19%, 19%, 0.7);
+$white: #FFF;
+$red: hsla(0, 77%, 62%, 1);
+$dark-red: hsla(0, 77%, 57%, 1);
+$grey: #F2F0EB;
 $main-color: hsla(0, 62.34%, 69.80%, 1);
-$dark-grey: hsla(180, 4.81%, 36.67%, 1);
+$dark-grey: hsla(0, 0%, 70%, 1);
 $light-grey: hsla(180, 5.52%, 68.04%, 1);
-$montserrat: 'Montserrat', sans-serif;
-$helvetica:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+#lean_overlay {
+  position: fixed;
+  z-index:100;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: #000;
+  display: none;
+}
+
+#pathoscope-dialog, #pathoscope-login, #pathoscope-success {
+  display: none;
+}
 
 #pathoscope-dialog {
   font: normal 100% $helvetica !important;
   color: $dark-grey;
-  z-index: 31415926535897932384626433832795 !important;
+  width: 450px;
+  padding-bottom: 4em;
+  background-color: $white;
 
-  .circle {
-    border-radius: 1000em;
+  header {
+    height: 4em;
+    background-color: $red;
   }
 
   .logo {
-    margin: 0 auto;
-    height: 75px;
-    width: 75px;
-    display: block;
-    background: url('<%= ENV['SERVER'] %>/assets/logo.png') center no-repeat;
+    float: left;
+    display: inline-block;
+    background: url('<%= SERVER %>/assets/beseseliu.png') center no-repeat;
     background-size: contain;
+    height: 3.5em;
+    width: 3.5em;
+    margin-left: 1em;
+    margin-top: 0.25em;
   }
 
-  header {
-    border-bottom: 20px solid $main-color;
-    margin: 20px 0;
+  .logo-text {
+    float: left;
+    display: inline-block;
+    font: 1.3em $logo-font;
+    color: $white;
+    padding: 1em 0 0 0.4em;
+  }
+
+  .close a {
+    float: right;
+    font: 0.8em $helvetica;
+    color: $white;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.85em 1.5em 0 0;
   }
 
   h1 {
-    font-size: 18px;
+    padding: 1em 0;
+    font: bold 1.2em $helvetica;
     text-align: center;
-    padding: 10px 0;
+    color: $less-black;
   }
 
-  h2 {
-    font-size: 14px;
-    text-align: center;
-  }
 
-  .red-button {
-    margin: 15px auto;
+}
+
+ul {
+  // Normalization
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-***REMOVED***: 0;
+  -webkit-padding-start: 0;
+}
+
+.paths {
+  li {
+    list-style-type: none;
+    margin: 0 auto 1em;
+    line-height: 2em;
     text-align: center;
-    display: block;
-    height: 40px;
-    line-height: 40px;
-    width: 150px;
-    background-color: $main-color;
 
     a {
-      color: $white !important;
+      display: block;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $white;
+      padding: 0.7em 1.1em;
+      font: 0.8em $helvetica;
+      font-weight: 300;
+      width: 13em;
+      margin: 0 auto;
+    }
+  }
 
-      &:visited {
-        color: white !important;
-      }
+  .new {
+    color: $less-black;
+    font-weight: 400;
+  }
+}
+
+.links, .tag {
+  li {
+    list-style-type: none;
+    margin: 0 auto 1em;
+    line-height: 2em;
+
+    a {
+      display: block;
+      text-decoration: none;
+      font: 0.8em $helvetica;
+      font-weight: 300;
+      width: 13em;
     }
   }
 }
 
-#pathoscope-login {
-  display: none;
+.tag {
+  text-align: center;
+  a {
+    color: $white;
+    padding: 0.7em 1.1em;
+    margin: 0 auto;
+  }
+}
 
+h2, h3 {
+  text-align: center;
+  color: $less-black;
+}
+
+h2 {
+  font: bold 1.1em $helvetica;
+}
+
+h3 {
+  font: bold 0.9em $helvetica;
+  padding: 1em;
+}
+
+.link {
+  text-decoration: none;
+  text-align: center;
+
+  .title {
+    font: bold 0.9em $helvetica;
+    color: #272c3a;
+  }
+
+  .url {
+    font: normal 0.8em $helvetica;
+    color: rgba(39, 44, 58, 0.7);
+    text-decoration: none;
+  }
+}
+
+.links {
+  li {
+    background-color: $white;
+    height: 3em;
+    @include row();
+    padding: 0 1em;
+    border-bottom: 1px solid #f2f0eb;
+  }
+
+  .thumbnail {
+    height: 3em;
+    width: 3em;
+    float: left;
+  }
+
+  .meta {
+    float: left;
+    padding-left: 1em;
+  }
+
+  .title a {
+    font: bold 0.9em $helvetica;
+    color: #272c3a;
+    text-decoration: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
+
+  .url a {
+    font: normal 0.8em $helvetica;
+    color: $less-black;
+    text-decoration: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#pathoscope-login {
   input {
     margin: 0 auto;
     display: block;
@@ -79,49 +227,92 @@ $helvetica:  'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 }
 
-#pathoscope-success {
-  display: none;
+// #pathoscope-success {
+//   li {
+//     text-align: left;
+//     list-style-type: none;
+//     font-size: 16px;
+//     padding: 10px;
+//     height: 100px;
+//
+//     .score {
+//       border: 3px solid $main-color;
+//       width: 50px;
+//       height: 50px;
+//       line-height: 50px;
+//       text-align: center;
+//       margin: 1em;
+//       font-size: 18px;
+//       color: $light-grey;
+//       display: inline-block;
+//     }
+//
+//     .meta {
+//       width: 300px;
+//       height: 50px;
+//       display: inline-block;
+//       margin-top: 1em;
+//     }
+//
+//     .title {
+//       font-size: 16px;
+//       color: $dark-grey;
+//       word-wrap: break-word;
+//     }
+//
+//     .url {
+//       a {
+//         font-size: 12px;
+//         color: $light-grey;
+//         word-wrap: break-word;
+//         text-decoration: none;
+//       }
+//     }
+//
+//   }
+// }
 
-  li {
-    text-align: left;
-    list-style-type: none;
-    font-size: 16px;
-    padding: 10px;
-    height: 100px;
+.background-0 {
+  background-color: hsla(140, 43%, 47%, 0.7) !important;
+  &:hover {
+    background-color: hsla(140, 43%, 42%, 0.7) !important;
+  }
+}
 
-    .score {
-      border: 3px solid $main-color;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      margin: 1em;
-      font-size: 18px;
-      color: $light-grey;
-      display: inline-block;
-    }
+.background-1 {
+  background-color: hsla(196, 100%, 37%, 0.7) !important;
+  &:hover {
+    background-color: hsla(196, 100%, 32%, 0.7) !important;
+  }
+}
 
-    .meta {
-      width: 300px;
-      height: 50px;
-      display: inline-block;
-      margin-top: 1em;
-    }
+.background-2 {
+  background-color: hsla(30, 86%, 53%, 0.7) !important;
+  &:hover {
+    background-color: hsla(30, 86%, 48%, 0.7) !important;
+  }
+}
 
-    .title {
-      font-size: 16px;
-      color: $dark-grey;
-      word-wrap: break-word;
-    }
+.background-3 {
+  background-color: hsla(10, 86%, 53%, 0.7) !important;
+  &:hover {
+    background-color: hsla(10, 86%, 48%, 0.7) !important;
+  }
+}
 
-    .url {
-      a {
-        font-size: 12px;
-        color: $light-grey;
-        word-wrap: break-word;
-        text-decoration: none;
-      }
-    }
+.background-4 {
+  background-color: hsla(204, 71%, 77%, 0.7) !important;
+  &:hover {
+    background-color: hsla(204, 71%, 72%, 0.7) !important;
+  }
+}
 
+.background-all {
+  background-color: $white;
+  border: 0.1em solid hsla(223, 19%, 19%, 0.1);
+  border-radius: .2em;
+
+  &:hover {
+    background-color: hsla(223, 19%, 19%, 0.03);
   }
 }

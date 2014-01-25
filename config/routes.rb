@@ -13,6 +13,9 @@ Pathoscope::Application.routes.draw do
   get 'paths' => 'paths#index', as: 'paths_index'
   get 'bookmarks/create' => 'bookmarks#create', as: 'bookmarks_create'
   get 'bookmarks/templates' => 'bookmarks#templates'
+  get 'bookmarks/begin' => 'bookmarks#begin'
+  get 'bookmarks/tag' => 'bookmarks#tag'
+  get 'bookmarks/links' => 'bookmarks#links'
 
 ***REMOVED*** get 'explore' => 'explore#index'
   get 'explore/:id' => 'explore#show', as: 'explore'

@@ -4,6 +4,14 @@ class Link < ActiveRecord::Base
   fuzzily_searchable :title
   has_many :comments, as: :commentable
 
+  def show_title
+    title.andand.truncate(80)
+***REMOVED***
+
+  def show_url
+    URI(url).host.gsub('www.', '')
+***REMOVED***
+
   def get_title!
     doc = Pismo::Document.new(url)
     self.title = doc.title
@@ -34,6 +42,10 @@ class Link < ActiveRecord::Base
 
   def thumbnail_path
     "/thumbnails/#{id}.png"
+***REMOVED***
+
+  def external_thumbnail_path
+    SERVER + thumbnail_path
 ***REMOVED***
 
   def screenshot_path

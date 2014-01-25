@@ -162,17 +162,17 @@ header {
 }
 
 .notice {
-  background: #dff0d8;
+  background: hsla(103, 44%, 89%, 1);
   color: #3c763d;
 }
 
 .error {
-  background: #f2dede;
+  background: hsla(0, 43%, 91%, 1);
   color: #a94442;
 }
 
 .alert {
-  background: #faebcc;
+  background: hsla(40, 82%, 89%, 1);
   color: #8a6d3b;
 }
 
@@ -227,10 +227,22 @@ main {
   }
 
   nav.breadcrumbs {
+    .go-up {
+      @include inline-block;
+      text-transform: uppercase;
+      font: 0.7em $helvetica;
+      color: hsla(224, 20%, 19%, 0.8);
+      float: left;
+      padding-right: 1.5em;
+      width: 6em;
+      margin-top: -.3em;
+    }
+
     li {
       @include inline-block;
       margin-right: golden-ratio(1em, 1);
       text-align: center;
+      float: left;
     }
 
     a {
@@ -243,6 +255,8 @@ main {
     }
 
     .breadcrumb-all {
+      float: right;
+      margin: 0;
       a {
         font-weight: 400;
         color: $black;
@@ -320,16 +334,14 @@ main {
         /* margin-left: 15em; */
 
         .note-buttons {
-          margin: 1em auto;
+          margin: 2em auto;
           width: 25em;
           text-align: center;
         }
 
-        // .post-open-button {
-        //   display: inline-block;
-        //   height: 3em;
-        //   padding: 0.7em;
-        // }
+        .post-open-button {
+          margin-left: 0;
+        }
 
         .comments-button, .post-open-button {
           display: inline-block;
@@ -440,28 +452,62 @@ article.ego {
   h2 {
     font: normal 1em $helvetica;
     color: $white;
-    padding: .5em .5em .5em 2.5em;
-    width: 13em;
+    /* padding: .5em .5em .5em 2.5em; */
+    /* width: 13em; */
     text-align: center;
-    margin: 4em 0 0 2em;
+    /* margin: 4em 0 0 2em; */
+    padding: 0.5em;
   }
 
-  li.link {
-    border: 1px solid #AAA8A5;
-    border-radius: .3em;
-    height: 5em;
-    background-color: $white;
+  li {
     @include row();
+    border-bottom: 1px solid rgba(170, 168, 165, 0.3);
+    border-left: 1px solid rgba(170, 168, 165, 0.3);
+    border-right: 1px solid rgba(170, 168, 165, 0.3);
+    color: $black;
+    font: normal 1em $helvetica;
+  }
+
+  li.ego-link {
+    height: 5.1em;
+    background-color: $white;
+
+    .box {
+      display: block;
+      background-color: $grey;
+      width: 5em;
+      height: 5em;
+      float: left;
+    }
 
     .meta {
       float: left;
-      height: 3em;
-      padding-top: .3em;
+      /* padding-top: .3em; */
+      padding: 1.4em 0 0 1.5em;
+    }
+
+    .title {
+      font: bold 0.9em $helvetica;
+      text-decoration: none;
+      color: $black;
+    }
+
+    .url a {
+      font: normal 0.8em $helvetica;
+      color: $less-black;
+      text-decoration: none;
     }
 
     .nodes {
-      line-height: 3em;
-      height: 3em;
+      font: bold 0.8em $helvetica;
+      display: inline-block;
+      height: 5em;
+      line-height: 5em;
+      float: right;
+      background: url('bottomcircle.png') left no-repeat;
+      background-size: 2.5em 2em;
+      margin-top: 0.8em;
+      padding: 0 2em 0 3em;
     }
 
     .screenshot {

@@ -11,8 +11,7 @@ class SessionsController < Devise::SessionsController
     sign_in(scope, resource) unless warden.user(scope) == resource
 
     respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js {
+      format.any {
         r***REMOVED***er json: {
           success: true,
           redirect: stored_location_for(scope) || after_sign_in_path_for(resource)
