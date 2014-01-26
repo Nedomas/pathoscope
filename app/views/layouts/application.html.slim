@@ -12,13 +12,11 @@ html
     div#page-wrapper
       header.ext***REMOVED***full
         nav
-          - unless current_page?(root_url)
-            a.small-app href="#{bookmark_js}"
-            a.small-logo-text href='/' Pathoscope
+          - unless current_page?(paths_index_url)
+            a.small-app href="#{paths_index_path}"
+            a.small-logo-text href="#{paths_index_path}" Pathoscope
           ul
             - if user_signed_in?
-              li
-                = link_to 'All paths', paths_index_path
               li
                 = link_to 'Your paths', ego_index_path
               li
@@ -32,7 +30,8 @@ html
             - else
               li
                 = link_to 'Log in', new_user_session_path
-        - if current_page?(root_url)
+
+        - if current_page?(paths_index_url)
           section.splash
             a.app href="#{bookmark_js}" Pathoscope
             a.logo-text href='/' Pathoscope

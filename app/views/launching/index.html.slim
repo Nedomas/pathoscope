@@ -9,33 +9,36 @@ section.invite
     = content_tag :p, msg, class: name
 
 section.reasoning
-  h2 How it works
+  h2 Master <span class='emphasis'>any</span> skill <span class='emphasis'>efficiently</span>
+  h4 via crowdsourced learning
   article.step
-    section.illustration.step1
-    section.explanation
-      h3 Choose your path
+    section.illustration.step1.left
+    section.explanation.right
+      h3 Find your path and place in it
       p
-        | find the place to start for your level of experience in the subject
-        |  and enjoy the resources gathered by other brave souls
+        | The app will find you the best place to start learning the skill
+        |  by helping you gauge your expertise.
 
   article.step
-    section.explanation
-      h3 Choose your path
+    section.illustration.step2.right
+    section.explanation.left
+      h3 Effortless mental map
       p
-        | find the place to start for your level of experience in the subject
-        |  and enjoy the resources gathered by other brave souls
-    section.illustration.step2
+        | Use our bookmark for the resources you read on the subject and we
+        |  will organize you a mental map.
 
   article.step
-    section.illustration.step3
-    section.explanation
-      h3 Choose your path
+    section.illustration.step3.left
+    section.explanation.right
+      h3 Perfectly tailored resources
       p
-        | find the place to start for your level of experience in the subject
-        |  and enjoy the resources gathered by other brave souls
+        | We will keep you on an effective path to mastery
+        |  by providing the resources tailored for your specific expertise.
 
   section.extra-invite
-    p.beta we're doing our beta testing
     = form_tag(action: :get)
-      = text_field_tag 'email', nil, class: 'extra-email', type: :email, placeholder: 'awesome@email.com'
+      = text_field_tag 'email', nil, class: 'email', type: :email, placeholder: 'awesome@email.com'
       = submit_tag 'Get an invite', class: 'get-invite'
+
+  section.credits
+    | illustration by <a href='http://benasbitvinskas.com'>Benas Bitvinskas</a>

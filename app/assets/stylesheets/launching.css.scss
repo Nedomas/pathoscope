@@ -4,38 +4,56 @@
 */
 
 @import "settings";
+
+$green: hsla(118, 22%, 54%, 1);
+$transitional-green: hsla(105, 18%, 60%, 1);
+$transparent-red: hsla(0, 77%, 62%, 0.7);
+$sky-blue: hsla(192, 50%, 75%, 1);
+$transparent-white: hsla(0, 0%, 100%, 0.1);
+
 body {
-  background-color: #72A470;
+  background-color: $green;
   overflow-x: hidden;
 }
 
+// scene properties
 img {
   position: relative;
   width: 100%;
 }
+
 .cloud {
   opacity: 0.8;
 }
 
+.notice {
+  background-color: $sky-blue;
+}
+
+.alert {
+  background-color: $transparent-red;
+}
+
+// button sections
 .login {
   display: none;
   padding: 0 1em;
   color: $white;
   border: 1px solid $white;
-  border-radius: 0.2em;
+  border-radius: .2em;
   text-decoration: none;
   text-transform: uppercase;
-  font: 0.9em $helvetica;
+  font: .9em $helvetica;
   font-weight: 300;
   height: 3em;
   line-height: 3em;
 
   &:hover {
-    background-color: hsla(0, 0%, 100%, 0.1);
+    background-color: $transparent-white;
   }
 }
 
-.top {
+nav .login {
   display: inline-block;
   position: absolute;
   top: 40px;
@@ -57,12 +75,21 @@ img {
   }
 
   .invite {
-    .or, .login {
+    .or {
       display: inline-block;
+    }
+
+    .login {
+      display: inline-block;
+      font: 1em $helvetica;
+      font-weight: 300;
+      height: 3.3em;
+      line-height: 3.3em;
     }
   }
 }
 
+// Main parts of the page
 .content {
   position: absolute;
   top: 160px;
@@ -74,66 +101,63 @@ img {
 header {
   h1 {
     font: 5.75em $logo-font;
-
-    @include media(min-width 0 max-width 480px) {
-      font: 3.75em $logo-font;
-    }
   }
 
   h2 {
-    margin-top: -0.5em;
+    margin-top: -0.6em;
     font: 2.65em $logo-font;
+  }
+}
 
-    @include media(min-width 0 max-width 480px) {
+@include media(min-width 0 max-width 480px) {
+  header {
+    h1 {
+      font: 3.75em $logo-font;
+    }
+
+    h2 {
       font: 1.75em $logo-font;
     }
   }
 }
 
 .invite {
-  font: 0.9em $helvetica;
+  font: 1em $helvetica;
   font-weight: 300;
-  padding: 6em 0;
+  padding: 5em 0;
   position: absolute;
   top: 160px;
   left: 50%;
-  width: 400px;
-  margin-left: -200px;
+  width: 450px;
+  margin-left: -225px;
 
   .email {
-    height: 3em;
-    width: 16em;
-    margin-right: 1em;
+    display: inline-block;
+    font: inherit;
+    width: 17.5em;
     color: $less-black;
-    border: none;
-    outline: none;
-    padding-left: 1em;
+    padding: 1em;
   }
 
+  // invite notices and alerts
   p {
-    padding: 0.75em;
+    padding: .75em;
     margin: 1em auto 3em;
     width: 18em;
     border-radius: .15em;
   }
-
-  @include media(min-width 0 max-width 480px) {
-    padding: 0;
-    width: 300px;
-    margin-left: -150px;
-
-    .email {
-      margin: 0;
-    }
-
-    input.join {
-      margin-top: 1em;
-    }
-  }
 }
 
+select, input, button {
+  border-width: 0px;
+  border: none;
+  outline: none;
+}
+
+// button shared with extra-invite section
 .get-invite {
-  font: 0.9em $helvetica;
+  font: 1em $helvetica;
+  font-weight: 300;
   display: inline-block;
   background-color: $red;
   border: none;
@@ -141,20 +165,47 @@ header {
   color: $white;
   text-transform: uppercase;
   text-decoration: none;
-  height: 3em;
-  width: 8em;
+  padding: 1em;
 
   &:hover {
     background-color: $dark-red;
   }
 }
 
-.notice {
-  background-color: HSLA(192, 50%, 75%, 0.7);
+@include media(min-width 0 max-width 480px) {
+  .invite {
+    padding: 0;
+    width: 300px;
+    margin-left: -150px;
+
+    .email {
+      margin: 0;
+    }
+  }
+
+  .get-invite {
+    margin-top: 1em;
+  }
 }
 
-.alert {
-  background-color: hsla(0, 77%, 62%, 0.7);
+.extra-invite {
+  padding-top: 2em;
+
+  .email {
+    font: 1em $helvetica;
+    font-weight: 300;
+    display: inline-block;
+    color: $less-black;
+    outline: none;
+    border: 1px solid $grey;
+    padding: 1em;
+    margin-right: 1em;
+
+    @include media(min-width 0 max-width 480px) {
+      display: block;
+      margin: 1em auto;
+    }
+  }
 }
 
 .reasoning {
@@ -164,81 +215,64 @@ header {
   width: 100%;
   color: $less-black;
   padding-top: 2.5em;
-  padding-bottom: 8em;
-  border-top: 1px solid HSLA(105, 18%, 60%, 1);
+  padding-bottom: 3em;
+  border-top: 1px solid $transitional-green;
 
   h2 {
-    font: 2.5em $helvetica;
-    font-weight: 300;
-    text-transform: uppercase;
+    font: 2.6em $helvetica;
+    font-weight: 600;
+  }
+
+  h4 {
+    font: 1.6em $helvetica;
+    color: $transparent-red;
+    font-weight: 600;
+  }
+
+  .emphasis {
+    font-weight: 700;
   }
 
   .step {
+    @include row();
     padding-top: 3em;
-    width: 80%;
+    width: 768px;
     margin: 0 auto;
 
     .illustration {
-      display: inline-block;
       height: 15em;
       width: 15em;
       vertical-align: top;
 
-      @include media(min-width 0 max-width 480px) {
-        height: 10em;
-        width: 10em;
-      }
     }
 
     .explanation {
-      display: inline-block;
       vertical-align: top;
       margin: 0 3em;
       padding-top: 2em;
       width: 55%;
 
-      @include media(min-width 0 max-width 480px) {
-        padding-top: 0;
-      }
 
       h3 {
-        font: 2em $helvetica;
-        font-weight: 300;
+        font: 1.9em $helvetica;
         text-transform: lowercase;
         padding-bottom: 1em;
 
-        @include media(min-width 0 max-width 480px) {
-          font: 1.3em $helvetica;
-          font-weight: 300;
-        }
       }
       p {
         font: 1em $helvetica;
       }
-
     }
   }
+
 }
 
-.beta {
-  padding: 1.5em 0 0;
-  font: 1.2em $helvetica;
-  font-weight: 300;
+.left {
+  float: left;
 }
 
-.extra-email {
-  height: 3em;
-  width: 16em;
-  color: $less-black;
-  outline: none;
-  border: 1px solid $grey;
-  padding-left: 1em;
-  margin: 1em;
-
-  @include media(min-width 0 max-width 480px) {
-    display: block;
-    margin: 1em auto;
-  }
+.right {
+  float: right;
 }
 
 .step1 {
@@ -254,4 +288,59 @@ header {
 .step3 {
   background: url('launching/step3.png') center no-repeat;
   background-size: contain;
+}
+
+.credits {
+  font: 0.8em $helvetica;
+  padding-top: 7em;
+  color: $light-grey;
+
+  a {
+    color: $dark-grey;
+    text-decoration: none;
+  }
+}
+
+@include media(min-width 0 max-width 768px) {
+  .reasoning {
+    h2 {
+      font: 2em $helvetica;
+      font-weight: 600;
+    }
+
+    h4 {
+      font: 1.2em $helvetica;
+      font-weight: 600;
+    }
+
+    .left, .right {
+      display: block;
+      float: none;
+    }
+
+    .step {
+      width: 100%;
+      padding-top: 1em;
+
+      .explanation {
+        padding-top: 0;
+        margin: 0 auto;
+        width: 90%;
+
+        h3 {
+          font: 1.4em $helvetica;
+        }
+      }
+
+      .illustration {
+        height: 10em;
+        width: 10em;
+        margin: 0 auto;
+      }
+    }
+
+    .credits {
+      padding-top: 4em;
+    }
+  }
 }
