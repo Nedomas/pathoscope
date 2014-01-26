@@ -24,7 +24,6 @@ gem 'nokogiri'
 gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails_12factor', group: :production
-# gem 'figaro'
 gem 'newrelic_rpm'
 
 # gem 'websocket-driver', '>= 0.2.0'

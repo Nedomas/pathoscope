@@ -124,7 +124,7 @@ header {
 .invite {
   font: 1em $helvetica;
   font-weight: 300;
-  padding: 5em 0;
+  padding: 4em 0;
   position: absolute;
   top: 160px;
   left: 50%;
@@ -177,6 +177,7 @@ select, input, button {
     padding: 0;
     width: 300px;
     margin-left: -150px;
+    top: 140px;
 
     .email {
       margin: 0;
@@ -260,6 +261,7 @@ select, input, button {
 
       }
       p {
+        padding-top: 2em;
         font: 1em $helvetica;
       }
     }
