@@ -1,5 +1,9 @@
 class SessionsController < Devise::SessionsController
 
+  def after_sign_in_path_for(resource)
+      request.env['omniauth.origin'] || stored_location_for(resource) || paths_index_url
+***REMOVED***
+
   def create
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
     return sign_in_and_redirect(resource_name, resource)

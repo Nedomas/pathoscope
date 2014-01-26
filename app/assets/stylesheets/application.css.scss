@@ -172,6 +172,12 @@ header {
   }
 }
 
+@include media(min-width 0 max-width 768px) {
+  nav {
+    padding: 0 1.5em;
+  }
+}
+
 main {
   padding-top: 1em;
   nav {
