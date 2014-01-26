@@ -292,9 +292,26 @@ select, input, button {
   background-size: contain;
 }
 
+.twitter {
+  margin-top: 3em;
+
+  a {
+    display: block;
+    width: 3.5em;
+    height: 3.5em;
+    background: url('launching/twitter.png') center no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+
+    &:hover {
+      background: url('launching/twitter_hover.png') center no-repeat;
+      background-size: contain;
+    }
+  }
+}
 .credits {
   font: 0.8em $helvetica;
-  padding-top: 7em;
+  padding-top: 3em;
   color: $light-grey;
 
   a {
