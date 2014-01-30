@@ -5,6 +5,8 @@ var Pathoscope = (function(){
   var run = function() {
     if (document.body.firstChild.src == server + '/assets/pathoscope.js') {
       window.location.href = server;
+    } else if (document.location.origin == server) {
+      alert('You have successfully installed the Pathoscope app');
     } else {
       loadjQuery();
     }

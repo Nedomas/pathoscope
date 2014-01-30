@@ -11,7 +11,7 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125150856) do
+ActiveRecord::Schema.define(version: 20140130220914) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20140125150856) do
 
   add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match", using: :btree
   add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner", using: :btree
+
+  create_table "user_paths", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "path_id"
+***REMOVED***
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

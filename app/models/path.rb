@@ -4,6 +4,8 @@ class Path < ActiveRecord::Base
   fuzzily_searchable :title
   has_many :comments, as: :commentable
   before_create :add_color
+  has_many :user_paths
+  has_many :users, through: :user_paths
 
   def add_color
     if last_path = Path.last

@@ -9,14 +9,14 @@ class Worker
   ***REMOVED***
 ***REMOVED***
 
-    def get_thumbnails
+    def get_screens
       Webshot.capybara_setup!
       ws = Webshot::Screenshot.new
 
       Link.all.each do |link|
         puts "Getting thumbnail for #{link.url}"
-        link.capture_thumbnail(ws)
-        link.screenshot_thumbnail(ws)
+        link.capture_thumbnail(ws) rescue nil
+        link.capture_screenshot(ws) rescue nil
   ***REMOVED***
 
       puts "Done"

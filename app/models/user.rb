@@ -4,15 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :paths
   has_many :nodes
   has_many :comments
+  has_many :user_paths
+  has_many :paths, through: :user_paths
 
-  def paths
-    nodes.map(&:path).uniq
-***REMOVED***
+***REMOVED*** def paths
+***REMOVED***   nodes.map(&:path).uniq
+***REMOVED*** ***REMOVED***
 
   def paths_count
-    paths.count
+    nodes.map(&:path).uniq.count
 ***REMOVED***
 ***REMOVED***

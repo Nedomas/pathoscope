@@ -1,6 +1,6 @@
 class Link < ActiveRecord::Base
   has_many :nodes
-  after_create :get_title!, :get_thumbnail!
+  after_create :get_title!, :get_screens!
   fuzzily_searchable :title
   has_many :comments, as: :commentable
 
@@ -18,10 +18,11 @@ class Link < ActiveRecord::Base
     save!
 ***REMOVED***
 
-  def get_thumbnail!
+  def get_screens!
     Webshot.capybara_setup!
     ws = Webshot::Screenshot.new
     capture_thumbnail(ws)
+    capture_screenshot(ws)
 ***REMOVED***
 
   def capture_thumbnail(ws)
