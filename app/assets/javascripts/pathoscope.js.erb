@@ -112,7 +112,7 @@ var Pathoscope = (function(){
     $('#pathoscope-trigger').click();
 
     main_div = $('div#pathoscope').last();
-    dialog = main_div.find('#pathoscope-dialog');
+    dialog = main_div.find('#pathoscope-app');
     content = dialog.find('.content');
     bindings();
 
@@ -214,7 +214,7 @@ var Pathoscope = (function(){
   var loginForm = function() {
     var html = $('div#pathoscope-login').last().clone();
     html.show();
-    $('#pathoscope-dialog').html(html);
+    $('#pathoscope-app').html(html);
     html.find('.login-button').click(login);
   };
 

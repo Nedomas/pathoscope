@@ -1,3 +1,4 @@
+#pathoscope-app {
   /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 
   /* ==========================================================================
@@ -444,3 +445,22 @@
     padding: 0;
     border: none;
   }
+  ul {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-***REMOVED***: 0;
+    -webkit-padding-start: 0;
+  }
+  * {
+    background-image: none;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: none;
+    color: #000;
+    font-style: normal;
+    text-shadow: none;
+  }
+}
