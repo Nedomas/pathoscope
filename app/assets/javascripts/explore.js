@@ -135,7 +135,7 @@ var Comments = (function() {
   };
 
   var repaint = function() {
-    if (location.match('/paths') || location.match('/explore')) {
+    if (location.match(/\/paths\/\d/) || location.match('/explore')) {
       $.getJSON('/comments/index', { location: location }, function(resp) {
         count = resp.comments.length;
 

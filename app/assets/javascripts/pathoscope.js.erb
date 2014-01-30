@@ -2,6 +2,14 @@ var Pathoscope = (function(){
 
   var server = '<%= SERVER %>';
 
+  var run = function() {
+    if (document.body.firstChild.src == server + '/assets/pathoscope.js') {
+      window.location.href = server;
+    } else {
+      loadjQuery();
+    }
+  };
+
   var loadjQuery = function() {
     load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLeanModal);
   };
@@ -244,8 +252,8 @@ var Pathoscope = (function(){
   };
 
   return {
-    loadjQuery: loadjQuery
+    run: run
   };
 })();
 
-Pathoscope.loadjQuery();
+Pathoscope.run();
