@@ -19,6 +19,7 @@ Pathoscope::Application.routes.draw do
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'
+  get 'paths/expertise' => 'paths#expertise', as: 'expertise'
   get 'bookmarks/create' => 'bookmarks#create', as: 'bookmarks_create'
   get 'bookmarks/templates' => 'bookmarks#templates'
   get 'bookmarks/begin' => 'bookmarks#begin'

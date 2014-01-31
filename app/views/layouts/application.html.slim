@@ -4,7 +4,7 @@ html
     title Pathoscope
     meta name="viewport" content="initial-scale=1"
     = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
+    = javascript_include_tag "application", controller_name
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
     = GOOGLE_TRACKER.html_safe
@@ -43,6 +43,3 @@ html
       main
         = yield
       footer.ext***REMOVED***full
-
-script#unordered-list-template type="text/template"
-  ul id='{{ id }}'

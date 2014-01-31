@@ -16,13 +16,6 @@ ActiveRecord::Schema.define(version: 20140130220914) do
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "beta_invite_beta_invites", force: true do |t|
-    t.string   "email"
-    t.string   "token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-***REMOVED***
-
   create_table "comments", force: true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -90,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140130220914) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: ""
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

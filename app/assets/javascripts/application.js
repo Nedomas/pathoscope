@@ -17,7 +17,7 @@
 //= require jquery.hoverIntent.min
 //= require lodash.min
 //= require shared
-//= require explore
+//= require comments
 //= require launching
 // dont = require turbolinks
 // dont = require_tree .

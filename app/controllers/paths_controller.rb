@@ -11,4 +11,9 @@ class PathsController < ApplicationController
     @back_collection = {}
 ***REMOVED***
 
+  def expertise
+    path = Path.first
+    binding.pry
+***REMOVED***
+
 ***REMOVED***
