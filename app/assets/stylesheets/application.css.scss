@@ -494,89 +494,116 @@ article.ego {
 }
 
 article {
-  li.path, li.link {
-    @include row();
-    padding-bottom: 4em;
-    list-style-type: none;
-    height: 5em;
-    width: 100%;
-    margin: 2em;
-    background-color: $grey;
-    color: $black;
-    border-radius: 2em;
-    position: relative;
-
-    .meta {
-      display: table;
-      float: left;
-      height: 5em;
-      padding-left: 1em;
-    }
-
-    .nodes {
-      font: bold 0.8em $helvetica;
-      display: inline-block;
-      height: 5em;
-      line-height: 5em;
-      float: right;
-      background: url('bottomcircle.png') left no-repeat;
-      background-size: 2.5em 2em;
-      margin-top: 0.8em;
-      padding: 0 2em 0 3em;
-    }
-
-    .triangle {
-      width: 0;
-      height: 0;
-      border-top: 2.5em solid $white;
-      border-bottom: 2.5em solid $white;
-
-      border-left: 1.25em solid $grey;
-      float: right;
-    }
-
-    .aligner {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .title {
-      font: bold 0.9em $helvetica;
-      text-decoration: none;
-      color: $black;
-    }
-
-    .box {
-      width: 5em;
-      height: 5em;
-      float: left;
-      border-radius: 1000em;
-    }
-  }
-
   li.path {
-    .title {
-      font: bold 1.1em $helvetica;
-    }
+    width: 12em;
+    height: 12em;
+    float: left;
+    background: url('paths/tryaerospace.png') center no-repeat;
+    background-size: cover;
+    margin: 2em;
+    text-align: center;
 
-    .box {
-      background: url('paths/aerospace.png') center no-repeat;
-      background-size: 3em 3em;
+    a {
+      color: $white;
+      text-decoration: none;
+      font: bold 1.3em $helvetica;
+      line-height: 9em;
     }
-
   }
 
-  li.link {
-    .meta .url a {
-      font: normal 0.8em $helvetica;
-    }
-
-    .url a {
-      color: $less-black;
-      text-decoration: none;
-    }
+  .overlay {
+    background-color: $red;
+    width: 12em;
+    height: 12em;
+    margin: 2em;
+    float: left;
   }
 }
+
+/* article { */
+/*   li.path, li.link { */
+  /*   @include row(); */
+  /*   padding-bottom: 4em; */
+  /*   list-style-type: none; */
+  /*   height: 5em; */
+  /*   width: 100%; */
+  /*   margin: 2em; */
+  /*   background-color: $grey; */
+  /*   color: $black; */
+  /*   border-radius: 2em; */
+  /*   position: relative; */
+
+  /*   .meta { */
+  /*     display: table; */
+  /*     float: left; */
+  /*     height: 5em; */
+  /*     padding-left: 1em; */
+  /*   } */
+
+  /*   .nodes { */
+  /*     font: bold 0.8em $helvetica; */
+  /*     display: inline-block; */
+  /*     height: 5em; */
+  /*     line-height: 5em; */
+  /*     float: right; */
+  /*     background: url('bottomcircle.png') left no-repeat; */
+  /*     background-size: 2.5em 2em; */
+  /*     margin-top: 0.8em; */
+  /*     padding: 0 2em 0 3em; */
+  /*   } */
+
+  /*   .triangle { */
+  /*     width: 0; */
+  /*     height: 0; */
+  /*     border-top: 2.5em solid $white; */
+  /*     border-bottom: 2.5em solid $white; */
+
+  /*     border-left: 1.25em solid $grey; */
+  /*     float: right; */
+  /*   } */
+
+  /*   .aligner { */
+  /*     display: table-cell; */
+  /*     vertical-align: middle; */
+  /*   } */
+
+  /*   .title { */
+  /*     font: bold 0.9em $helvetica; */
+  /*     text-decoration: none; */
+  /*     color: $black; */
+  /*   } */
+
+  /*   .box { */
+  /*     width: 5em; */
+  /*     height: 5em; */
+  /*     float: left; */
+  /*     border-radius: 1000em; */
+  /*   } */
+  /* } */
+
+  /* li.path { */
+  /*   .title { */
+  /*     font: bold 1.1em $helvetica; */
+  /*   } */
+
+  /*   .box { */
+  /*     background: url('paths/aerospace.png') center no-repeat; */
+  /*     background-size: 3em 3em; */
+  /*   } */
+
+  /* } */
+
+  /* li.link { */
+  /*   .meta .url a { */
+  /*     font: normal 0.8em $helvetica; */
+  /*   } */
+
+  /*   .url a { */
+  /*     color: $less-black; */
+  /*     text-decoration: none; */
+  /*   } */
+/*   } */
+/* } */
 
 a.div-link {
   position: absolute;

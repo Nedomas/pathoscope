@@ -1,49 +1,14 @@
-/nav.inputbox
-/  = text_field_tag(:field, nil)
-/  button.primary#find Find
-/  button.secondary#create Create
 article.paths.ext***REMOVED***full
   ul
-    - @paths.each do |path|
+    - (@paths * 2).each do |path|
       li.path
-        a.div-link href="#{paths_path(path)}"
-        span.box class='background-#{path.color}'
-        span.meta
-          div.aligner
-            p.title
-              = path.title
-        div.triangle
-        span.nodes title="#{path.nodes.count} nodes in this path"
-          = path.nodes.count
-article.links.ext***REMOVED***full
-
-script#header-template type="text/template"
-  h2
-    | {{ title }}
-
-script#path-item-template type="text/template"
-  li.path
-    a.div-link href='/paths/{{ id }}'
-    span.box class='background-{{ color }}'
-    span.meta
-      div.aligner
-        p.title
-          | {{ title }}
-    div.triangle
-    span.nodes title='{{ count }} nodes in this path'
-      | {{ count }}
-
-script#link-item-template type="text/template"
-  li.link
-    a.div-link href='/explore/{{ id }}'
-    span.box.background-link style="background: url('{{ thumbnail_path }}') center no-repeat;"
-    span.meta
-      div.aligner
-        p.title
-          | {{ title }}
-        p.url
-          a href='{{ url }}'
-            | {{ url }}
-    div.triangle
-    span.nodes title='{{ count }} nodes in this link'
-      | {{ count }}
+        a.title href="#" = path.title
+        /a.div-link href="#{paths_path(path)}"
+        /span.box
+        /span.meta
+        /  div.aligner
+        /    p.title
+        /      = path.title
+        /div.triangle
+        /span.nodes title="#{path.nodes.count} nodes in this path"
+        /  = path.nodes.count
