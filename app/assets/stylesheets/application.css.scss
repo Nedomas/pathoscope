@@ -498,16 +498,32 @@ article {
     width: 12em;
     height: 12em;
     float: left;
-    background: url('paths/tryaerospace.png') center no-repeat;
-    background-size: cover;
+    background-color: $red;
+    /* background: url('paths/tryaerospace.png') center no-repeat; */
+    /* background-size: cover; */
     margin: 2em;
-    text-align: center;
+    /* text-align: center; */
+    position: relative;
 
-    a {
+    a, span {
+      position: absolute;
       color: $white;
       text-decoration: none;
-      font: bold 1.3em $helvetica;
-      line-height: 9em;
+      /* line-height: 9em; */
+      display: block;
+      width: 100%;
+      text-align: center;
+
+      &.title {
+        top: 50%;
+        margin-top: -1em;
+        font: bold 1.3em $helvetica;
+      }
+
+      &.actions {
+        bottom: 0.5em;
+        font: 1em $helvetica;
+      }
     }
   }
 

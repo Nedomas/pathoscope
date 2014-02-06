@@ -1,4 +1,5 @@
 Pathoscope::Application.routes.draw do
+  get "install/bookmarklet"
   get "launching/index"
   post "launching/get" => 'launching#get'
 
@@ -19,7 +20,15 @@ Pathoscope::Application.routes.draw do
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'
-  get 'paths/expertise' => 'paths#expertise', as: 'expertise'
+  get 'paths/choose/:id' => 'paths#choose', as: 'choose'
+
+  get 'expertise/start/:path_id' => 'expertise#start', as: 'expertise_start'
+  get 'expertise/start/:path_id/:node_id' => 'expertise#start', as: 'expertise_continue'
+***REMOVED*** get 'expertise/finish/:path_id/:node_id' => 'expertise#finish', as: 'expertise_finish'
+***REMOVED*** get 'expertise/continue/:path_id/:node_id' => 'expertise#continue', as: 'expertise_continue'
+
+  get 'install' => 'install#bookmarklet', as: 'install'
+
   get 'bookmarks/create' => 'bookmarks#create', as: 'bookmarks_create'
   get 'bookmarks/templates' => 'bookmarks#templates'
   get 'bookmarks/begin' => 'bookmarks#begin'

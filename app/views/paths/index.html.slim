@@ -2,7 +2,11 @@ article.paths.ext***REMOVED***full
   ul
     - (@paths * 2).each do |path|
       li.path
-        a.title href="#" = path.title
+        a.title href="#explore" = path.title
+        - if current_user.paths.include?(path)
+          span.actions Chosen
+        - else
+          a.actions href="#{choose_path(path)}" Choose
         /a.div-link href="#{paths_path(path)}"
         /span.box
         /span.meta
