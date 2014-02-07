@@ -1,6 +1,6 @@
 article.paths.ext***REMOVED***full
   ul
-    - (@paths * 2).each do |path|
+    - @paths.each do |path|
       li.path
         a.title href="#explore" = path.title
         - if current_user.paths.include?(path)

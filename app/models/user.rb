@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 ***REMOVED***   nodes.map(&:path).uniq
 ***REMOVED*** ***REMOVED***
 
-  def paths_count
-    nodes.map(&:path).uniq.count
-***REMOVED***
+***REMOVED*** def paths_count
+***REMOVED***   nodes.map(&:path).uniq.count
+***REMOVED*** ***REMOVED***
 ***REMOVED***

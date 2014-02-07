@@ -24,7 +24,7 @@ html
               li.nodes title='Points you registered'
                 = current_user.nodes.count
               li.paths title='Paths you have taken'
-                = current_user.paths_count
+                = current_user.paths.count
               li
                 = link_to 'Log out', destroy_user_session_path, method: :delete
             - else

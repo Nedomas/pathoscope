@@ -19,6 +19,8 @@ class ExpertiseController < ApplicationController
       flash[:notice] = "You have been successfully placed in #{@path.title}"
       redirect_to install_path
 ***REMOVED***
+
+    @link = @node.link
 ***REMOVED***
 #
 #   def continue

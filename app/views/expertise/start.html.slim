@@ -1,7 +1,13 @@
-h2 Do you understand this?
-a href="#{@node.link.url}" = @node.link.title
+article.expertise
+  h1 Do you understand this?
+  div.static
+    a.box href="#{@link.url}" target='_blank' style="background: url('#{@link.screenshot_path}') top no-repeat;"
+    div.meta
+      h2.title
+        = link_to @link.show_title, @link.url, target: '_blank'
+      = link_to @link.show_url, @link.url, { class: 'url', target: '_blank' }
 
-section.actions
-  a href="#{expertise_continue_path(@path, @below)}" NO
-  a href="#{expertise_continue_path(@path, @above)}" YES
+  section.actions
+    a.no href="#{expertise_continue_path(@path, @below)}" NO
+    a.yes href="#{expertise_continue_path(@path, @above)}" YES
 
