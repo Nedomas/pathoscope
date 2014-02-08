@@ -424,16 +424,28 @@ main {
       padding-top: 0.3em;
       color: $less-black;
     }
+  }
 
-    .actions {
-      a {
-        display: inline-block;
-        padding: 1em;
-        color: $red
-      }
+  .actions {
+    text-align: center;
+    margin-top: 2em;
+    a {
+      display: inline-block;
+      padding: 1em;
+      color: $white;
+      margin: 0.5em;
+    }
+
+    .no {
+      background: #a94442;
+    }
+
+    .yes {
+      background: #3c763d;
     }
   }
 }
+
 
 article.ego {
   h2 {
