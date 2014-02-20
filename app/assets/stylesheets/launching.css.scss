@@ -43,7 +43,7 @@ img {
   border-radius: .2em;
   text-decoration: none;
   text-transform: uppercase;
-  font: .9em $helvetica;
+  font: .9em $open-sans;
   font-weight: 300;
   height: 3em;
   line-height: 3em;
@@ -63,7 +63,7 @@ nav .login {
 .or {
   text-decoration: none;
   text-transform: uppercase;
-  font: 1em $helvetica;
+  font: 1em $open-sans;
   font-weight: 300;
   padding: 1em;
   display: none;
@@ -81,7 +81,7 @@ nav .login {
 
     .login {
       display: inline-block;
-      font: 1em $helvetica;
+      font: 1em $open-sans;
       font-weight: 300;
       height: 3.3em;
       line-height: 3.3em;
@@ -122,7 +122,7 @@ header {
 }
 
 .invite {
-  font: 1em $helvetica;
+  font: 1em $open-sans;
   font-weight: 300;
   padding: 4em 0;
   position: absolute;
@@ -156,7 +156,7 @@ select, input, button {
 
 // button shared with extra-invite section
 .get-invite {
-  font: 1em $helvetica;
+  font: 1em $open-sans;
   font-weight: 300;
   display: inline-block;
   background-color: $red;
@@ -193,12 +193,12 @@ select, input, button {
   padding-top: 2em;
 
   .email {
-    font: 1em $helvetica;
+    font: 1em $open-sans;
     font-weight: 300;
     display: inline-block;
     color: $less-black;
     outline: none;
-    border: 1px solid $grey;
+    border: 1px solid $launching-grey;
     padding: 1em;
     margin-right: 1em;
 
@@ -220,12 +220,12 @@ select, input, button {
   border-top: 1px solid $transitional-green;
 
   h2 {
-    font: 2.6em $helvetica;
+    font: 2.6em $open-sans;
     font-weight: 600;
   }
 
   h4 {
-    font: 1.6em $helvetica;
+    font: 1.6em $open-sans;
     color: $transparent-red;
     font-weight: 600;
   }
@@ -255,13 +255,13 @@ select, input, button {
 
 
       h3 {
-        font: 1.9em $helvetica;
+        font: 1.9em $open-sans;
         text-transform: lowercase;
         padding-bottom: 1em;
 
       }
       p {
-        font: 1em $helvetica;
+        font: 1em $open-sans;
       }
     }
   }
@@ -309,7 +309,7 @@ select, input, button {
   }
 }
 .credits {
-  font: 0.8em $helvetica;
+  font: 0.8em $open-sans;
   padding-top: 3em;
   color: $light-grey;
 
@@ -322,12 +322,12 @@ select, input, button {
 @include media(min-width 0 max-width 768px) {
   .reasoning {
     h2 {
-      font: 2em $helvetica;
+      font: 2em $open-sans;
       font-weight: 600;
     }
 
     h4 {
-      font: 1.2em $helvetica;
+      font: 1.2em $open-sans;
       font-weight: 600;
     }
 
@@ -346,7 +346,7 @@ select, input, button {
         width: 90%;
 
         h3 {
-          font: 1.4em $helvetica;
+          font: 1.4em $open-sans;
         }
       }
 

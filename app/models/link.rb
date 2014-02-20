@@ -61,4 +61,23 @@ class Link < ActiveRecord::Base
     'link'
 ***REMOVED***
 
+  def paths
+    nodes.map(&:path).uniq
+***REMOVED***
+***REMOVED***
+
+class Abstract
+  def initialize(id, type='link')
+    @obj = Object.const_get(type.classify).find(id)
+***REMOVED***
+
+  def parents
+    @parents = []
+
+    @obj.nodes
+***REMOVED***
+
+  def nodes
+    @obj.nodes
+***REMOVED***
 ***REMOVED***

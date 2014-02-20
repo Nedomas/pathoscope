@@ -12,31 +12,6 @@ html
     div#page-wrapper
       header.ext***REMOVED***full
         nav
-          - unless current_page?(paths_index_url)
-            a.small-app href="#{paths_index_path}"
-            a.small-logo-text href="#{paths_index_path}" Pathoscope
-          ul
-            - if user_signed_in?
-              li
-                = link_to 'Your paths', ego_index_path
-              li
-                = link_to 'Profile', edit_user_registration_path
-              li.nodes title='Points you registered'
-                = current_user.nodes.count
-              li.paths title='Paths you have taken'
-                = current_user.paths.count
-              li
-                = link_to 'Log out', destroy_user_session_path, method: :delete
-            - else
-              li
-                = link_to 'Log in', new_user_session_path
-
-        - if current_page?(paths_index_url)
-          section.splash
-            a.app href="#{bookmark_js}" Pathoscope
-            a.logo-text href='/' Pathoscope
-            aside
-              | install application by dragging the icon to the bookmarks bar
       section.errors
         - flash.each do |name, msg|
           = content_tag :p, msg, class: name

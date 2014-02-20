@@ -8,8 +8,9 @@
 @import "settings";
 
 html, body {
-  font: normal 100% $helvetica;
-  color: $black;
+  font: normal 100% $open-sans;
+  color: $semiblack;
+  background-color: $snow-white;
   overflow-x: hidden;
 }
 
@@ -27,723 +28,147 @@ html, body {
   @include outer-container;
 }
 
-.errors .notice, .errors .error, .errors .alert {
-  margin: 2em auto 1em;
-  text-align: center;
-  padding: 1em;
-  width: 20em;
-  border-radius: 0.8em;
-}
-
-.notice {
-  background: hsla(103, 44%, 89%, 1);
-  color: #3c763d;
-}
-
-.error {
-  background: hsla(0, 43%, 91%, 1);
-  color: #a94442;
-}
-
-.alert {
-  background: hsla(40, 82%, 89%, 1);
-  color: #8a6d3b;
-}
-
-input {
-  outline: 0;
-  border: 1px solid $dark-grey;
-  border-radius: 4px;
-  padding: 0.5em;
-  color: $less-black;
-
-  &:focus {
-    border-color: $less-black;
-    outline: 0;
-  }
-}
-
-button {
-  margin-left: 1.5em;
-  min-width: 6em;
-  color: $white;
-  text-align: center;
-  padding: 0.8em 1em;
-  /* border-radius: 0.4em; */
-  font: 0.9em $helvetica;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  background-color: $less-black;
-  color: $white;
-
-  &:hover {
-    background-color: $red;
-  }
-}
-
 header {
-  background-color: $red;
-  padding: 2.5em 0 1em;
-  color: $white;
+  background-color: $semiblack;
+  color: $snow-white;
 
   a {
-    color: $white;
+    color: $snow-white;
     text-decoration: none;
   }
 
   nav {
     @include row();
     height: 3em;
-    ul {
-      float: right;
-      display: inline-block;
-      list-style-type: none;
-
-      li {
-        @include inline-block;
-        margin-left: golden-ratio(1em, 1);
-        margin-top: 0.1em;
-        font: 0.8em $helvetica;
-        font-weight: 300;
-      }
-
-      .nodes {
-        background: url('smallwhitetop.png') left no-repeat;
-        background-size: contain;
-        padding-left: 3.2em;
-      }
-
-      .paths {
-        background: url('shieldwhitetop.png') left no-repeat;
-        background-size: contain;
-        padding-left: 2em;
-      }
-
-      a {
-        text-transform: uppercase;
-        &:hover {
-          /* border: 1px solid $white; */
-          border-bottom: .1em solid $white;
-        }
-      }
-    }
-
-    a.small-logo-text {
-      float: left;
-      display: inline-block;
-      font: 1.3em $logo-font;
-    }
-
-    a.small-app {
-      float: left;
-      display: inline-block;
-      margin-top: -2em;
-      margin-right: 1em;
-      height: 5em;
-      width: 5em;
-      background: url('beseseliu.png') center no-repeat;
-      background-size: contain;
-      color: $red;
-    }
   }
-
-  .splash {
-    .app {
-      display: block;
-      height: 17em;
-      background: url('pathoscopelogo.png') center no-repeat;
-      background-size: 25em 25em;
-      color: $red;
-    }
-
-    .logo-text {
-      display: block;
-      font: 4em $logo-font;
-      text-align: center;
-      margin: -0.5em 0 0;
-    }
-
-    aside {
-      // TODO
-      display: none;
-    }
-  }
-}
-
-@include media(min-width 0 max-width 768px) {
-  nav {
-    padding: 0 1.5em;
-  }
-}
-
-main {
-  padding-top: 1em;
-  nav {
-    height: 5em;
-  }
-
-  nav.inputbox {
-    text-align: center;
-    line-height: 5em;
-
-    input {
-      height: 2.5em;
-      width: 15em;
-    }
-
-  }
-
-  nav.breadcrumbs {
-    .go-up {
-      @include inline-block;
-      text-transform: uppercase;
-      font: 0.7em $helvetica;
-      color: hsla(224, 20%, 19%, 0.8);
-      float: left;
-      padding-right: 1.5em;
-      width: 6em;
-      margin-top: -.3em;
-    }
-
-    li {
-      @include inline-block;
-      margin-right: golden-ratio(1em, 1);
-      text-align: center;
-      float: left;
-    }
-
-    a {
-      text-transform: uppercase;
-      text-decoration: none;
-      color: $white;
-      padding: 0.7em 1.1em;
-      font: 0.8em $helvetica;
-      font-weight: 300;
-    }
-
-    .breadcrumb-all {
-      float: right;
-      margin: 0;
-      a {
-        font-weight: 400;
-        color: $black;
-        border-radius: .2em;
-        border: 0.1em solid hsla(223, 19%, 19%, 0.1);
-        &:hover {
-          background-color: hsla(223, 19%, 19%, 0.03);
-        }
-      }
-    }
-  }
-
-  article {
-    display: block;
-  }
-
-  article.explore {
-    padding-top: 3em;
-
-    section.current {
-      @include row();
-
-
-
-      .comments {
-        width: 40em;
-        margin: 0 auto;
-        /* margin-left: 15em; */
-
-        .note-buttons {
-          margin: 2em auto;
-          width: 25em;
-          text-align: center;
-        }
-
-        .post-open-button {
-          margin-left: 0;
-        }
-
-        .comments-button, .post-open-button {
-          display: inline-block;
-          background-color: $red;
-          width: 14em;
-          height: 3em;
-          color: $white;
-          text-align: center;
-          padding: 0.7em;
-          border-radius: .1em;
-          font: 0.8em $helvetica;
-          text-transform: uppercase;
-          text-decoration: none;
-          border: none;
-          outline: none;
-
-          &:hover {
-            background-color: $dark-red;
-          }
-        }
-
-        li {
-          padding: 1em;
-
-          .info {
-            @include row();
-            padding-bottom: 1em;
-          }
-
-          .name {
-            float: left;
-            font: bold 1em $helvetica;
-          }
-
-          .time {
-            float: right;
-            font: 0.8em $helvetica;
-          }
-
-          .text {
-            font: 0.9em $helvetica;
-            line-height: 1.3em;
-          }
-        }
-
-        .new-comment {
-          margin: 2em;
-
-        ***REMOVED***content {
-            width: 70%;
-            max-width: 100%;
-            height: 3em;
-            margin: 0 1em 1em 0;
-          }
-
-        ***REMOVED***post {
-            padding: 0.5em;
-            margin-top: 0.2em;
-            width: 15%;
-          }
-        }
-
-        .login-to-comment {
-          margin: 2em;
-          text-align: center;
-          font: 0.9em $helvetica;
-
-          a {
-            color: $black;
-          }
-        }
-
-      }
-    }
-
-    section.deeper {
-      .circles {
-        display: block;
-        height: 4em;
-        background: url('topcircle.png') center no-repeat;
-        background-size: contain;
-      }
-
-      padding-top: 2em;
-
-      .deeper {
-        vertical-align: top;
-        display: inline-block;
-        padding-left: 1.5em;
-        padding-top: 2em;
-
-        a {
-          font: bold 1.5em $helvetica;
-          text-decoration: none;
-          color: $black;
-        }
-      }
-    }
-
- }
-
-  article.paths {
-    padding-top: 2em;
-  }
-
-}
-
-.expertise {
-  h1 {
-    font: bold 2em $helvetica;
-    padding: 1em;
-    text-align: center;
-  }
-
-  .static {
-    @include row();
-  }
-
-  .box {
-    display: block;
-    width: 100%;
-    height: 10em;
-    border-radius: .5em;
-    border: 1px solid $dark-grey;
-    @include transition(all 0.6s ease-in);
-    transition-delay: 0.5s;
-  }
-
-  .open-box {
-    height: 30em;
-  }
-
-  .meta {
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    padding-top: 2em;
-
-    a {
-      text-decoration: none;
-    }
-
-    .title {
-      font: bold 1.2em $helvetica;
-      a {
-        color: $black;
-      }
-    }
-
-    .description {
-      padding-top: 0.5em;
-      font: 0.9em $helvetica;
-      line-height: 1.5em;
-    }
-
-    .url {
-      /* display: block; */
-      padding-top: 0.3em;
-      color: $less-black;
-    }
-
-    .actions {
-      a {
-        display: inline-block;
-        padding: 1em;
-        color: $red
-      }
-    }
-  }
-}
-
-article.ego {
-  h2 {
-    font: normal 1em $helvetica;
-    color: $white;
-    /* padding: .5em .5em .5em 2.5em; */
-    /* width: 13em; */
-    text-align: center;
-    /* margin: 4em 0 0 2em; */
-    padding: 0.5em;
-  }
-
-  li {
-    @include row();
-    border-bottom: 1px solid rgba(170, 168, 165, 0.3);
-    border-left: 1px solid rgba(170, 168, 165, 0.3);
-    border-right: 1px solid rgba(170, 168, 165, 0.3);
-    color: $black;
-    font: normal 1em $helvetica;
-  }
-
-  li.ego-link {
-    height: 5.1em;
-    background-color: $white;
-
-    .box {
-      display: block;
-      background-color: $grey;
-      width: 5em;
-      height: 5em;
-      float: left;
-    }
-
-    .meta {
-      float: left;
-      /* padding-top: .3em; */
-      padding: 1.4em 0 0 1.5em;
-    }
-
-    .title {
-      font: bold 0.9em $helvetica;
-      text-decoration: none;
-      color: $black;
-    }
-
-    .url a {
-      font: normal 0.8em $helvetica;
-      color: $less-black;
-      text-decoration: none;
-    }
-
-    .nodes {
-      font: bold 0.8em $helvetica;
-      display: inline-block;
-      height: 5em;
-      line-height: 5em;
-      float: right;
-      background: url('bottomcircle.png') left no-repeat;
-      background-size: 2.5em 2em;
-      margin-top: 0.8em;
-      padding: 0 2em 0 3em;
-    }
-
-    .screenshot {
-      @include row();
-      display: block;
-      width: 100%;
-      height: 1.8em;
-      margin-top: 3em;
-      border-top: 1px solid #AAA8A5;
-      border-bottom-left-radius: 0.5em;
-      border-bottom-right-radius: 0.5em;
-    }
-  }
-}
-
-article {
-  li.path {
-    width: 12em;
-    height: 12em;
-    float: left;
-    background-color: $red;
-    /* background: url('paths/tryaerospace.png') center no-repeat; */
-    /* background-size: cover; */
-    margin: 2em;
-    /* text-align: center; */
-    position: relative;
-
-    a, span {
-      position: absolute;
-      color: $white;
-      text-decoration: none;
-      /* line-height: 9em; */
-      display: block;
-      width: 100%;
-      text-align: center;
-
-      &.title {
-        top: 50%;
-        margin-top: -1em;
-        font: bold 1.3em $helvetica;
-      }
-
-      &.actions {
-        bottom: 0.5em;
-        font: 1em $helvetica;
-      }
-    }
-  }
-
-  .overlay {
-    background-color: $red;
-    width: 12em;
-    height: 12em;
-    margin: 2em;
-    float: left;
-  }
-}
-
-/* article { */
-/*   li.path, li.link { */
-  /*   @include row(); */
-  /*   padding-bottom: 4em; */
-  /*   list-style-type: none; */
-  /*   height: 5em; */
-  /*   width: 100%; */
-  /*   margin: 2em; */
-  /*   background-color: $grey; */
-  /*   color: $black; */
-  /*   border-radius: 2em; */
-  /*   position: relative; */
-
-  /*   .meta { */
-  /*     display: table; */
-  /*     float: left; */
-  /*     height: 5em; */
-  /*     padding-left: 1em; */
-  /*   } */
-
-  /*   .nodes { */
-  /*     font: bold 0.8em $helvetica; */
-  /*     display: inline-block; */
-  /*     height: 5em; */
-  /*     line-height: 5em; */
-  /*     float: right; */
-  /*     background: url('bottomcircle.png') left no-repeat; */
-  /*     background-size: 2.5em 2em; */
-  /*     margin-top: 0.8em; */
-  /*     padding: 0 2em 0 3em; */
-  /*   } */
-
-  /*   .triangle { */
-  /*     width: 0; */
-  /*     height: 0; */
-  /*     border-top: 2.5em solid $white; */
-  /*     border-bottom: 2.5em solid $white; */
-
-  /*     border-left: 1.25em solid $grey; */
-  /*     float: right; */
-  /*   } */
-
-  /*   .aligner { */
-  /*     display: table-cell; */
-  /*     vertical-align: middle; */
-  /*   } */
-
-  /*   .title { */
-  /*     font: bold 0.9em $helvetica; */
-  /*     text-decoration: none; */
-  /*     color: $black; */
-  /*   } */
-
-  /*   .box { */
-  /*     width: 5em; */
-  /*     height: 5em; */
-  /*     float: left; */
-  /*     border-radius: 1000em; */
-  /*   } */
-  /* } */
-
-  /* li.path { */
-  /*   .title { */
-  /*     font: bold 1.1em $helvetica; */
-  /*   } */
-
-  /*   .box { */
-  /*     background: url('paths/aerospace.png') center no-repeat; */
-  /*     background-size: 3em 3em; */
-  /*   } */
-
-  /* } */
-
-  /* li.link { */
-  /*   .meta .url a { */
-  /*     font: normal 0.8em $helvetica; */
-  /*   } */
-
-  /*   .url a { */
-  /*     color: $less-black; */
-  /*     text-decoration: none; */
-  /*   } */
-/*   } */
-/* } */
-
-a.div-link {
-  position: absolute;
-  /* margin-left: 10%; */
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  text-decoration: none; /* No underlines on the link */
-  z-index: 10; /* Places the link above everything else in the div */
-  background-color: #FFF; /* Fix to make div clickable in IE */
-  opacity: 0; /* Fix to make div clickable in IE */
-  filter: alpha(opacity=1); /* Fix to make div clickable in IE */
 }
 
 footer {
   height: 5em;
 }
 
-.user {
-  text-align: center;
-  font: 1em $helvetica;
-
-  h2 {
-    padding-bottom: 1em;
-    font: 1.8em $helvetica;
-  }
-
-  input {
-    font-weight: 300;
-    margin-bottom: 1em;
-  }
-
-  .email, .password {
-    height: 3em;
-    width: 16em;
-    color: $less-black;
-    outline: none;
-    border: 1px solid $grey;
-    padding-left: 1em;
-  }
-
-  .remember-me {
-    padding: 1em 0;
-    font: 0.9em $helvetica;
-  }
-
-  .forgot-password {
-    display: block;
-    padding: 0.75em 0;
-    font: 0.9em $helvetica;
-    text-decoration: none;
-    color: $less-black;
-
-    &:hover {
-      color: $black;
-      text-decoration: underline;
-    }
-  }
-
-  .login, .s***REMOVED***-instructions {
-    display: inline-block;
-    margin-top: 0.5em;
-    border: none;
-    outline: none;
-    color: $white;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 0;
-    height: 3em;
-    background-color: $less-black;
-
-    &:hover {
-      background-color: $dark-red;
-    }
-  }
-
-  .login {
-    width: 8em;
-  }
-
-  .s***REMOVED***-instructions {
-    font: 0.8em $helvetica;
-    font-weight: 300;
-    padding: 0 1em;
-  }
-
-***REMOVED***error_explanation {
-    margin: 0 auto 1em;
-    text-align: center;
-    padding: 1em;
-    width: 20em;
-    border-radius: 0.8em;
-    background: hsla(40, 82%, 89%, 1);
-    color: #8a6d3b;
-
-    h2 {
-      font: 1em $helvetica;
-    }
-
-    li {
-      font: 0.9em $helvetica;
-    }
-  }
-
+h1 {
+  font: 400 100% $open-sans;
+  font-size: 1.5em;
+  padding-top: 3em;
 }
 
+.explorer {
+  .box {
+    @include row();
+    display: block;
+    background-color: $semiwhite;
+    margin: .75em 0;
+    border-radius: 1em;
+    height: 4em;
+  }
+
+  .arrow {
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+    vertical-align: top;
+    text-align: center;
+    line-height: 4em;
+    @include transform(rotate(90deg));
+
+    a {
+      color: $semigrey;
+      text-decoration: none;
+    }
+  }
+
+  .indicator {
+    display: inline-block;
+    height: 4em;
+    width: .5em;
+    background-color: $green;
+  }
+
+  .meta {
+    display: inline-block;
+    height: 4em;
+    vertical-align: top;
+    margin: 0.75em 2em;
+
+    .title {
+      font: 600 1.1em $open-sans;
+    }
+
+    .url {
+      font: 400 .9em $open-sans;
+    }
+
+    .path {
+      margin-left: 1em;
+      line-height: 1em;
+
+      .circle {
+        color: $green;
+        font: 400 1.5em $open-sans;
+        line-height: 1em;
+      }
+
+      .title {
+        color: $semigrey;
+        font: 400 .9em $open-sans;
+        margin-left: 0.5em;
+        line-height: 1em;
+      }
+    }
+  }
+
+  .notes {
+    float: right;
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+  }
+
+  .level-0 {
+    .indicator {
+      background-color: $semigrey;
+    }
+  }
+
+  .level-1 {
+    margin-left: 2em;
+
+    .indicator {
+      background-color: $semigrey;
+    }
+  }
+
+  .level-2 {
+    margin-left: 4em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .level-3 {
+    margin-left: 6em;
+  }
+
+  .level-4 {
+    margin-left: 8em;
+  }
+
+  .level-5 {
+    margin-left: 10em;
+  }
+
+  .level-6 {
+    margin-left: 12em;
+  }
+
+  .center .indicator {
+    background-color: $green;
+  }
+}
+
+// Extras
 .cf:before, .cf:after {
   content: " ";
   display: table;
@@ -761,46 +186,6 @@ footer {
   *zoom: 1;
 }
 
-.background-0 {
-  background-color: hsla(140, 43%, 47%, 0.7) !important;
-  &:hover {
-    background-color: hsla(140, 43%, 42%, 0.7) !important;
-  }
-}
-
-.background-1 {
-  background-color: hsla(196, 100%, 37%, 0.7) !important;
-  &:hover {
-    background-color: hsla(196, 100%, 32%, 0.7) !important;
-  }
-}
-
-.background-2 {
-  background-color: hsla(30, 86%, 53%, 0.7) !important;
-  &:hover {
-    background-color: hsla(30, 86%, 48%, 0.7) !important;
-  }
-}
-
-.background-3 {
-  background-color: hsla(10, 86%, 53%, 0.7) !important;
-  &:hover {
-    background-color: hsla(10, 86%, 48%, 0.7) !important;
-  }
-}
-
-.background-4 {
-  background-color: hsla(204, 71%, 77%, 0.7) !important;
-  &:hover {
-    background-color: hsla(204, 71%, 72%, 0.7) !important;
-  }
-}
-
-.background-link {
-  background-color: $grey !important;
-}
-
 #powerTip {
-  font: normal 0.8em $helvetica;
+  font: normal 0.8em $open-sans;
 }
-

@@ -16,7 +16,7 @@
 //= require jquery.powertip.min
 //= require jquery.hoverIntent.min
 //= require lodash.min
-//= require shared
+//= require app
 //= require comments
 //= require launching
 // dont = require turbolinks

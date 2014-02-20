@@ -1,8 +1,86 @@
 class ExploreController < ApplicationController
   before_action :authenticate_user!
 
+  def large_index
+    data = {}
+    center = Link.find(params[:link_id])
+    minus_one = center.nodes.map(&:parent).reject(&:nil?).map(&:link).uniq
+
+    minus_one.each do |link|
+      minus_three = link.nodes.map(&:parent).reject(&:nil?).map(&:link)
+
+      minus_three.each do |minus_three_link|
+        data[minus_three_link.id] ||= {}
+
+        Explore.children_links(minus_three_link).each do |minus_two_link|
+          data[minus_three_link.id][minus_two_link.id] ||= {}
+
+          Explore.children_links(minus_two_link).each do |minus_one_link|
+            data[minus_three_link.id][minus_two_link.id][minus_one_link.id] ||= {}
+
+            Explore.children_links(minus_one_link).each do |zero_link|
+              data[minus_three_link.id][minus_two_link.id][minus_one_link.id][
+                zero_link.id] ||= {}
+
+              Explore.children_links(zero_link).each do |plus_one_link|
+                data[minus_three_link.id][minus_two_link.id][minus_one_link.id][
+                  zero_link.id][plus_one_link.id] ||= {}
+
+                Explore.children_links(plus_one_link).each do |plus_two_link|
+                  data[minus_three_link.id][minus_two_link.id][minus_one_link.id][
+                    zero_link.id][plus_one_link.id][plus_two_link.id] ||= {}
+
+                  Explore.children_links(plus_two_link).each do |plus_three_link|
+                    data[minus_three_link.id][minus_two_link.id][minus_one_link.id][
+                      zero_link.id][plus_one_link.id][plus_two_link.id][plus_three_link.id] ||= {}
+              ***REMOVED***
+            ***REMOVED***
+          ***REMOVED***
+        ***REMOVED***
+      ***REMOVED***
+    ***REMOVED***
+  ***REMOVED***
+***REMOVED***
+
+    r***REMOVED***er json: {
+      structure: data,
+      links: Link.all.index_by(&:id)
+    }
+***REMOVED***
+
   def index
-    redirect_to root_path and return
+    structure = {}
+    center = Link.find(params[:link_id])
+    minus_one = center.nodes.map(&:parent).reject(&:nil?).map(&:link).uniq
+
+    minus_one.each do |minus_one_link|
+      structure[minus_one_link.id] ||= {}
+
+      Explore.children_links(minus_one_link).each do |zero_link|
+        structure[minus_one_link.id][zero_link.id] ||= {}
+
+        Explore.children_links(zero_link).each do |plus_one_link|
+          structure[minus_one_link.id][zero_link.id][plus_one_link.id] ||= {}
+    ***REMOVED***
+  ***REMOVED***
+***REMOVED***
+
+    links = Link.all.each_with_object({}) do |link, obj|
+      obj[link.id] = {
+        id: link.id,
+        title: link.show_title,
+        show_url: link.show_url,
+        url: link.url,
+        paths: link.paths.map(&:id).sort
+      }
+***REMOVED***
+
+    r***REMOVED***er json: {
+      structure: structure,
+      links: links,
+      paths: Path.all.index_by(&:id),
+      center: center.id
+    }
 ***REMOVED***
 
   def show

@@ -1,2 +1,23 @@
-= r***REMOVED***er partial: 'shared/exploration', locals: { back_collection: @back_collection,
-  forward_links: @forward_links, current_link: @current_link }
+h1 Explore
+section.explorer
+
+script#li-template type="text/template"
+  li.box class="{{ klass }}" data-link_id="{{ link_id }}" style="display: none"
+    section.arrow
+      a href='#' ❯
+    section.indicator
+    section.meta
+      p.title
+        | {{ title }}
+      p
+        span.url
+          | {{ show_url }}
+        span.paths
+    section.notes
+
+script#path-template type="text/template"
+  span.path
+    span.circle
+      | ●
+    span.title
+      | {{ title }}

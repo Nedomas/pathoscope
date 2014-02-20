@@ -3,23 +3,31 @@ $grid-columns: 16;
 @import "bourbon";
 @import "neat";
 @import "neat-helpers";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&subset=latin,cyrillic-ext);
-$helvetica: 'Open Sans', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin,cyrillic-ext);
+$open-sans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 @import url(https://fonts.googleapis.com/css?family=Handlee:400,700);
 $logo-font: 'Handlee', sans-serif;
 
 $max-width: em(768);
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
+$montserrat: 'Montserrat', sans-serif;
 
+// OLD
 $black: hsla(223, 19%, 19%, 1);
 $less-black: hsla(223, 19%, 19%, 0.7);
 $white: #FFF;
 $red: hsla(0, 77%, 62%, 1);
 $dark-red: hsla(0, 77%, 57%, 1);
-$grey: #F2F0EB;
 $main-color: hsla(0, 62.34%, 69.80%, 1);
 $dark-grey: #B3B3B3;
 $light-grey: hsla(180, 5.52%, 68.04%, 1);
-$montserrat: 'Montserrat', sans-serif;
 
+$green: hsla(148, 45%, 59%, 1);
+$lightgreen: hsla(153, 44%, 85%, 1);
+$semiblack: hsla(204, 12%, 25%, 1);
+$snow-white: hsla(200, 10%, 94%, 1);
+$semiwhite: hsla(180, 17%, 98%, 1);
+$semigrey: hsla(216, 5%, 81%, 1);
+
+$launching-grey: hsla(43, 21%, 94%, 1);

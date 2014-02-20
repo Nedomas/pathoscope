@@ -9,7 +9,7 @@ class Explore
 ***REMOVED***
 
     def children_links(link)
-      link.nodes.map(&:children).flatten.map(&:link)
+      link.nodes.map(&:children).flatten.map(&:link).uniq
 ***REMOVED***
 
     def children_links_for_user(link, user)

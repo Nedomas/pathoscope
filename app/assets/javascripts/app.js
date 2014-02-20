@@ -23,32 +23,19 @@ var private = function(funs) {
 
 var App = (function() {
   var init = function() {
-    $('nav li.nodes').powerTip({
-      placement: 's',
-      smartPlacement: true
-    });
+    initPowerTip();
+  };
 
-    $('nav li.paths').powerTip({
-      placement: 's',
-      smartPlacement: true
-    });
+  var initPowerTip = function() {
+    // $('nav li.nodes').powerTip({
+    //   placement: 's',
+    //   smartPlacement: true
+    // });
 
-    $('article .nodes').powerTip({
-      placement: 's',
-      smartPlacement: true
-    });
-
-    $('.static div.box').powerTip({
-      placement: 's',
-      mouseOnToPopup: true
-      // smartPlacement: true
-    });
-
-    $('li.link span.box').powerTip({
-      placement: 's',
-      mouseOnToPopup: true
-      // smartPlacement: true
-    });
+    // $('nav li.paths').powerTip({
+    //   placement: 's',
+    //   smartPlacement: true
+    // });
   };
 
   return {
