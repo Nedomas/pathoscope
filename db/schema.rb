@@ -11,7 +11,7 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130220914) do
+ActiveRecord::Schema.define(version: 20140220201956) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20140130220914) do
     t.datetime "updated_at"
 ***REMOVED***
 
+  create_table "items", force: true do |t|
+    t.integer  "context_id"
+    t.string   "context_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+***REMOVED***
+
   create_table "links", force: true do |t|
     t.string   "title"
     t.string   "url"
@@ -43,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140130220914) do
 ***REMOVED***
 
   create_table "nodes", force: true do |t|
-    t.integer  "link_id"
+    t.integer  "item_id"
     t.integer  "path_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -53,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140130220914) do
 ***REMOVED***
 
   add_index "nodes", ["ancestry"], name: "index_nodes_on_ancestry", using: :btree
-  add_index "nodes", ["link_id"], name: "index_nodes_on_link_id", using: :btree
+  add_index "nodes", ["item_id"], name: "index_nodes_on_item_id", using: :btree
   add_index "nodes", ["path_id"], name: "index_nodes_on_path_id", using: :btree
   add_index "nodes", ["user_id"], name: "index_nodes_on_user_id", using: :btree
 

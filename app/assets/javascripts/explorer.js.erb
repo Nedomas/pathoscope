@@ -16,9 +16,9 @@ var Explorer = (function() {
     bindArrows();
   };
 
-  var repaint = function(link_id) {
+  var repaint = function(item_id) {
     place.html('');
-    getData(link_id).then(function(_data) {
+    getData(item_id).then(function(_data) {
       data = _data;
       recursivePopulate(data.structure);
     });
@@ -35,7 +35,7 @@ var Explorer = (function() {
     var level = getLevel(li);
 
     if (level != 1) {
-      repaint(li.data('link_id'));
+      repaint(li.data('item_id'));
     }
 
     var next_all = li.nextAll();
@@ -54,24 +54,24 @@ var Explorer = (function() {
     return $(li).attr('class').match(/level-\d/)[0].replace(/^\D+/g, '');
   };
 
-  var app***REMOVED***Link = function(link_id, level) {
-    var link = data.links[link_id];
+  var app***REMOVED***Item = function(item_id, level) {
+    var item = data.items[item_id];
 
     var klass = 'level-' + level;
-    if (parseInt(link_id) == data.center) {
+    if (parseInt(item_id) == data.center) {
       klass += ' center';
     }
 
     $(_.template(li_template, {
-          link_id: link.id,
-          title: link.title,
-          show_url: link.show_url,
+          item_id: item.id,
+          title: item.title,
+          show_url: item.show_url,
           klass: klass
     })).app***REMOVED***To(place).slideDown('fast');
 
     var paths_place = place.find('li:last-child .paths');
 
-    _.each(link.paths, function(path_id) {
+    _.each(item.paths, function(path_id) {
       var path = data.paths[path_id];
 
       paths_place.app***REMOVED***(_.template(path_template, {
@@ -83,14 +83,14 @@ var Explorer = (function() {
   var recursivePopulate = function(structure, level) {
     level = level || 0;
 
-    _.each(structure, function(children, link_id) {
-      app***REMOVED***Link(link_id, level);
+    _.each(structure, function(children, item_id) {
+      app***REMOVED***Item(item_id, level);
 
       recursivePopulate(children, level+1);
     });
   };
 
-  var getData = function(link_id) {
+  var getData = function(item_id) {
     return $.ajax({
       type: 'GET',
       url: server + '/explore',
@@ -98,7 +98,7 @@ var Explorer = (function() {
         withCredentials: true
       },
       data: {
-        link_id: link_id
+        item_id: item_id
       }
     });
   };

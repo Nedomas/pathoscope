@@ -43,35 +43,35 @@ class BookmarksController < ApplicationController
     r***REMOVED***er json: { link: link, tag: tag, links: links }
 ***REMOVED***
 
-  def create
-    query = URI::parse(params[:bookmarklet]).query
-    data = Rack::Utils.parse_nested_query(query)
-    path = Path.find(1) # TODO
-    url = params[:href]
-    node = Node.build(url, path, current_user)
-    r***REMOVED***er json: true
+***REMOVED*** def create
+***REMOVED***   query = URI::parse(params[:bookmarklet]).query
+***REMOVED***   data = Rack::Utils.parse_nested_query(query)
+***REMOVED***   path = Path.find(1) # TODO
+***REMOVED***   url = params[:href]
+***REMOVED***   node = Node.build(url, path, current_user)
+***REMOVED***   r***REMOVED***er json: true
 
-  ***REMOVED*** # check if its from our app
-  ***REMOVED*** if request.host == URI(url).host
-  ***REMOVED***   redirect_to paths_path(path) and return
-  ***REMOVED*** ***REMOVED***
+***REMOVED*** ***REMOVED*** # check if its from our app
+***REMOVED*** ***REMOVED*** if request.host == URI(url).host
+***REMOVED*** ***REMOVED***   redirect_to paths_path(path) and return
+***REMOVED*** ***REMOVED*** ***REMOVED***
 
-  ***REMOVED*** result = {}
+***REMOVED*** ***REMOVED*** result = {}
 
-  ***REMOVED*** if user_signed_in?
-  ***REMOVED***   node = Node.build(url, path, current_user)
-  ***REMOVED***   result[:logged_in] = true
+***REMOVED*** ***REMOVED*** if user_signed_in?
+***REMOVED*** ***REMOVED***   node = Node.build(url, path, current_user)
+***REMOVED*** ***REMOVED***   result[:logged_in] = true
 
-  ***REMOVED***   paths = Explore.children_links(node.link).map do |link|
-  ***REMOVED***     { title: link.title, url: link.url, count: link.nodes.count }
-  ***REMOVED*** ***REMOVED***
+***REMOVED*** ***REMOVED***   paths = Explore.children_links(node.link).map do |link|
+***REMOVED*** ***REMOVED***     { title: link.title, url: link.url, count: link.nodes.count }
+***REMOVED*** ***REMOVED*** ***REMOVED***
 
-  ***REMOVED***   result[:paths] = paths.to_json
-  ***REMOVED*** else
-  ***REMOVED***   result[:logged_in] = false
-  ***REMOVED*** ***REMOVED***
+***REMOVED*** ***REMOVED***   result[:paths] = paths.to_json
+***REMOVED*** ***REMOVED*** else
+***REMOVED*** ***REMOVED***   result[:logged_in] = false
+***REMOVED*** ***REMOVED*** ***REMOVED***
 
-***REMOVED***
+***REMOVED*** ***REMOVED***
 
   def templates
 ***REMOVED***

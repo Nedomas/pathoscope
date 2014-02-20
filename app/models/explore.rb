@@ -8,8 +8,8 @@ class Explore
       links(nodes).map(&:url)
 ***REMOVED***
 
-    def children_links(link)
-      link.nodes.map(&:children).flatten.map(&:link).uniq
+    def children_items(item)
+      item.nodes.map(&:children).flatten.map(&:item)
 ***REMOVED***
 
     def children_links_for_user(link, user)

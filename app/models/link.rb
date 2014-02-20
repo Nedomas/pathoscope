@@ -1,8 +1,10 @@
 class Link < ActiveRecord::Base
   has_many :nodes
-  after_create :get_title!, :get_screens!
+  after_create :get_title!
+***REMOVED*** , :get_screens!
   fuzzily_searchable :title
   has_many :comments, as: :commentable
+  has_one :item, as: :context
 
   def show_title
     title.andand.truncate(80)
@@ -13,7 +15,7 @@ class Link < ActiveRecord::Base
 ***REMOVED***
 
   def get_title!
-    doc = Pismo::Document.new(url)
+    doc = Pismo::Document.new(url) rescue doc = OpenStruct.new(title: 'None')
     self.title = doc.title
     save!
 ***REMOVED***
@@ -62,22 +64,6 @@ class Link < ActiveRecord::Base
 ***REMOVED***
 
   def paths
-    nodes.map(&:path).uniq
-***REMOVED***
-***REMOVED***
-
-class Abstract
-  def initialize(id, type='link')
-    @obj = Object.const_get(type.classify).find(id)
-***REMOVED***
-
-  def parents
-    @parents = []
-
-    @obj.nodes
-***REMOVED***
-
-  def nodes
-    @obj.nodes
+    item.nodes.map(&:path).uniq
 ***REMOVED***
 ***REMOVED***

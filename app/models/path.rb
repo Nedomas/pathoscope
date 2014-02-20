@@ -6,6 +6,11 @@ class Path < ActiveRecord::Base
   before_create :add_color
   has_many :user_paths
   has_many :users, through: :user_paths
+  has_one :item, as: :context
+
+  def node
+    nodes.roots.first
+***REMOVED***
 
   def add_color
     if last_path = Path.last

@@ -1,5 +1,5 @@
 class Node < ActiveRecord::Base
-  has_one :link
+  belongs_to :item
   belongs_to :path
   belongs_to :user
 
@@ -8,11 +8,18 @@ class Node < ActiveRecord::Base
   class << self
     def build(url, path, user)
       url = clean_url(url)
-      link = Link.find_or_create_by(url: url)
+      item = Item.find_or_create_link(url)
 
-      find_by(link_id: link.id, path_id: path.id, user_id: user.id) ||
-        create(link_id: link.id, path_id: path.id, user_id: user.id,
-          parent: last_in_path(path, user))
+      find_by(item_id: item.id, path_id: path.id, user_id: user.id) ||
+        create(item_id: item.id, path_id: path.id, user_id: user.id,
+          parent: last_in_path(path, user) || path.node)
+***REMOVED***
+
+    def build_path(title, user)
+      item = Item.create_path(title)
+      path = item.context
+
+      create(item_id: item.id, path_id: path.id, user_id: user.id)
 ***REMOVED***
 
     def last_in_path(path, user)
