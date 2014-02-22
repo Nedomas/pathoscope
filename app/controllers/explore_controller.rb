@@ -48,25 +48,41 @@ class ExploreController < ApplicationController
     }
 ***REMOVED***
 
+  def itemize(obj)
+    obj.each_with_object({}) { |(k,v), obj| obj[k.item.id] = itemize(v) }
+***REMOVED***
+
   def index
     structure = {}
+    structure = itemize(Node.arrange)
     center = Item.find(params[:item_id])
-  ***REMOVED*** minus_one = center.nodes.map(&:parent).reject(&:nil?).map(&:item).map(&:context).uniq
-    minus_one = center.nodes.map(&:parent).map(&:item)
+  ***REMOVED*** depths = center.nodes.map(&:ancestry_depth)
+  ***REMOVED*** # depths_range = (depths.min-1)..(depths.max+1)
+  ***REMOVED*** start_nodes = Node.at_depth(depths.min-1)
+  ***REMOVED*** start_nodes = Node.at_depth(depths.min) if start_nodes.empty?
+
+  ***REMOVED*** start_nodes.each do |node|
+  ***REMOVED***   structure[node] = node.children
+  ***REMOVED*** ***REMOVED***
   ***REMOVED*** binding.pry
-  ***REMOVED*** binding.pry
 
-    minus_one.each do |minus_one_item|
-      structure[minus_one_item.id] ||= {}
 
-      Explore.children_items(minus_one_item).each do |zero_item|
-        structure[minus_one_item.id][zero_item.id] ||= {}
+  ***REMOVED*** # minus_one = center.nodes.map(&:parent).reject(&:nil?).map(&:item).map(&:context).uniq
+  ***REMOVED*** minus_one = center.nodes.map(&:parent).map(&:item)
+  ***REMOVED*** # binding.pry
+  ***REMOVED*** # binding.pry
 
-        Explore.children_items(zero_item).each do |plus_one_item|
-          structure[minus_one_item.id][zero_item.id][plus_one_item.id] ||= {}
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+  ***REMOVED*** minus_one.each do |minus_one_item|
+  ***REMOVED***   structure[minus_one_item.id] ||= {}
+
+  ***REMOVED***   Explore.children_items(minus_one_item).each do |zero_item|
+  ***REMOVED***     structure[minus_one_item.id][zero_item.id] ||= {}
+
+  ***REMOVED***     Explore.children_items(zero_item).each do |plus_one_item|
+  ***REMOVED***       structure[minus_one_item.id][zero_item.id][plus_one_item.id] ||= {}
+  ***REMOVED*** ***REMOVED***
+  ***REMOVED*** ***REMOVED***
+  ***REMOVED*** ***REMOVED***
 
     links = Link.all.each_with_object({}) do |link, obj|
       obj[link.id] = {
