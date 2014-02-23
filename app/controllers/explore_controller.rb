@@ -49,7 +49,7 @@ class ExploreController < ApplicationController
 ***REMOVED***
 
   def itemize(obj)
-    obj.each_with_object({}) { |(k,v), obj| obj[k.item.id] = itemize(v) }
+    obj.each_with_object([]) { |(k,v), obj| obj << { k.item.id => itemize(v) } }
 ***REMOVED***
 
   def index

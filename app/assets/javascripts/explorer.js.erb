@@ -83,10 +83,12 @@ var Explorer = (function() {
   var recursivePopulate = function(structure, level) {
     level = level || 0;
 
-    _.each(structure, function(children, item_id) {
-      app***REMOVED***Item(item_id, level);
+    _.each(structure, function(branch) {
+      _.each(branch, function(children, item_id) {
+        app***REMOVED***Item(item_id, level);
+        recursivePopulate(children, level+1);
+      });
 
-      recursivePopulate(children, level+1);
     });
   };
 
