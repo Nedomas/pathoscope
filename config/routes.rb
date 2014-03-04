@@ -1,4 +1,5 @@
 Pathoscope::Application.routes.draw do
+  get "map/index"
   get "install/bookmarklet"
   get "launching/index"
   post "launching/get" => 'launching#get'
@@ -17,6 +18,8 @@ Pathoscope::Application.routes.draw do
 
 ***REMOVED*** You can have the root of your site routed with "root"
   root 'launching#index'
+
+  get 'map' => 'map#index', as: 'map'
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'

@@ -52,9 +52,36 @@ class ExploreController < ApplicationController
     obj.each_with_object([]) { |(k,v), obj| obj << { k.item.id => itemize(v) } }
 ***REMOVED***
 
+  def compactize(x)
+    result = {}
+
+    case x
+    when Array
+      if x.first.is_a?(Hash)
+        result[x] = x.each_with_object({}) do |(key, values), obj|
+          obj[key] ||= []
+          obj[key] << values
+    ***REMOVED***
+      else
+        result[x.first] ||= compactize(x.last)
+  ***REMOVED***
+    when Hash
+      result[x.first] ||= compactize(x.last)
+***REMOVED***
+  ***REMOVED*** binding.pry
+  ***REMOVED*** obj.each_with_object([]) do |(k,v), obj|
+  ***REMOVED***   if k
+  ***REMOVED***     obj << compactize(k)
+  ***REMOVED***   else
+  ***REMOVED***     compactize(v)
+  ***REMOVED*** ***REMOVED***
+  ***REMOVED***   binding.pry
+  ***REMOVED*** ***REMOVED***
+***REMOVED***
+
   def index
     structure = {}
-    structure = itemize(Node.arrange)
+    structure = compactize(itemize(Node.arrange))
     center = Item.find(params[:item_id])
   ***REMOVED*** depths = center.nodes.map(&:ancestry_depth)
   ***REMOVED*** # depths_range = (depths.min-1)..(depths.max+1)
