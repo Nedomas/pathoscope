@@ -7,6 +7,8 @@ class Node < ActiveRecord::Base
 
   class << self
     def build(url, path, user)
+      user.paths << path unless user.paths.include?(path)
+
       url = clean_url(url)
       item = Item.find_or_create_link(url)
 
@@ -31,16 +33,8 @@ class Node < ActiveRecord::Base
 ***REMOVED***
 ***REMOVED***
 
-  def link
-    Link.find(link_id)
-***REMOVED***
-
   def url
     link.url
-***REMOVED***
-
-  def path
-    Path.find(path_id)
 ***REMOVED***
 
 ***REMOVED***

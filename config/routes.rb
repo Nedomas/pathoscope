@@ -20,6 +20,7 @@ Pathoscope::Application.routes.draw do
   root 'launching#index'
 
   get 'map' => 'map#index', as: 'map'
+  get 'map/data' => 'map#data', as: 'map_data'
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'

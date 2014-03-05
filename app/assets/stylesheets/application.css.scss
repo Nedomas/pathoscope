@@ -53,7 +53,7 @@ h1 {
   padding-top: 3em;
 }
 
-.explorer {
+.explorer, .map {
   .box {
     @include row();
     display: block;
@@ -118,11 +118,97 @@ h1 {
     }
   }
 
-  .notes {
+  .link {
+    .meta {
+      margin: 0.75em 2em;
+    }
+  }
+  .path {
+    .meta {
+      font-size: 1.2em;
+      margin: 0.95em 2em;
+    }
+    .arrow {
+      font-size: 3em;
+      margin: -1.36em -1.5em 0 -1em;
+    }
+  }
+
+  .notes-indicator {
     float: right;
     display: inline-block;
     height: 4em;
     width: 4em;
+
+    a {
+      display: inline-block;
+      height: 1.5em;
+      width: 1.5em;
+      margin-top: 1.25em;
+      background-color: $green;
+      background: url('comments.png') left no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .notes {
+    @include row();
+    display: block;
+    background-color: hsla(0, 0%, 97%, 1);
+    margin: .75em 0;
+    padding: 1em 2.5em;
+    border-radius: 1em;
+    min-height: 10em;
+
+    .note {
+      margin-bottom: 2em;
+    }
+
+    .info {
+      @include row();
+      padding-bottom: .75em;
+    }
+
+    .name {
+      float: left;
+      color: hsla(204, 16%, 24%, 1);
+      font-weight: 600;
+    }
+
+    .time {
+      float: right;
+      color: hsla(216, 4%, 72%, 1);
+      font: 0.8em $open-sans;
+    }
+
+    .new-note {
+      padding-top: 2em;
+
+      .note-content {
+        background-color: hsla(0, 0%, 92%, 1);
+        color: hsla(216, 4%, 72%, 1);
+        width: 100%;
+        max-width: 100%;
+        height: 5em;
+        border-width: 0px;
+        border: none;
+        outline: none;
+        border-radius: .5em;
+        padding: .5em;
+      }
+
+      .post-note {
+        margin-top: 1em;
+        background-color: hsla(162, 100%, 40%, 1);
+        color: $white;
+        border-width: 0px;
+        border: none;
+        outline: none;
+        border-radius: .5em;
+        padding: .75em;
+        text-transform: uppercase;
+      }
+    }
   }
 
   .level-0 {
@@ -188,4 +274,24 @@ h1 {
 
 #powerTip {
   font: normal 0.8em $open-sans;
+}
+
+.color-1 {
+  color: hsla(342, 76%, 69%, 1);
+}
+
+.color-2 {
+  color: hsla(204, 76%, 69%, 1);
+}
+
+.color-3 {
+  color: hsla(47, 76%, 69%, 1);
+}
+
+.color-4 {
+  color: hsla(141, 60%, 64%, 1);
+}
+
+.color-5 {
+  color: hsla(27, 76%, 69%, 1);
 }

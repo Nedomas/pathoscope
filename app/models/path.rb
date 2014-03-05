@@ -32,7 +32,7 @@ class Path < ActiveRecord::Base
 ***REMOVED***
 
   def links_for_user(user)
-    Node.sort_by_ancestry(Node.where(path: self, user: user)).map(&:link)
+    Node.sort_by_ancestry(Node.where(path: self, user: user))
 ***REMOVED***
 
   def screenshot_path

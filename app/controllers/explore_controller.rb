@@ -81,7 +81,8 @@ class ExploreController < ApplicationController
 
   def index
     structure = {}
-    structure = compactize(itemize(Node.arrange))
+    structure = itemize(Node.arrange)
+    binding.pry
     center = Item.find(params[:item_id])
   ***REMOVED*** depths = center.nodes.map(&:ancestry_depth)
   ***REMOVED*** # depths_range = (depths.min-1)..(depths.max+1)
@@ -117,7 +118,7 @@ class ExploreController < ApplicationController
         title: link.show_title,
         show_url: link.show_url,
         url: link.url,
-        paths: link.paths.map(&:id).sort
+        paths: link.path_ids
       }
 ***REMOVED***
 

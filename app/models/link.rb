@@ -7,7 +7,7 @@ class Link < ActiveRecord::Base
   has_one :item, as: :context
 
   def show_title
-    title.andand.truncate(80)
+    title.andand.truncate(50)
 ***REMOVED***
 
   def show_url
@@ -65,5 +65,9 @@ class Link < ActiveRecord::Base
 
   def paths
     item.nodes.map(&:path).uniq
+***REMOVED***
+
+  def path_ids
+    item.nodes.map(&:path_id).uniq.sort
 ***REMOVED***
 ***REMOVED***
