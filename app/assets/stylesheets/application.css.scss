@@ -1,6 +1,7 @@
 /*
  *= require normalize
  *= require_self
+ *= require paths
  *= require jquery.powertip.min
  dont *= require_tree .
 */
@@ -274,24 +275,4 @@ h1 {
 
 #powerTip {
   font: normal 0.8em $open-sans;
-}
-
-.color-1 {
-  color: hsla(342, 76%, 69%, 1);
-}
-
-.color-2 {
-  color: hsla(204, 76%, 69%, 1);
-}
-
-.color-3 {
-  color: hsla(47, 76%, 69%, 1);
-}
-
-.color-4 {
-  color: hsla(141, 60%, 64%, 1);
-}
-
-.color-5 {
-  color: hsla(27, 76%, 69%, 1);
 }

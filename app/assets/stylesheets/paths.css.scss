@@ -1,0 +1,48 @@
+// Place all the styles related to the ego controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "settings";
+
+.paths {
+  text-align: left;
+
+  li.path {
+    display: inline-block;
+    background-color: $semiwhite;
+    width: 46%;
+    height: 13em;
+    margin: 2%;
+    border-radius: 1em;
+  }
+
+  .description {
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+    vertical-align: top;
+    padding: 1em 1.5em;
+    text-align: left;
+    position: relative;
+
+    .extra {
+      position: absolute;
+      bottom: 1em;
+      color: $semigrey;
+      font: 400 1em $open-sans;
+    }
+  }
+
+  a.title {
+    text-decoration: none;
+    color: $semiblack;
+    font: 600 1.3em $open-sans;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    border-radius: 0 1em 1em 0;
+  }
+}

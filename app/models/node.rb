@@ -33,6 +33,10 @@ class Node < ActiveRecord::Base
 ***REMOVED***
 ***REMOVED***
 
+  def path
+    Path.find(path_id)
+***REMOVED***
+
   def url
     link.url
 ***REMOVED***

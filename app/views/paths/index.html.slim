@@ -1,12 +1,32 @@
-article.paths.ext***REMOVED***full
+h1 Paths
+
+article.paths
   ul
     - @paths.each do |path|
       li.path
-        a.title href="#explore" = path.title
-        - if current_user.paths.include?(path)
-          span.actions Chosen
-        - else
-          a.actions href="#{choose_path(path)}" Choose
+        div.description
+          a.title href="#explore" = path.title + " engineering"
+          div.extra
+            p.people
+              = "#{path.users.count} people"
+            p.links
+              = "#{path.links.count} links"
+        div.icon class="background-#{path.color}"
+
+    / new path
+    li.path
+      div.description
+        a.title href="#explore"
+          | Create new path
+        div.extra
+          p
+            | if you feel different
+      div.icon class="background-0"
+
+        /- if current_user.paths.include?(path)
+        /  span.actions Chosen
+        /- else
+        /  a.actions href="#{choose_path(path)}" Choose
         /a.div-link href="#{paths_path(path)}"
         /span.box
         /span.meta

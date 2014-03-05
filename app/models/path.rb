@@ -12,6 +12,10 @@ class Path < ActiveRecord::Base
     nodes.roots.first
 ***REMOVED***
 
+  def links
+    nodes.map(&:item).select(&:link?).uniq
+***REMOVED***
+
   def add_color
     if last_path = Path.last
       last_color = last_path.color.to_i

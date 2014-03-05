@@ -28,6 +28,32 @@ $lightgreen: hsla(153, 44%, 85%, 1);
 $semiblack: hsla(204, 12%, 25%, 1);
 $snow-white: hsla(200, 10%, 94%, 1);
 $semiwhite: hsla(180, 17%, 98%, 1);
-$semigrey: hsla(216, 5%, 81%, 1);
+$semigrey: hsla(0, 0%, 69%, 1);
+$semiwhitegrey: hsla(216, 5%, 81%, 1);
 
 $launching-grey: hsla(43, 21%, 94%, 1);
+
+$palette-red: hsla(342, 76%, 69%, 1);
+$palette-blue: hsla(204, 76%, 69%, 1);
+$palette-yellow: hsla(47, 76%, 69%, 1);
+$palette-green: hsla(141, 60%, 64%, 1);
+$palette-orange: hsla(27, 76%, 69%, 1);
+
+<% PALETTE = [
+  'hsla(0, 0%, 69%, 1)',
+  'hsla(342, 76%, 69%, 1)',
+  'hsla(204, 76%, 69%, 1)',
+  'hsla(47, 76%, 69%, 1)',
+  'hsla(141, 60%, 64%, 1)',
+  'hsla(27, 76%, 69%, 1)',
+] %>
+
+<% PALETTE.each_with_index do |color, index| %>
+  .color-<%= index %> {
+    color: <%= color %>;
+  }
+
+  .background-<%= index %> {
+    background-color: <%= color %>;
+  }
+<% ***REMOVED*** %>
