@@ -13,4 +13,14 @@ class Array
 ***REMOVED***
     hash.map {|it| Hash[*it] } + term
 ***REMOVED***
+
+  def join_with_extra_fields
+    each_with_object({}) do |element, result|
+      extra_fields = element.class::EXTRA_FIELDS.each_with_object({}) do |field, obj|
+        obj[field] = element.s***REMOVED***(field)
+  ***REMOVED***
+
+      result[element.id] = element.attributes.merge(extra_fields)
+***REMOVED***
+***REMOVED***
 ***REMOVED***

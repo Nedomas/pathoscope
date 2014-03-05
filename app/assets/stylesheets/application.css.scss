@@ -54,7 +54,7 @@ h1 {
   padding-top: 3em;
 }
 
-.explorer, .map {
+.world, .map {
   .box {
     @include row();
     display: block;
@@ -214,7 +214,7 @@ h1 {
 
   .level-0 {
     .indicator {
-      background-color: $semigrey;
+      background-color: $semiwhitegrey;
     }
   }
 
@@ -222,7 +222,7 @@ h1 {
     margin-left: 2em;
 
     .indicator {
-      background-color: $semigrey;
+      background-color: $semiwhitegrey;
     }
   }
 

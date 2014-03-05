@@ -1,24 +1,24 @@
-class ExploreController < ApplicationController
+class WorldController < ApplicationController
   before_action :authenticate_user!
 
   def show
     gon.item_id = params[:item_id]
-
 ***REMOVED***
 
   def index
-    redirect_to explore_path(1) and return if request.format.html?
+    redirect_to world_path(1) and return if request.format.html?
 
     center = Item.find(params[:item_id])
     relevant_nodes = center.nodes.map { |node| node.parent ? node.parent : node.siblings }.flatten.uniq
     item_tree = relevant_nodes.map do |node|
-      itemize(node.subtree(to_depth: 2).arrange)
+      itemize(node.subtree(to_depth: 3).arrange)
 ***REMOVED***
 
     structure = item_tree.flatten.deep_compact
 
-    links = join_with_extra_fields(Link.all)
-    paths = join_with_extra_fields(Path.all)
+    links = Array(Link.all).join_with_extra_fields
+    paths = Array(Path.all).join_with_extra_fields
+
     items = Item.all.each_with_object({}) do |item, obj|
       item_paths = item.context.paths.map(&:id).sort rescue []
 
@@ -35,16 +35,6 @@ class ExploreController < ApplicationController
       paths: paths,
       center: center.id
     }
-***REMOVED***
-
-  def join_with_extra_fields(elements)
-    elements.each_with_object({}) do |element, result|
-      extra_fields = element.class::EXTRA_FIELDS.each_with_object({}) do |field, obj|
-        obj[field] = element.s***REMOVED***(field)
-  ***REMOVED***
-
-      result[element.id] = element.attributes.merge(extra_fields)
-***REMOVED***
 ***REMOVED***
 
   def itemize(obj)

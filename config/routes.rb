@@ -12,7 +12,6 @@ Pathoscope::Application.routes.draw do
     registrations: 'registrations'
   }
 
-  get "explore" => 'explore#index', as: 'explore_index'
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
@@ -21,6 +20,10 @@ Pathoscope::Application.routes.draw do
 
   get 'map' => 'map#index', as: 'map'
   get 'map/data' => 'map#data', as: 'map_data'
+
+  get 'world' => 'world#index', as: 'world_index'
+  get 'world/:item_id' => 'world#show', as: 'world'
+  get 'world/data/:item_id' => 'world#data', as: 'world_data'
 
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'
@@ -39,8 +42,7 @@ Pathoscope::Application.routes.draw do
   get 'bookmarks/tag' => 'bookmarks#tag'
   get 'bookmarks/links' => 'bookmarks#links'
 
-***REMOVED*** get 'explore' => 'explore#index'
-  get 'explore/:item_id' => 'explore#show', as: 'explore'
+***REMOVED*** # get 'explore' => 'explore#index'
   get 'paths/:id' => 'paths#show', as: 'paths'
 
 ***REMOVED*** post 'paths/create' => 'paths#create', as: 'paths_create'
