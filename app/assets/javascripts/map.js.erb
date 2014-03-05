@@ -1,7 +1,7 @@
 var Map = (function() {
   var server = '<%= SERVER %>';
   var data, place;
-  var path_template, link_template, notes_box_template;
+  var path_template, dead_***REMOVED***_link_template, notes_box_template;
 
   var debug = function() {
     debugger;
@@ -10,9 +10,8 @@ var Map = (function() {
   var init = function() {
     place = $('.map');
     path_template = $('#path-template').html();
-    link_template = $('#link-template').html();
+    dead_***REMOVED***_link_template = $('#dead-***REMOVED***-link-template').html();
     notes_box_template = $('#notes-box-template').html();
-    // path_template = $('#path-template').html();
 
     getData().then(function(_data) {
       data = _data;
@@ -35,12 +34,8 @@ var Map = (function() {
     if (next_li.hasClass('notes')) {
       next_li.remove();
     } else {
-      li.after(_.template(notes_box_template, { klass: 'level-' + getLevel(li) } ));
+      li.after(_.template(notes_box_template, { klass: 'level-' + Helper.getLevel(li) } ));
     }
-  };
-
-  var getLevel = function(li) {
-    return $(li).attr('class').match(/level-\d/)[0].replace(/^\D+/g, '');
   };
 
   var repaint = function() {
@@ -72,15 +67,7 @@ var Map = (function() {
       klass: 'level-1'
     });
 
-    place.app***REMOVED***(_.template(link_template, link_data));
-  };
-
-  var getItem = function(id) {
-    return data.items[id];
-  };
-
-  var getPath = function(id) {
-    return data.paths[id];
+    place.app***REMOVED***(_.template(dead_***REMOVED***_link_template, link_data));
   };
 
   var getData = function() {
@@ -91,6 +78,14 @@ var Map = (function() {
         withCredentials: true
       }
     });
+  };
+
+  var getItem = function(id) {
+    return data.items[id];
+  };
+
+  var getPath = function(id) {
+    return data.paths[id];
   };
 
   return {

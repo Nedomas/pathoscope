@@ -44,6 +44,17 @@ var App = (function() {
   }
 })();
 
+var Helper = (function() {
+  var getLevel = function(li) {
+    return $(li).attr('class').match(/level-\d/)[0].replace(/^\D+/g, '');
+  };
+
+  return {
+    getLevel: getLevel,
+    _private: eval(private(arguments))
+  }
+})();
+
 jQuery(function($) {
   App.init();
 });

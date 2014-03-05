@@ -6,11 +6,17 @@ class Link < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_one :item, as: :context
 
-  def show_title
+  EXTRA_FIELDS = [:item_id, :short_title, :short_url, :path_ids].freeze
+
+  def item_id
+    item.id
+***REMOVED***
+
+  def short_title
     title.andand.truncate(50)
 ***REMOVED***
 
-  def show_url
+  def short_url
     URI(url).host.gsub('www.', '')
 ***REMOVED***
 

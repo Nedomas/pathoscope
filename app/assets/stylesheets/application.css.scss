@@ -83,7 +83,7 @@ h1 {
     display: inline-block;
     height: 4em;
     width: .5em;
-    background-color: $green;
+    /* background-color: $green; */
   }
 
   .meta {
@@ -236,18 +236,34 @@ h1 {
 
   .level-3 {
     margin-left: 6em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
   }
 
   .level-4 {
     margin-left: 8em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
   }
 
   .level-5 {
     margin-left: 10em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
   }
 
   .level-6 {
     margin-left: 12em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
   }
 
   .center .indicator {

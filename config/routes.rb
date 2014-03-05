@@ -40,7 +40,7 @@ Pathoscope::Application.routes.draw do
   get 'bookmarks/links' => 'bookmarks#links'
 
 ***REMOVED*** get 'explore' => 'explore#index'
-  get 'explore/:id' => 'explore#show', as: 'explore'
+  get 'explore/:item_id' => 'explore#show', as: 'explore'
   get 'paths/:id' => 'paths#show', as: 'paths'
 
 ***REMOVED*** post 'paths/create' => 'paths#create', as: 'paths_create'

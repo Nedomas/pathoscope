@@ -1,7 +1,7 @@
 var Explorer = (function() {
   var server = '<%= SERVER %>';
   var data, place;
-  var li_template, path_template;
+  var path_template, link_template, path_tag_template;
 
   var debug = function() {
     debugger;
@@ -9,10 +9,11 @@ var Explorer = (function() {
 
   var init = function() {
     place = $('.explorer');
-    li_template = $('#li-template').html();
     path_template = $('#path-template').html();
+    link_template = $('#link-template').html();
+    path_tag_template = $('#path-tag-template').html();
 
-    repaint(1);
+    repaint(gon.item_id);
     bindArrows();
   };
 
@@ -32,7 +33,7 @@ var Explorer = (function() {
     event.preventDefault()
 
     var li = $(this).closest('li');
-    var level = getLevel(li);
+    var level = Helper.getLevel(li);
 
     if (level != 1) {
       repaint(li.data('item_id'));
@@ -41,7 +42,7 @@ var Explorer = (function() {
     var next_all = li.nextAll();
 
     _.each(next_all, function(next_li) {
-      var next_level = getLevel(next_li);
+      var next_level = Helper.getLevel(next_li);
       if (next_level > level) {
         $(next_li).toggle();
       } else {
@@ -50,46 +51,61 @@ var Explorer = (function() {
     });
   };
 
-  var getLevel = function(li) {
-    return $(li).attr('class').match(/level-\d/)[0].replace(/^\D+/g, '');
-  };
+  // var app***REMOVED***Item = function(item_id, level) {
+  //   var item = getItem(item_id);
 
-  var app***REMOVED***Item = function(item_id, level) {
-    var item = data.items[item_id];
+  //   var klass = 'level-' + level;
+  //   if (parseInt(item_id) == data.center) {
+  //     klass += ' center';
+  //   }
 
-    var klass = 'level-' + level;
-    if (parseInt(item_id) == data.center) {
-      klass += ' center';
-    }
+  //   $(_.template(li_template, {
+  //         item_id: item.id,
+  //         title: item.short_title,
+  //         short_url: item.show_url,
+  //         klass: klass
+  //   })).app***REMOVED***To(place).slideDown('fast');
 
-    $(_.template(li_template, {
-          item_id: item.id,
-          title: item.title,
-          show_url: item.show_url,
-          klass: klass
-    })).app***REMOVED***To(place).slideDown('fast');
+  //   var paths_place = place.find('li:last-child .paths');
 
-    var paths_place = place.find('li:last-child .paths');
+  //   _.each(item.paths, function(path_id) {
+  //     var path = getPath(path_id);
 
-    _.each(item.paths, function(path_id) {
-      var path = data.paths[path_id];
-
-      paths_place.app***REMOVED***(_.template(path_template, {
-        title: path.title
-      }));
-    });
-  };
+  //     paths_place.app***REMOVED***(_.template(path_tag_template, {
+  //       title: path.title
+  //     }));
+  //   });
+  // };
 
   var recursivePopulate = function(structure, level) {
     level = level || 0;
 
     _.each(structure, function(branch) {
       _.each(branch, function(children, item_id) {
-        app***REMOVED***Item(item_id, level);
+        paintItem(item_id, level);
         recursivePopulate(children, level+1);
       });
 
     });
+  };
+
+  var paintItem = function(item_id, level) {
+    var item = getItem(item_id);
+    var klass = 'level-' + level;
+    if (parseInt(item_id) == data.center) klass += ' center';
+
+    var item_data = _.defaults(getContext(item), { klass: klass, color: '' });
+    var template = isPath(item) ? path_template : link_template;
+
+    place.app***REMOVED***(_.template(template, item_data));
+  };
+
+  var isPath = function(item) {
+    return item.context_type == 'Path';
+  };
+
+  var getContext = function(item) {
+    return isPath(item) ? getPath(item.context_id) : getLink(item.context_id);
   };
 
   var getData = function(item_id) {
@@ -103,6 +119,18 @@ var Explorer = (function() {
         item_id: item_id
       }
     });
+  };
+
+  var getItem = function(id) {
+    return data.items[id];
+  };
+
+  var getPath = function(id) {
+    return data.paths[id];
+  };
+
+  var getLink = function(id) {
+    return data.links[id];
   };
 
   return {

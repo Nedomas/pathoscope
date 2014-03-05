@@ -1,0 +1,82 @@
+script#path-template type="text/template"
+  li.box.path class="{{ klass }}" data-item_id="{{ item_id }}"
+    section.arrow class="color-{{ color }}"
+      | ●
+    section.meta
+      p.title
+        | {{ title }}
+    section.notes-indicator
+      a href='#'
+
+script#link-template type="text/template"
+  li.box.link class="{{ klass }}" data-item_id="{{ item_id }}"
+    section.arrow
+      a href='#' ❯
+    section.indicator
+    section.meta
+      p.title
+        | {{ short_title }}
+      p
+        span.url
+          | {{ short_url }}
+        span.paths
+    section.notes-indicator
+      a href='#'
+
+script#dead-***REMOVED***-link-template type="text/template"
+  li.box.link class="{{ klass }}" data-item_id="{{ item_id }}"
+    section.arrow
+    section.indicator
+    section.meta
+      p.title
+        | {{ short_title }}
+      p
+        span.url
+          | {{ short_url }}
+        span.paths
+    section.notes-indicator
+      a href='#'
+
+script#notes-box-template type="text/template"
+  div.notes class="{{ klass }}"
+    ul
+      li.note
+        section.info
+          span.name
+            | John Mayer
+          span.time
+            | 15 seconds ago
+        section.content
+            | he .hasClass() method will return true if the class is assigned to an element, even if other classes also are. For example, given the HTML above, the following
+      li.note
+        section.info
+          span.name
+            | John Mayer
+          span.time
+            | 15 seconds ago
+        section.content
+            | I need your sway cause you always pay for it
+    section.new-note
+      textarea.note-content
+      button.post-note Post Note
+
+script#path-tag-template type="text/template"
+  span.path
+    span.circle
+      | ●
+    span.title
+      | {{ title }}
+
+script#li-template type="text/template"
+  li.box class="{{ klass }}" data-item_id="{{ item_id }}" style="display: none"
+    section.arrow
+      a href='#' ❯
+    section.indicator
+    section.meta
+      p.title
+        | {{ title }}
+      p
+        span.url
+          | {{ short_url }}
+        span.paths
+    section.notes-indicator

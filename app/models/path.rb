@@ -8,6 +8,12 @@ class Path < ActiveRecord::Base
   has_many :users, through: :user_paths
   has_one :item, as: :context
 
+  EXTRA_FIELDS = [:item_id].freeze
+
+  def item_id
+    item.id
+***REMOVED***
+
   def node
     nodes.roots.first
 ***REMOVED***
