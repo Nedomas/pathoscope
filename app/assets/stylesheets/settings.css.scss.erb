@@ -51,6 +51,11 @@ $palette-orange: hsla(27, 76%, 69%, 1);
 <% PALETTE.each_with_index do |color, index| %>
   .color-<%= index %> {
     color: <%= color %>;
+    fill: <%= color %>;
+
+    a svg {
+      fill: <%= color %>;
+    }
   }
 
   .background-<%= index %> {

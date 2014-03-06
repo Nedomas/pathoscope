@@ -17,4 +17,9 @@ module ApplicationHelper
       resource
 ***REMOVED***
 ***REMOVED***
+
+  def inline_svg(path)
+    file = File.open("app/assets/images/#{path}", "rb")
+    raw file.read
+***REMOVED***
 ***REMOVED***

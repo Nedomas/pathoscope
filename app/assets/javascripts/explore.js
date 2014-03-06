@@ -93,31 +93,23 @@ var Explore = (function() {
   var openLeaf = function(element, root) {
     var jelement = $(element);
     var level = Helper.getLevel(jelement);
-    root = root || { element: element, level: level };
+    var item = itemFromLi(jelement);
+    // if (level != 1 && !isPath(item)) return redraw(item.id);
 
+    root = root || { element: element, level: level };
     if (element == root.element) {
       jelement.removeClass('closed');
     }
 
-    if (+level == root.level+1) {
+    if (+level == +root.level+1) {
       jelement.removeClass('hidden');
-    } else {
-      // debugger;
     }
-    console.log(root);
-    console.log('element', element, 'level', level);
-    if (level > root+2) return true;
+
+    if (+level > +root.level+1) return false;
 
     var branches = jelement.nextAll();
     _.each(branches, function(branch) {
-      // var level = Helper.getLevel(branch);
-
-      openLeaf(branch, root);
-      // if (level > +1) {
-      //   openLeaf(branch, true);
-      // } else {
-      //   return false;
-      // }
+      return openLeaf(branch, root);
     });
   };
 

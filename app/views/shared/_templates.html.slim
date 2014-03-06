@@ -2,6 +2,7 @@ script#path-template type="text/template"
   li.box.path class="{{ klass }}" data-item_id="{{ item_id }}"
     section.arrow class="color-{{ color }}"
       a href="#"
+        = inline_svg "filled.svg"
     section.meta
       p.title
         | {{ title }}

@@ -27,25 +27,24 @@
   }
 
   .path {
-    .arrow a {
+    .arrow a svg {
       display: inline-block;
       height: 2em;
       width: 2em;
       margin-top: 1em;
-      background: url('unfilled.png') center no-repeat;
-      background-size: contain;
+      /* background: url('unfilled.svg') center no-repeat; */
+      /* background-size: contain; */
     }
-
     .meta {
       font-size: 1.2em;
       margin: 0.95em 2em;
     }
   }
 
-  .path.closed .arrow a {
-    background: url('filled.png') center no-repeat;
-    background-size: contain;
-  }
+  /* .path.closed .arrow a { */
+  /*   background: url('filled.png') center no-repeat; */
+  /*   background-size: contain; */
+  /* } */
 
   .link.closed .arrow {
     @include transform(rotate(90deg));
@@ -233,5 +232,3 @@
     background-color: $green;
   }
 }
-
-
