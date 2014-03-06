@@ -1,25 +1,53 @@
 class BookmarksController < ApplicationController
   def begin
-    resp = {}
+  ***REMOVED*** resp = {}
 
-    if user_signed_in?
-      resp[:logged_in] = true
+  ***REMOVED*** if user_signed_in?
+  ***REMOVED***   resp[:logged_in] = true
 
-      paths = current_user.paths.map do |path|
-        { id: path.id, title: path.title, color: path.color, count: path.nodes.count }
-  ***REMOVED***
+  ***REMOVED***   paths = current_user.paths.map do |path|
+  ***REMOVED***     { id: path.id, title: path.title, color: path.color, count: path.nodes.count }
+  ***REMOVED*** ***REMOVED***
 
-      resp[:paths] = paths.to_json
-    else
-      resp[:logged_in] = false
+  ***REMOVED***   resp[:paths] = paths.to_json
+  ***REMOVED*** else
+  ***REMOVED***   resp[:logged_in] = false
+  ***REMOVED*** ***REMOVED***
+
+    r***REMOVED***er json: {
+      logged_in: user_signed_in?
+    }
 ***REMOVED***
 
-    r***REMOVED***er json: resp
+  def data
+    links = Array(Link.all).join_with_extra_fields
+    paths = Array(Path.all).join_with_extra_fields
+
+    user_path_item_ids = current_user.paths.map(&:item_id)
+    links = Array(Link.all).join_with_extra_fields
+    paths = Array(Path.all).join_with_extra_fields
+
+    items = Item.all.each_with_object({}) do |item, obj|
+      item_paths = item.context.paths.map(&:id).sort rescue []
+
+      obj[item.id] = item.attributes.merge(
+        title: item.context.title,
+        paths: item_paths
+      )
+***REMOVED***
+
+    r***REMOVED***er json: {
+      user_path_item_ids: user_path_item_ids,
+      links: links,
+      paths: paths,
+      items: items
+    }
 ***REMOVED***
 
   def tag
   ***REMOVED*** User logged in
-    path = Path.find(params[:path_id])
+    item = Item.find(params[:item_id])
+    path = item.context
     url = params[:href]
     node = Node.build(url, path, current_user)
     r***REMOVED***er json: { node_id: node.id }

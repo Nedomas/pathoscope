@@ -1,8 +1,10 @@
 var Explore = (function() {
   var server, type, data;
-  var place, map_place, world_place;
+  var place, map_place, world_place, choose_path_place;
+  var app_div, app_dialog, app_content;
   var path_template, link_template, dead_***REMOVED***_link_template, path_tag_template,
     notes_box_template;
+  var choose_path_template;
 
   var debug = function() {
     debugger;
@@ -11,21 +13,35 @@ var Explore = (function() {
   var init = function(_type) {
     server = gon.global.server;
     type = _type;
+
     map_place = $('.map');
     world_place = $('.world');
+    choose_path_place = $('.choose-path');
+
+    app_div = $('div#pathoscope').last();
+    app_dialog = app_div.find('#pathoscope-app');
+    app_content = app_dialog.find('.content');
+
     path_template = $('#path-template').html();
     link_template = $('#link-template').html();
     dead_***REMOVED***_link_template = $('#dead-***REMOVED***-link-template').html();
     path_tag_template = $('#path-tag-template').html();
     notes_box_template = $('#notes-box-template').html();
 
+    // app templates
+    choose_path_template = $('#pathoscope-choose-path-template').html();
+
     bindButtons();
     redraw(gon.item_id);
   };
 
   var bindButtons = function() {
-    $(document).on('click', '.notes-indicator a', toggleNotes);
-    $(document).on('click', '.arrow a', toggleTree);
+    if (type == 'choose_path') {
+      $(document).on('click', '.arrow a', Pathoscope.tag);
+    } else {
+      $(document).on('click', '.notes-indicator a', toggleNotes);
+      $(document).on('click', '.arrow a', toggleTree);
+    }
   };
 
   var toggleNotes = function() {
@@ -157,15 +173,28 @@ var Explore = (function() {
       history.pushState('pathoscope', 'Pathoscope', '/world/' + item_id);
     }
 
+    map_place = $('.map');
+    world_place = $('.world');
+    choose_path_place = $('.choose-path');
     place = eval(type + '_place');
     place.html('Loading...');
 
     getData(type, item_id).then(function(_data) {
       data = _data;
       place.html('');
-      // data.structure = JSON.parse('[{"5":[{"6":[]}]}]');
-      recursivePopulate(data.structure);
-      initToggles(data.open_roots);
+      if (type == 'choose_path') {
+        drawChoosePaths(data.user_path_item_ids);
+      } else {
+        recursivePopulate(data.structure);
+        initToggles(data.open_roots);
+      }
+    });
+  };
+
+  var drawChoosePaths = function(user_path_item_ids) {
+    app_content.app***REMOVED***(_.template(choose_path_template));
+    _.each(user_path_item_ids, function(id) {
+      drawItem(id, 0);
     });
   };
 
@@ -188,7 +217,6 @@ var Explore = (function() {
 //     // early reload when moving over collection boundary
 //     // if (!init && element_level != 1 && !isPath(item)) return redraw(item.id);
 //
-//     // if (item.id == 2) debugger;
 //     toggleClosed(jelement);
 //     var children = jelement.nextAll();
 //
@@ -207,7 +235,8 @@ var Explore = (function() {
   var getData = function(type, item_id) {
     var urls = {
       map: '/map/data',
-      world: '/world'
+      world: '/world',
+      choose_path: '/bookmarks/data'
     };
 
     return $.ajax({
@@ -229,7 +258,6 @@ var Explore = (function() {
       _.each(branch, function(children, item_id) {
         drawItem(item_id, level, _.isEmpty(children));
 
-        // if (item_id == 4) debugger;
         // continue only for 2 levels
         if (level < 2) recursivePopulate(children, level+1);
       });
@@ -247,7 +275,14 @@ var Explore = (function() {
   };
 
   var drawPath = function(item_data) {
-    place.app***REMOVED***(_.template(path_template, item_data));
+    getPlace().app***REMOVED***(_.template(path_template, item_data));
+  };
+
+  var getPlace = function() {
+    map_place = $('.map');
+    world_place = $('.world');
+    choose_path_place = $('.choose-path');
+    return eval(type + '_place');
   };
 
   var drawLink = function(item_data, dead_***REMOVED***) {

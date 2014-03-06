@@ -25,6 +25,9 @@ Pathoscope::Application.routes.draw do
   get 'world/:item_id' => 'world#show', as: 'world'
   get 'world/data/:item_id' => 'world#data', as: 'world_data'
 
+  get 'bookmarks/data' => 'bookmarks#data', as: 'bookmarks_data'
+  get 'bookmarks/templates' => 'bookmarks#templates'
+
 ***REMOVED*** Example of regular route:
   get 'paths' => 'paths#index', as: 'paths_index'
   get 'paths/choose/:id' => 'paths#choose', as: 'choose'
@@ -37,7 +40,6 @@ Pathoscope::Application.routes.draw do
   get 'install' => 'install#bookmarklet', as: 'install'
 
   get 'bookmarks/create' => 'bookmarks#create', as: 'bookmarks_create'
-  get 'bookmarks/templates' => 'bookmarks#templates'
   get 'bookmarks/begin' => 'bookmarks#begin'
   get 'bookmarks/tag' => 'bookmarks#tag'
   get 'bookmarks/links' => 'bookmarks#links'

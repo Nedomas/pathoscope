@@ -3,39 +3,44 @@ div#pathoscope
   div#pathoscope-app
     header
       section.logo
-      section.logo-text Pathoscope
       section.close
-        a href='#' Close
+        a href='#' X
     section.content
 
-  div#pathoscope-select-path
-    h1 Select path to tag
-    section.paths
+script#pathoscope-choose-path-template type="text/template"
+  h1 Select a path to tag
+  article.choose-path
+  article.new-path
+    | Go to
+    = link_to ' Pathoscope', paths_index_url
+    |  to choose a different path
 
-  div#pathoscope-tagged
-    section.link
-      p.title
-      p.url
-    h2 was tagged to
-    section.tag
-      ul
-        li
-          a href='#'
-    h3 At this point lads chosen to read
-    section.links
+script#pathoscope-tagged-template type="text/template"
+  section.link
+    p.title
+    p.url
+  h2 was tagged to
+  section.tag
+    ul
+      li
+        a href='#'
+  h3 At this point lads chosen to read
+  section.links
 
-  div#pathoscope-login
-    section.logo
-    header
-      h1
-        | You need to login to add this link
-    section.login
-      input.email type='text' placeholder='Email'
-      input.password type='password' placeholder='Password'
-      section.red-button
-        a.login-button href='#' Login
-    section.sign-up
-      p
-        | Don't have an account?
-      p
-        = link_to 'Sign up', new_user_registration_url
+script#pathoscope-login-template type="text/template"
+  section.logo
+  header
+    h1
+      | You need to login to add this link
+  section.login
+    input.email type='text' placeholder='Email'
+    input.password type='password' placeholder='Password'
+    section.red-button
+      a.login-button href='#' Login
+  section.sign-up
+    p
+      | Don't have an account?
+    p
+      = link_to 'Sign up', new_user_registration_url
+
+= r***REMOVED***er 'shared/templates'

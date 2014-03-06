@@ -25,12 +25,25 @@ var Pathoscope = (function(){
   };
 
   var loadCSS = function() {
-    load('head', 'link', server + '/assets/public/popup.css', loadTemplates);
+    load('head', 'link', server + '/assets/public/app.css', loadLodash);
+  };
+
+  var loadLodash = function() {
+    load('head', 'script', server + '/assets/lodash.min.js', loadHelpers);
+  };
+
+  var loadHelpers = function() {
+    load('head', 'script', server + '/assets/app.js', loadExplore);
+  };
+
+  var loadExplore = function() {
+    window.gon = window.gon || { global: { server: server } };
+    load('head', 'script', server + '/assets/explore.js', loadTemplates);
   };
 
   var loadTemplates = function() {
     $.get(server + '/bookmarks/templates').then(function(templates) {
-      var html = $(templates).find('main #pathoscope').clone();
+      var html = $(templates).find('main').clone();
       $('body').app***REMOVED***(html);
       init();
     });
@@ -86,28 +99,32 @@ var Pathoscope = (function(){
     });
   };
 
-  var tag = function(path_id) {
+  var tag = function() {
+    var li = $(this).closest('li');
+    var item_id = li.data('item_id');
     return $.ajax({
       type: 'GET',
       url: server + '/bookmarks/tag',
       xhrFields: { withCredentials: true },
       data: {
-        path_id: path_id,
+        item_id: item_id,
         href: current_url
       }
+    }).then(function(resp) {
+      alert('Success');
     });
   };
 
-  var links = function(node_id) {
-    return $.ajax({
-      type: 'GET',
-      url: server + '/bookmarks/links',
-      xhrFields: { withCredentials: true },
-      data: {
-        node_id: node_id
-      }
-    });
-  };
+  // var links = function(node_id) {
+  //   return $.ajax({
+  //     type: 'GET',
+  //     url: server + '/bookmarks/links',
+  //     xhrFields: { withCredentials: true },
+  //     data: {
+  //       node_id: node_id
+  //     }
+  //   });
+  // };
 
   var show = function(resp) {
     $('#pathoscope-trigger').leanModal();
@@ -116,144 +133,145 @@ var Pathoscope = (function(){
     main_div = $('div#pathoscope').last();
     dialog = main_div.find('#pathoscope-app');
     content = dialog.find('.content');
-    bindings();
+    // bindings();
 
     if (resp.logged_in) {
-      selectPath(resp);
+      Explore.init('choose_path');
     } else {
       loginForm();
     }
   };
 
-  var bindings = function() {
-    dialog.find('.close').click(close);
-    $(document).on('click', '#pathoscope-select-path li a', clickTagPath);
-  };
+  // var bindings = function() {
+  //   dialog.find('.close').click(close);
+  //   $(document).on('click', '#pathoscope-select-path li a', clickTagPath);
+  // };
 
-  var clickTagPath = function() {
-    var path_id = $(this).data('id');
+  // var clickTagPath = function() {
+  //   var path_id = $(this).data('id');
 
-    tag(path_id).then(function(resp) {
-      tagged(resp.node_id);
-    });
-  };
+  //   tag(path_id).then(function(resp) {
+  //     tagged(resp.node_id);
+  //   });
+  // };
 
-  var tagged = function(node_id) {
-    links(node_id).then(function(resp) {
-      var html = main_div.find('#pathoscope-tagged');
-      app***REMOVED***Link(html, resp.link);
-      app***REMOVED***Tag(html, resp.tag);
-      app***REMOVED***Links(html, resp.links)
-      content.html(html);
-    });
-  };
+  // var tagged = function(node_id) {
+  //   links(node_id).then(function(resp) {
+  //     var html = main_div.find('#pathoscope-tagged');
+  //     app***REMOVED***Link(html, resp.link);
+  //     app***REMOVED***Tag(html, resp.tag);
+  //     app***REMOVED***Links(html, resp.links)
+  //     content.html(html);
+  //   });
+  // };
 
-  var app***REMOVED***Link = function(html, link) {
-    html.find('.link .title').html(link.title);
-    html.find('.link .url').html(link.show_url);
-  };
+  // var app***REMOVED***Link = function(html, link) {
+  //   html.find('.link .title').html(link.title);
+  //   html.find('.link .url').html(link.show_url);
+  // };
 
-  var app***REMOVED***Tag = function(html, tag) {
-    html.find('.tag a').html(tag.title);
-    html.find('.tag a').addClass('background-' + tag.color);
-  };
+  // var app***REMOVED***Tag = function(html, tag) {
+  //   html.find('.tag a').html(tag.title);
+  //   html.find('.tag a').addClass('background-' + tag.color);
+  // };
 
-  var app***REMOVED***Links = function(html, links) {
-    var list = $('<ul></ul>');
+  // var app***REMOVED***Links = function(html, links) {
+  //   var list = $('<ul></ul>');
 
-    $.each(links, function(index, link) {
-      var item = $("<li>" +
-        "<div class='thumbnail'></div>" +
-        "<div class='meta'>" +
-          "<section class='title'>" +
-            "<a href='" + link.url + "'>" +
-              link.title +
-            "</a>" +
-          "</section>" +
-          "<section class='url'>" +
-            "<a href='" + link.url + "'>" +
-              link.show_url +
-            "</a>" +
-          "</section>" +
-        "</div>" +
-      "</li>");
+  //   $.each(links, function(index, link) {
+  //     var item = $("<li>" +
+  //       "<div class='thumbnail'></div>" +
+  //       "<div class='meta'>" +
+  //         "<section class='title'>" +
+  //           "<a href='" + link.url + "'>" +
+  //             link.title +
+  //           "</a>" +
+  //         "</section>" +
+  //         "<section class='url'>" +
+  //           "<a href='" + link.url + "'>" +
+  //             link.show_url +
+  //           "</a>" +
+  //         "</section>" +
+  //       "</div>" +
+  //     "</li>");
 
-      item.find('.thumbnail').css('background', "url('" + link.thumbnail_path + "') center no-repeat");
-      item.find('.thumbnail').css('background-size', 'contain');
-      list.app***REMOVED***(item);
-    });
+  //     item.find('.thumbnail').css('background', "url('" + link.thumbnail_path + "') center no-repeat");
+  //     item.find('.thumbnail').css('background-size', 'contain');
+  //     list.app***REMOVED***(item);
+  //   });
 
-    html.find('.links').html(list);
-  };
+  //   html.find('.links').html(list);
+  // };
 
-  var selectPath = function(resp) {
-    var html = main_div.find('#pathoscope-select-path');
-    app***REMOVED***Paths(html, resp.paths);
-    content.html(html);
-  };
+  // var selectPath = function(resp) {
+  //   var html = main_div.find('#pathoscope-select-path');
+  //   app***REMOVED***Paths(html, resp.paths);
+  //   content.html(html);
+  // };
 
-  var app***REMOVED***Paths = function(html, paths_json) {
-    var paths = JSON.parse(paths_json);
-    var list = $('<ul></ul>');
+  // var app***REMOVED***Paths = function(html, paths_json) {
+  //   var paths = JSON.parse(paths_json);
+  //   var list = $('<ul></ul>');
 
-    $.each(paths, function(index, path) {
-      list.app***REMOVED***("<li>" +
-        "<a href='#' data-id='" + path.id + "' class='background-" + path.color + "'>" +
-          path.title +
-        "</a>" +
-      "</li>");
-    });
+  //   $.each(paths, function(index, path) {
+  //     list.app***REMOVED***("<li>" +
+  //       "<a href='#' data-id='" + path.id + "' class='background-" + path.color + "'>" +
+  //         path.title +
+  //       "</a>" +
+  //     "</li>");
+  //   });
 
-    list.app***REMOVED***("<li>" +
-      "<a href='#' data-id='0' class='background-all new'>" +
-        "Choose new path..." +
-      "</a>" +
-    "</li>");
+  //   list.app***REMOVED***("<li>" +
+  //     "<a href='#' data-id='0' class='background-all new'>" +
+  //       "Choose new path..." +
+  //     "</a>" +
+  //   "</li>");
 
-    html.find('.paths').html(list)
-  };
+  //   html.find('.path-select').html(list)
+  // };
 
-  var loginForm = function() {
-    var html = $('div#pathoscope-login').last().clone();
-    html.show();
-    $('#pathoscope-app').html(html);
-    html.find('.login-button').click(login);
-  };
+  // var loginForm = function() {
+  //   var html = $('div#pathoscope-login').last().clone();
+  //   html.show();
+  //   $('#pathoscope-app').html(html);
+  //   html.find('.login-button').click(login);
+  // };
 
-  var login = function() {
-    var email = $('#pathoscope-login .email').last().val();
-    var password = $('#pathoscope-login .password').last().val();
+  // var login = function() {
+  //   var email = $('#pathoscope-login .email').last().val();
+  //   var password = $('#pathoscope-login .password').last().val();
 
-    var data = {
-      remote: true,
-      commit: "Sign in",
-      utf8: "✓",
-      user: {
-        remember_me: 1,
-        password: password,
-        email: email
-      }
-    };
+  //   var data = {
+  //     remote: true,
+  //     commit: "Sign in",
+  //     utf8: "✓",
+  //     user: {
+  //       remember_me: 1,
+  //       password: password,
+  //       email: email
+  //     }
+  //   };
 
-    return $.ajax({
-      type: 'POST',
-      url: server + '/users/sign_in.json',
-      xhrFields: { withCredentials: true },
-      data: data,
-      success: function(resp) {
-        init();
-      },
-      error: function(e) {
-        alert('Auth failed');
-      }
-    });
-  };
+  //   return $.ajax({
+  //     type: 'POST',
+  //     url: server + '/users/sign_in.json',
+  //     xhrFields: { withCredentials: true },
+  //     data: data,
+  //     success: function(resp) {
+  //       init();
+  //     },
+  //     error: function(e) {
+  //       alert('Auth failed');
+  //     }
+  //   });
+  // };
 
   var error = function(err) {
     console.log('Error', err);
   };
 
   return {
+    tag: tag,
     run: run
   };
 })();

@@ -1,4 +1,4 @@
-.world, .map {
+.world, .map, .choose-path {
   .box {
     @include row();
     display: block;
@@ -40,7 +40,6 @@
       font-size: 1.2em;
       margin: 0.95em 2em;
     }
-
   }
 
   .path.closed .arrow a {
