@@ -1,0 +1,238 @@
+.world, .map {
+  .box {
+    @include row();
+    display: block;
+    background-color: $semiwhite;
+    margin: .75em 0;
+    border-radius: 1em;
+    height: 4em;
+  }
+
+  .arrow {
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+    vertical-align: top;
+    text-align: center;
+    line-height: 4em;
+  }
+
+  .link .arrow {
+    @include transform(rotate(270deg));
+
+    a {
+      color: $semigrey;
+      text-decoration: none;
+    }
+  }
+
+  .path {
+    .arrow a {
+      display: inline-block;
+      height: 2em;
+      width: 2em;
+      margin-top: 1em;
+      background: url('unfilled.png') center no-repeat;
+      background-size: contain;
+    }
+
+    .meta {
+      font-size: 1.2em;
+      margin: 0.95em 2em;
+    }
+
+  }
+
+  .path.closed .arrow a {
+    background: url('filled.png') center no-repeat;
+    background-size: contain;
+  }
+
+  .link.closed .arrow {
+    @include transform(rotate(90deg));
+  }
+
+  .indicator {
+    display: inline-block;
+    height: 4em;
+    width: .5em;
+  }
+
+  .meta {
+    display: inline-block;
+    height: 4em;
+    vertical-align: top;
+    margin: 0.5em 2em;
+
+    .title {
+      font: 600 1.1em $open-sans;
+    }
+
+    .url {
+      font: 400 .9em $open-sans;
+    }
+
+    .path-tag {
+      margin-left: 1em;
+      line-height: 1em;
+
+      a {
+        text-decoration: none;
+
+      }
+
+      .circle {
+        font: 400 1.5em $open-sans;
+        line-height: 1em;
+      }
+
+      .title {
+        color: $semigrey;
+        font: 400 .9em $open-sans;
+        margin-left: 0.5em;
+        line-height: 1em;
+
+        &:hover {
+          color: $semiblack;
+        }
+      }
+    }
+  }
+
+  .notes-indicator {
+    float: right;
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+
+    a {
+      display: inline-block;
+      height: 1.5em;
+      width: 1.5em;
+      margin-top: 1.25em;
+      background-color: $green;
+      background: url('comments.png') left no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .notes {
+    @include row();
+    display: block;
+    background-color: hsla(0, 0%, 97%, 1);
+    margin: .75em 0;
+    padding: 1em 2.5em;
+    border-radius: 1em;
+    min-height: 10em;
+
+    .note {
+      margin-bottom: 2em;
+    }
+
+    .info {
+      @include row();
+      padding-bottom: .75em;
+    }
+
+    .name {
+      float: left;
+      color: hsla(204, 16%, 24%, 1);
+      font-weight: 600;
+    }
+
+    .time {
+      float: right;
+      color: hsla(216, 4%, 72%, 1);
+      font: 0.8em $open-sans;
+    }
+
+    .new-note {
+      padding-top: 2em;
+
+      .note-content {
+        background-color: hsla(0, 0%, 92%, 1);
+        color: hsla(216, 4%, 72%, 1);
+        width: 100%;
+        max-width: 100%;
+        height: 5em;
+        border-width: 0px;
+        border: none;
+        outline: none;
+        border-radius: .5em;
+        padding: .5em;
+      }
+
+      .post-note {
+        margin-top: 1em;
+        background-color: hsla(162, 100%, 40%, 1);
+        color: $white;
+        border-width: 0px;
+        border: none;
+        outline: none;
+        border-radius: .5em;
+        padding: .75em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .level-0 {
+    .indicator {
+      background-color: $semiwhitegrey;
+    }
+  }
+
+  .level-1 {
+    margin-left: 2em;
+
+    .indicator {
+      background-color: $semiwhitegrey;
+    }
+  }
+
+  .level-2 {
+    margin-left: 4em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .level-3 {
+    margin-left: 6em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .level-4 {
+    margin-left: 8em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .level-5 {
+    margin-left: 10em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .level-6 {
+    margin-left: 12em;
+
+    .indicator {
+      background-color: $lightgreen;
+    }
+  }
+
+  .center .indicator {
+    background-color: $green;
+  }
+}
+
+

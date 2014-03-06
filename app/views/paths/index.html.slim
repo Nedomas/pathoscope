@@ -5,7 +5,7 @@ article.paths
     - @paths.each do |path|
       li.path
         div.description
-          a.title href="#explore" = path.title + " engineering"
+          = link_to path.title, world_path(path.item.id), class: :title
           div.extra
             p.people
               = "#{path.users.count} people"

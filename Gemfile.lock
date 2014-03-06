@@ -87,6 +87,7 @@ GEM
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
+    gravatar_image_tag (1.2.0)
     hike (1.2.3)
     hpricot (0.8.6)
     htmlentities (4.3.1)
@@ -246,6 +247,7 @@ DEPENDENCIES
   faye-websocket (= 0.4.7)
   fuzzily
   gon
+  gravatar_image_tag
   hpricot
   htmlentities
   jbuilder

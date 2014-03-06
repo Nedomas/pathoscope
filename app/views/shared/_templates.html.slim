@@ -60,12 +60,14 @@ script#notes-box-template type="text/template"
       textarea.note-content
       button.post-note Post Note
 
+- path_url = "#{SERVER}/world/{{ item_id }}"
 script#path-tag-template type="text/template"
-  span.path
-    span.circle
-      | ●
-    span.title
-      | {{ title }}
+  span.path-tag
+    a href=path_url
+      span.circle class="color-{{ color }}"
+        | ●
+      span.title
+        | {{ title }}
 
 script#li-template type="text/template"
   li.box class="{{ klass }}" data-item_id="{{ item_id }}" style="display: none"

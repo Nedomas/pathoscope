@@ -9,12 +9,15 @@ class WorldController < ApplicationController
     redirect_to world_path(1) and return if request.format.html?
 
     center = Item.find(params[:item_id])
-    relevant_nodes = center.nodes.map { |node| node.parent ? node.parent : node.siblings }.flatten.uniq
+    relevant_nodes = center.nodes.map do |node|
+      node.parent ? node.parent.siblings : node.siblings
+***REMOVED***.flatten.uniq
     item_tree = relevant_nodes.map do |node|
       itemize(node.subtree(to_depth: 3).arrange)
 ***REMOVED***
 
     structure = item_tree.flatten.deep_compact
+    open_roots = center.nodes.map(&:parent).uniq.compact.map(&:item_id)
 
     links = Array(Link.all).join_with_extra_fields
     paths = Array(Path.all).join_with_extra_fields
@@ -33,7 +36,8 @@ class WorldController < ApplicationController
       links: links,
       items: items,
       paths: paths,
-      center: center.id
+      center: center.id,
+      open_roots: open_roots
     }
 ***REMOVED***
 

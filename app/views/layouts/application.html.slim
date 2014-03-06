@@ -13,6 +13,19 @@ html
     div#page-wrapper
       header.ext***REMOVED***full
         nav
+          a.logo
+          ul
+            li
+              = link_to 'Paths', paths_index_path
+            li
+              = link_to 'World', world_index_path
+            li
+              = link_to 'Mental Map', map_path
+            li
+              = link_to 'Install', install_path
+            li
+              a.avatar href='#'
+                = gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
       section.errors
         - flash.each do |name, msg|
           = content_tag :p, msg, class: name

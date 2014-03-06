@@ -25,6 +25,7 @@ gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
 gem 'newrelic_rpm'
 gem 'gon'
+gem 'gravatar_image_tag'
 
 # gem 'websocket-driver', '>= 0.2.0'
 # gem 'multi_json',       '~> 1.0'

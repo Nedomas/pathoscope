@@ -40,7 +40,55 @@ header {
 
   nav {
     @include row();
-    height: 3em;
+    height: 5em;
+
+    ul {
+      float: right;
+      display: inline-block;
+      list-style-type: none;
+
+      li {
+        @include inline-block;
+        margin-left: golden-ratio(1em, 1);
+        font: 0.8em $open-sans;
+        font-weight: 400;
+        vertical-align: middle;
+        margin-top: 1.5em;
+      }
+
+      .nodes {
+        background: url('smallwhitetop.png') left no-repeat;
+        background-size: contain;
+        padding-left: 3.2em;
+      }
+
+      .paths {
+        background: url('shieldwhitetop.png') left no-repeat;
+        background-size: contain;
+        padding-left: 2em;
+      }
+
+      a {
+        text-transform: uppercase;
+        &:hover {
+          border-bottom: .1em solid $white;
+        }
+      }
+
+      a.avatar {
+        img {
+          height: 3.5em;
+          width: 3.5em;
+          border-radius: 1000em;
+        }
+
+        &:hover {
+          border: 0;
+          -webkit-filter: blur(1px);
+        }
+      }
+
+    }
   }
 }
 
@@ -54,236 +102,7 @@ h1 {
   padding-top: 3em;
 }
 
-.world, .map {
-  .box {
-    @include row();
-    display: block;
-    background-color: $semiwhite;
-    margin: .75em 0;
-    border-radius: 1em;
-    height: 4em;
-  }
-
-  .arrow {
-    display: inline-block;
-    height: 4em;
-    width: 4em;
-    vertical-align: top;
-    text-align: center;
-    line-height: 4em;
-  }
-
-  .link .arrow {
-    @include transform(rotate(90deg));
-
-    a {
-      color: $semigrey;
-      text-decoration: none;
-    }
-  }
-
-  .path .arrow {
-    a {
-      display: inline-block;
-      height: .8em;
-      width: .8em;
-      margin-top: 1.25em;
-      background: url('filled.png') center no-repeat;
-      background-size: contain;
-    }
-  }
-
-  .indicator {
-    display: inline-block;
-    height: 4em;
-    width: .5em;
-    /* background-color: $green; */
-  }
-
-  .meta {
-    display: inline-block;
-    height: 4em;
-    vertical-align: top;
-    margin: 0.75em 2em;
-
-    .title {
-      font: 600 1.1em $open-sans;
-    }
-
-    .url {
-      font: 400 .9em $open-sans;
-    }
-
-    .path {
-      margin-left: 1em;
-      line-height: 1em;
-
-      .circle {
-        color: $green;
-        font: 400 1.5em $open-sans;
-        line-height: 1em;
-      }
-
-      .title {
-        color: $semigrey;
-        font: 400 .9em $open-sans;
-        margin-left: 0.5em;
-        line-height: 1em;
-      }
-    }
-  }
-
-  .link {
-    .meta {
-      margin: 0.75em 2em;
-    }
-  }
-  .path {
-    .meta {
-      font-size: 1.2em;
-      margin: 0.95em 2em;
-    }
-    .arrow {
-      font-size: 3em;
-      margin: -1.36em -1.5em 0 -1em;
-    }
-  }
-
-  .notes-indicator {
-    float: right;
-    display: inline-block;
-    height: 4em;
-    width: 4em;
-
-    a {
-      display: inline-block;
-      height: 1.5em;
-      width: 1.5em;
-      margin-top: 1.25em;
-      background-color: $green;
-      background: url('comments.png') left no-repeat;
-      background-size: contain;
-    }
-  }
-
-  .notes {
-    @include row();
-    display: block;
-    background-color: hsla(0, 0%, 97%, 1);
-    margin: .75em 0;
-    padding: 1em 2.5em;
-    border-radius: 1em;
-    min-height: 10em;
-
-    .note {
-      margin-bottom: 2em;
-    }
-
-    .info {
-      @include row();
-      padding-bottom: .75em;
-    }
-
-    .name {
-      float: left;
-      color: hsla(204, 16%, 24%, 1);
-      font-weight: 600;
-    }
-
-    .time {
-      float: right;
-      color: hsla(216, 4%, 72%, 1);
-      font: 0.8em $open-sans;
-    }
-
-    .new-note {
-      padding-top: 2em;
-
-      .note-content {
-        background-color: hsla(0, 0%, 92%, 1);
-        color: hsla(216, 4%, 72%, 1);
-        width: 100%;
-        max-width: 100%;
-        height: 5em;
-        border-width: 0px;
-        border: none;
-        outline: none;
-        border-radius: .5em;
-        padding: .5em;
-      }
-
-      .post-note {
-        margin-top: 1em;
-        background-color: hsla(162, 100%, 40%, 1);
-        color: $white;
-        border-width: 0px;
-        border: none;
-        outline: none;
-        border-radius: .5em;
-        padding: .75em;
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .level-0 {
-    .indicator {
-      background-color: $semiwhitegrey;
-    }
-  }
-
-  .level-1 {
-    margin-left: 2em;
-
-    .indicator {
-      background-color: $semiwhitegrey;
-    }
-  }
-
-  .level-2 {
-    margin-left: 4em;
-
-    .indicator {
-      background-color: $lightgreen;
-    }
-  }
-
-  .level-3 {
-    margin-left: 6em;
-
-    .indicator {
-      background-color: $lightgreen;
-    }
-  }
-
-  .level-4 {
-    margin-left: 8em;
-
-    .indicator {
-      background-color: $lightgreen;
-    }
-  }
-
-  .level-5 {
-    margin-left: 10em;
-
-    .indicator {
-      background-color: $lightgreen;
-    }
-  }
-
-  .level-6 {
-    margin-left: 12em;
-
-    .indicator {
-      background-color: $lightgreen;
-    }
-  }
-
-  .center .indicator {
-    background-color: $green;
-  }
-}
+@import "explore";
 
 // Extras
 .cf:before, .cf:after {
@@ -305,4 +124,8 @@ h1 {
 
 #powerTip {
   font: normal 0.8em $open-sans;
+}
+
+.hidden {
+  display: none !important;
 }

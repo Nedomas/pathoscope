@@ -133,6 +133,7 @@
     "aggregate_templates": true,
     "precompile_templates": true,
     "asBreaks": true,
-    "setTimeout": true
+    "setTimeout": true,
+    "Helper": true
   }
 }
