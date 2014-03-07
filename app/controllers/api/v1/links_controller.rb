@@ -1,4 +1,4 @@
-class Api::V1::PathsController < ApplicationController
+class Api::V1::LinksController < ApplicationController
   MODEL = const_get(controller_name.classify)
   respond_to :json
 

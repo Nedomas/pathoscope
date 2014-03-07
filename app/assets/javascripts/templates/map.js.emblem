@@ -1,0 +1,9 @@
+h1 Map
+
+article.map
+  = map
+  ul
+    = each item in items
+      = item.context_type
+      li
+        = item.context.title

@@ -25,7 +25,7 @@ html
               = link_to 'Install', install_path
             li
               a.avatar href='#'
-                = gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
+                /= gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
       section.errors
         - flash.each do |name, msg|
           = content_tag :p, msg, class: name

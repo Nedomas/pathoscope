@@ -1,6 +1,24 @@
-| Hiii
+h1 Paths
 
-= each path
-  = log path
-  p Something
-  h2= path.title
+article.paths
+  ul
+    = each path in controller
+      li.path
+        div.description
+          a.title href="/world/{{ path.item_id! }}"
+            = path.title
+          div.extra
+            p.people {{ path.users_count }} people
+            p.links
+              | #{ path.links_count! } links
+        div class="icon background-{{ path.color! }}"
+
+    / new path
+    li.path
+      div.description
+        a.title href="#explore"
+          | Create new path
+        div.extra
+          p
+            | if you feel different
+      div class="icon background-0"

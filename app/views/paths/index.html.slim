@@ -1,40 +1,17 @@
 h1 Paths
-
 article.paths
-  script type='text/x-handlebars'
-    | {{ outlet }}
-/  ul
-/    - @paths.each do |path|
-/      li.path
-/        div.description
-/          = link_to path.title, world_path(path.item.id), class: :title
-/          div.extra
-/            p.people
-/              = "#{path.users.count} people"
-/            p.links
-/              = "#{path.links.count} links"
-/        div.icon class="background-#{path.color}"
-/
-/    / new path
-/    li.path
-/      div.description
-/        a.title href="#explore"
-/          | Create new path
-/        div.extra
-/          p
-/            | if you feel different
-/      div.icon class="background-0"
+***REMOVED***ember-container
 
-        /- if current_user.paths.include?(path)
-        /  span.actions Chosen
-        /- else
-        /  a.actions href="#{choose_path(path)}" Choose
-        /a.div-link href="#{paths_path(path)}"
-        /span.box
-        /span.meta
-        /  div.aligner
-        /    p.title
-        /      = path.title
-        /div.triangle
-        /span.nodes title="#{path.nodes.count} nodes in this path"
-        /  = path.nodes.count
+/- if current_user.paths.include?(path)
+/  span.actions Chosen
+/- else
+/  a.actions href="#{choose_path(path)}" Choose
+/a.div-link href="#{paths_path(path)}"
+/span.box
+/span.meta
+/  div.aligner
+/    p.title
+/      = path.title
+/div.triangle
+/span.nodes title="#{path.nodes.count} nodes in this path"
+/  = path.nodes.count

@@ -1,7 +1,12 @@
 Pathoscope::Application.routes.draw do
+  get "home/index"
+
   namespace :api do
     namespace :v1 do
-      resources :paths, only: :index
+      get 'map' => 'map#index'
+      resources :paths
+      resources :links
+      resources :items
 ***REMOVED***
 ***REMOVED***
 
@@ -22,7 +27,7 @@ Pathoscope::Application.routes.draw do
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
 ***REMOVED*** You can have the root of your site routed with "root"
-  root 'paths#index'
+  root 'home#index'
 
   get 'map' => 'map#index', as: 'map'
   get 'map/data' => 'map#data', as: 'map_data'
