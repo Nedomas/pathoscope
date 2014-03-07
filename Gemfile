@@ -31,6 +31,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
+gem 'ember_script-rails', github: 'ghempton/ember-script-rails'
 
 # gem 'websocket-driver', '>= 0.2.0'
 # gem 'multi_json',       '~> 1.0'

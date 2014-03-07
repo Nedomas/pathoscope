@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ghempton/ember-script-rails.git
+  revision: 9a1f09b0c53bf51c37c35490cc76cd7dfe461234
+  specs:
+    ember_script-rails (0.0.3)
+      ember_script (>= 0.0.4)
+      rails
+
+GIT
   remote: https://github.com/mattetti/ruby-web-search.git
   revision: 6f8c13b2aaeaaf216dfe9ea8159a9af8eb8c7949
   specs:
@@ -103,6 +111,11 @@ GEM
       railties (>= 3.1)
     ember-source (1.4.0)
       handlebars-source (~> 1.0)
+    ember_script (0.0.5)
+      ember_script-source (>= 0.0.2)
+      execjs
+      tilt
+    ember_script-source (0.0.14)
     emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.14.0)
@@ -280,6 +293,7 @@ DEPENDENCIES
   devise
   ember-rails
   ember-source
+  ember_script-rails!
   emblem-rails
   faraday
   faye-websocket (= 0.4.7)

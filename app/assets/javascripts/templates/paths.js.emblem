@@ -1,0 +1,6 @@
+| Hiii
+
+= each path
+  = log path
+  p Something
+  h2= path.title
