@@ -1,4 +1,5 @@
 Pathoscope::Application.configure do
+  config.ember.variant = :development
 ***REMOVED*** Settings specified here will take precedence over those in config/application.rb.
 
 ***REMOVED*** The test environment is used exclusively to run your application's

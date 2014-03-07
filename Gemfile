@@ -27,6 +27,11 @@ gem 'newrelic_rpm'
 gem 'gon'
 gem 'gravatar_image_tag'
 
+gem 'coffee-rails', '~> 4.0.0'
+gem 'ember-rails'
+gem 'ember-source'
+gem 'emblem-rails'
+
 # gem 'websocket-driver', '>= 0.2.0'
 # gem 'multi_json',       '~> 1.0'
 # gem 'cliver',           '~> 0.3.1'

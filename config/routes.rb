@@ -1,4 +1,10 @@
 Pathoscope::Application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :paths, only: :index
+***REMOVED***
+***REMOVED***
+
   get "map/index"
   get "install/bookmarklet"
   get "launching/index"
@@ -16,7 +22,7 @@ Pathoscope::Application.routes.draw do
 ***REMOVED*** See how all your routes lay out with "rake routes".
 
 ***REMOVED*** You can have the root of your site routed with "root"
-  root 'launching#index'
+  root 'paths#index'
 
   get 'map' => 'map#index', as: 'map'
   get 'map/data' => 'map#data', as: 'map_data'
