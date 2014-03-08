@@ -7,6 +7,8 @@ Pathoscope::Application.routes.draw do
       resources :paths
       resources :links
       resources :items
+      resources :user_paths
+      resources :users
 ***REMOVED***
 ***REMOVED***
 

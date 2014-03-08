@@ -3,4 +3,3 @@
 App.Router.map () ->
   @resource('paths')
   @route('map')
-

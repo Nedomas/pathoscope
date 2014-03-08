@@ -1,0 +1,13 @@
+li.box.link
+  section.arrow
+    a href='#' ❯
+  section.indicator
+  section.meta
+    p.title
+      | {{ title }}
+    p
+      span.url
+        | {{ short_url }}
+      span.paths
+  section.notes-indicator
+    a href='#'

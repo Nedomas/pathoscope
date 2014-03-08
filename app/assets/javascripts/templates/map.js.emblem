@@ -1,9 +1,9 @@
 h1 Map
 
 article.map
-  = map
   ul
-    = each item in items
-      = item.context_type
-      li
-        = item.context.title
+    each user_path in user_paths
+      path-li title=user_path.path.title color_class=user_path.path.color_class
+
+      each item in user_path.items
+        link-li title=item.context.short_title short_url=item.context.short_url
