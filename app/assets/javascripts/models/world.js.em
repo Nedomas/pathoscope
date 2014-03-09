@@ -13,4 +13,4 @@ App.World = DS.Model.ext***REMOVED***
 
   +computed children
   hasChildren: ->
-    !_.isEmpty(@get('children'))
+    !_.isEmpty(@get('children').toArray())

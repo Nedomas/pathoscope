@@ -20,6 +20,10 @@
   .link .arrow {
     @include transform(rotate(270deg));
 
+    &.closed {
+      @include transform(rotate(90deg));
+      /* @include transform(rotate(270deg)); */
+    }
     a {
       color: $semigrey;
       text-decoration: none;
@@ -46,9 +50,9 @@
   /*   background-size: contain; */
   /* } */
 
-  .link.closed .arrow {
-    @include transform(rotate(90deg));
-  }
+  /* .link .arrow.closed { */
+  /*   @include transform(rotate(90deg)); */
+  /* } */
 
   .indicator {
     display: inline-block;

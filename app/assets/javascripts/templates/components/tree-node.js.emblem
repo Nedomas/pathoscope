@@ -1,6 +1,33 @@
 if node.item.isPath
-  path-li title=node.item.context.title color_class=node.item.context.color_class
+  li class="box path"
+    section.arrow class=node.item.context.color_class
+      a{action "toggle"} href="#"
+        if isExpanded
+          == empty-circle
+        else
+          == filled-circle
+    section.meta
+      p.title
+        | {{ node.item.context.title }}
+    section.notes-indicator
+      a href="#"
+  / path-li title=node.item.context.title color_class=node.item.context.color_class
 else
-  link-li title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren
+  li.box.link
+    section.arrow class={ isExpanded::closed }
+      if node.hasChildren
+        a{action "toggle"} href="#" ❯
+    section.indicator
+    section.meta
+      p.title
+        node.item.context.short_title
+      p
+        span.url
+          node.item.context.short_url
+        span.paths
+    section.notes-indicator
+      a href='#'
+  / link-li title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren
 
-tree-branch node=node
+if isExpanded
+  tree-branch node=node
