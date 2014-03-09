@@ -9,3 +9,7 @@ App.Item = DS.Model.ext***REMOVED***
       App.Path.find(@get('context_id'))
     else
       App.Link.find(@get('context_id'))
+
+  +computed context_type
+  isPath: ->
+    @get('context_type') == 'Path'

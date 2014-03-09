@@ -3,7 +3,10 @@ Pathoscope::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'map' => 'map#index'
+    ***REMOVED*** get 'map' => 'map#index'
+    ***REMOVED*** get 'maps' => 'map#index'
+      resources :maps
+      resources :worlds
       resources :paths
       resources :links
       resources :items

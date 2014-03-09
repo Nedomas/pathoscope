@@ -1,6 +1,7 @@
 li.box.link
   section.arrow
-    a href='#' ❯
+    if show_arrow
+      a href='#' ❯
   section.indicator
   section.meta
     p.title

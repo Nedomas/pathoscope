@@ -1,4 +1,5 @@
-App.MapController = Ember.ObjectController.ext***REMOVED***
-  soundVolume: 1
-  something: ->
-    @get('map')
+App.MapController = Ember.ArrayController.ext***REMOVED***
+  +computed parent
+  paths_as_maps: ->
+    @store.filter App.Map, {}, (map) ->
+      map.get('isRoot')

@@ -1,0 +1,6 @@
+if node.item.isPath
+  path-li title=node.item.context.title color_class=node.item.context.color_class
+else
+  link-li title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren
+
+tree-branch node=node

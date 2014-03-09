@@ -1,10 +1,8 @@
 App.MapRoute = Ember.Route.ext***REMOVED***
   model: ->
-  ***REMOVED*** console.log('yooo')
-  ***REMOVED*** @store.find('user_path')
-  ***REMOVED*** # App.UserPath.find()
-    Ember.RSVP.hash
-      paths: @store.find('path')
-      items: @store.find('item')
-      user_paths: @store.find('user_path')
-      users: @store.find('user')
+    @store.find('map')
+  ***REMOVED*** Ember.RSVP.hash
+  ***REMOVED***   paths: @store.find('path')
+  ***REMOVED***   items: @store.find('item')
+  ***REMOVED***   user_paths: @store.find('user_path')
+  ***REMOVED***   users: @store.find('user')
