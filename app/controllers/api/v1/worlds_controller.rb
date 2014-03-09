@@ -3,14 +3,35 @@ class Api::V1::WorldsController < ApplicationController
 
   def index
     r***REMOVED***er json: {
-      worlds: all_records,
+      worlds: all_records(params[:ids]),
       meta: { current_user: current_user }
     }
   ***REMOVED*** respond_with worlds: all_records
 ***REMOVED***
 
   def show
-    record = all_records.find { |record| record[:id] == params[:id].to_i }
+    fake_root = {
+      id: 0,
+      parent: nil,
+      parent_id: nil,
+      children_ids: Path.all.map(&:id)
+    }
+
+    if params[:id].to_i == 0
+      record = fake_root
+    else
+      node = Node.find(params[:id])
+      record = {
+        id: node.id,
+        children_ids: node.child_ids,
+        parent_id: node.parent_id || 0,
+        parent: node.parent || fake_root,
+        item: node.item,
+        item_id: node.item.id
+      }
+***REMOVED***
+  ***REMOVED*** record = all_records.find { |record| record[:id] == params[:id].to_i }
+
     r***REMOVED***er json: {
       world: record,
       meta: { current_user: current_user }
@@ -18,7 +39,7 @@ class Api::V1::WorldsController < ApplicationController
   ***REMOVED*** respond_with world: record
 ***REMOVED***
 
-  def all_records
+  def all_records(ids=nil)
     fake_root = {
       id: 0,
       parent: nil,
@@ -27,7 +48,13 @@ class Api::V1::WorldsController < ApplicationController
     }
     all_records = [fake_root]
 
-    Node.all.each do |node|
+    nodes = if ids
+      Node.find(ids)
+    else
+      Node.where("ancestry_depth <= ?", 1)
+***REMOVED***
+
+    nodes.each do |node|
       all_records << {
         id: node.id,
         children_ids: node.child_ids,

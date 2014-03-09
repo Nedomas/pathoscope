@@ -1,7 +1,23 @@
 App.WorldController = Ember.ArrayController.ext***REMOVED***
-  +computed isLoaded
+***REMOVED*** isExpanded: false
+***REMOVED*** actions:
+***REMOVED***   toggle: ->
+***REMOVED***     alert('got it')
+***REMOVED***   ***REMOVED*** @s***REMOVED***Action()
+***REMOVED***     @toggleProperty('isExpanded')
+
+***REMOVED*** toggle: ->
+***REMOVED***   alert('got it')
+***REMOVED*** ***REMOVED*** @s***REMOVED***Action()
+***REMOVED***   @toggleProperty('isExpanded')
+
+  +computed world
   meta: ->
-    'heyy babe' + @store.get('resourceName')
+  ***REMOVED*** 'heyy babe' +
+  ***REMOVED*** console.log(@store.metadataFor(App.CurrentUser))
+
+    @store.get('meta')
+  ***REMOVED*** console.log(@store.typeMapFor(App.World).metadata)
 
   +computed parent
   paths_as_world: ->

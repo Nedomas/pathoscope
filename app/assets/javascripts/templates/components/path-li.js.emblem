@@ -1,10 +1,13 @@
 li class="box path"
   section.arrow class=color_class
     a{action "toggle"} href="#"
-      == filled-circle
+      if isExpanded
+        == empty-circle
+      else
+        == filled-circle
   section.meta
     p.title
-      | {{ title }}
+      = title
   section.notes-indicator
     a href="#"
 

@@ -8,6 +8,11 @@ App.World = DS.Model.ext***REMOVED***
 ***REMOVED*** isPath: ->
 ***REMOVED***   @get('item.isPath')
 
+***REMOVED*** +computed
+***REMOVED*** hello: ->
+***REMOVED***   @store.metadataFor('current_user')
+  ***REMOVED*** @get('meta.current_user')
+
   +computed parent
   isRoot: ->
     @get('parent') == null

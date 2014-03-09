@@ -7,7 +7,8 @@ class Api::V1::PathsController < ApplicationController
 ***REMOVED***
 
   def show
-    respond_with MODEL.find(params[:id])
+    r***REMOVED***er json: MODEL.find(params[:id]), meta: { current_user: current_user }
+  ***REMOVED*** respond_with MODEL.find(params[:id])
 ***REMOVED***
 
   def create

@@ -5,4 +5,4 @@ App.Store = DS.Store.ext***REMOVED***
 ***REMOVED*** is built to work nicely with the ActiveModel::Serializers gem.
   adapter: DS.RESTAdapter.ext***REMOVED***
     namespace: 'api/v1'
-    serializer: App.ApplicationSerializer
+  ***REMOVED*** serializer: App.WorldSerializer
