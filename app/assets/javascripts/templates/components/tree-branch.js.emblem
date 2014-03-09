@@ -1,3 +1,2 @@
-div.padded
-  each child in node.children
-    tree-node node=child
+each child in node.children
+  tree-node node=child

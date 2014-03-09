@@ -2,12 +2,20 @@ class Api::V1::WorldsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with worlds: all_records
+    r***REMOVED***er json: {
+      worlds: all_records,
+      meta: { current_user: current_user }
+    }
+  ***REMOVED*** respond_with worlds: all_records
 ***REMOVED***
 
   def show
     record = all_records.find { |record| record[:id] == params[:id].to_i }
-    respond_with world: record
+    r***REMOVED***er json: {
+      world: record,
+      meta: { current_user: current_user }
+    }
+  ***REMOVED*** respond_with world: record
 ***REMOVED***
 
   def all_records

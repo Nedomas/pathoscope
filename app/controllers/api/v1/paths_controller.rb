@@ -3,7 +3,7 @@ class Api::V1::PathsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with MODEL.all
+    r***REMOVED***er json: MODEL.all, meta: { current_user: current_user }
 ***REMOVED***
 
   def show

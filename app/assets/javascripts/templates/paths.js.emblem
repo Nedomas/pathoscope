@@ -1,17 +1,21 @@
 h1 Paths
 
+controllers.application.domas
 article.paths
   ul
-    = each path in controller
+    = each path in paths
       li.path
         div.description
-          a.title href="/world/{{ path.item_id! }}"
+          link-to 'world' 1
             = path.title
+          / a.title href="/world/{{ path.item_id! }}"
+          /   = path.title
           div.extra
-            p.people {{ path.users_count }} people
+            p.people
+              | #{path.users_count} people
             p.links
-              | #{ path.links_count! } links
-        div class="icon background-{{ path.color! }}"
+              | #{path.links_count} links
+        div.icon class=path.color_class
 
     / new path
     li.path

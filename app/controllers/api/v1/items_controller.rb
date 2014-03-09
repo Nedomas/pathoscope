@@ -3,11 +3,12 @@ class Api::V1::ItemsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with MODEL.all
+    r***REMOVED***er json: MODEL.all, meta: { current_user: current_user }
 ***REMOVED***
 
   def show
-    respond_with MODEL.find(params[:id])
+    r***REMOVED***er json: MODEL.find(params[:id]), meta: { current_user: current_user }
+  ***REMOVED*** respond_with MODEL.find(params[:id])
 ***REMOVED***
 
   def create

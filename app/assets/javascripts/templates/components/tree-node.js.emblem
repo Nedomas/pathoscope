@@ -30,4 +30,5 @@ else
   / link-li title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren
 
 if isExpanded
-  tree-branch node=node
+  div.padded
+    tree-branch node=node

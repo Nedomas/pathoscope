@@ -1,0 +1,22 @@
+header.ext***REMOVED***full
+ nav
+   a.logo
+   ul
+     li
+       link-to 'paths' | Paths
+     li
+       link-to 'worlds' | World
+     li
+       link-to 'map' | Mental map
+     li
+       | Install
+     li
+       a.avatar href='#'
+         /= gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
+section.errors
+ / - flash.each do |name, msg|
+ /   = content_tag :p, msg, class: name
+main
+ outlet
+footer.ext***REMOVED***full
+

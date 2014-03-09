@@ -1,7 +1,7 @@
 App.Item = DS.Model.ext***REMOVED***
   context_id: DS.attr('string')
   context_type: DS.attr('string')
-  map_parents: DS.hasMany('App.Path')
+***REMOVED*** map_parents: DS.hasMany('App.Path')
 
   +computed context_id, context_type
   context: ->

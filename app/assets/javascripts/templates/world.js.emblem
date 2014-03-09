@@ -1,9 +1,6 @@
 h1 World
+= meta
 
 article.world
   ul
-    / each path_as_world in paths_as_world
     tree-branch node=root
-    /   | yo
-      / path-with-links path_as_map=path_as_map
-
