@@ -1,7 +1,9 @@
 h1 World
 | meta is #{meta}
-= meta
 
 article.world
   ul
-    tree-branch node=root
+    if model.parent
+      link-to 'world' model.parent | UP
+    each sibling in model.siblings
+      tree-node node=sibling word-was-chosen='wordWasSelected'

@@ -1,10 +1,11 @@
 li class="box path"
   section.arrow class=color_class
-    a{action "toggle"} href="#"
+    a{action 'randomShit' node.id} href="#"
       if isExpanded
         == empty-circle
       else
         == filled-circle
+    / link-to 'world' node
   section.meta
     p.title
       = title

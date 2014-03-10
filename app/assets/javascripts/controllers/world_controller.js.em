@@ -1,4 +1,4 @@
-App.WorldController = Ember.ArrayController.ext***REMOVED***
+App.WorldController = Ember.ObjectController.ext***REMOVED***
 ***REMOVED*** isExpanded: false
 ***REMOVED*** actions:
 ***REMOVED***   toggle: ->
@@ -10,20 +10,33 @@ App.WorldController = Ember.ArrayController.ext***REMOVED***
 ***REMOVED***   alert('got it')
 ***REMOVED*** ***REMOVED*** @s***REMOVED***Action()
 ***REMOVED***   @toggleProperty('isExpanded')
+***REMOVED*** isExpanded: false
 
-  +computed world
-  meta: ->
-  ***REMOVED*** 'heyy babe' +
-  ***REMOVED*** console.log(@store.metadataFor(App.CurrentUser))
+  actions:
+    wordWasSelected: (param) ->
+    ***REMOVED*** alert('selected')
+    ***REMOVED*** console.log(id)
+      @transitionToRoute('world', param)
+    ***REMOVED*** alert('randgoggle')
+    ***REMOVED*** @set('isExpanded', true)
+    ***REMOVED*** console.log('expancding')
+    ***REMOVED*** @toggleProperty('isExpanded')
+    ***REMOVED*** false
 
-    @store.get('meta')
-  ***REMOVED*** console.log(@store.typeMapFor(App.World).metadata)
 
-  +computed parent
-  paths_as_world: ->
-    @store.filter App.World, {}, (world) ->
-      world.get('isRoot')
+***REMOVED*** +computed world
+***REMOVED*** meta: ->
+***REMOVED*** ***REMOVED*** 'heyy babe' +
+***REMOVED*** ***REMOVED*** console.log(@store.metadataFor(App.CurrentUser))
 
-  +computed parent
-  root: ->
-    @store.find(App.World, 0)
+***REMOVED***   @store.get('meta')
+***REMOVED*** ***REMOVED*** console.log(@store.typeMapFor(App.World).metadata)
+
+***REMOVED*** +computed parent
+***REMOVED*** paths_as_world: ->
+***REMOVED***   @store.filter App.World, {}, (world) ->
+***REMOVED***     world.get('isRoot')
+
+***REMOVED*** +computed parent
+***REMOVED*** root: ->
+***REMOVED***   @store.find(App.World, 0)

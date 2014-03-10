@@ -4,5 +4,5 @@ App.Router.map () ->
   @resource('paths')
   @route('map')
   @resource('worlds')
-  @resource('world', path: '/world/:post_id')
+  @resource('world', path: '/worlds/:id')
 

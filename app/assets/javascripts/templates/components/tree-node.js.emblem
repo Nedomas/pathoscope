@@ -1,9 +1,8 @@
 if node.item.isPath
-  path-li title=node.item.context.title color_class=node.item.context.color_class isExpanded=isExpanded action='toggle'
+  path-li node=node title=node.item.context.title color_class=node.item.context.color_class isExpanded=isExpanded word-was-chosen='wordWasSelected'
 else
-  link-li short_title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren isExpanded=isExpanded action='toggle'
+  link-li node=node short_title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren isExpanded=isExpanded word-was-chosen='wordWasSelected'
 
-/ a{action 'toggle'} | Helo
 if isExpanded
   div.padded
     tree-branch node=node toggle='toggle'

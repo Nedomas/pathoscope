@@ -4,14 +4,6 @@ App.World = DS.Model.ext***REMOVED***
   item: DS.belongsTo('App.Item')
 
   isPath: Ember.computed.alias('item.isPath')
-***REMOVED*** +computed item.@each.isPath
-***REMOVED*** isPath: ->
-***REMOVED***   @get('item.isPath')
-
-***REMOVED*** +computed
-***REMOVED*** hello: ->
-***REMOVED***   @store.metadataFor('current_user')
-  ***REMOVED*** @get('meta.current_user')
 
   +computed parent
   isRoot: ->
@@ -20,3 +12,14 @@ App.World = DS.Model.ext***REMOVED***
   +computed children
   hasChildren: ->
     !_.isEmpty(@get('children').toArray())
+
+  +computed parent
+  hasParent: ->
+    @get('parent') != null
+
+***REMOVED*** recalcing itself when parent is observed
+  +computed children
+  siblings: ->
+    parent = @get('parent')
+    @store.filter App.World, {}, (world) ->
+      world.get('parent') == parent

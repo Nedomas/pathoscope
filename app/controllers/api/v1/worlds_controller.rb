@@ -2,34 +2,46 @@ class Api::V1::WorldsController < ApplicationController
   respond_to :json
 
   def index
-    r***REMOVED***er json: {
-      worlds: all_records(params[:ids]),
-      meta: { current_user: current_user }
-    }
+    if id = params[:id]
+      r***REMOVED***er json: {
+        worlds: [all_records([id]).last],
+        meta: { current_user: current_user }
+      }
+    elsif params[:parent_id] == ""
+      r***REMOVED***er json: {
+        worlds: all_records.select { |record| !record[:parent_id] },
+        meta: { current_user: current_user }
+      }
+    else
+      r***REMOVED***er json: {
+        worlds: all_records(params[:ids]),
+        meta: { current_user: current_user }
+      }
+***REMOVED***
   ***REMOVED*** respond_with worlds: all_records
 ***REMOVED***
 
   def show
-    fake_root = {
-      id: 0,
-      parent: nil,
-      parent_id: nil,
-      children_ids: Path.all.map(&:id)
-    }
+  ***REMOVED*** fake_root = {
+  ***REMOVED***   id: 0,
+  ***REMOVED***   parent: nil,
+  ***REMOVED***   parent_id: nil,
+  ***REMOVED***   children_ids: Path.all.map(&:id)
+  ***REMOVED*** }
 
-    if params[:id].to_i == 0
-      record = fake_root
-    else
-      node = Node.find(params[:id])
-      record = {
-        id: node.id,
-        children_ids: node.child_ids,
-        parent_id: node.parent_id || 0,
-        parent: node.parent || fake_root,
-        item: node.item,
-        item_id: node.item.id
-      }
-***REMOVED***
+  ***REMOVED*** if params[:id].to_i == 0
+  ***REMOVED***   record = fake_root
+  ***REMOVED*** else
+    node = Node.find(params[:id])
+    record = {
+      id: node.id,
+      children_ids: node.child_ids,
+      parent_id: node.parent_id,
+      parent: node.parent,
+      item: node.item,
+      item_id: node.item.id
+    }
+  ***REMOVED*** ***REMOVED***
   ***REMOVED*** record = all_records.find { |record| record[:id] == params[:id].to_i }
 
     r***REMOVED***er json: {
@@ -40,13 +52,13 @@ class Api::V1::WorldsController < ApplicationController
 ***REMOVED***
 
   def all_records(ids=nil)
-    fake_root = {
-      id: 0,
-      parent: nil,
-      parent_id: nil,
-      children_ids: Path.all.map(&:id)
-    }
-    all_records = [fake_root]
+  ***REMOVED*** fake_root = {
+  ***REMOVED***   id: 0,
+  ***REMOVED***   parent: nil,
+  ***REMOVED***   parent_id: nil,
+  ***REMOVED***   children_ids: Path.all.map(&:id)
+  ***REMOVED*** }
+    all_records = []
 
     nodes = if ids
       Node.find(ids)
@@ -58,8 +70,8 @@ class Api::V1::WorldsController < ApplicationController
       all_records << {
         id: node.id,
         children_ids: node.child_ids,
-        parent_id: node.parent_id || 0,
-        parent: node.parent || fake_root,
+        parent_id: node.parent_id,
+        parent: node.parent,
         item: node.item,
         item_id: node.item.id
       }

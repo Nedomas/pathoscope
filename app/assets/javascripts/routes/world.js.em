@@ -1,6 +1,6 @@
 App.WorldRoute = Ember.Route.ext***REMOVED***
-  model: ->
-    @store.find('world')
+  model: (params) ->
+    @store.find('world', params.id)
 
 App.WorldsRoute = Ember.Route.ext***REMOVED***
   beforeModel: ->

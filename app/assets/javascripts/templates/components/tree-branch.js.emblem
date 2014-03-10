@@ -1,2 +1,2 @@
 each child in node.children
-  tree-node node=child
+  tree-node node=child action='toggle'

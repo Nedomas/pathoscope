@@ -1,4 +1,5 @@
 App.PathLiComponent = Ember.Component.ext***REMOVED***
   actions:
-    toggle: ->
-      @s***REMOVED***Action()
+    randomShit: (param) ->
+    ***REMOVED*** alert('in path li')
+      @s***REMOVED***Action('word-was-chosen', param)

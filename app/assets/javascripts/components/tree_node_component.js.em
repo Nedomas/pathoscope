@@ -1,12 +1,9 @@
 App.TreeNodeComponent = Ember.Component.ext***REMOVED***
   isExpanded: false
 
-***REMOVED*** reset: (->
-***REMOVED*** ***REMOVED*** @set('isExpanded', fa)
-***REMOVED***   console.log('RESET/INIT', @get('isExpanded')))
-***REMOVED*** .on('init')
-
   actions:
-    toggle: ->
+    wordWasSelected: (param) ->
+    ***REMOVED*** alert('in tree node')
       @toggleProperty('isExpanded')
-    ***REMOVED*** console.log('TOGGLE ACTION', @get('isExpanded'))
+      @s***REMOVED***Action('word-was-chosen', param)
+    ***REMOVED*** @s***REMOVED***Action('toggle', @get('param'))
