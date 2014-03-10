@@ -1,22 +1,29 @@
 header.ext***REMOVED***full
- nav
-   a.logo
-   ul
-     li
-       link-to 'paths' | Paths
-     li
-       link-to 'world' 1 | World
-     li
-       link-to 'map' | Mental map
-     li
-       | Install
-     li
-       a.avatar href='#'
-         /= gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
+  nav
+    a.logo
+    ul
+      li
+        link-to 'paths' | Paths
+      li
+        link-to 'world' 1 | World
+      li
+        link-to 'map' | Mental map
+      li
+        | Install
+      li
+        a.avatar href='#'
+      li
+        if isSignedIn
+          current_user.username
+          button{action "signOut"} Sign Out
+        else
+          link-to "session" | Sign in
+/
+/          /= gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
 section.errors
- / - flash.each do |name, msg|
- /   = content_tag :p, msg, class: name
+/  / - flash.each do |name, msg|
+/  /   = content_tag :p, msg, class: name
 main
- outlet
+  outlet
 footer.ext***REMOVED***full
-
+/

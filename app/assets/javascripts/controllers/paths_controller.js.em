@@ -1,5 +1,5 @@
-# App.PathsController = Ember.ArrayController.ext***REMOVED***
-#   needs: ['application']
+App.PathsController = Ember.ArrayController.ext***REMOVED***
+  needs: ['application']
 ***REMOVED*** +computed model.isLoaded
 ***REMOVED*** current_user: ->
   ***REMOVED*** @store.metadataFor('current_user')

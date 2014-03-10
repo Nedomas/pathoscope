@@ -20,5 +20,7 @@ module Pathoscope
         resource '*', :headers => :any, :methods => [:get, :post, :options]
   ***REMOVED***
 ***REMOVED***
+
+    config.assets.paths << Rails.root.join('v***REMOVED***or', 'assets', 'bower_components')
 ***REMOVED***
 ***REMOVED***

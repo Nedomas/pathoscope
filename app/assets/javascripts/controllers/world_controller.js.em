@@ -1,4 +1,5 @@
 App.WorldController = Ember.ObjectController.ext***REMOVED***
+  needs: ['application']
 
   +computed model.@each.siblings
   base_items: ->

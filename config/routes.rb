@@ -1,4 +1,8 @@
 Pathoscope::Application.routes.draw do
+  devise_scope :user do
+    get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
+***REMOVED***
+
   get "home/index"
 
   namespace :api do
@@ -23,7 +27,7 @@ Pathoscope::Application.routes.draw do
   get "comments/create"
   get 'comments/index'
 
-  devise_for :users, controllers: {
+  devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }, controllers: {
     sessions: 'sessions',
     registrations: 'registrations'
   }
