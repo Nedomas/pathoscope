@@ -2,7 +2,7 @@ li.box.link
   section.arrow class={ isExpanded::closed }
     / if show_arrow
       / a{action "toggle"} href="#" ❯
-    a{action 'randomShit' node.id} href="#" ❯
+    a{action 'toggle' node.id} href="#" ❯
   section.indicator
   section.meta
     p.title

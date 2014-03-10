@@ -5,5 +5,6 @@ article.world
   ul
     if model.parent
       go-up-li parent=model.parent
-    each sibling in model.siblings
-      tree-node node=sibling word-was-chosen='wordWasSelected'
+    log base_nodes
+    each node in base_nodes
+      tree-node node=node treeNodeAction='toggleLi' isExpanded=node.open
