@@ -3,12 +3,7 @@ App.ApplicationController = Ember.Controller.ext***REMOVED***
   +computed
   current_user: ->
     @get('currentSession.user')
-  ***REMOVED*** @store.get('currentSession')
-  ***REMOVED*** @store.set('current_user', currentSession)
 
-***REMOVED*** +computed App.metaData.current_user
-***REMOVED*** domas: ->
-***REMOVED***   @store.get('meta')
-  ***REMOVED*** 'helllo' + Ember.get('App.metaData')
-  ***REMOVED*** 'hello'
-
+  +computed current_user
+  current_user_gravatar_url: ->
+    'http://www.gravatar.com/avatar/' + md5(@get('current_user.email'))

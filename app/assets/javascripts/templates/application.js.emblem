@@ -9,21 +9,17 @@ header.ext***REMOVED***full
       li
         link-to 'map' | Mental map
       li
-        | Install
+        link-to 'map' | Install
       li
         a.avatar href='#'
+          img src=current_user_gravatar_url
       li
-        if isSignedIn
-          current_user.username
-          button{action "signOut"} Sign Out
-        else
-          link-to "session" | Sign in
-/
-/          /= gravatar_image_tag('domas.bitvinskas@me.com', alt: 'Domas')
+        / if isSignedIn
+        /   button{action "signOut"} Sign Out
+        / else
+        /   link-to "session" | Sign in
+
 section.errors
-/  / - flash.each do |name, msg|
-/  /   = content_tag :p, msg, class: name
 main
   outlet
 footer.ext***REMOVED***full
-/
