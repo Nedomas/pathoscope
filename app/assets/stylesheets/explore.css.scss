@@ -45,6 +45,19 @@
     }
   }
 
+  .go-up {
+    text-align: center;
+
+    .meta {
+      margin: 1.1em 2em;
+
+      a {
+        text-decoration: none;
+        color: $semigrey;
+      }
+    }
+  }
+
   /* .path.closed .arrow a { */
   /*   background: url('filled.png') center no-repeat; */
   /*   background-size: contain; */

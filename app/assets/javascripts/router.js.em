@@ -3,6 +3,7 @@
 App.Router.map () ->
   @resource('paths')
   @route('map')
-  @resource('worlds')
-  @resource('world', path: '/worlds/:id')
+***REMOVED*** @route('worlds')
+  @route('world')
+  @resource('world', path: '/world/:id')
 

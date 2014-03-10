@@ -4,6 +4,6 @@ h1 World
 article.world
   ul
     if model.parent
-      link-to 'world' model.parent | UP
+      go-up-li parent=model.parent
     each sibling in model.siblings
       tree-node node=sibling word-was-chosen='wordWasSelected'

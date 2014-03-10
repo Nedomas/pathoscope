@@ -1,2 +1,2 @@
 each child in node.children
-  tree-node node=child action='toggle'
+  tree-node node=child word-was-chosen='wordWasSelected'

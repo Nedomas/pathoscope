@@ -1,7 +1,0 @@
-name
-view App.TreeView contentBinding=children
-/ a{action 'toggle'} | Helo
-/
-/ if isExpanded
-/   div.padded
-/     view App.BranchView

@@ -5,4 +5,4 @@ else
 
 if isExpanded
   div.padded
-    tree-branch node=node toggle='toggle'
+    tree-branch node=node word-was-chosen='wordWasSelected'

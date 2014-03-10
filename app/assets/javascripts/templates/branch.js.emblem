@@ -1,4 +1,0 @@
-/ | BRACH VIEW
-/ each child in root.children
-/   view App.NodeView
-  / tree-node node=child

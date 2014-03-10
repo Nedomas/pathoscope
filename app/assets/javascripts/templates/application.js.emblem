@@ -5,7 +5,7 @@ header.ext***REMOVED***full
      li
        link-to 'paths' | Paths
      li
-       link-to 'worlds' | World
+       link-to 'world' | World
      li
        link-to 'map' | Mental map
      li
