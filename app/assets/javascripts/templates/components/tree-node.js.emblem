@@ -1,8 +1,5 @@
-if node.item.isPath
-  path-li node=node title=node.item.context.title color_class=node.item.context.color_class isExpanded=isExpanded pathToggleAction='toggleLi'
-else
-  link-li node=node short_title=node.item.context.short_title short_url=node.item.context.short_url show_arrow=node.hasChildren isExpanded=isExpanded linkToggleAction='toggleLink'
+single-item item=item isExpanded=isExpanded s***REMOVED***ItemChildren='nodeChildrenAction'
 
 if isExpanded
   div.padded
-    tree-branch node=node word-was-chosen='wordWasSelected'
+    tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction'

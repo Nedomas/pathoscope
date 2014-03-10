@@ -1,0 +1,37 @@
+section.arrow class={ isExpanded::closed item.context.color_class }
+  if isPath
+    a{action 'itemChildrenAction' item.id} href="#"
+      if isExpanded
+        == empty-circle
+      else
+        == filled-circle
+  else
+    if item.hasChildren
+      a{action 'itemChildrenAction' item.id} href="#" ❯
+section.meta
+  if isPath
+    p.title
+      item.context.title
+  else
+    p.title
+      item.context.short_title
+    p
+      span.url
+        item.context.short_url
+      span.paths
+section.notes-indicator
+  a href="#"
+
+  / section.arrow class={ isExpanded::closed }
+  /   / if show_arrow
+  /   a{action 'toggleChildren' node.id} href="#" ❯
+  / section.indicator
+  / section.meta
+  /   p.title
+  /     short_title
+  /   p
+  /     span.url
+  /       short_url
+  /     span.paths
+  / section.notes-indicator
+  /   a href='#'

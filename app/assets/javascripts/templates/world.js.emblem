@@ -3,8 +3,10 @@ h1 World
 
 article.world
   ul
-    if model.parent
-      go-up-li parent=model.parent
-    log base_nodes
-    each node in base_nodes
-      tree-node node=node treeNodeAction='toggleLi' isExpanded=node.open
+    if model.hasParents
+      each item in model.parents
+        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=node.open hasChildren=node.hasChildren
+      / go-up-li parent=model.parent
+    div.padded
+      each item in base_items
+        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=node.open hasChildren=node.hasChildren

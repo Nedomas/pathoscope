@@ -1,2 +1,2 @@
-each child in node.children
-  tree-node node=child treeNodeAction='toggleLi'
+each child in item.children
+  tree-node item=child s***REMOVED***NodeChildren='branchChildrenAction'

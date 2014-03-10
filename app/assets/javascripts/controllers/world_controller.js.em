@@ -1,18 +1,18 @@
 App.WorldController = Ember.ObjectController.ext***REMOVED***
 
   +computed model.@each.siblings
-  base_nodes: ->
+  base_items: ->
     model = @get('model')
 
     @get('model.siblings').forEach (sibling) ->
       if model.id == sibling.id
         sibling.set('open', true)
 
-  ***REMOVED*** @get('model.siblings').sortBy 'open'
+      ***REMOVED*** # @get('model.siblings').sortBy 'open'
 
   actions:
-    toggleLi: (param) ->
-      alert('got the li' + param)
+    worldChildrenAction: (param) ->
+    ***REMOVED*** alert('worldChildrenAction' + param)
       @transitionToRoute('world', param)
 
   ***REMOVED*** setToggleLink: (param) ->
