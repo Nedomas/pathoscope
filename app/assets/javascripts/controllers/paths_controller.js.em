@@ -1,14 +1,14 @@
-App.PathsController = Ember.ArrayController.ext***REMOVED***
-  needs: ['application']
+# App.PathsController = Ember.ArrayController.ext***REMOVED***
+#   needs: ['application']
 ***REMOVED*** +computed model.isLoaded
 ***REMOVED*** current_user: ->
   ***REMOVED*** @store.metadataFor('current_user')
 
-  +computed item
-  paths: ->
-    @store.filter App.World, {}, (world) ->
-      world.get('isPath')
+***REMOVED*** +computed item
+***REMOVED*** paths: ->
+***REMOVED***   @store.filter App.Path, {}, (world) ->
+***REMOVED***     world.get('isPath')
 
-  +computed parent
-  root: ->
-    @store.find(App.World, 0)
+***REMOVED*** +computed parent
+***REMOVED*** root: ->
+***REMOVED***   @store.find(App.World, 0)

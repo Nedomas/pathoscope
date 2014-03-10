@@ -1,3 +1,12 @@
+# App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***
+#   extractMeta: (loader, type, json) ->
+#     console.log('Extracting')
+#     meta = json[@configOption(type, 'meta')]
+#     if !meta
+#       return
+#     Ember.set('App.metaData', meta)
+#     @_super(loader, type, json)
+#
 # console.log('Serializer included')
 #
 # App.PathSerializer = DS.RESTSerializer.ext***REMOVED***

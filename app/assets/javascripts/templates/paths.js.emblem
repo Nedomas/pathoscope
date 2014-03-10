@@ -3,13 +3,11 @@ h1 Paths
 controllers.application.domas
 article.paths
   ul
-    = each path in paths
+    = each path in model
       li.path
         div.description
-          link-to 'world' 1
+          link-to 'world' path.item class='title'
             = path.title
-          / a.title href="/world/{{ path.item_id! }}"
-          /   = path.title
           div.extra
             p.people
               | #{path.users_count} people
@@ -17,12 +15,12 @@ article.paths
               | #{path.links_count} links
         div.icon class=path.color_class
 
-    / new path
-    li.path
-      div.description
-        a.title href="#explore"
-          | Create new path
-        div.extra
-          p
-            | if you feel different
-      div class="icon background-0"
+    / Do not let the user create a new path now
+    / li.path
+    /   div.description
+    /     a.title href="#explore"
+    /       | Create new path
+    /     div.extra
+    /       p
+    /         | if you feel different
+    /   div class="icon background-0"

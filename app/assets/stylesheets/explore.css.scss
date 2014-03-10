@@ -120,14 +120,13 @@
     height: 4em;
     width: 4em;
 
-    a {
+    a svg {
       display: inline-block;
-      height: 1.5em;
-      width: 1.5em;
-      margin-top: 1.25em;
-      background-color: $green;
-      background: url('comments.png') left no-repeat;
-      background-size: contain;
+      height: 2.4em;
+      width: 100%;
+      margin-top: 1em;
+      padding-right: 1em;
+      fill: $green;
     }
   }
 

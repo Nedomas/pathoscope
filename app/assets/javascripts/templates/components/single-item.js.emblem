@@ -1,10 +1,13 @@
 section.arrow class={ isExpanded::closed item.context.color_class }
   if isPath
     a{action 'itemChildrenAction' item.id} href="#"
-      if isExpanded
-        == empty-circle
+      if item.hasChildren
+        if isExpanded
+          == empty-circle
+        else
+          == filled-circle
       else
-        == filled-circle
+        == crossed-circle
   else
     if item.hasChildren
       a{action 'itemChildrenAction' item.id} href="#" ❯
@@ -21,6 +24,7 @@ section.meta
       span.paths
 section.notes-indicator
   a href="#"
+    == empty-note
 
   / section.arrow class={ isExpanded::closed }
   /   / if show_arrow

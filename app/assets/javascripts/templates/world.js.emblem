@@ -7,6 +7,6 @@ article.world
       each item in model.parents
         tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=node.open hasChildren=node.hasChildren
       / go-up-li parent=model.parent
-    div.padded
-      each item in base_items
-        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=node.open hasChildren=node.hasChildren
+    / div.padded
+    each item in base_items
+      tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=node.open hasChildren=node.hasChildren

@@ -5,17 +5,17 @@ class Api::V1::WorldsController < ApplicationController
     if id = params[:id]
       r***REMOVED***er json: {
         worlds: [all_records([id]).last],
-        meta: { current_user: current_user }
+      ***REMOVED*** meta: { current_user: current_user }
       }
     elsif params[:parent_id] == ""
       r***REMOVED***er json: {
         worlds: all_records.select { |record| !record[:parent_id] },
-        meta: { current_user: current_user }
+      ***REMOVED*** meta: { current_user: current_user }
       }
     else
       r***REMOVED***er json: {
         worlds: all_records(params[:ids]),
-        meta: { current_user: current_user }
+      ***REMOVED*** meta: { current_user: current_user }
       }
 ***REMOVED***
   ***REMOVED*** respond_with worlds: all_records
@@ -34,7 +34,7 @@ class Api::V1::WorldsController < ApplicationController
 
     r***REMOVED***er json: {
       world: record,
-      meta: { current_user: current_user }
+    ***REMOVED*** meta: { current_user: current_user }
     }
 ***REMOVED***
 
