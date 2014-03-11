@@ -1,9 +1,10 @@
 class PathSerializer < ApplicationSerializer
-  attributes :item_id, :item, :title, :color, :users_count, :links_count
+  embed :ids, include: true
+  attributes :id, :title, :color, :users_count, :links_count
 
-  def item
-    object.item
-***REMOVED***
+***REMOVED*** def item
+***REMOVED***   object.item
+***REMOVED*** ***REMOVED***
 
   def users_count
     object.users.count

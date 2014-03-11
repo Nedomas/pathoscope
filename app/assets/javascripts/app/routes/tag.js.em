@@ -1,3 +1,6 @@
 App.TagRoute = Ember.Route.ext***REMOVED***
   model: ->
-    [{ name: 'John'}, { name: 'Peter'}]
+    @store.find('item')
+***REMOVED*** model: ->
+***REMOVED***   store.fin
+***REMOVED***   [{ name: 'John'}, { name: 'Peter'}]

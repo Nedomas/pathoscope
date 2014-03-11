@@ -4,7 +4,7 @@
 #= require md5.min
 #= require handlebars
 #= require ember
-#= require ember-data
+#= require ember-data-beta6
 #= require ember-devise-simple-auth/globals
 #= require_self
 #= require app
