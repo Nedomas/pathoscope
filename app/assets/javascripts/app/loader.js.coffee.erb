@@ -27,14 +27,9 @@ PathoscopeLoader = (->
     load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
 
   loadCSS = ->
-    load('head', 'link', server + '/assets/public/standalone_app.css', loadTemplates)
+    load('head', 'link', server + '/assets/public/standalone_app.css', loadApp)
 
-  loadTemplates = ->
-    templates = [
-      'application',
-      'tag'
-  ***REMOVED***
-
+  loadApp = ->
     $('body').app***REMOVED***(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
@@ -43,12 +38,6 @@ PathoscopeLoader = (->
         "</div>" +
       "</div>")
 
-    $.each templates, (index, template) ->
-      load('head', 'script', server + '/assets/app/templates/' + template + '.js')
-
-    loadApp()
-
-  loadApp = ->
     console.log 'Assets loaded. Loading application'
     load('head', 'script', server + '/assets/app/application.js', openApp)
 

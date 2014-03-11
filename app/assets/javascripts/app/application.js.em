@@ -1,3 +1,4 @@
+#= require_tree ../v***REMOVED***or
 #= require_self
 #= require ./app
 

@@ -22,9 +22,10 @@ section.meta
       span.url
         item.context.short_url
       span.paths
-section.notes-indicator
-  a href="#"
-    == empty-note
+if notes
+  section.notes-indicator
+    a href="#"
+      == empty-note
 
   / section.arrow class={ isExpanded::closed }
   /   / if show_arrow

@@ -3,12 +3,22 @@ class Api::V1::PathsController < ApplicationController
   respond_to :json
 
   def index
-    r***REMOVED***er json: MODEL.all
+    serialized_paths = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: PathSerializer).serializable_array
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+    r***REMOVED***er json: { paths: serialized_paths, items: serialized }
 # , meta: { current_user: current_user }
 ***REMOVED***
 
   def show
-    r***REMOVED***er json: MODEL.find(params[:id])
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      path: PathSerializer.new(MODEL.find(params[:id])).serializable_hash,
+      items: serialized
+    }
 # , meta: { current_user: current_user }
   ***REMOVED*** respond_with MODEL.find(params[:id])
 ***REMOVED***

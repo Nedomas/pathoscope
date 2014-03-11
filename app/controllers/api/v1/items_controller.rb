@@ -3,14 +3,22 @@ class Api::V1::ItemsController < ApplicationController
   respond_to :json
 
   def index
-    serialized = ActiveModel::ArraySerializer.new(MODEL.all, each_serializer: ItemSerializer).serializable_array
-    r***REMOVED***er json: { items: serialized, items: MODEL.all, parents: serialized }
+    serialized = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: ItemSerializer).serializable_array
+    r***REMOVED***er json: { items: serialized }
 # , meta: { current_user: current_user }
   ***REMOVED*** respond_with MODEL.all
 ***REMOVED***
 
   def show
-    r***REMOVED***er json: MODEL.find(params[:id])
+    serialized = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      item: ItemSerializer.new(MODEL.find(params[:id])).serializable_hash,
+      items: serialized
+    }
+  ***REMOVED*** r***REMOVED***er json: { item: MODEL.find(params[:id]), items:k
 # , meta: { current_user: current_user }
   ***REMOVED*** respond_with MODEL.find(params[:id])
 ***REMOVED***

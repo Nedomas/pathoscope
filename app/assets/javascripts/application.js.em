@@ -5,7 +5,7 @@
 #= require handlebars
 #= require ember
 #= require ember-data-beta6
-#= require ember-devise-simple-auth/globals
+#= require_tree ./v***REMOVED***or
 #= require_self
 #= require app
 

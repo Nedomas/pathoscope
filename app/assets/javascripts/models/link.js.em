@@ -1,7 +1,8 @@
 App.Link = DS.Model.ext***REMOVED***
-  item: DS.belongsTo('App.Item')
+  item: DS.belongsTo('item')
   title: DS.attr('string')
   url: DS.attr('string')
+  path: DS.belongsTo('path')
 
   +computed title
   short_title: ->

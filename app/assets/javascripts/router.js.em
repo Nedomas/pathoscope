@@ -7,3 +7,5 @@ App.Router.map () ->
 ***REMOVED*** @resource('world')
   @resource('world', path: '/world/:id')
 
+# DS.RESTAdapter.map 'item',
+#   item: { embedded: 'always' }

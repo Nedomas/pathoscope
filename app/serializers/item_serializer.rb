@@ -1,27 +1,19 @@
 class ItemSerializer < ApplicationSerializer
 ***REMOVED*** attributes *Item.column_names.map(&:to_sym)
   attributes *Item.column_names.map(&:to_sym).concat(
-    [:children, :parents])
+    [:child_ids, :parent_ids])
 
   def context
     object.context
 ***REMOVED***
 
-  def children
+  def child_ids
     object.nodes.map(&:children).flatten.map(&:item).uniq.map(&:id)
 ***REMOVED***
 
-***REMOVED*** def children_ids
-***REMOVED***   children.map(&:id)
-***REMOVED*** ***REMOVED***
-
-  def parents
+  def parent_ids
     object.nodes.map(&:parent).flatten.compact.map(&:item).uniq.map(&:id)
 ***REMOVED***
-
-***REMOVED*** def parent_ids
-***REMOVED***   parents.map(&:id)
-***REMOVED*** ***REMOVED***
 
 ***REMOVED*** def link
 ***REMOVED***   object.context if object.link?

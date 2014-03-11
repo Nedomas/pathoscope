@@ -1,3 +1,56 @@
+var define, requireModule, require, requirejs;
+
+(function() {
+  var registry = {}, seen = {};
+
+  define = function(name, deps, callback) {
+    registry[name] = { deps: deps, callback: callback };
+  };
+
+  requirejs = require = requireModule = function(name) {
+  requirejs._eak_seen = registry;
+
+    if (seen[name]) { return seen[name]; }
+    seen[name] = {};
+
+    if (!registry[name]) {
+      throw new Error("Could not find module " + name);
+    }
+
+    var mod = registry[name],
+        deps = mod.deps,
+        callback = mod.callback,
+        reified = [],
+        exports;
+
+    for (var i=0, l=deps.length; i<l; i++) {
+      if (deps[i] === 'exports') {
+        reified.push(exports = {});
+      } else {
+        reified.push(requireModule(resolve(deps[i])));
+      }
+    }
+
+    var value = callback.apply(this, reified);
+    return seen[name] = exports || value;
+
+    function resolve(child) {
+      if (child.charAt(0) !== '.') { return child; }
+      var parts = child.split("/");
+      var parentBase = name.split("/").slice(0, -1);
+
+      for (var i=0, l=parts.length; i<l; i++) {
+        var part = parts[i];
+
+        if (part === '..') { parentBase.pop(); }
+        else if (part === '.') { continue; }
+        else { parentBase.push(part); }
+      }
+
+      return parentBase.join("/");
+    }
+  };
+})();
 define("ember-devise-simple-auth/configuration",
   ["exports"],
   function(__exports__) {
@@ -135,7 +188,8 @@ define("ember-devise-simple-auth/configuration",
       ajax: function(method, url, data) {
         return new Ember.RSVP.Promise(function(resolve) {
           return resolve($.ajax({
-            url: url,
+            url: '<%= SERVER %>' + url,
+            xhrFields: { withCredentials: true },
             type: method,
             dataType: "json",
             data: data
@@ -263,4 +317,16 @@ define("ember-devise-simple-auth/configuration",
     }
 
     __exports__.tryAction = tryAction;
-  });
+  });Ember.DeviseSimpleAuth = Ember.Namespace.create();
+
+require('ember-devise-simple-auth');
+
+var SessionRoute = require('app/routes/session').default;
+Ember.DeviseSimpleAuth.SessionRoute = SessionRoute;
+
+Ember.Application.initializer({
+  name: "register-session-route",
+  initialize: function(container, app) {
+    container.register("route:session", SessionRoute);
+  }
+});

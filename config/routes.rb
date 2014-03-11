@@ -7,8 +7,6 @@ Pathoscope::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-    ***REMOVED*** get 'map' => 'map#index'
-    ***REMOVED*** get 'maps' => 'map#index'
       resources :maps
       resources :worlds
       resources :paths
@@ -16,6 +14,7 @@ Pathoscope::Application.routes.draw do
       resources :items
       resources :user_paths
       resources :users
+      resources :tags
 ***REMOVED***
 ***REMOVED***
 
@@ -27,10 +26,7 @@ Pathoscope::Application.routes.draw do
   get "comments/create"
   get 'comments/index'
 
-  devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }, controllers: {
-    sessions: 'sessions',
-    registrations: 'registrations'
-  }
+  devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
 
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".

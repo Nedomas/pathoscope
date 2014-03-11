@@ -3,16 +3,36 @@ class Api::V1::LinksController < ApplicationController
   respond_to :json
 
   def index
-    respond_with MODEL.all
+    serialized_links = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: LinkSerializer).serializable_array
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+    r***REMOVED***er json: { links: serialized_links, items: serialized }
 ***REMOVED***
 
   def show
-    respond_with MODEL.find(params[:id])
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      link: LinkSerializer.new(MODEL.find(params[:id])).serializable_hash,
+      items: serialized
+    }
 ***REMOVED***
 
   def create
-    @model = MODEL.create(permitted_params)
-    respond_with @model
+    link = params[:link]
+    path = Path.find(link[:path])
+    node = Node.build(link[:url], path, current_user)
+    link = node.item.context
+
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      link: LinkSerializer.new(link).serializable_hash,
+      items: serialized
+    }
 ***REMOVED***
 
   def update

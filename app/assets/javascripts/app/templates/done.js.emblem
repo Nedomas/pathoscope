@@ -1,0 +1,10 @@
+section.link
+  p.title
+  p.url
+h2 was tagged to
+section.tag
+  ul
+    li
+      a href='#'
+h3 At this point lads chosen to read
+section.links

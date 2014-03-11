@@ -4,3 +4,8 @@ App.Store = DS.Store.ext***REMOVED***
   adapter: DS.RESTAdapter.ext***REMOVED***
     host: '<%= SERVER %>'
     namespace: 'api/v1'
+***REMOVED***  headers:
+***REMOVED***       withCredentials: true
+
+Ember.$.ajaxPrefilter (options) ->
+  options.xhrFields = { withCredentials: true }

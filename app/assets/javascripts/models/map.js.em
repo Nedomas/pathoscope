@@ -1,7 +1,7 @@
 App.Map = DS.Model.ext***REMOVED***
-  parent: DS.belongsTo('App.Map', async: true, inverse: 'children')
-  children: DS.hasMany('App.Map', async: true, inverse: 'parent')
-  item: DS.belongsTo('App.Item', async: true, inverse: 'parent')
+  parent: DS.belongsTo('map', async: true, inverse: 'children')
+  children: DS.hasMany('map', async: true, inverse: 'parent')
+  item: DS.belongsTo('map', async: true, inverse: 'parent')
 
   +computed parent
   isRoot: ->
