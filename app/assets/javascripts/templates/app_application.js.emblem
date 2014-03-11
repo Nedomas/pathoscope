@@ -1,0 +1,7 @@
+header
+  section.logo
+  section.close
+    a href='#' X
+section.content
+  h1 yoooooooooooo Welcome to my App
+    message

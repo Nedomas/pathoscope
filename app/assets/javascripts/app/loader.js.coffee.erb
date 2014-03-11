@@ -28,23 +28,29 @@ PathoscopeLoader = (->
 
   loadTemplates = ->
     templates = [
-      'application'
+      'app_application'
   ***REMOVED***
 
-    $('<section id="pathoscope-container"></div>').app***REMOVED***To('body')
-  ***REMOVED*** $('body').app***REMOVED***('<script type="text/x-handlebars" data-template-name="application">' +
-  ***REMOVED***   '<h2>Im the content</h2>' +
-  ***REMOVED***   '</script>')
+    $('body').app***REMOVED***(
+      "<div id='pathoscope'>" +
+        "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
+        "<div id='pathoscope-app'>" +
+          "<div id='pathoscope-container'></div>" +
+        "</div>" +
+      "</div>")
 
     $.each templates, (index, template) ->
-      load('head', 'script', server + '/assets/standalone_app/templates/' + template + '.js')
+      load('head', 'script', server + '/assets/templates/' + template + '.js')
 
-  ***REMOVED*** setTimeout(loadApplication, 5000)
-    loadApplication()
+    loadApp()
 
-  loadApplication = ->
+  loadApp = ->
     console.log 'Assets loaded. Loading application'
-    load('head', 'script', server + '/assets/standalone_app/app.js')
+    load('head', 'script', server + '/assets/app/app.js', openApp)
+
+   openApp = ->
+     $('#pathoscope-trigger').leanModal()
+     $('#pathoscope-trigger').click()
 
   load = (place, tag, url, callback) ->
     done = false
@@ -64,7 +70,7 @@ PathoscopeLoader = (->
 
     document.getElementsByTagName(place)[0].app***REMOVED***Child(element)
 
-  return { init: init, load: loadApplication }
+  return { init: init }
 )()
 
   ***REMOVED*** $.get(server + '/bookmarks/templates').then (templates) ->
