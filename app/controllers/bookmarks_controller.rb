@@ -102,6 +102,7 @@ class BookmarksController < ApplicationController
 ***REMOVED*** ***REMOVED***
 
   def templates
+    r***REMOVED***er layout: false
 ***REMOVED***
 
 ***REMOVED***
