@@ -28,7 +28,8 @@ PathoscopeLoader = (->
 
   loadTemplates = ->
     templates = [
-      'app_application'
+      'application',
+      'tag'
   ***REMOVED***
 
     $('body').app***REMOVED***(
@@ -40,13 +41,13 @@ PathoscopeLoader = (->
       "</div>")
 
     $.each templates, (index, template) ->
-      load('head', 'script', server + '/assets/templates/' + template + '.js')
+      load('head', 'script', server + '/assets/app/templates/' + template + '.js')
 
     loadApp()
 
   loadApp = ->
     console.log 'Assets loaded. Loading application'
-    load('head', 'script', server + '/assets/app/app.js', openApp)
+    load('head', 'script', server + '/assets/app/application.js', openApp)
 
    openApp = ->
      $('#pathoscope-trigger').leanModal()
