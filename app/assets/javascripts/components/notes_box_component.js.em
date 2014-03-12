@@ -4,6 +4,5 @@ App.NotesBoxComponent = Ember.Component.ext***REMOVED***
   placeholder: 'What do you think about this?'
 
   actions:
-    notePostAction: ->
-      console.log('notePostAction')
+    postAction: ->
       @s***REMOVED***Action('s***REMOVED***NotePost')

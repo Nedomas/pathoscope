@@ -1,11 +1,11 @@
 App.WorldIndexRoute = Ember.Route.ext***REMOVED***
   model: ->
-    model = @modelFor('world')
+    @modelFor('world')
 
-    model.get('siblings').then (sibling) ->
-      model.set('current', false)
+  ***REMOVED*** model.get('siblings').then (sibling) ->
+  ***REMOVED***   sibling.set('current', true)
 
-    model.set('current', true)
+  ***REMOVED*** model.set('current', true)
   ***REMOVED*** @store.find('item', params)
 
 ***REMOVED*** afterModel: (item, transition) ->

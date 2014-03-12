@@ -1,4 +1,10 @@
 # App.WorldIndexController = Ember.ObjectController.ext***REMOVED***
+#   actions:
+#     worldNotesAction: (param) ->
+#       console.log('out here')
+    ***REMOVED*** @transitionToRoute('world', param)
+
+# App.WorldIndexController = Ember.ObjectController.ext***REMOVED***
 #   needs: 'application'
 #
 ***REMOVED*** +computed model.@each.siblings
@@ -37,12 +43,6 @@
 #       @get('new_note').then (new_note) ->
 #         new_note.save()
 #         console.log('saved')
-
-App.WorldIndexController = Ember.ObjectController.ext***REMOVED***
-    actions:
-      worldNotesAction: (param) ->
-        console.log('out')
-        @transitionToRoute('world', param)
 
   ***REMOVED*** postNoteAction: ->
   ***REMOVED***   console.log('fuck')

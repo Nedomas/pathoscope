@@ -25,14 +25,25 @@ App.Item = DS.Model.ext***REMOVED***
   hasParents: ->
     !_.isEmpty(@get('parents').toArray())
 
+  +computed notes.@each
+  hasNotes: ->
+    !_.isEmpty(@get('saved_notes').toArray())
+
+  +computed notes.@each
+  saved_notes: ->
+    @get('notes').filter (note) ->
+      !note.get('isNew')
+
 ***REMOVED*** recalcing itself when parent is observed
   +computed
   siblings: ->
+    self = this
     parents = @get('parents')
     has_parents = @get('hasParents')
 
     @store.filter 'item', {}, (item) ->
       contains_every = item.get('parents').every (parent) ->
         parents.contains(parent)
+      parents_equal = item.get('hasParents') == has_parents
 
-      contains_every && (item.get('hasParents') == has_parents)
+      contains_every && parents_equal && item != self

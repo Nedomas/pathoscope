@@ -26,9 +26,6 @@ if notes
   section.notes-indicator
     a{action 'itemNotesAction' item.id} href="#"
       if item.hasNotes
-        if notesExpanded
-          == empty-note
-        else
-          == filled-note
+        == filled-note
       else
         == empty-note

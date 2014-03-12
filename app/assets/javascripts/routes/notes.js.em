@@ -1,6 +1,7 @@
-# App.WorldNotesRoute = Ember.Route.ext***REMOVED***
-***REMOVED*** model: ->
-***REMOVED***   @store.find('note')
+App.WorldNotesRoute = Ember.Route.ext***REMOVED***
+  model: ->
+    @store.createRecord 'note',
+      item: @modelFor('world')
 
 ***REMOVED*** afterModel: (notes, transition) ->
 ***REMOVED***   world = @modelFor('world')

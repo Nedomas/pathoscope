@@ -1,1 +1,1 @@
-notes-box item=item new_note=new_note s***REMOVED***NotePost='nodePostAction'
+notes-box note=model s***REMOVED***NotePost='postAction'

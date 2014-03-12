@@ -1,4 +1,4 @@
-/ h1 World
+/ h1 World INDEX
 /
 / article.world
 /   ul
@@ -11,16 +11,18 @@
     /       each item in base_items
     /         tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePostNote='worldPostNoteAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
     / else
-each item in model.siblings
-  if item.current
-    | this is current
-  else
-    | this is not
-  tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
-    if item.current
-      outlet
-      / yield
-
-    if item.current
-      div.padded
-        tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction' s***REMOVED***BranchNotes='nodeNotesAction' s***REMOVED***BranchPostNote='nodePostNoteAction' new_note=new_note
+/ h1 WOLD INDEX
+/ each item in siblings
+/   console.log fuck
+/   if item.current
+/     | this is current
+/   else
+/     | this is not
+/   tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
+/     if item.current
+/       outlet
+/       / yield
+/
+/     if item.current
+/       div.padded
+/         tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction' s***REMOVED***BranchNotes='nodeNotesAction' s***REMOVED***BranchPostNote='nodePostNoteAction' new_note=new_note

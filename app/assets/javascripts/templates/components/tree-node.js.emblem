@@ -1,8 +1,3 @@
 single-item item=item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
 
-if notesExpanded
-  yield
-
-if childrenExpanded
-  div.padded
-    tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction' s***REMOVED***BranchNotes='nodeNotesAction' s***REMOVED***BranchPostNote='nodePostNoteAction' new_note=new_note
+yield

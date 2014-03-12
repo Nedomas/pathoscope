@@ -13,3 +13,7 @@ App.Path = DS.Model.ext***REMOVED***
   +computed color
   color_class: ->
     'color-' + @get('color')
+
+  +computed title
+  short_title: ->
+    @get('title')
