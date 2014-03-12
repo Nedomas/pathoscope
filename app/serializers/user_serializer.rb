@@ -1,3 +1,3 @@
 class UserSerializer < ApplicationSerializer
-  attributes :id, :email, :username, :nodes
+  attributes :id, :email, :username, :note_ids
 ***REMOVED***

@@ -5,7 +5,7 @@ ul
         span.name
           note.user.username
         span.time
-          | 15 seconds ago
+          note.time_ago
       section.content
           note.content
 

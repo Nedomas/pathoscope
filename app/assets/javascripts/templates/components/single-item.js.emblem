@@ -11,6 +11,7 @@ section.arrow class={ childrenExpanded::closed item.context.color_class }
   else
     if item.hasChildren
       a{action 'itemChildrenAction' item.id} href="#" ❯
+/ section.indicator
 section.meta
   if isPath
     p.title
@@ -24,7 +25,7 @@ section.meta
       span.paths
 if notes
   section.notes-indicator
-    a{action 'itemNotesAction' item.id} href="#"
+    a{action 'itemNotesAction' item.id} href="#" class={ notesExpanded::closed }
       if item.hasNotes
         == filled-note
       else

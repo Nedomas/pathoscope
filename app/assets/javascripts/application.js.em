@@ -2,6 +2,7 @@
 #= require lodash.min
 #= require underscore.string.min
 #= require md5.min
+#= require jquery.timeago
 #= require handlebars
 #= require ember
 #= require ember-data-beta6

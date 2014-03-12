@@ -71,6 +71,7 @@
     display: inline-block;
     height: 4em;
     width: .5em;
+    background-color: $semiwhitegrey;
   }
 
   .meta {
@@ -126,6 +127,10 @@
       width: 100%;
       margin-top: 1em;
       padding-right: 1em;
+      fill: hsla(153, 39%, 50%, 1);
+    }
+
+    a.closed svg {
       fill: $green;
     }
   }
