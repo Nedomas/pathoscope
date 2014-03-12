@@ -6,7 +6,10 @@ article.world
     if model.hasParents
       each item in model.parents
         tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePostNote='worldPostNoteAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
-      go-up-li parent=model.parent
-    div.padded
-    each item in base_items
-      tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePostNote='worldPostNoteAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
+
+        div.padded
+          each item in base_items
+            tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePostNote='worldPostNoteAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
+    else
+      each item in base_items
+        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePostNote='worldPostNoteAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note
