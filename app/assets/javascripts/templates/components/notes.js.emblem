@@ -1,0 +1,21 @@
+div.notes
+  ul
+    li.note
+      section.info
+        span.name
+          | John Mayer
+        span.time
+          | 15 seconds ago
+      section.content
+          | he .hasClass() method will return true if the class is assigned to an element, even if other classes also are. For example, given the HTML above, the following
+    li.note
+      section.info
+        span.name
+          | John Mayer
+        span.time
+          | 15 seconds ago
+      section.content
+          | I need your sway cause you always pay for it
+  section.new-note
+    textarea.note-content
+    button.post-note Post Note

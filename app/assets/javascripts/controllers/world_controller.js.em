@@ -16,6 +16,12 @@ App.WorldController = Ember.ObjectController.ext***REMOVED***
     ***REMOVED*** alert('worldChildrenAction' + param)
       @transitionToRoute('world', param)
 
+    worldNotesAction: (param) ->
+      console.log('yoooo')
+    ***REMOVED*** alert('it worked!')
+    ***REMOVED*** alert('worldChildrenAction' + param)
+    ***REMOVED*** @transitionToRoute('world', param)
+
   ***REMOVED*** setToggleLink: (param) ->
   ***REMOVED***   alert('toggle link')
 

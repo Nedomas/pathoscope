@@ -1,8 +1,8 @@
-section.arrow class={ isExpanded::closed item.context.color_class }
+section.arrow class={ childrenExpanded::closed item.context.color_class }
   if isPath
     a{action 'itemChildrenAction' item.id} href="#"
       if item.hasChildren
-        if isExpanded
+        if childrenExpanded
           == empty-circle
         else
           == filled-circle
@@ -24,19 +24,11 @@ section.meta
       span.paths
 if notes
   section.notes-indicator
-    a href="#"
-      == empty-note
-
-  / section.arrow class={ isExpanded::closed }
-  /   / if show_arrow
-  /   a{action 'toggleChildren' node.id} href="#" ❯
-  / section.indicator
-  / section.meta
-  /   p.title
-  /     short_title
-  /   p
-  /     span.url
-  /       short_url
-  /     span.paths
-  / section.notes-indicator
-  /   a href='#'
+    a{action 'itemNotesAction' item.id} href="#"
+      if item.hasNotes
+        if notesExpanded
+          == empty-note
+        else
+          == filled-note
+      else
+        == empty-note

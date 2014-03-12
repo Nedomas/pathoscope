@@ -1,5 +1,8 @@
-single-item item=item isExpanded=isExpanded s***REMOVED***ItemChildren='nodeChildrenAction'
+single-item item=item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
 
-if isExpanded
+if notesExpanded
+  notes item=item
+
+if childrenExpanded
   div.padded
-    tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction'
+    tree-branch item=item s***REMOVED***BranchChildren='nodeChildrenAction' s***REMOVED***BranchNotes='nodeNotesAction'

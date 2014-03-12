@@ -9,7 +9,7 @@ li class="box path"
   section.notes-indicator
     a href="#"
 
-if isExpanded
+if childrenExpanded
   div.padded
     each link_as_map in path_as_map.children
       link-li title=link_as_map.item.context.short_title short_url=link_as_map.item.context.short_url show_arrow=link_as_map.item.context.hasChildren
