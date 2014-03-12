@@ -6,3 +6,6 @@ App.TreeBranchComponent = Ember.Component.ext***REMOVED***
     branchNotesAction: (param) ->
       console.log('branchNotesAction')
       @s***REMOVED***Action('s***REMOVED***NotesChildren', param)
+    branchPostNoteAction: (param) ->
+      console.log('branchPostNoteAction')
+      @s***REMOVED***Action('s***REMOVED***PostNote', param)

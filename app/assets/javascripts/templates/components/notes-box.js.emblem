@@ -10,5 +10,5 @@ ul
           note.content
 
 section.new-note
-  textarea.note-content
-  button.post-note Post Note
+  = textarea class='note-content' value=new_note.content placeholder=placeholder
+  button.post-note{action 'postNoteAction'} Post Note

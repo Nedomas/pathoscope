@@ -12,3 +12,7 @@ App.TreeNodeComponent = Ember.Component.ext***REMOVED***
       console.log('nodeNotesAction')
       @toggleProperty('notesExpanded')
       @s***REMOVED***Action('s***REMOVED***NodeNotes', param)
+    nodePostNoteAction: (param) ->
+      console.log('nodePostNoteAction')
+    ***REMOVED*** @toggleProperty('notesExpanded')
+      @s***REMOVED***Action('s***REMOVED***PostNote', param)

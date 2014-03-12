@@ -1,8 +1,8 @@
 App.ApplicationController = Ember.Controller.ext***REMOVED***
 
-  +computed
+  +computed currentSession
   current_user: ->
-    @get('currentSession.user')
+    @store.find('user', @get('currentSession.user.id'))
 
   +computed current_user
   current_user_gravatar_url: ->
