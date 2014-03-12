@@ -1,4 +1,4 @@
-.world, .map, .choose-path {
+.world, .map, #pathoscope-app {
   .box {
     @include row();
     display: block;

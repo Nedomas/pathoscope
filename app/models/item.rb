@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   has_many :nodes
+  has_many :notes
   belongs_to :context, polymorphic: true
 
   class << self

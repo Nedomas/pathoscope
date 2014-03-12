@@ -1,0 +1,14 @@
+ul
+  each note in item.notes
+    li.note
+      section.info
+        span.name
+          note.user.username
+        span.time
+          | 15 seconds ago
+      section.content
+          note.content
+
+section.new-note
+  textarea.note-content
+  button.post-note Post Note

@@ -5,22 +5,26 @@ class Api::V1::ItemsController < ApplicationController
   def index
     serialized = ActiveModel::ArraySerializer.new(MODEL.all,
       each_serializer: ItemSerializer).serializable_array
-    r***REMOVED***er json: { items: serialized }
-# , meta: { current_user: current_user }
-  ***REMOVED*** respond_with MODEL.all
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      items: serialized,
+      notes: notes
+    }
 ***REMOVED***
 
   def show
     serialized = ActiveModel::ArraySerializer.new(MODEL.all,
       each_serializer: ItemSerializer).serializable_array
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
 
     r***REMOVED***er json: {
       item: ItemSerializer.new(MODEL.find(params[:id])).serializable_hash,
-      items: serialized
+      items: serialized,
+      notes: notes
     }
-  ***REMOVED*** r***REMOVED***er json: { item: MODEL.find(params[:id]), items:k
-# , meta: { current_user: current_user }
-  ***REMOVED*** respond_with MODEL.find(params[:id])
 ***REMOVED***
 
   def create

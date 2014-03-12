@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :nodes
+  has_many :notes
   has_many :comments
   has_many :user_paths
   has_many :paths, through: :user_paths

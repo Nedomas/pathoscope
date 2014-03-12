@@ -11,7 +11,7 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220201956) do
+ActiveRecord::Schema.define(version: 20140312010616) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20140220201956) do
   add_index "nodes", ["item_id"], name: "index_nodes_on_item_id", using: :btree
   add_index "nodes", ["path_id"], name: "index_nodes_on_path_id", using: :btree
   add_index "nodes", ["user_id"], name: "index_nodes_on_user_id", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.text     "content"
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+***REMOVED***
+
+  add_index "notes", ["item_id"], name: "index_notes_on_item_id", using: :btree
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "paths", force: true do |t|
     t.string   "title"

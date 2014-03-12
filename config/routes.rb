@@ -14,7 +14,7 @@ Pathoscope::Application.routes.draw do
       resources :items
       resources :user_paths
       resources :users
-      resources :tags
+      resources :notes
 ***REMOVED***
 ***REMOVED***
 

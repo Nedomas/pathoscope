@@ -4,6 +4,7 @@ App.Item = DS.Model.ext***REMOVED***
   parents: DS.hasMany('item', inverse: 'children')
   children: DS.hasMany('item', inverse: 'parents')
   paths: DS.hasMany('path')
+  notes: DS.hasMany('note')
 
   +computed context_id, context_type
   context: ->
@@ -25,7 +26,7 @@ App.Item = DS.Model.ext***REMOVED***
     !_.isEmpty(@get('parents').toArray())
 
 ***REMOVED*** recalcing itself when parent is observed
-  +computed parents.@each
+  +computed
   siblings: ->
     parents = @get('parents')
     has_parents = @get('hasParents')
