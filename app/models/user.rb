@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
   has_many :user_paths
   has_many :paths, through: :user_paths
 
+  def items
+    nodes.map(&:item).uniq
+***REMOVED***
+
+  def item_ids
+    items.map(&:id)
+***REMOVED***
 ***REMOVED*** def paths
 ***REMOVED***   nodes.map(&:path).uniq
 ***REMOVED*** ***REMOVED***

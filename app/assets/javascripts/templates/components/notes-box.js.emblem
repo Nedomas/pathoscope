@@ -1,13 +1,17 @@
 ul
-  each note in note.item.saved_notes
-    li.note
-      section.info
-        span.name
-          note.user.username
-        span.time
-          note.time_ago
-      section.content
-          note.content
+  if note.item.hasSavedNotes
+    each note in note.item.saved_notes
+      li.note
+        section.info
+          span.name
+            note.user.username
+          span.time
+            note.time_ago
+        section.content
+            note.content
+  else
+    p This is your chance to shine.
+    p Be the first one to write a note on this
 
 section.new-note
   = textarea class='note-content' value=note.content placeholder=placeholder

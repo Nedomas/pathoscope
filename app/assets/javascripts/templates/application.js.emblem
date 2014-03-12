@@ -7,11 +7,10 @@ header.ext***REMOVED***full
       li
         link-to 'world' 1 | World
       li
-        link-to 'map' | Mental map
+        link-to 'map' 1 | Mental map
       li
-        link-to 'map' | Install
+        link-to 'map' 1 | Install
       li
-        current_user.username
         a.avatar href='#'
           img src=current_user_gravatar_url
       li

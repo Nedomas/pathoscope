@@ -2,9 +2,15 @@ App.SingleItemComponent = Ember.Component.ext***REMOVED***
   tagName: 'li'
   classNames: ['box']
   classNameBindings: ['isPath:path:link']
-***REMOVED*** childrenExpanded: false
   notes: true
-***REMOVED*** notesExpanded: false
+
+  +computed item.hasChildren
+  hasChildren: ->
+    @get('item.hasChildren')
+
+  +computed item.hasNotes
+  hasNotes: ->
+    @get('item.hasNotes')
 
   +computed item.isPath
   isPath: ->

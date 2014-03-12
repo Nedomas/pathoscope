@@ -7,10 +7,13 @@ class Api::V1::ItemsController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
     notes = ActiveModel::ArraySerializer.new(Note.all,
       each_serializer: NoteSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
 
     r***REMOVED***er json: {
       items: serialized,
-      notes: notes
+      notes: notes,
+      paths: paths
     }
 ***REMOVED***
 
@@ -19,11 +22,14 @@ class Api::V1::ItemsController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
     notes = ActiveModel::ArraySerializer.new(Note.all,
       each_serializer: NoteSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
 
     r***REMOVED***er json: {
       item: ItemSerializer.new(MODEL.find(params[:id])).serializable_hash,
       items: serialized,
-      notes: notes
+      notes: notes,
+      paths: paths
     }
 ***REMOVED***
 

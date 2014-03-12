@@ -3,11 +3,31 @@ class Api::V1::UserPathsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with MODEL.where(user_id: current_user.andand.id)
+    user_paths = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: UserPathSerializer).serializable_array
+    users = ActiveModel::ArraySerializer.new(User.all,
+      each_serializer: UserSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      users: users,
+      paths: paths,
+      user_paths: user_paths
+    }
 ***REMOVED***
 
   def show
-    respond_with MODEL.first
+    users = ActiveModel::ArraySerializer.new(User.all,
+      each_serializer: UserSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
+      users: users,
+      paths: paths
+    }
 ***REMOVED***
 
   def create

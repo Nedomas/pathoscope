@@ -22,4 +22,12 @@ class Item < ActiveRecord::Base
   def link?
     context_type == 'Link'
 ***REMOVED***
+
+  def paths
+    nodes.map(&:path).uniq
+***REMOVED***
+
+  def path_ids
+    paths.map(&:id)
+***REMOVED***
 ***REMOVED***

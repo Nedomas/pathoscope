@@ -16,17 +16,6 @@ ActiveRecord::Schema.define(version: 20140312010616) do
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-***REMOVED***
-
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
-
   create_table "invitations", force: true do |t|
     t.string   "email"
     t.boolean  "sent",       default: false
@@ -94,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140312010616) do
   add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match", using: :btree
   add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner", using: :btree
 
-  create_table "user_paths", id: false, force: true do |t|
+  create_table "user_paths", force: true do |t|
     t.integer "user_id"
     t.integer "path_id"
 ***REMOVED***

@@ -3,24 +3,36 @@ class Api::V1::UsersController < ApplicationController
   respond_to :json
 
   def index
-    serialized = ActiveModel::ArraySerializer.new(MODEL.all,
-      each_serializer: ItemSerializer).serializable_array
+    users = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: UserSerializer).serializable_array
     notes = ActiveModel::ArraySerializer.new(Note.all,
       each_serializer: NoteSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+    items = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
 
     r***REMOVED***er json: {
-      users: serialized,
-      notes: notes
+      users: users,
+      notes: notes,
+      paths: paths,
+      items: items
     }
 ***REMOVED***
 
   def show
     notes = ActiveModel::ArraySerializer.new(Note.all,
       each_serializer: NoteSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+    items = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
 
     r***REMOVED***er json: {
       user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
-      notes: notes
+      notes: notes,
+      paths: paths,
+      items: items
     }
 ***REMOVED***
 

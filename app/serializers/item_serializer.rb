@@ -1,7 +1,7 @@
 class ItemSerializer < ApplicationSerializer
 ***REMOVED*** attributes *Item.column_names.map(&:to_sym)
   attributes *Item.column_names.map(&:to_sym).concat(
-    [:child_ids, :parent_ids, :note_ids])
+    [:child_ids, :parent_ids, :note_ids, :path_ids])
 
   def context
     object.context

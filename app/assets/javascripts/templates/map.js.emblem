@@ -2,9 +2,12 @@ h1 Map
 
 article.map
   ul
-    each path in model
-      single-item item=path.item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
+    each map in model.maps
+      single-item item=map.path.item notesExpanded=notesExpanded s***REMOVED***ItemNotes='mapNotesAction'
+
+      if notesExpanded
+        outlet
 
       div.padded
-        each item in path.item.children
-          single-item item=item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
+        each item in map.items
+          single-item item=item hasChildren=false notesExpanded=notesExpanded s***REMOVED***ItemNotes='mapNotesAction'
