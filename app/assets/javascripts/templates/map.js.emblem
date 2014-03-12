@@ -2,5 +2,9 @@ h1 Map
 
 article.map
   ul
-    each path_as_map in paths_as_maps
-      path-with-links path_as_map=path_as_map
+    each path in model
+      single-item item=path.item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
+
+      div.padded
+        each item in path.item.children
+          single-item item=item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'

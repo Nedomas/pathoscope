@@ -1,0 +1,6 @@
+h1 World
+
+article.world
+  ul
+    each item in model
+      tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' childrenExpanded=item.open hasChildren=item.hasChildren hasNotes=item.hasNotes new_note=new_note

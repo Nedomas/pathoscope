@@ -15,6 +15,6 @@ App.SingleItemComponent = Ember.Component.ext***REMOVED***
     ***REMOVED*** console.log('itemChildrenAction', param)
       @s***REMOVED***Action('s***REMOVED***ItemChildren', param)
     itemNotesAction: (param) ->
-      console.log('itemNotesAction', param)
+    ***REMOVED*** console.log('itemNotesAction', param)
       @s***REMOVED***Action('s***REMOVED***ItemNotes', param)
 

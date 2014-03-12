@@ -1,7 +1,7 @@
 single-item item=item childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***ItemChildren='nodeChildrenAction' s***REMOVED***ItemNotes='nodeNotesAction'
 
 if notesExpanded
-  notes-box item=item new_note=new_note s***REMOVED***PostNote='postNoteAction'
+  yield
 
 if childrenExpanded
   div.padded
