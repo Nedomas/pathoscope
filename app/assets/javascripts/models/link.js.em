@@ -2,7 +2,12 @@ App.Link = DS.Model.ext***REMOVED***
   item: DS.belongsTo('item')
   title: DS.attr('string')
   url: DS.attr('string')
-  path: DS.belongsTo('path')
+  paths: DS.hasMany('path')
+  item_id: DS.attr('string')
+
+  +computed item_id
+  fake_item: ->
+    @store.find('item', @get('item_id'))
 
   +computed title
   short_title: ->
@@ -12,10 +17,3 @@ App.Link = DS.Model.ext***REMOVED***
   short_url: ->
     host = $('<a>').prop('href', @get('url')).prop('host')
     host.replace('www.', '')
-***REMOVED*** map_parent: DS.belongsTo('App.Path')
-***REMOVED*** item_id: DS.attr('string')
-***REMOVED*** title: DS.attr('string')
-***REMOVED*** color: DS.attr('string')
-***REMOVED*** users_count: DS.attr('string')
-***REMOVED*** links_count: DS.attr('string')
-***REMOVED*** item: DS.belongsTo('App.Item', polymorphic: true)

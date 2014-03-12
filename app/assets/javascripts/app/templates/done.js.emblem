@@ -1,10 +1,12 @@
-section.link
-  p.title
-  p.url
+h1 Success!
+article.choose-path
+  single-item item=model isExpanded=false notes=false s***REMOVED***ItemChildren='tagAction'
+
 h2 was tagged to
 section.tag
   ul
     li
       a href='#'
-h3 At this point lads chosen to read
-section.links
+h1 Explore from here
+each item in base_items
+  tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' isExpanded=item.open hasChildren=item.hasChildren

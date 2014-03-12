@@ -25,7 +25,7 @@ App.Item = DS.Model.ext***REMOVED***
     !_.isEmpty(@get('parents').toArray())
 
 ***REMOVED*** recalcing itself when parent is observed
-  +computed
+  +computed parents.@each
   siblings: ->
     parents = @get('parents')
     has_parents = @get('hasParents')

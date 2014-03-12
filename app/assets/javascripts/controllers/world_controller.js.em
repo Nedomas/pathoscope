@@ -6,8 +6,8 @@ App.WorldController = Ember.ObjectController.ext***REMOVED***
     model = @get('model')
 
     @get('model.siblings').forEach (sibling) ->
-      if model.id == sibling.id
-        sibling.set('open', true)
+        if model.id == sibling.id
+          sibling.set('open', true)
 
       ***REMOVED*** # @get('model.siblings').sortBy 'open'
 

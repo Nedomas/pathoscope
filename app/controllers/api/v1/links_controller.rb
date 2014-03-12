@@ -3,35 +3,48 @@ class Api::V1::LinksController < ApplicationController
   respond_to :json
 
   def index
-    serialized_links = ActiveModel::ArraySerializer.new(MODEL.all,
+    links = ActiveModel::ArraySerializer.new(MODEL.all,
       each_serializer: LinkSerializer).serializable_array
-    serialized = ActiveModel::ArraySerializer.new(Item.all,
+    items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
-    r***REMOVED***er json: { links: serialized_links, items: serialized }
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      links: links,
+      items: items,
+      paths: paths
+    }
 ***REMOVED***
 
   def show
-    serialized = ActiveModel::ArraySerializer.new(Item.all,
+    items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
 
     r***REMOVED***er json: {
       link: LinkSerializer.new(MODEL.find(params[:id])).serializable_hash,
-      items: serialized
+      items: items,
+      paths: paths
     }
 ***REMOVED***
 
   def create
     link = params[:link]
-    path = Path.find(link[:path])
+    path = Path.find(link[:paths].first)
     node = Node.build(link[:url], path, current_user)
     link = node.item.context
 
-    serialized = ActiveModel::ArraySerializer.new(Item.all,
+    items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
 
     r***REMOVED***er json: {
       link: LinkSerializer.new(link).serializable_hash,
-      items: serialized
+      items: items,
+      paths: paths
     }
 ***REMOVED***
 
