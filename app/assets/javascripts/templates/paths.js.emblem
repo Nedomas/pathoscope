@@ -14,12 +14,4 @@ article.paths
               | #{path.links_count} links
         div.icon class=path.color_class
 
-    / Do not let the user create a new path now
-    / li.path
-    /   div.description
-    /     a.title href="#explore"
-    /       | Create new path
-    /     div.extra
-    /       p
-    /         | if you feel different
-    /   div class="icon background-0"
+    outlet

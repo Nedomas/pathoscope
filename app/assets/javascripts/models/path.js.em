@@ -5,6 +5,7 @@ App.Path = DS.Model.ext***REMOVED***
   links_count: DS.attr('string')
   item: DS.belongsTo('item')
   item_id: DS.attr('string')
+  creation_user_id: DS.attr('string')
 
   +computed item_id
   fake_item: ->

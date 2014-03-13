@@ -1,5 +1,16 @@
 App.PathsRoute = Ember.Route.ext***REMOVED***
   skipsAuthentification: true
 
+  setupController: (controller, model) ->
+    @store.find('path').then (paths) ->
+      saved_paths = paths.filter (path) ->
+        !path.get('isNew')
+
+      controller.set('model', saved_paths)
+
+App.PathsNewRoute = Ember.Route.ext***REMOVED***
+  skipsAuthentification: true
+
   model: ->
-    @store.find('path')
+    console.log('ha')
+    @store.createRecord 'path'

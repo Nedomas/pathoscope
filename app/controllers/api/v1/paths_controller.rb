@@ -24,8 +24,17 @@ class Api::V1::PathsController < ApplicationController
 ***REMOVED***
 
   def create
-    @model = MODEL.create(permitted_params)
-    respond_with @model
+    path = params[:path]
+    user = User.find(path[:creation_user_id])
+    node = Node.build_path(path[:title], user)
+
+    serialized = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      path: PathSerializer.new(node.path).serializable_hash,
+      items: serialized
+    }
 ***REMOVED***
 
   def update

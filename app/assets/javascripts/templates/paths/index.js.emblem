@@ -1,0 +1,7 @@
+li.path.new-path
+  div.description
+    link-to 'paths.new' class='title' | Create new path
+    div.extra
+      p
+        | if you feel different
+  div class="icon background-0"

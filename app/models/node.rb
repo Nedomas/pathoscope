@@ -18,7 +18,7 @@ class Node < ActiveRecord::Base
 ***REMOVED***
 
     def build_path(title, user)
-      item = Item.create_path(title)
+      item = Item.create_path(title.capitalize)
       path = item.context
 
       create(item_id: item.id, path_id: path.id, user_id: user.id)

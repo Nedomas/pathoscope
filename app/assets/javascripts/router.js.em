@@ -1,5 +1,7 @@
 App.Router.map ->
-  @resource('paths')
+  @resource 'paths', ->
+    @route('new')
+
   @resource('install')
 
   @resource 'map', { path: '/map/:item_id' }, ->
