@@ -36,6 +36,8 @@ class Api::V1::LinksController < ApplicationController
     node = Node.build(link[:url], path, current_user)
     link = node.item.context
 
+    links = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: LinkSerializer).serializable_array
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
@@ -44,7 +46,8 @@ class Api::V1::LinksController < ApplicationController
     r***REMOVED***er json: {
       link: LinkSerializer.new(link).serializable_hash,
       items: items,
-      paths: paths
+      paths: paths,
+      links: links
     }
 ***REMOVED***
 

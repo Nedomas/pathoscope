@@ -9,7 +9,7 @@ header.ext***REMOVED***full
       li
         link-to 'map' 1 | Mental map
       li
-        link-to 'map' 1 | Install
+        link-to 'install' | Install
       li
         a.avatar href='#'
           img src=current_user_gravatar_url

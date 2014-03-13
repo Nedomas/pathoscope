@@ -10,8 +10,7 @@ ul
         section.content
             note.content
   else
-    p This is your chance to shine.
-    p Be the first one to write a note on this
+    yield
 
 section.new-note
   = textarea class='note-content' value=note.content placeholder=placeholder

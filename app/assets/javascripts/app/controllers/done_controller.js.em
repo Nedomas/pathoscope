@@ -1,12 +1,12 @@
-App.DoneController = Ember.ObjectController.ext***REMOVED***
-  needs: ['application']
+# App.DoneController = Ember.ObjectController.ext***REMOVED***
+***REMOVED*** needs: ['application']
 
-  +computed model.@each.siblings
-  base_items: ->
-    model = @get('model')
+***REMOVED*** +computed model.@each.siblings
+***REMOVED*** base_items: ->
+***REMOVED***   model = @get('model')
 
-    @get('model.siblings').forEach (sibling) ->
-        if model.id == sibling.id
-          sibling.set('open', true)
+***REMOVED***   @get('model.siblings').forEach (sibling) ->
+***REMOVED***       if model.id == sibling.id
+***REMOVED***         sibling.set('open', true)
 
-    @get('model.siblings')
+***REMOVED***   @get('model.siblings')

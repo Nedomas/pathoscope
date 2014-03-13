@@ -1,3 +1,3 @@
-App.DoneRoute = Ember.Route.ext***REMOVED***
+App.DoneIndexRoute = Ember.Route.ext***REMOVED***
   model: (params) ->
     @store.find('item', params.id)

@@ -1,7 +1,37 @@
 h1 Success!
 article.choose-path
-  single-item item=model isExpanded=false notes=true s***REMOVED***ItemChildren='tagAction'
+  tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
 
 h1 Explore from here
-each item in base_items
-  tree-node item=item notes=false s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' isExpanded=item.open hasChildren=item.hasChildren
+
+article.world
+  ul
+    if model.hasParents
+      each item in model.parents
+        go-up-li item=item
+
+      div.padded
+        tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+          if notesExpanded
+            outlet
+
+        if childrenExpanded
+          div.padded
+            each item in model.children
+              tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+
+        each item in model.siblings
+          tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+    else
+      | yo
+      tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+        if notesExpanded
+          outlet
+
+      if childrenExpanded
+        div.padded
+          each item in model.children
+            tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+
+      each item in model.siblings
+        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note

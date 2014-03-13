@@ -5,6 +5,7 @@ App.Item = DS.Model.ext***REMOVED***
   children: DS.hasMany('item', inverse: 'parents')
   paths: DS.hasMany('path')
   notes: DS.hasMany('note')
+  link: DS.belongsTo('link')
 
   +computed context_id, context_type
   context: ->

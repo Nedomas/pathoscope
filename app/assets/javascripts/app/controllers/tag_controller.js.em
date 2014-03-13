@@ -1,5 +1,4 @@
 App.TagController = Ember.ArrayController.ext***REMOVED***
-
   actions:
     tagAction: (item_id) ->
       store = @store
@@ -11,8 +10,9 @@ App.TagController = Ember.ArrayController.ext***REMOVED***
             url: window.location.href
           link.get('paths').addObject(path)
 
-          transitionToDone = () ->
+          transitionToDone = (resp) ->
+            debugger
             link.set('tagged_path', path)
-            self.transitionToRoute('done', link.fake_item)
+            self.transitionToRoute('done.notes', link.get('item'))
 
           link.save().then(transitionToDone)

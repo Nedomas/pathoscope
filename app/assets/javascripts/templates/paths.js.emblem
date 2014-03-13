@@ -1,6 +1,5 @@
 h1 Paths
 
-controllers.application.domas
 article.paths
   ul
     = each path in model

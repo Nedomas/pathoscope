@@ -1,13 +1,16 @@
 section.arrow class={ childrenExpanded::closed item.context.color_class }
   if isPath
     a{action 'itemChildrenAction' item.id} href="#"
-      if hasChildren
-        if childrenExpanded
-          == empty-circle
-        else
-          == filled-circle
+      if filled
+        == filled-circle
       else
-        == crossed-circle
+        if hasChildren
+          if childrenExpanded
+            == empty-circle
+          else
+            == filled-circle
+        else
+          == crossed-circle
   else
     if hasChildren
       a{action 'itemChildrenAction' item.id} href="#" ❯
@@ -23,6 +26,7 @@ section.meta
       span.url
         item.context.short_url
       span.paths
+
 if notes
   section.notes-indicator
     a{action 'itemNotesAction' item.id} href="#" class={ notesExpanded::closed }

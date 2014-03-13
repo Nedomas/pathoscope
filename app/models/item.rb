@@ -30,4 +30,8 @@ class Item < ActiveRecord::Base
   def path_ids
     paths.map(&:id)
 ***REMOVED***
+
+  def link_id
+    context.id if link?
+***REMOVED***
 ***REMOVED***

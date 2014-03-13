@@ -1,4 +1,6 @@
 App.Router.map ->
   @route('index', { path: '/' })
   @route('tag', { path: '/tag' })
-  @route('done', { path: '/done/:item_id' })
+
+  @resource 'done', { path: '/done/:item_id' }, ->
+    @route('notes')
