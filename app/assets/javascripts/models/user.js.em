@@ -15,6 +15,10 @@ App.User = DS.Model.ext***REMOVED***
         in_path = _.contains(item.get('paths').toArray(), path)
         in_path && !item.get('isPath')
 
-      result.pushObject({ path: path, items: path_items })
+      sorted_items = Em.ArrayProxy.createWithMixins Ember.SortableMixin,
+        content: path_items
+        sortProperties: ['created_at']
+
+      result.pushObject({ path: path, items: sorted_items })
 
     result

@@ -43,12 +43,13 @@ class Api::V1::LinksController < ApplicationController
     paths = ActiveModel::ArraySerializer.new(Path.all,
       each_serializer: PathSerializer).serializable_array
 
-    r***REMOVED***er json: {
-      link: LinkSerializer.new(link).serializable_hash,
-      items: items,
-      paths: paths,
-      links: links
-    }
+  ***REMOVED*** r***REMOVED***er json: {
+  ***REMOVED***   link: LinkSerializer.new(link).serializable_hash,
+  ***REMOVED***   items: items,
+  ***REMOVED***   paths: paths,
+  ***REMOVED***   links: links
+  ***REMOVED*** }
+    r***REMOVED***er :nothing => true, :status => 204 and return
 ***REMOVED***
 
   def update
