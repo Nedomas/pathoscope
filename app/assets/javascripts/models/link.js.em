@@ -2,8 +2,11 @@ App.Link = DS.Model.ext***REMOVED***
   title: DS.attr('string')
   url: DS.attr('string')
   paths: DS.hasMany('path')
+  creation_path_id: DS.attr('string')
+***REMOVED*** paths: DS.hasMany('path')
+***REMOVED*** path_ids: DS.hasMany('path')
   item: DS.belongsTo('item')
-  item_id: DS.attr('string')
+***REMOVED*** item_id: DS.attr('string')
 
   +computed item_id
   fake_item: ->
@@ -11,7 +14,7 @@ App.Link = DS.Model.ext***REMOVED***
 
   +computed title
   short_title: ->
-    _.str.truncate(@get('title'), 40)
+    _.str.truncate(@get('title'), 30)
 
   +computed url
   short_url: ->

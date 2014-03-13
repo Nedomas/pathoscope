@@ -1,13 +1,28 @@
-App.DoneController = Ember.ObjectController.ext***REMOVED***
-  needs: ['application']
+App.DoneIndexController = Ember.ObjectController.ext***REMOVED***
+  childrenExpanded: true
+  notesExpanded: false
 
-***REMOVED*** +computed model.@each.parents
-***REMOVED*** base_items: ->
-***REMOVED***   model = @get('model')
+  actions:
+    doneChildrenAction: (param) ->
+      if @get('model.id') == param
+        @toggleProperty('childrenExpanded')
+      else
+        @transitionToRoute('done', param)
+      false
 
-***REMOVED***   @get('model.parents').forEach (sibling) ->
-***REMOVED***     debugger
-***REMOVED***     if model.id == sibling.id
-***REMOVED***       sibling.set('open', true)
+    doneNotesAction: (param) ->
+      if @get('notesExpanded')
+        if @get('model.id') == param
+          @transitionToRoute('done.index', param)
+          @set('notesExpanded', false)
+        else
+          @transitionToRoute('done.notes', param)
+      else
+        @transitionToRoute('done.notes', param)
+        @set('notesExpanded', true)
+      false
 
-  ***REMOVED*** @get('model.siblings')
+    doneUpAction: (param) ->
+      @transitionToRoute('done.index', param)
+      @set('notesExpanded', false)
+      false

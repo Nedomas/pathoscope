@@ -3,9 +3,9 @@ header
   section.close
     a href='#' X
 
-if flash_error
-  section.error
-    flash_error
+flashMessage
+  section.flash
+    message
 
 section.content
   = outlet

@@ -9,6 +9,8 @@ App.Item = DS.Model.ext***REMOVED***
   link: DS.belongsTo('link')
   created_at: DS.attr('string')
 
+  wasTagged: false
+
   +computed context_id, context_type
   context: ->
     if @get('context_type') == 'Path'

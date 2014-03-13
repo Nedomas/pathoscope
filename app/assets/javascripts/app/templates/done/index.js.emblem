@@ -1,0 +1,28 @@
+h1 Explore from here
+
+article.done
+  ul
+    if model.hasParents
+      each item in model.parents
+        go-up item=item s***REMOVED***NodeUp='doneUpAction'
+
+      div.padded
+        tree-node item=model notes=false childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction' new_note=new_note
+
+        if childrenExpanded
+          div.padded
+            each item in model.children
+              tree-node item=item notes=false s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction' new_note=new_note
+
+        each item in model.siblings
+          tree-node item=item notes=false s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction'
+    else
+      tree-node item=model notes=false childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction'
+
+      if childrenExpanded
+        div.padded
+          each item in model.children
+            tree-node item=item notes=false s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction'
+
+      each item in model.siblings
+        tree-node item=item notes=false s***REMOVED***NodeChildren='doneChildrenAction' s***REMOVED***NodeNotes='doneNotesAction' s***REMOVED***NodePost='donePostAction'

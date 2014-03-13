@@ -1,4 +1,0 @@
-li class="box go-up"
-  section.meta
-    p.title
-      link-to 'world' item | Go up to #{item.context.short_title}

@@ -21,3 +21,8 @@ App.WorldController = Ember.ObjectController.ext***REMOVED***
         @transitionToRoute('world.notes', param)
         @set('notesExpanded', true)
       false
+
+    worldUpAction: (param) ->
+      @transitionToRoute('world.index', param)
+      @set('notesExpanded', false)
+      false

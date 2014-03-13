@@ -1,10 +1,7 @@
 h1 Select a path to tag
 article.choose-path
-  / =controllers.application.current_user
-  / log paths
-  / =paths
   each path in model
-    single-item item=path.fake_item filled=true isExpanded=false notes=false s***REMOVED***ItemChildren='tagAction'
+    single-item item=path.item filled=true isExpanded=false notes=false s***REMOVED***ItemChildren='tagAction'
 article.new-path
   | Go to Pathoscope to choose a different path
 

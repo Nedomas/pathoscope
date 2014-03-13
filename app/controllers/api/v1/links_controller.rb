@@ -9,11 +9,14 @@ class Api::V1::LinksController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
       each_serializer: PathSerializer).serializable_array
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
 
     r***REMOVED***er json: {
       links: links,
       items: items,
-      paths: paths
+      paths: paths,
+      notes: notes
     }
 ***REMOVED***
 
@@ -22,17 +25,20 @@ class Api::V1::LinksController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
       each_serializer: PathSerializer).serializable_array
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
 
     r***REMOVED***er json: {
       link: LinkSerializer.new(MODEL.find(params[:id])).serializable_hash,
       items: items,
-      paths: paths
+      paths: paths,
+      notes: notes
     }
 ***REMOVED***
 
   def create
     link = params[:link]
-    path = Path.find(link[:paths].first)
+    path = Path.find(link[:creation_path_id])
     node = Node.build(link[:url], path, current_user)
     link = node.item.context
 
@@ -42,11 +48,14 @@ class Api::V1::LinksController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
       each_serializer: PathSerializer).serializable_array
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
 
     r***REMOVED***er json: {
       link: LinkSerializer.new(link).serializable_hash,
       items: items,
-      paths: paths
+      paths: paths,
+      notes: notes
     }
   ***REMOVED*** r***REMOVED***er :nothing => true, :status => 204 and return
 ***REMOVED***

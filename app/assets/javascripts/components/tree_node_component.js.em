@@ -1,6 +1,7 @@
 App.TreeNodeComponent = Ember.Component.ext***REMOVED***
 ***REMOVED*** childrenExpanded: false
 ***REMOVED*** notesExpanded: false
+  notes: true
 
   actions:
     nodeChildrenAction: (param) ->

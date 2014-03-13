@@ -44,6 +44,6 @@ class Item < ActiveRecord::Base
 ***REMOVED***
 
   def sibling_ids
-    nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id)
+    nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id) - [id]
 ***REMOVED***
 ***REMOVED***

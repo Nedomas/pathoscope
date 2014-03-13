@@ -1,39 +1,8 @@
 h1 Success!
+log model
+| fa #{shit}
 article.choose-path
-  log model
-  tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-    outlet
+  single-item item=model notes=notes hasChildren=false
+  notes-box note=model s***REMOVED***NotePost='postAction'
 
-h1 Explore from here
-
-article.world
-  ul
-    / if model.hasParents
-    /   each item in model.parents
-    /     go-up-li item=item
-
-    /   div.padded
-    /     tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-    /       if notesExpanded
-    /         outlet
-
-    /     if childrenExpanded
-    /       div.padded
-    /         each item in model.children
-    /           tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-
-    /     each item in model.siblings
-    /       tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-    / else
-    /   | yo
-      tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-        if notesExpanded
-          outlet
-
-      / if childrenExpanded
-      /   div.padded
-      /     each item in model.children
-      /       tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-
-    each item in model.siblings
-      tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+outlet

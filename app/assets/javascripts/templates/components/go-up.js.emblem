@@ -1,0 +1,4 @@
+li class="box go-up"
+  section.meta
+    p.title
+      a{action 'upAction' item} href="#" Go up to #{item.context.short_title}
