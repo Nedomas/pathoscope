@@ -1,17 +1,36 @@
 App.DoneRoute = Ember.Route.ext***REMOVED***
-  model: ->
-    debugger
-    @store.find('item').then (items) ->
-      items.findBy('wasTagged', true)
+***REMOVED*** model: (params) ->
+***REMOVED***   @store.createRecord 'note',
+***REMOVED***     item: @modelFor('done')
+
+  setupController: (controller, model) ->
+    new_model = @store.createRecord 'note',
+      item: @modelFor('done')
+    console.log(new_model.get('item'))
+    controller.set('model', new_model)
+  ***REMOVED*** @store.find('item', params.tagged_item_id).then (tagged_item) ->
+  ***REMOVED***   note = @store.createRecord 'note',
+  ***REMOVED***     item: tagged_item
+
+    ***REMOVED*** Ember.RSVP.hash
+    ***REMOVED***   tagged_item: tagged_item
+    ***REMOVED***   note: note
+    ***REMOVED*** item
+  ***REMOVED*** current_item = @modelFor('done')
+  ***REMOVED*** debugger
+
+  ***REMOVED*** debugger
+  ***REMOVED*** @store.find('item').then (items) ->
+  ***REMOVED***   items.findBy('wasTagged', true)
 
   ***REMOVED*** @modelFor('done')
 
 ***REMOVED*** afterModel: ->
 ***REMOVED***   @transitionTo('done.index', @modelFor('done'))
 
-App.DoneIndexRoute = Ember.Route.ext***REMOVED***
-  model: ->
-    @modelFor('done')
+App.WorldRoute = Ember.Route.ext***REMOVED***
+  model: (params) ->
+    @store.find('item', params.item_id)
 
   ***REMOVED*** item = @modelFor('done')
   ***REMOVED*** @store.find(item, item.get('id'))

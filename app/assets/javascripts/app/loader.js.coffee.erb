@@ -42,7 +42,7 @@ PathoscopeLoader = (->
     load('head', 'script', server + '/assets/app/application.js', openApp)
 
    openApp = ->
-     $('#pathoscope-trigger').leanModal()
+     $('#pathoscope-trigger').leanModal({ top: 50 })
      $('#pathoscope-trigger').click()
 
   load = (place, tag, url, callback) ->
@@ -65,10 +65,5 @@ PathoscopeLoader = (->
 
   return { init: init }
 )()
-
-  ***REMOVED*** $.get(server + '/bookmarks/templates').then (templates) ->
-  ***REMOVED***   html = $(templates).find('main #pathoscope').clone()
-  ***REMOVED***   $('body').app***REMOVED***(html)
-  ***REMOVED***   loadApplication()
 
 PathoscopeLoader.init()

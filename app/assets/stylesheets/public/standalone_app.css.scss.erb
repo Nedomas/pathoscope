@@ -20,9 +20,8 @@
   font: normal 16px $open-sans !important;
   color: $dark-grey;
   width: 650px;
-  height: 700px;
-  overflow-y: scroll;
-  padding-bottom: 64px;
+  height: 500px;
+  padding-bottom: 32px;
   background-color: $snow-white;
   z-index: 999999999 !important;
 
@@ -53,7 +52,9 @@
   }
 
   .content {
-    margin: 26px 32px;
+    overflow-y: scroll;
+    height: 400px; // 500 - 64
+    padding: 26px 32px;
   }
 
   h1 {
@@ -119,4 +120,3 @@
     }
   }
 }
-

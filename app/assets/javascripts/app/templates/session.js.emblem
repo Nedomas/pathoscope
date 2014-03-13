@@ -1,11 +1,15 @@
-form{action 'signIn' on='submit'}
-  label Email
-  =input type='text' value=email
-  label Password
-  =input type='password' value=password
+div.session
+  h1 Sign in
 
-  =input type='checkbox' checked=remember
-  label Remember me
+  form{action 'signIn' on='submit'}
+    .email
+      =input type='text' value=email placeholder='awesome@email.com'
+    .password
+      =input type='password' value=password placeholder='password'
 
-  button Sign In
+    .remember
+      label for='remember-me' Remember me
+      =input id='remember-me' type='checkbox' checked=remember
 
+    .sign-in
+      button Sign In

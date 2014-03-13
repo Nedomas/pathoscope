@@ -1,8 +1,6 @@
 h1 Success!
-log model
-| fa #{shit}
 article.choose-path
-  single-item item=model notes=notes hasChildren=false
+  single-item item=model.item notes=notes hasChildren=false
   notes-box note=model s***REMOVED***NotePost='postAction'
 
 outlet

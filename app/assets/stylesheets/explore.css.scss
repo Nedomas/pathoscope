@@ -1,3 +1,78 @@
+$transitional-green: hsla(105, 18%, 60%, 1);
+$transparent-red: hsla(0, 77%, 62%, 0.7);
+$sky-blue: hsla(192, 50%, 75%, 1);
+
+.flash, #pathoscope-app .flash {
+  display: block;
+  color: $white;
+  background-color: $sky-blue;
+  text-align: center;
+  padding: .75em;
+  margin: 1em auto;
+  width: 18em;
+  border-radius: .15em;
+}
+
+.session, #pathoscope-app .session {
+  text-align: center;
+
+  h1 {
+    text-align: left;
+  }
+
+  form {
+    padding-top: .5em;
+  }
+
+  .email, .password {
+    input {
+      display: inline-block;
+      background-color: hsla(0, 0%, 92%, 1);
+      color: hsla(216, 4%, 72%, 1);
+      width: 20em;
+      height: 4em;
+      border-width: 0px;
+      border: none;
+      outline: none;
+      border-radius: .5em;
+      padding: .5em;
+      margin: 1em;
+    }
+  }
+
+  .remember {
+    label {
+      color: $semigrey;
+      display: inline-block;
+      padding: 1em;
+    }
+
+    input {
+      display: inline-block;
+      background-color: hsla(0, 0%, 92%, 1);
+      color: hsla(162, 100%, 40%, 1);
+      border-width: 0px;
+      border: none;
+      outline: none;
+      border-radius: .5em;
+      padding: .75em;
+    }
+  }
+
+  button {
+    display: inline-block;
+    margin-top: 1em;
+    background-color: hsla(162, 100%, 40%, 1);
+    color: $white;
+    border-width: 0px;
+    border: none;
+    outline: none;
+    border-radius: .5em;
+    padding: .75em;
+    text-transform: uppercase;
+  }
+}
+
 .world, .map, #pathoscope-app {
   .box {
     @include row();

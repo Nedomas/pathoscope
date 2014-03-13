@@ -7,7 +7,7 @@ ul
             saved_note.user.username
           span.time
             saved_note.time_ago
-        section.content
+        section.note-content
             saved_note.content
   else
     yield

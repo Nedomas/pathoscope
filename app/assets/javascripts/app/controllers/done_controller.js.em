@@ -1,28 +1,11 @@
-App.DoneIndexController = Ember.ObjectController.ext***REMOVED***
-  childrenExpanded: true
-  notesExpanded: false
+App.DoneController = Ember.ObjectController.ext***REMOVED***
+  needs: 'application'
 
   actions:
-    doneChildrenAction: (param) ->
-      if @get('model.id') == param
-        @toggleProperty('childrenExpanded')
-      else
-        @transitionToRoute('done', param)
-      false
+    postAction: (param) ->
+      note = @get('model')
 
-    doneNotesAction: (param) ->
-      if @get('notesExpanded')
-        if @get('model.id') == param
-          @transitionToRoute('done.index', param)
-          @set('notesExpanded', false)
-        else
-          @transitionToRoute('done.notes', param)
-      else
-        @transitionToRoute('done.notes', param)
-        @set('notesExpanded', true)
-      false
-
-    doneUpAction: (param) ->
-      @transitionToRoute('done.index', param)
-      @set('notesExpanded', false)
-      false
+      @get('controllers.application.current_user').then (user) ->
+        note.set('user', user)
+        note.save()
+        console.log('haaaaaaaaaaaaaaaaa')
