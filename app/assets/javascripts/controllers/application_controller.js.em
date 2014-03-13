@@ -1,5 +1,9 @@
 App.ApplicationController = Ember.Controller.ext***REMOVED***
 
+  +computed authenticator
+  isLoggedIn: ->
+    debugger
+
   +computed currentSession
   current_user: ->
     @store.find('user', @get('currentSession.user.id'))

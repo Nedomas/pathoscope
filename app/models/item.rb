@@ -34,4 +34,16 @@ class Item < ActiveRecord::Base
   def link_id
     context.id if link?
 ***REMOVED***
+
+  def child_ids
+    nodes.map(&:children).flatten.map(&:item).uniq.map(&:id)
+***REMOVED***
+
+  def parent_ids
+    nodes.map(&:parent).flatten.compact.map(&:item).uniq.map(&:id)
+***REMOVED***
+
+  def sibling_ids
+    nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id)
+***REMOVED***
 ***REMOVED***

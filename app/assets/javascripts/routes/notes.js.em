@@ -1,4 +1,6 @@
 App.WorldNotesRoute = Ember.Route.ext***REMOVED***
+  skipsAuthentification: true
+
   model: ->
     @store.createRecord 'note',
       item: @modelFor('world')

@@ -1,5 +1,6 @@
 App.ApplicationRoute = Ember.Route.ext***REMOVED***
   actions:
     validSignIn: ->
-      console.log('yo')
       @transitionTo("tag")
+    invalidSignIn: ->
+      @controllerFor('application').set('flash_error', 'The password is invalid')

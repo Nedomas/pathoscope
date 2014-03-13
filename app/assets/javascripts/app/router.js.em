@@ -4,3 +4,6 @@ App.Router.map ->
 
   @resource 'done', { path: '/done/:item_id' }, ->
     @route('notes')
+
+# App.Router.reopen
+#   location: 'none'

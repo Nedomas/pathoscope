@@ -14,12 +14,15 @@ header.ext***REMOVED***full
         a.avatar href='#'
           img src=current_user_gravatar_url
       li
-        / if isSignedIn
-        /   button{action "signOut"} Sign Out
-        / else
-        /   link-to "session" | Sign in
+        if isSignedIn
+          a{action "signOut"} href='#' Logout
+        else
+          link-to "session" | Sign in
 
-section.errors
+flashMessage
+  section.flash
+    message
+
 main
   outlet
 footer.ext***REMOVED***full

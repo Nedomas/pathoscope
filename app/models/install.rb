@@ -3,7 +3,7 @@ class Install
     %Q(javascript:
     (function(){
       s = document.createElement('script');
-      s.src = '#{SERVER}/assets/pathoscope.js';
+      s.src = '#{SERVER}/assets/app/loader.js';
       document.body.app***REMOVED***Child(s);
     })();
     ).delete(' ').delete("\n")

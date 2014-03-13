@@ -36,20 +36,19 @@ class Api::V1::LinksController < ApplicationController
     node = Node.build(link[:url], path, current_user)
     link = node.item.context
 
-    links = ActiveModel::ArraySerializer.new(MODEL.all,
-      each_serializer: LinkSerializer).serializable_array
+  ***REMOVED*** links = ActiveModel::ArraySerializer.new(MODEL.all,
+  ***REMOVED***   each_serializer: LinkSerializer).serializable_array
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
       each_serializer: PathSerializer).serializable_array
 
-  ***REMOVED*** r***REMOVED***er json: {
-  ***REMOVED***   link: LinkSerializer.new(link).serializable_hash,
-  ***REMOVED***   items: items,
-  ***REMOVED***   paths: paths,
-  ***REMOVED***   links: links
-  ***REMOVED*** }
-    r***REMOVED***er :nothing => true, :status => 204 and return
+    r***REMOVED***er json: {
+      link: LinkSerializer.new(link).serializable_hash,
+      items: items,
+      paths: paths
+    }
+  ***REMOVED*** r***REMOVED***er :nothing => true, :status => 204 and return
 ***REMOVED***
 
   def update

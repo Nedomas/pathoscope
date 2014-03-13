@@ -18,6 +18,7 @@ window.App = Ember.Application.create
   deviseSimpleAuth:
   ***REMOVED*** the URL users will see in the browser for the sign in page
     signInPath: "/login"
+    signOutPath: "/users/sign_out"
 
 Handlebars.registerHelper "log", (context) ->
   console.log(context)

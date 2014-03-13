@@ -10,9 +10,9 @@ App.TagController = Ember.ArrayController.ext***REMOVED***
             url: window.location.href
           link.get('paths').addObject(path)
 
+
           transitionToDone = (resp) ->
-            debugger
             link.set('tagged_path', path)
-            self.transitionToRoute('done.notes', link.get('item'))
+            self.transitionToRoute('done.index', link.get('item_id'))
 
           link.save().then(transitionToDone)

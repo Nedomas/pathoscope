@@ -3,6 +3,7 @@ App.Item = DS.Model.ext***REMOVED***
   context_type: DS.attr('string')
   parents: DS.hasMany('item', inverse: 'children')
   children: DS.hasMany('item', inverse: 'parents')
+  siblings: DS.hasMany('item')
   paths: DS.hasMany('path')
   notes: DS.hasMany('note')
   link: DS.belongsTo('link')
@@ -36,16 +37,20 @@ App.Item = DS.Model.ext***REMOVED***
     @get('notes').filter (note) ->
       !note.get('isNew')
 
-***REMOVED*** recalcing itself when parent is observed
-  +computed
-  siblings: ->
-    self = this
-    parents = @get('parents')
-    has_parents = @get('hasParents')
+***REMOVED*** # recalcing itself when parent is observed
+***REMOVED*** +computed parents.@each
+***REMOVED*** siblings: ->
+***REMOVED***   self = this
+***REMOVED***   parents = @get('parents')
+***REMOVED***   has_parents = @get('hasParents')
+***REMOVED***   stopper = true
 
-    @store.filter 'item', {}, (item) ->
-      contains_every = item.get('parents').every (parent) ->
-        parents.contains(parent)
-      parents_equal = item.get('hasParents') == has_parents
+***REMOVED***   @store.filter 'item', {}, (item) ->
+***REMOVED***     item.get('parents')
+***REMOVED***   ***REMOVED*** if stopper
+    ***REMOVED***   contains_every = item.get('parents').every (parent) ->
+    ***REMOVED***     stopper = false
+    ***REMOVED***     parents.contains(parent)
+    ***REMOVED***   parents_equal = item.get('hasParents') == has_parents
 
-      contains_every && parents_equal && item != self
+    ***REMOVED***   contains_every && parents_equal && item != self

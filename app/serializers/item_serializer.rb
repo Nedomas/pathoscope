@@ -1,18 +1,10 @@
 class ItemSerializer < ApplicationSerializer
 ***REMOVED*** attributes *Item.column_names.map(&:to_sym)
   attributes *Item.column_names.map(&:to_sym).concat(
-    [:child_ids, :parent_ids, :note_ids, :path_ids, :link_id])
+    [:child_ids, :parent_ids, :sibling_ids, :note_ids, :path_ids, :link_id])
 
   def context
     object.context
-***REMOVED***
-
-  def child_ids
-    object.nodes.map(&:children).flatten.map(&:item).uniq.map(&:id)
-***REMOVED***
-
-  def parent_ids
-    object.nodes.map(&:parent).flatten.compact.map(&:item).uniq.map(&:id)
 ***REMOVED***
 
 ***REMOVED*** def link

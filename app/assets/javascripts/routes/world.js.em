@@ -1,4 +1,6 @@
 App.WorldIndexRoute = Ember.Route.ext***REMOVED***
+  skipsAuthentification: true
+
   model: ->
     @modelFor('world')
 

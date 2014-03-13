@@ -22,6 +22,7 @@ Pathoscope::Application.routes.draw do
   get "install/bookmarklet"
   get "launching/index"
   post "launching/get" => 'launching#get'
+  delete 'home/sign_out' => 'home#sign_out'
 
   get "comments/create"
   get 'comments/index'

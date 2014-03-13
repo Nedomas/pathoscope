@@ -41,7 +41,23 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     @model = MODEL.create(permitted_params)
-    respond_with @model
+
+    serialized = ActiveModel::ArraySerializer.new(MODEL.all,
+      each_serializer: ItemSerializer).serializable_array
+    notes = ActiveModel::ArraySerializer.new(Note.all,
+      each_serializer: NoteSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+    links = ActiveModel::ArraySerializer.new(Link.all,
+      each_serializer: LinkSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      item: ItemSerializer.new(@model).serializable_hash,
+      items: serialized,
+      notes: notes,
+      paths: paths,
+      links: links
+    }
 ***REMOVED***
 
   def update

@@ -1,14 +1,14 @@
 ul
-  if note.item.hasSavedNotes
-    each note in note.item.saved_notes
+  if note.item.hasNotes
+    each saved_note in note.item.saved_notes
       li.note
         section.info
           span.name
-            note.user.username
+            saved_note.user.username
           span.time
-            note.time_ago
+            saved_note.time_ago
         section.content
-            note.content
+            saved_note.content
   else
     yield
 

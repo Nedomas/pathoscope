@@ -3,11 +3,11 @@ App.Link = DS.Model.ext***REMOVED***
   url: DS.attr('string')
   paths: DS.hasMany('path')
   item: DS.belongsTo('item')
-***REMOVED*** item_id: DS.attr('string')
+  item_id: DS.attr('string')
 
-***REMOVED*** +computed item_id
-***REMOVED*** fake_item: ->
-***REMOVED***   @store.find('item', @get('item_id'))
+  +computed item_id
+  fake_item: ->
+    @store.find('item', @get('item_id'))
 
   +computed title
   short_title: ->

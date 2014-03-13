@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
   ***REMOVED*** binding.pry
   ***REMOVED*** request.env['omniauth.origin'] || stored_location_for(resource) || root_path
 ***REMOVED***
+
+  def after_sign_out_path_for(resource)
+    '/home/sign_out'
+
+  ***REMOVED*** '/users/sign_out'
+  ***REMOVED*** sessions_current_path
+  ***REMOVED*** true
+  ***REMOVED*** binding.pry
+  ***REMOVED*** root_path
+***REMOVED***
 ***REMOVED***
