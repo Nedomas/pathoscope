@@ -34,3 +34,6 @@ if notes
         == filled-note
       else
         == empty-note
+
+  if notesExpanded
+    yield

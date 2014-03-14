@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   def item_ids
     items.map(&:id)
 ***REMOVED***
+
 ***REMOVED*** def paths
 ***REMOVED***   nodes.map(&:path).uniq
 ***REMOVED*** ***REMOVED***

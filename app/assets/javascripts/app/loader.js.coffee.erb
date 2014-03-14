@@ -44,6 +44,8 @@ PathoscopeLoader = (->
    openApp = ->
      $('#pathoscope-trigger').leanModal({ top: 50 })
      $('#pathoscope-trigger').click()
+     $(document).on 'click', '#pathoscope .close', ->
+       $('#lean_overlay').click()
 
   load = (place, tag, url, callback) ->
     done = false

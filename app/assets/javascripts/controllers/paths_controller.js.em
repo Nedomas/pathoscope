@@ -3,7 +3,7 @@ App.PathsController = Ember.ArrayController.ext***REMOVED***
   sortAsc***REMOVED***ing: true
 
 App.PathsNewController = Ember.ObjectController.ext***REMOVED***
-  needs: 'application'
+  needs: ['application', 'paths']
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true
 
@@ -16,4 +16,5 @@ App.PathsNewController = Ember.ObjectController.ext***REMOVED***
         path.set('creation_user_id', user.get('id'))
 
         path.save().then ->
+          self.get('controllers.paths').addObject(path)
           self.transitionToRoute('paths')

@@ -20,6 +20,7 @@ class Node < ActiveRecord::Base
     def build_path(title, user)
       item = Item.create_path(title.capitalize)
       path = item.context
+      user.paths << path unless user.paths.include?(path)
 
       create(item_id: item.id, path_id: path.id, user_id: user.id)
 ***REMOVED***

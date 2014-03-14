@@ -12,9 +12,7 @@ App.TagController = Ember.ArrayController.ext***REMOVED***
           link.get('paths').addObject(path)
 
           transitionToDone = (resp) ->
-          ***REMOVED*** @flashMessage('You have successfully signed out.')
             item = link.get('item')
-            item.set('wasTagged', true)
-            self.transitionToRoute('world', item, 1)
+            self.transitionToRoute('world', item, item)
 
           link.save().then(transitionToDone)

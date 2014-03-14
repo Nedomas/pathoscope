@@ -11,12 +11,15 @@ class Api::V1::UsersController < ApplicationController
       each_serializer: PathSerializer).serializable_array
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
+      each_serializer: UserPathSerializer).serializable_array
 
     r***REMOVED***er json: {
       users: users,
       notes: notes,
       paths: paths,
-      items: items
+      items: items,
+      user_paths: user_paths
     }
 ***REMOVED***
 
@@ -27,12 +30,15 @@ class Api::V1::UsersController < ApplicationController
       each_serializer: PathSerializer).serializable_array
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
+      each_serializer: UserPathSerializer).serializable_array
 
     r***REMOVED***er json: {
       user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
       notes: notes,
       paths: paths,
-      items: items
+      items: items,
+      user_paths: user_paths
     }
 ***REMOVED***
 

@@ -1,0 +1,3 @@
+section.new-note
+  = textarea class='note-content' value=new_note.content placeholder=placeholder
+  button.post-note{action 'postAction'} Post Note

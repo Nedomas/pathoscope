@@ -2,7 +2,7 @@ App.PathsRoute = Ember.Route.ext***REMOVED***
   skipsAuthentification: true
 
   setupController: (controller, model) ->
-    @store.find('path').then (paths) ->
+    @store.findAll('path').then (paths) ->
       saved_paths = paths.filter (path) ->
         !path.get('isNew')
 

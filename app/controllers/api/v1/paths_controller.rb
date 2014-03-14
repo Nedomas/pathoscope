@@ -7,17 +7,27 @@ class Api::V1::PathsController < ApplicationController
       each_serializer: PathSerializer).serializable_array
     serialized = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
-    r***REMOVED***er json: { paths: serialized_paths, items: serialized }
+    user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
+      each_serializer: UserPathSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      paths: serialized_paths,
+      items: serialized,
+      user_paths: user_paths
+    }
 # , meta: { current_user: current_user }
 ***REMOVED***
 
   def show
     serialized = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
+      each_serializer: UserPathSerializer).serializable_array
 
     r***REMOVED***er json: {
       path: PathSerializer.new(MODEL.find(params[:id])).serializable_hash,
-      items: serialized
+      items: serialized,
+      user_paths: user_paths
     }
 # , meta: { current_user: current_user }
   ***REMOVED*** respond_with MODEL.find(params[:id])
@@ -30,10 +40,13 @@ class Api::V1::PathsController < ApplicationController
 
     serialized = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
+    user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
+      each_serializer: UserPathSerializer).serializable_array
 
     r***REMOVED***er json: {
       path: PathSerializer.new(node.path).serializable_hash,
-      items: serialized
+      items: serialized,
+      user_paths: user_paths
     }
 ***REMOVED***
 

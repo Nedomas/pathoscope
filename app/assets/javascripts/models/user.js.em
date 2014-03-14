@@ -4,6 +4,7 @@ App.User = DS.Model.ext***REMOVED***
   notes: DS.hasMany('note')
   paths: DS.hasMany('path')
   items: DS.hasMany('item')
+  user_paths: DS.hasMany('userPath')
 
   +computed paths.@each, items.@each.paths
   maps: ->

@@ -39,6 +39,7 @@ App.Item = DS.Model.ext***REMOVED***
     @get('notes').filter (note) ->
       !note.get('isNew')
 
+
 ***REMOVED*** # recalcing itself when parent is observed
 ***REMOVED*** +computed parents.@each
 ***REMOVED*** siblings: ->

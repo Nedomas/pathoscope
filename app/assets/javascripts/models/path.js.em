@@ -6,6 +6,7 @@ App.Path = DS.Model.ext***REMOVED***
   item: DS.belongsTo('item')
   item_id: DS.attr('string')
   creation_user_id: DS.attr('string')
+  user_paths: DS.hasMany('userPath')
 
   +computed item_id
   fake_item: ->

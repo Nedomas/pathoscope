@@ -1,0 +1,5 @@
+single-item item=model s***REMOVED***ItemChildren='childrenAction' s***REMOVED***ItemNotes='notesAction'
+
+if notesExpanded
+  / give item
+  r***REMOVED***er 'notes' model

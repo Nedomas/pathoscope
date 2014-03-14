@@ -1,0 +1,8 @@
+r***REMOVED***er 'item' path.item
+
+if childrenExpanded
+  div.padded
+    each item in items
+      r***REMOVED***er 'item' item
+
+    / single-item item=item hasChildren=false s***REMOVED***ItemNotes='mapNotesAction'
