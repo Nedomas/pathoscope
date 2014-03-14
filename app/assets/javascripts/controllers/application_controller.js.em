@@ -4,9 +4,14 @@ App.ApplicationController = Ember.Controller.ext***REMOVED***
   isLoggedIn: ->
     debugger
 
-  +computed currentSession
-  current_user: ->
-    @store.find('user', @get('currentSession.user.id'))
+  current_user: ~>
+    @store.find('user', @get('current_user_id'))
+
+  current_user_id: ~>
+    @get('currentSession.user.id')
+
+  signed_in: ~>
+    !!@get('current_user_id')
 
   +computed current_user
   current_user_gravatar_url: ->

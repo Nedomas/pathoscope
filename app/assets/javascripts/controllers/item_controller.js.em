@@ -1,15 +1,31 @@
 App.ItemController = Ember.ObjectController.ext***REMOVED***
-***REMOVED*** notesExpanded: false
+  childrenExpanded: false
+  notesExpanded: false
+
+  grandparent: ~>
+    @get('parentController.parentController')
+
+  grandgrandparent: ~>
+    @get('grandparent.parentController')
+
+  route: ~>
+    if @get('grandgrandparent').toString()?.match(/World/)
+      'world'
+    else
+      'map'
 
   actions:
     notesAction: (param) ->
-      if @get('notesExpanded')
-        if @get('model.id') == param
-          @transitionToRoute('map.index', param)
-          @set('notesExpanded', false)
-        else
-          @transitionToRoute('map.notes', param)
-      else
-        @transitionToRoute('map.notes', param)
-        @set('notesExpanded', true)
+      @toggleProperty('notesExpanded')
       false
+
+    childrenAction: (item_id) ->
+      nested_by_three = @get('grandparent')?.toString()?.match(/Item/)
+
+      if nested_by_three
+        @transitionToRoute(@get('route'), item_id)
+      else
+        @toggleProperty('childrenExpanded')
+
+      false
+

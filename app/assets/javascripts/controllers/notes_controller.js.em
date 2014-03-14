@@ -22,6 +22,7 @@ App.NotesNewController = Ember.ObjectController.ext***REMOVED***
   +computed model
   new_note: ->
     @store.createRecord 'note',
+      content: '',
       item: @get('model')
 
   actions:

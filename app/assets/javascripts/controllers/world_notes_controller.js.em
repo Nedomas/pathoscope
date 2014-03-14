@@ -1,10 +1,10 @@
-App.WorldNotesController = Ember.ObjectController.ext***REMOVED***
-  needs: 'application'
-
-  actions:
-    worldNotesAction: (param) ->
-      console.log('out')
-      @transitionToRoute('world.index', param)
+# App.WorldNotesController = Ember.ObjectController.ext***REMOVED***
+#   needs: 'application'
+#
+***REMOVED*** actions:
+  ***REMOVED*** worldNotesAction: (param) ->
+  ***REMOVED***   console.log('out')
+  ***REMOVED***   @transitionToRoute('world.index', param)
   ***REMOVED*** postAction: (param) ->
   ***REMOVED***   note = @get('model')
   ***REMOVED***   self = this

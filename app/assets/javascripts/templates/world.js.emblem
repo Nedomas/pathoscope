@@ -2,31 +2,11 @@ h1 World
 
 article.world
   ul
-    if model.hasParents
-      each item in model.parents
-        go-up item=item s***REMOVED***NodeUp='worldUpAction'
+    each item in model.parents
+      go-up item=item s***REMOVED***NodeUp='upAction'
 
-      div.padded
-        tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-          if notesExpanded
-            outlet
+    div class={ model.hasParents:padded }
+      r***REMOVED***er 'item' model
 
-        if childrenExpanded
-          div.padded
-            each item in model.children
-              tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-
-        each item in model.siblings
-          tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-    else
-      tree-node item=model childrenExpanded=childrenExpanded notesExpanded=notesExpanded s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-        if notesExpanded
-          outlet
-
-      if childrenExpanded
-        div.padded
-          each item in model.children
-            tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
-
-      each item in model.siblings
-        tree-node item=item s***REMOVED***NodeChildren='worldChildrenAction' s***REMOVED***NodeNotes='worldNotesAction' s***REMOVED***NodePost='worldPostAction' new_note=new_note
+      each sibling in model.siblings
+        r***REMOVED***er 'item' sibling

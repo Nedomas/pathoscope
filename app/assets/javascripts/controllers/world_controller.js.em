@@ -1,13 +1,12 @@
 App.WorldController = Ember.ObjectController.ext***REMOVED***
   actions:
-    childrenAction: (param) ->
-      if @get('model.id') == param
-        @toggleProperty('childrenExpanded')
-      else
-        @transitionToRoute('world', param)
-      false
+***REMOVED***   childrenAction: (param) ->
+***REMOVED***     if @get('model.id') == param
+***REMOVED***       @toggleProperty('childrenExpanded')
+***REMOVED***     else
+***REMOVED***       @transitionToRoute('world', param)
+***REMOVED***     false
 
-    worldUpAction: (param) ->
-      @transitionToRoute('world.index', param)
-      @set('notesExpanded', false)
+    upAction: (item_id) ->
+      @transitionToRoute('world.index', item_id)
       false
