@@ -8,6 +8,8 @@ App.Path = DS.Model.ext***REMOVED***
   creation_user_id: DS.attr('string')
   user_paths: DS.hasMany('userPath')
 
+  chosen: false
+
   +computed item_id
   fake_item: ->
     @store.find('item', @get('item_id'))

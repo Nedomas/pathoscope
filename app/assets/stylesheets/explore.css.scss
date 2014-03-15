@@ -155,10 +155,20 @@ $sky-blue: hsla(192, 50%, 75%, 1);
 
     .title {
       font: 600 1.1em $open-sans;
+
+      a {
+        color: $semiblack;
+        text-decoration: none;
+      }
     }
 
     .url {
       font: 400 .9em $open-sans;
+
+      a {
+        color: $semiblack;
+        text-decoration: none;
+      }
     }
 
     .path-tag {

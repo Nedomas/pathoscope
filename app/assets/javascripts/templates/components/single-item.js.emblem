@@ -21,14 +21,16 @@ section.arrow class={ item.context.color_class }
 / section.indicator
 section.meta
   if isPath
-    p.title
+    p.title{action 'itemChildrenAction' item.id}
       item.context.title
   else
     p.title
-      item.context.short_title
+      a target='_blank' href=item.context.url
+        item.context.short_title
     p
       span.url
-        item.context.short_url
+        a target='_blank' href=item.context.url
+          item.context.short_url
       span.paths
 
 if notes

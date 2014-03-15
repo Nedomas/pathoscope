@@ -6,5 +6,5 @@ App.Router.map ->
     @resource 'world', { path: '/world/:item_id' }
   ***REMOVED*** @route('notes')
 
-# App.Router.reopen
-#   location: 'none'
+App.Router.reopen
+  location: 'none'

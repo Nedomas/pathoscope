@@ -29,7 +29,7 @@ class Api::V1::UserPathsController < ApplicationController
       each_serializer: ItemSerializer).serializable_array
 
     r***REMOVED***er json: {
-      user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
+      user_path: UserPathSerializer.new(MODEL.find(params[:id])).serializable_hash,
       users: users,
       paths: paths,
       items: items
@@ -37,8 +37,25 @@ class Api::V1::UserPathsController < ApplicationController
 ***REMOVED***
 
   def create
-    @model = MODEL.create(permitted_params)
-    respond_with @model
+    user_path = params[:user_path]
+    path = Path.find(user_path[:path_id])
+    user = User.find(user_path[:user_id])
+
+    created_user_path = UserPath.create(user: user, path: path)
+
+    users = ActiveModel::ArraySerializer.new(User.all,
+      each_serializer: UserSerializer).serializable_array
+    paths = ActiveModel::ArraySerializer.new(Path.all,
+      each_serializer: PathSerializer).serializable_array
+    items = ActiveModel::ArraySerializer.new(Item.all,
+      each_serializer: ItemSerializer).serializable_array
+
+    r***REMOVED***er json: {
+      user_path: UserPathSerializer.new(created_user_path).serializable_hash,
+      users: users,
+      paths: paths,
+      items: items
+    }
 ***REMOVED***
 
   def update

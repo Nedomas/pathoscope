@@ -10,7 +10,7 @@
   li.path {
     display: inline-block;
     background-color: $semiwhite;
-    width: 46%;
+    width: 40%;
     height: 13em;
     margin: 2%;
     border-radius: 1em;
@@ -44,5 +44,15 @@
     width: 35%;
     height: 100%;
     border-radius: 0 1em 1em 0;
+  }
+
+  .choose {
+    a {
+      display: inline-block;
+      color: $semiblack;
+      font: 600 1em $open-sans;
+      text-align: center;
+      text-decoration: none;
+    }
   }
 }
