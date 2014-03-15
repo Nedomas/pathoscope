@@ -21,7 +21,7 @@ header.ext***REMOVED***full
               li
                 link-to 'map' 1 | Mental map
               li
-                link-to 'install' | Profile
+                a target='_blank' href='http://en.gravatar.com/' Change avatar
               li
                 a{action "signOut"} href='#' Logout
           else
