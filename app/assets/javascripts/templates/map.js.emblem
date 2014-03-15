@@ -3,4 +3,4 @@ h1 Map
 article.map
   ul
     each user_path in model
-      r***REMOVED***er 'user_path' user_path
+      r***REMOVED***er 'item' user_path.path.item

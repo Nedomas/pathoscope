@@ -6,7 +6,17 @@ PathoscopeLoader = (->
     loadjQuery()
 
   loadjQuery = ->
-    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLodash)
+    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLeanModal)
+
+  loadLeanModal = ->
+    load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
+
+  loadNormalize = ->
+    showLoading()
+    load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
+
+  loadCSS = ->
+    load('head', 'link', server + '/assets/public/standalone_app.css', loadLodash)
 
   loadLodash = ->
     load('head', 'script', server + "/assets/lodash.min.js", loadHandlebars)
@@ -18,16 +28,7 @@ PathoscopeLoader = (->
     load('head', 'script', server + "/assets/ember.js?body=1", loadEmberData)
 
   loadEmberData = ->
-    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadLeanModal)
-
-  loadLeanModal = ->
-    load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
-
-  loadNormalize = ->
-    load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
-
-  loadCSS = ->
-    load('head', 'link', server + '/assets/public/standalone_app.css', loadApp)
+    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
 
   loadApp = ->
     $('body').app***REMOVED***(
@@ -46,6 +47,11 @@ PathoscopeLoader = (->
      $('#pathoscope-trigger').click()
      $(document).on 'click', '#pathoscope .close', ->
        $('#lean_overlay').click()
+
+  showLoading = ->
+    $('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
+    $('#pathoscope-loading-trigger').leanModal()
+    $('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->
     done = false

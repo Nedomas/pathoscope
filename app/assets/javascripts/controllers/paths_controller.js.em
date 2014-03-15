@@ -1,4 +1,5 @@
 App.PathsController = Ember.ArrayController.ext***REMOVED***
+  needs: ['application']
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true
 

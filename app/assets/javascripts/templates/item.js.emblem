@@ -1,4 +1,4 @@
-single-item item=model s***REMOVED***ItemChildren='childrenAction' s***REMOVED***ItemNotes='notesAction'
+single-item item=model childrenExpanded=childrenExpanded hasChildren=hasChildren notesExpanded=notesExpanded s***REMOVED***ItemChildren='childrenAction' s***REMOVED***ItemNotes='notesAction'
 
 if notesExpanded
   / give item
@@ -6,6 +6,9 @@ if notesExpanded
 
 if childrenExpanded
   div.padded
-    each child in model.children
-      r***REMOVED***er 'item' child
-
+    if deadItem
+      each child in model.children itemController='deadItem'
+        r***REMOVED***er 'item' child
+    else
+      each child in model.children
+        r***REMOVED***er 'item' child

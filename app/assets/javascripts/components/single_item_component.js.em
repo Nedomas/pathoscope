@@ -4,10 +4,6 @@ App.SingleItemComponent = Ember.Component.ext***REMOVED***
   classNameBindings: ['isPath:path:link']
   notes: true
 
-  +computed item.hasChildren
-  hasChildren: ->
-    @get('item.hasChildren')
-
   +computed item.hasNotes
   hasNotes: ->
     @get('item.hasNotes')

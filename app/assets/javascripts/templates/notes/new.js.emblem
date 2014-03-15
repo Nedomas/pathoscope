@@ -3,4 +3,4 @@ if controllers.application.signed_in
     = textarea class='note-content' value=new_note.content placeholder=placeholder
     button.post-note{action 'postAction'} Post Note
 else
-  p Please sign in to write a note.
+  p.sign-in-note Please sign in to write a note.

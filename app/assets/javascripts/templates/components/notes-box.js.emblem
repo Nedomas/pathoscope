@@ -10,5 +10,6 @@ ul
         section.note-content
           note.content
   else
-    p This is your chance to shine.
-    p Be the first one to write a note on this
+    section.empty-notes
+      h3 This is your chance to shine.
+      p Be the first one to write a note on this.

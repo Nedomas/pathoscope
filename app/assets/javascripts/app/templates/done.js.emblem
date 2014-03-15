@@ -1,6 +1,9 @@
 h1 Success!
 article.choose-path
-  single-item item=model.item notes=notes hasChildren=false
-  notes-box note=model s***REMOVED***NotePost='postAction'
+  single-item item=model hasChildren=false notesExpanded=true s***REMOVED***ItemNotes='notesAction'
+
+  if notesExpanded
+    / give item
+    r***REMOVED***er 'notes' model
 
 outlet

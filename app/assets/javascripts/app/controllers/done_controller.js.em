@@ -1,11 +1,5 @@
-App.DoneController = Ember.ObjectController.ext***REMOVED***
-  needs: 'application'
-
-  actions:
-    postAction: (param) ->
-      note = @get('model')
-
-      @get('controllers.application.current_user').then (user) ->
-        note.set('user', user)
-        note.save()
-        console.log('haaaaaaaaaaaaaaaaa')
+class App.DoneController ext***REMOVED***s Ember.ObjectController with Tree
+***REMOVED*** hasChildren: false
+#
+# App.WorldController = Ember.ObjectController.ext***REMOVED***
+#   hasChildren: false

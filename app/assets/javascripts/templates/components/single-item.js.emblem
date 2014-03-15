@@ -1,4 +1,4 @@
-section.arrow class={ childrenExpanded::closed item.context.color_class }
+section.arrow class={ item.context.color_class }
   if isPath
     a{action 'itemChildrenAction' item.id} href="#"
       if filled
@@ -13,7 +13,11 @@ section.arrow class={ childrenExpanded::closed item.context.color_class }
           == crossed-circle
   else
     if hasChildren
-      a{action 'itemChildrenAction' item.id} href="#" ❯
+      a{action 'itemChildrenAction' item.id} href="#"
+        if childrenExpanded
+          == arrow-up
+        else
+          == arrow-down
 / section.indicator
 section.meta
   if isPath

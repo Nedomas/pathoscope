@@ -1,23 +1,6 @@
-# App.MapNotesController = Ember.ObjectController.ext***REMOVED***
-#   needs: 'item'
-#
-#   init: ->
-#     debugger
-#     @transitionToRoute('notes.new', @get('model'))
-#
-***REMOVED*** init: ->
-***REMOVED***   @get('controllers.item').set('notesExpanded', true)
-***REMOVED***   false
-  ***REMOVED*** @get('parentController').set('notesExpanded', true)
-
 App.NotesNewController = Ember.ObjectController.ext***REMOVED***
-  needs: ['application', 'item']
+  needs: ['application']
   placeholder: 'What do you think about this?'
-
-***REMOVED*** init: ->
-***REMOVED***   debugger
-***REMOVED***   @get('controllers.item').set('notesExpanded', true)
-***REMOVED***   false
 
   +computed model
   new_note: ->
@@ -40,4 +23,3 @@ App.NotesNewController = Ember.ObjectController.ext***REMOVED***
       ***REMOVED*** transitionToSelf = ->
       ***REMOVED***   item = new_note.get('item')
       ***REMOVED***   self.transitionToRoute('map.note', item)
-

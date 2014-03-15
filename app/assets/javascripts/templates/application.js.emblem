@@ -14,7 +14,7 @@ header.ext***REMOVED***full
         a.avatar href='#'
           img src=current_user_gravatar_url
       li
-        if isSignedIn
+        if signed_in
           a{action "signOut"} href='#' Logout
         else
           link-to "session" | Sign in

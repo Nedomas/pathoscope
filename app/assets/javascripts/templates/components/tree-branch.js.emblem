@@ -1,2 +1,0 @@
-each child in item.children
-  tree-node item=child s***REMOVED***NodeChildren='branchChildrenAction' s***REMOVED***NodeNotes='branchNotesAction' s***REMOVED***NodePostNote='branchPostNoteAction' new_note=new_note

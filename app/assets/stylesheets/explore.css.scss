@@ -74,6 +74,10 @@ $sky-blue: hsla(192, 50%, 75%, 1);
 }
 
 .world, .map, #pathoscope-app {
+  .done {
+    padding-top: 2em;
+  }
+
   .box {
     @include row();
     display: block;
@@ -92,27 +96,21 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     line-height: 4em;
   }
 
-  .link .arrow {
-    @include transform(rotate(270deg));
-
-    &.closed {
-      @include transform(rotate(90deg));
-      /* @include transform(rotate(270deg)); */
-    }
-    a {
-      color: $semigrey;
-      text-decoration: none;
+  .link {
+    .arrow a svg {
+      display: inline-block;
+      height: 3em;
+      width: 3em;
+      margin: .5em 1em;
+      fill: $semigrey;
     }
   }
-
   .path {
     .arrow a svg {
       display: inline-block;
       height: 2em;
       width: 2em;
       margin-top: 1em;
-      /* background: url('unfilled.svg') center no-repeat; */
-      /* background-size: contain; */
     }
     .meta {
       font-size: 1.2em;
@@ -266,6 +264,20 @@ $sky-blue: hsla(192, 50%, 75%, 1);
         border-radius: .5em;
         padding: .75em;
         text-transform: uppercase;
+      }
+    }
+    .sign-in-note {
+      text-align: center;
+      padding: 1.3em 0;
+      color: $semigrey;
+    }
+    .empty-notes {
+      text-align: center;
+      padding: 1.3em 0;
+
+      h3 {
+        font: 600 1.1em $open-sans;
+        padding-bottom: .3em;
       }
     }
   }
