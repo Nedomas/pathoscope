@@ -1,4 +1,4 @@
-App.ApplicationRoute = Ember.Route.ext***REMOVED***
+class App.ApplicationRoute ext***REMOVED***s Ember.Route
   actions:
     validSignIn: ->
       @flashMessage('You have successfully signed in.')

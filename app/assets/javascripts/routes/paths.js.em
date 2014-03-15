@@ -1,6 +1,4 @@
-App.PathsRoute = Ember.Route.ext***REMOVED***
-  skipsAuthentification: true
-
+class App.PathsRoute ext***REMOVED***s Ember.Route with ForceAuth
   setupController: (controller, model) ->
     @store.findAll('path').then (paths) ->
       saved_paths = paths.filter (path) ->
@@ -9,8 +7,5 @@ App.PathsRoute = Ember.Route.ext***REMOVED***
       controller.set('model', saved_paths)
 
 App.PathsNewRoute = Ember.Route.ext***REMOVED***
-  skipsAuthentification: true
-
   model: ->
-    console.log('ha')
     @store.createRecord 'path'

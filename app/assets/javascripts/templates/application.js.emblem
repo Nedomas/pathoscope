@@ -11,14 +11,15 @@ header.ext***REMOVED***full
           link-to 'map' 1 | Mental map
       li
         link-to 'install' | Install
-      li
-        if signed_in
+      if signed_in
+        li
           a{action "signOut"} href='#' Logout
-        else
+        li
+          a.avatar href='#'
+            img src=current_user_gravatar_url
+      else
+        li
           link-to "session" | Sign in
-      li
-        a.avatar href='#'
-          img src=current_user_gravatar_url
 
 flashMessage
   section.flash

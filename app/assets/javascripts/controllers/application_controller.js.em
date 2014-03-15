@@ -1,9 +1,4 @@
-App.ApplicationController = Ember.Controller.ext***REMOVED***
-
-  +computed authenticator
-  isLoggedIn: ->
-    debugger
-
+class App.ApplicationController ext***REMOVED***s Ember.Controller
   current_user: ~>
     @store.find('user', @get('current_user_id'))
 

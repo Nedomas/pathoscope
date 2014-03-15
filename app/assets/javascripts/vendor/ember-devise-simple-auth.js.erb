@@ -186,12 +186,11 @@ define("ember-devise-simple-auth/configuration",
                    .finally(teardown);
       },
       ajax: function(method, url, data) {
-        var dup_meth = method;
         return new Ember.RSVP.Promise(function(resolve) {
           return resolve($.ajax({
             url: '<%= SERVER %>' + url,
             xhrFields: { withCredentials: true },
-            type: dup_meth,
+            type: method,
             dataType: "json",
             data: data
           }));
