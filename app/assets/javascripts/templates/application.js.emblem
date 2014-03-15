@@ -6,18 +6,19 @@ header.ext***REMOVED***full
         link-to 'paths' | Paths
       li
         link-to 'world' 1 | World
-      li
-        link-to 'map' 1 | Mental map
+      if signed_in
+        li
+          link-to 'map' 1 | Mental map
       li
         link-to 'install' | Install
-      li
-        a.avatar href='#'
-          img src=current_user_gravatar_url
       li
         if signed_in
           a{action "signOut"} href='#' Logout
         else
           link-to "session" | Sign in
+      li
+        a.avatar href='#'
+          img src=current_user_gravatar_url
 
 flashMessage
   section.flash

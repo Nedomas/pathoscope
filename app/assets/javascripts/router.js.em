@@ -1,3 +1,6 @@
+App.Router.reopen
+  rootURL: '/beta'
+
 App.Router.map ->
   @resource 'paths', ->
     @route('new')
