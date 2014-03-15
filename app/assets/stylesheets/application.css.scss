@@ -46,6 +46,7 @@ header {
       float: right;
       display: inline-block;
       list-style-type: none;
+      position: relative;
 
       li {
         @include inline-block;
@@ -68,6 +69,12 @@ header {
         padding-left: 2em;
       }
 
+      .arrow svg {
+        width: 2em;
+        height: 2em;
+        fill: $snow-white;
+      }
+
       a {
         text-transform: uppercase;
         &:hover {
@@ -88,6 +95,23 @@ header {
         }
       }
 
+    }
+
+    ul.dropdown {
+      position: absolute;
+      top: 5.3em;
+      right: 0;
+
+      li {
+        display: block;
+        margin: 0;
+        padding: 1.3em 3em;
+        background-color: $semiblack;
+      }
+
+      li:last-child {
+        border-radius: 0 0 1.5em 1.5em;
+      }
     }
   }
 }

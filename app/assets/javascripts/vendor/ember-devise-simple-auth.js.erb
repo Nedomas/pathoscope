@@ -277,6 +277,7 @@ define("ember-devise-simple-auth/configuration",
           this.get("authenticator").signIn().
             then(function(session) {
               tryAction(route, "validSignIn", session);
+              // location.reload()
             }).catch(function(error) {
               var controller = route.controllerFor("session");
               controller.set("loginFailed", true);

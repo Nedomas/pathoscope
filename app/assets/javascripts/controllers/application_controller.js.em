@@ -11,3 +11,10 @@ class App.ApplicationController ext***REMOVED***s Ember.Controller
   +computed current_user
   current_user_gravatar_url: ->
     'http://www.gravatar.com/avatar/' + md5(@get('current_user.email'))
+
+  dropdownOpen: false
+
+  actions:
+    toggleDropdown: ->
+      @toggleProperty('dropdownOpen')
+      false

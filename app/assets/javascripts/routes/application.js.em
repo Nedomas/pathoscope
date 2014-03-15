@@ -8,3 +8,4 @@ class App.ApplicationRoute ext***REMOVED***s Ember.Route
     didSignOut: ->
       @flashMessage('You have successfully signed out.')
       @transitionTo('world', 1)
+      location.reload()

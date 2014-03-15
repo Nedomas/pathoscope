@@ -6,17 +6,27 @@ header.ext***REMOVED***full
         link-to 'paths' | Paths
       li
         link-to 'world' 1 | World
-      if signed_in
-        li
-          link-to 'map' 1 | Mental map
       li
         link-to 'install' | Install
       if signed_in
-        li
-          a{action "signOut"} href='#' Logout
-        li
-          a.avatar href='#'
-            img src=current_user_gravatar_url
+        li.extra-menu
+          li
+            a.avatar{action 'toggleDropdown'} href='#'
+              img src=current_user_gravatar_url
+
+          if dropdownOpen
+            li.arrow
+              == rigid-arrow-up
+            ul.dropdown{action 'toggleDropdown'}
+              li
+                link-to 'map' 1 | Mental map
+              li
+                link-to 'install' | Profile
+              li
+                a{action "signOut"} href='#' Logout
+          else
+            li.arrow
+              == rigid-arrow-down
       else
         li
           link-to "session" | Sign in
