@@ -4,3 +4,6 @@ article.map
   ul
     each user_path in model
       r***REMOVED***er 'item' user_path.path.item
+
+    unless model.length
+      p You have no paths chosen

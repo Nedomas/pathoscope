@@ -8,7 +8,7 @@ class App.ApplicationController ext***REMOVED***s Ember.Controller
   signed_in: ~>
     !!@get('current_user_id')
 
-  +computed current_user
+  +computed current_user.email
   current_user_gravatar_url: ->
     'http://www.gravatar.com/avatar/' + md5(@get('current_user.email'))
 
