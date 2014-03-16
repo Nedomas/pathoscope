@@ -29,7 +29,7 @@ header.ext***REMOVED***full
               == rigid-arrow-down
       else
         li
-          link-to "session" | Sign in
+          / link-to "session" | Sign in
 
 flashMessage
   section.flash

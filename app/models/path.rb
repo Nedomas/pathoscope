@@ -1,7 +1,6 @@
 class Path < ActiveRecord::Base
   has_many :nodes
   validates_presence_of :title
-  fuzzily_searchable :title
   has_many :comments, as: :commentable
   before_create :add_color
   has_many :user_paths

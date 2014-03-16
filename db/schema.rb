@@ -11,7 +11,7 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312010616) do
+ActiveRecord::Schema.define(version: 20140316125622) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,17 +71,6 @@ ActiveRecord::Schema.define(version: 20140312010616) do
     t.text     "description"
     t.integer  "color"
 ***REMOVED***
-
-  create_table "trigrams", force: true do |t|
-    t.string  "trigram",     limit: 3
-    t.integer "score",       limit: 2
-    t.integer "owner_id"
-    t.string  "owner_type"
-    t.string  "fuzzy_field"
-***REMOVED***
-
-  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match", using: :btree
-  add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner", using: :btree
 
   create_table "user_paths", force: true do |t|
     t.integer "user_id"

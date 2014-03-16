@@ -1,0 +1,15 @@
+div.session
+  h1 Sign in
+
+  form{action 'authenticate' on='submit'}
+    .email
+      =input id='identification' placeholder='awesome@email.com' value=identification
+    .password
+      =input id='password' placeholder='password' type='password' value=password
+
+    .remember
+      label for='remember-me' Remember me
+      =input id='remember_me' checked=remember_me type='checkbox'
+
+    .sign-in
+      button Sign In

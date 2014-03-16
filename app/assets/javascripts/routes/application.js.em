@@ -1,4 +1,4 @@
-class App.ApplicationRoute ext***REMOVED***s Ember.Route
+class App.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
   actions:
     validSignIn: ->
       @flashMessage('You have successfully signed in.')

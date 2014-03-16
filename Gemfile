@@ -25,30 +25,22 @@ gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
 gem 'newrelic_rpm'
 gem 'gon'
-gem 'gravatar_image_tag'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
 gem 'ember_script-rails', github: 'ghempton/ember-script-rails'
-gem 'ember_devise_simple_auth', '0.3.1'
+# gem 'ember_devise_simple_auth', '0.3.1'
 
-# gem 'websocket-driver', '>= 0.2.0'
-# gem 'multi_json',       '~> 1.0'
-# gem 'cliver',           '~> 0.3.1'
 gem 'faye-websocket', '0.4.7'
-# gem 'poltergeist'
-# gem 'mini_magick', '~> 3.5.0'
 gem 'webshot'
 
 gem 'andand'
-gem 'fuzzily'
 gem 'lodash-rails'
 
 gem 'hpricot'
 gem 'htmlentities'
-gem 'wikipedia'
 
 gem 'ruby-web-search', git: 'https://github.com/mattetti/ruby-web-search.git'
 

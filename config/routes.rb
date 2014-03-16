@@ -1,7 +1,9 @@
 Pathoscope::Application.routes.draw do
-  devise_scope :user do
-    get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
-***REMOVED***
+***REMOVED*** devise_scope :user do
+***REMOVED***   get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
+***REMOVED*** ***REMOVED***
+
+  devise_for :users, controllers: { sessions: 'sessions' }
 
   get 'beta' => 'home#index'
 
@@ -22,7 +24,7 @@ Pathoscope::Application.routes.draw do
   post "launching/get" => 'launching#get'
   delete 'home/sign_out' => 'home#sign_out'
 
-  devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
+***REMOVED*** devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
 
 ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
 ***REMOVED*** See how all your routes lay out with "rake routes".

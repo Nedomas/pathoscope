@@ -1,8 +1,6 @@
 class Link < ActiveRecord::Base
   has_many :nodes
   after_create :get_title!
-***REMOVED*** , :get_screens!
-  fuzzily_searchable :title
   has_many :comments, as: :commentable
   has_one :item, as: :context
 

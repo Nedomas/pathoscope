@@ -6,6 +6,7 @@ class App.ApplicationController ext***REMOVED***s Ember.Controller
     @get('currentSession.user.id')
 
   signed_in: ~>
+  ***REMOVED*** false
     !!@get('current_user_id')
 
   +computed current_user.email

@@ -111,9 +111,6 @@ GEM
       railties (>= 3.1)
     ember-source (1.4.0)
       handlebars-source (~> 1.0)
-    ember_devise_simple_auth (0.3.1)
-      devise (>= 3.0.0)
-      rails (~> 4.0.2)
     ember_script (0.0.5)
       ember_script-source (>= 0.0.2)
       execjs
@@ -131,12 +128,9 @@ GEM
     fast-stemmer (1.0.2)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
-    fuzzily (0.3.2)
-      activerecord (>= 2.3.17)
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
-    gravatar_image_tag (1.2.0)
     handlebars-source (1.3.0)
     hike (1.2.3)
     hpricot (0.8.6)
@@ -169,7 +163,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
-    newrelic_rpm (3.7.3.199)
+    newrelic_rpm (3.7.3.204)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -226,8 +220,7 @@ GEM
     safe_yaml (1.0.1)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
-    sass (3.3.0)
-      rake
+    sass (3.3.3)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
@@ -238,8 +231,8 @@ GEM
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
-    slop (3.4.7)
-    sprockets (2.11.0)
+    slop (3.5.0)
+    sprockets (2.12.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -265,7 +258,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
-    uglifier (2.4.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -278,7 +271,6 @@ GEM
       faye-websocket (= 0.4.7)
       mini_magick (~> 3.6.0)
       poltergeist (~> 1.3.0)
-    wikipedia (0.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -297,14 +289,11 @@ DEPENDENCIES
   devise
   ember-rails
   ember-source
-  ember_devise_simple_auth (= 0.3.1)
   ember_script-rails!
   emblem-rails
   faraday
   faye-websocket (= 0.4.7)
-  fuzzily
   gon
-  gravatar_image_tag
   hpricot
   htmlentities
   jbuilder
@@ -329,4 +318,3 @@ DEPENDENCIES
   uglifier
   webmock
   webshot
-  wikipedia
