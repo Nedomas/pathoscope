@@ -1,4 +1,4 @@
-class App.PathsRoute ext***REMOVED***s Ember.Route with ForceAuth
+class App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   setupController: (controller, model) ->
     self = this
     debugger

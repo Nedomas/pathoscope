@@ -6,7 +6,6 @@
 #= require handlebars
 #= require ember
 #= require ember-data-beta6
-# dont = require_tree ./v***REMOVED***or
 #= require_tree ../../../v***REMOVED***or/assets/javascripts
 #= require_self
 #= require app

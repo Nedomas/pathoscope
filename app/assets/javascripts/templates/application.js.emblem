@@ -8,7 +8,7 @@ header.ext***REMOVED***full
         link-to 'world' 1 | World
       li
         link-to 'install' | Install
-      if signed_in
+      if session.isAuthenticated
         li.extra-menu
           li
             a.avatar{action 'toggleDropdown'} href='#'
@@ -23,13 +23,13 @@ header.ext***REMOVED***full
               li
                 a target='_blank' href='http://en.gravatar.com/' Change avatar
               li
-                a{action "signOut"} href='#' Logout
+                a{action 'invalidateSession'} href='#' Logout
           else
             li.arrow
               == rigid-arrow-down
       else
         li
-          / link-to "session" | Sign in
+          link-to 'login' | Sign in
 
 flashMessage
   section.flash
