@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
     items.map(&:id)
 ***REMOVED***
 
+  def self.authenticate!(email, password)
+    user = User.where(email: email).first
+    return (user.valid_password?(password) ? user : nil) unless user.nil?
+    nil
+***REMOVED***
+
 ***REMOVED*** def paths
 ***REMOVED***   nodes.map(&:path).uniq
 ***REMOVED*** ***REMOVED***

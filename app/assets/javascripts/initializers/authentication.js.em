@@ -1,13 +1,16 @@
 Ember.Application.initializer
   name: 'authentication',
   initialize: (container, application) ->
+    Ember.SimpleAuth.Authenticators.OAuth2.reopen
+      serverTokenEndpoint: '/oauth/token'
+
     Ember.SimpleAuth.Session.reopen
-
-      +computed user_id
+      +computed isAuthenticated
       user: ->
-        user_id = @get('user_id')
-        if (!Ember.isEmpty(user_id))
-          return container.lookup('store:main').find('user', user_id)
+        if @get('isAuthenticated')
+          new Ember.RSVP.Promise (resolve) ->
+            Ember.$.get('/api/v1/credentials/me').then (response) ->
+              container.lookup('store:main').find('user', response.user.id).then (user) ->
+                resolve(user)
 
-    container.register('app:authenticators:custom', App.CustomAuthenticator)
     Ember.SimpleAuth.setup(container, application)

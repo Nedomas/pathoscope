@@ -1,11 +1,10 @@
 class App.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
   actions:
-    validSignIn: ->
+    sessionAuthenticationSucceeded: ->
       @flashMessage('You have successfully signed in.')
       @transitionTo('paths')
-    invalidSignIn: ->
+    sessionAuthenticationFailed: ->
       @flashMessage('The password is invalid.').now()
-    didSignOut: ->
+    sessionInvalidationSucceeded: ->
       @flashMessage('You have successfully signed out.')
       @transitionTo('world', 1)
-      location.reload()

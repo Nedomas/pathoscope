@@ -1,4 +1,5 @@
 Pathoscope::Application.routes.draw do
+  use_doorkeeper
 ***REMOVED*** devise_scope :user do
 ***REMOVED***   get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
 ***REMOVED*** ***REMOVED***
@@ -17,6 +18,7 @@ Pathoscope::Application.routes.draw do
       resources :user_paths
       resources :users
       resources :notes
+      get 'credentials/me' => 'credentials#me'
 ***REMOVED***
 ***REMOVED***
 

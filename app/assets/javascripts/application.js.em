@@ -15,10 +15,6 @@ window.App = Ember.Application.create
   LOG_ACTIVE_GENERATION: true
   LOG_VIEW_LOOKUPS: true
   rootElement: '#ember-container'
-***REMOVED*** deviseSimpleAuth:
-***REMOVED*** ***REMOVED*** the URL users will see in the browser for the sign in page
-***REMOVED***   signInPath: "/sign_in"
-***REMOVED***   signOutPath: "/sign_out"
 
 Handlebars.registerHelper "log", (context) ->
   console.log(context)

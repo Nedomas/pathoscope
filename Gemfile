@@ -72,6 +72,7 @@ group :doc do
 
 gem 'puma'
 gem 'ancestry'
+gem 'doorkeeper'
 gem 'devise'
 
 group :development, :test do
