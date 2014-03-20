@@ -18,6 +18,8 @@ section.arrow class={ item.context.color_class }
           == arrow-up
         else
           == arrow-down
+    else
+      == small-circle
 / section.indicator
 section.meta
   if isPath
