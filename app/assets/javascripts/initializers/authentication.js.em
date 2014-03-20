@@ -3,21 +3,29 @@ Ember.Application.initializer
   initialize: (container, application) ->
     Ember.SimpleAuth.Authenticators.OAuth2.reopen
       serverTokenEndpoint: '/oauth/token'
-    ***REMOVED*** makeRequest: (data) ->
-    ***REMOVED***   debugger
-    ***REMOVED***   data.email = data.username
-    ***REMOVED***   return @_super(data)
 
-  ***REMOVED*** Ember.SimpleAuth.Session.reopen
-  ***REMOVED***   +computed isAuthenticated
-  ***REMOVED***   user_id: ->
-  ***REMOVED***     new Ember.RSVP.Promise (resolve) ->
-  ***REMOVED***       $.get('/api/v1/credentials/me').then (response) ->
-  ***REMOVED***         debugger
-  ***REMOVED***         resolve(response.user.id)
+    Ember.SimpleAuth.Session.reopen
+      +computed isAuthenticated
+      current_user: ->
+        Ember.run ->
+          Ember.$.get('/api/v1/credentials/me').then (response) ->
+            container.lookup('store:main').find('user', response.user.id)
 
-  ***REMOVED***   +computed user_id
-  ***REMOVED***   user: ->
+#       resource_owner_id: null
+#
+#       +computed isAuthenticated
+#       user_id: ->
+#         _this = this
+#
+#         Ember.$.get('/api/v1/credentials/me').then (response) ->
+#           _this.set('resource_owner_id', response.user.id)
+#
+#         @get('resource_owner_id')
+#
+#       +observer recource_owner_id
+#       user: ->
+#         user_id = @get('resource_owner_id')
+#         debugger
   ***REMOVED***     user_id = @get('user_id')
   ***REMOVED***   ***REMOVED*** debugger
   ***REMOVED***     if Em.isNone(user_id)

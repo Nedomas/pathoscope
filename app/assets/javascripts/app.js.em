@@ -1,5 +1,4 @@
 #= require ./store
-#= require_tree ./v***REMOVED***or
 #= require_tree ./initializers
 #= require_tree ./models
 #= require_tree ./mixins

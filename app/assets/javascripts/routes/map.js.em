@@ -1,4 +1,7 @@
 class App.MapRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
-    @store.find('user', @get('authenticator.currentSession.user.id')).then (user) ->
-      user.get('user_paths')
+    _this = this
+
+  ***REMOVED*** @controllerFor('application').get('get_current_user').then ->
+  ***REMOVED***   user = _this.get('session.current_user.user_paths')
+  ***REMOVED***   debugger
