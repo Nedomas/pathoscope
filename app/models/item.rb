@@ -47,11 +47,39 @@ class Item < ActiveRecord::Base
     nodes.map(&:parent).flatten.compact.map(&:item).uniq.map(&:id)
 ***REMOVED***
 
+  def siblings
+    nodes.map(&:siblings).flatten.compact.map(&:item).uniq
+***REMOVED***
+
   def sibling_ids
     nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id) - [id]
 ***REMOVED***
 
   class << self
+    def tree
+      final = {}
+      item = Path.find(2).item
+      item.children.each do |node|
+        final[node] = recursive_find_children(node)
+  ***REMOVED***
+    ***REMOVED*** final = recursive_find_children(item)
+
+      final
+***REMOVED***
+
+    def recursive_find_children(item, result=[])
+      unless result.flatten.flatten.include?(item)
+        cdrn = item.children
+        result.push(item.siblings.uniq)
+
+        cdrn.each do |child|
+          recursive_find_children(child, result)
+    ***REMOVED***
+  ***REMOVED***
+
+      result
+***REMOVED***
+
     def find_no_children
       Item.all.select do |item|
         item.children.none?
