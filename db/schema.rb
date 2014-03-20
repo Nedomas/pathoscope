@@ -130,8 +130,10 @@ ActiveRecord::Schema.define(version: 20140319211925) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
 ***REMOVED***
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

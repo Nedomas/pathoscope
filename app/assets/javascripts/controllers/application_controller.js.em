@@ -3,8 +3,8 @@ class App.ApplicationController ext***REMOVED***s Ember.Controller
   current_user_gravatar_url: ->
   ***REMOVED*** 'a'
   ***REMOVED*** debugger
+    debugger
     if @get('session.user')
-      debugger
       return 'a'
   ***REMOVED***   debugger
   ***REMOVED***   email = user.get('email')
