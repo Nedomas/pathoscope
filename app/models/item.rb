@@ -35,6 +35,10 @@ class Item < ActiveRecord::Base
     context.id if link?
 ***REMOVED***
 
+  def children
+    nodes.map(&:children).flatten.map(&:item).uniq
+***REMOVED***
+
   def child_ids
     nodes.map(&:children).flatten.map(&:item).uniq.map(&:id)
 ***REMOVED***
@@ -45,5 +49,13 @@ class Item < ActiveRecord::Base
 
   def sibling_ids
     nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id) - [id]
+***REMOVED***
+
+  class << self
+    def find_no_children
+      Item.all.select do |item|
+        item.children.none?
+  ***REMOVED***
+***REMOVED***
 ***REMOVED***
 ***REMOVED***

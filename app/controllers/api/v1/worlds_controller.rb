@@ -80,6 +80,37 @@ class Api::V1::WorldsController < ApplicationController
 ***REMOVED***
 
 class World
+  def path_tree
+    path = Path.last
+    nodes = Node.where(path: path)
+    last_node = Node.sort_by_ancestry(nodes).last
+
+    result = {}
+    siblings = last_node.item.nodes
+    last_last = get_last_children(last_node)
+    binding.pry
+***REMOVED***
+
+  def get_last_children(node)
+    siblings.each do |sibling|
+      sibling.children.each do |child|
+  ***REMOVED***
+***REMOVED***
+***REMOVED***
+
+  def find_no_children
+    Item.all.select do |item|
+      item.nodes.select {|n| n.path_id == Path.last.id }.none?
+    ***REMOVED***   binding.pry
+    ***REMOVED*** ***REMOVED*** child.children
+    ***REMOVED*** ***REMOVED***
+***REMOVED***
+  ***REMOVED*** nodes.select do |node|
+  ***REMOVED***   node.item
+  ***REMOVED*** ***REMOVED***
+  ***REMOVED*** nodes.map(&:children).flatten
+***REMOVED***
+
   def all
     result = []
 
@@ -90,7 +121,7 @@ class World
     binding.pry
 ***REMOVED***
 
-  def all_records(ids=nil)
+  def all_records
     all_records = []
 
     nodes = if ids
