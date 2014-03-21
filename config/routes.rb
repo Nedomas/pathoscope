@@ -1,4 +1,8 @@
 Pathoscope::Application.routes.draw do
+  use_doorkeeper do
+  ***REMOVED*** it accepts :authorizations, :tokens, :applications and :authorized_applications
+    controllers tokens: 'api/v1/tokens'
+***REMOVED***
   use_doorkeeper
 ***REMOVED*** devise_scope :user do
 ***REMOVED***   get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
