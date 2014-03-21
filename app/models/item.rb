@@ -57,27 +57,36 @@ class Item < ActiveRecord::Base
 
   class << self
     def tree
-      final = {}
+    ***REMOVED*** final = {}
       item = Path.find(2).item
-      item.children.each do |node|
-        final[node] = recursive_find_children(node)
-  ***REMOVED***
+      final = recursive_find_children(item, [item])
+    ***REMOVED*** item.children.each do |child|
+    ***REMOVED***   final[child] = recursive_find_children(child, [])
+    ***REMOVED*** ***REMOVED***
     ***REMOVED*** final = recursive_find_children(item)
 
       final
 ***REMOVED***
 
-    def recursive_find_children(item, result=[])
-      unless result.flatten.flatten.include?(item)
-        cdrn = item.children
-        result.push(item.siblings.uniq)
-
-        cdrn.each do |child|
-          recursive_find_children(child, result)
-    ***REMOVED***
+    def recursive_find_children(item, parents)
+      longest_path = []
+      item.children.each do |child|
+        next if parents.include?(child)
+        path = recursive_find_children(child, parents + [child])
+        longest_path = path if longest_path.size < path.size
   ***REMOVED***
 
-      result
+      [item] + longest_path
+    ***REMOVED*** item.children.each_with_index do |child, index|
+    ***REMOVED***   result[index] = child
+    ***REMOVED***   recursive_find_children(child, result)
+    ***REMOVED*** ***REMOVED***
+
+    ***REMOVED*** if first_child = item.children.first
+    ***REMOVED***   recursive_find_children(first_child, result)
+    ***REMOVED*** ***REMOVED***
+
+    ***REMOVED*** result
 ***REMOVED***
 
     def find_no_children
