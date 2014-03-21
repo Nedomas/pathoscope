@@ -2,6 +2,12 @@ class Api::V1::PathsController < ApplicationController
   MODEL = const_get(controller_name.classify)
   respond_to :json
 
+***REMOVED*** before_filter :set_current_user
+***REMOVED*** def set_current_user
+***REMOVED***   binding.pry
+***REMOVED***   User.current = current_user
+***REMOVED*** ***REMOVED***
+
   def index
     serialized_paths = ActiveModel::ArraySerializer.new(MODEL.all,
       each_serializer: PathSerializer).serializable_array

@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
     nil
 ***REMOVED***
 
+  def self.current
+    Thread.current[:user]
+***REMOVED***
+
+  def self.current=(user)
+    Thread.current[:user] = user
+***REMOVED***
+
 ***REMOVED*** def paths
 ***REMOVED***   nodes.map(&:path).uniq
 ***REMOVED*** ***REMOVED***

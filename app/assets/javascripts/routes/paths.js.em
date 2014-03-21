@@ -1,20 +1,19 @@
 class App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
-  setupController: (controller, model) ->
-    _this = this
-    user_paths = _this.get('session.user.user_paths')
+  model: ->
+    @store.find('path')
 
-    @store.findAll('path').then (paths) ->
-    ***REMOVED*** Find chosen paths
-      user_paths.forEach (user_path) ->
-        paths.forEach (path) ->
-          if user_path.get('path') == path
-            path.set('chosen', true)
-
-    ***REMOVED*** Find saved paths
-      saved_paths = paths.filter (path) ->
-        !path.get('isNew')
-
-      controller.set('model', saved_paths)
+#   setupController: (controller, model) ->
+#   ***REMOVED*** set chosen flags
+#     get('session.user.user_paths').forEach (user_path) ->
+#       model.forEach (path) ->
+#         if user_path.get('path') == path
+#           path.set('chosen', true)
+#
+#   ***REMOVED*** Find saved paths
+#   ***REMOVED*** saved_paths = model.filter (path) ->
+#   ***REMOVED***   !path.get('isNew')
+#
+#     controller.set('model', model)
 
 App.PathsNewRoute = Ember.Route.ext***REMOVED***
   model: ->

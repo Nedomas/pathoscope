@@ -1,4 +1,7 @@
 class App.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
+  beforeModel: ->
+    @get('session.user')
+
   actions:
     sessionAuthenticationSucceeded: ->
       @flashMessage('You have successfully signed in.')

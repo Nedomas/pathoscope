@@ -65,4 +65,8 @@ class Path < ActiveRecord::Base
 
   def show_url
 ***REMOVED***
+
+  def chosen
+    User.current.user_paths.map(&:path).include?(self)
+***REMOVED***
 ***REMOVED***

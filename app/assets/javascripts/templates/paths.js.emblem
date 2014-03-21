@@ -9,10 +9,11 @@ article.paths
             = path.title
           div.extra
             p.choose
-              if path.chosen
-                p Chosen
-              else
-                a{action 'choose' path} href='#' Choose
+              if session.isAuthenticated
+                if path.chosen
+                  p Chosen
+                else
+                  a{action 'choose' path} href='#' Choose
             p.people
               | #{path.users_count} people
             p.links

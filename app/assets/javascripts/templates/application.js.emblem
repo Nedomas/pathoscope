@@ -31,7 +31,6 @@ header.ext***REMOVED***full
         li
           link-to 'login' | Sign in
 
-session.user.id
 flashMessage
   section.flash
     message

@@ -1,5 +1,5 @@
 class PathSerializer < ApplicationSerializer
-  attributes :id, :title, :color, :users_count, :links_count, :item_id, :user_path_ids
+  attributes :id, :title, :color, :users_count, :links_count, :item_id, :user_path_ids, :chosen
 
   def item_id
     object.item.id
