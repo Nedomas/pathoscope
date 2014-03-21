@@ -19,7 +19,8 @@ section.arrow class={ item.context.color_class }
         else
           == arrow-down
     else
-      == small-circle
+      .dead-***REMOVED***
+        == filled-circle
 / section.indicator
 section.meta
   if isPath
@@ -29,11 +30,15 @@ section.meta
     p.title
       a target='_blank' href=item.context.url
         item.context.short_title
-    p
+    p.bottom
       span.url
         a target='_blank' href=item.context.url
           item.context.short_url
       span.paths
+        each path in item.paths
+          a.path-tag{action 'itemChildrenAction' path.item.id} href='#'
+            span.hint--bottom class={ path.color_class } data-hint=path.title
+              == small-circle
 
 if notes
   section.notes-indicator

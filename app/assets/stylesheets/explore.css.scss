@@ -131,6 +131,16 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     }
   }
 
+  .arrow {
+    .dead-***REMOVED*** svg {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      margin: 1.5em 1.95em;
+      fill: $semigrey;
+    }
+  }
+
   /* .path.closed .arrow a { */
   /*   background: url('filled.png') center no-repeat; */
   /*   background-size: contain; */
@@ -171,28 +181,23 @@ $sky-blue: hsla(192, 50%, 75%, 1);
       }
     }
 
-    .path-tag {
-      margin-left: 1em;
-      line-height: 1em;
+    .bottom {
+      @include row();
+    }
 
-      a {
-        text-decoration: none;
+    .paths {
+      .path-tag {
+        display: inline-block;
 
-      }
+        svg {
+          display: inline-block;
+          height: 3em;
+          width: 3em;
+          margin: -2em -1.2em -1.25em -0em;
+        }
 
-      .circle {
-        font: 400 1.5em $open-sans;
-        line-height: 1em;
-      }
-
-      .title {
-        color: $semigrey;
-        font: 400 .9em $open-sans;
-        margin-left: 0.5em;
-        line-height: 1em;
-
-        &:hover {
-          color: $semiblack;
+        a {
+          text-decoration: none;
         }
       }
     }
