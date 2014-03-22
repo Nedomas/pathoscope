@@ -46,7 +46,6 @@ GEM
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
     andand (1.3.3)
-    ansi (1.4.3)
     arel (4.0.2)
     atomic (1.1.16)
     awesome_print (1.2.0)
@@ -258,9 +257,6 @@ GEM
       net-ssh
       term-ansicolor
     subexec (0.2.3)
-    tapout (0.4.5)
-      ansi
-      json
     teaspoon (0.7.9)
       railties (>= 3.2.5, < 5)
     temple (0.6.7)
@@ -337,7 +333,6 @@ DEPENDENCIES
   sdoc
   sinon-rails
   slim
-  tapout
   teaspoon
   uglifier
   webmock

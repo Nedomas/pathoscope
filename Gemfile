@@ -2,7 +2,7 @@ ruby '2.1.0'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'minitest', '5.3.1'
+# gem 'minitest', '5.3.1'
 gem 'rails', '4.0.3'
 gem 'mime-types'
 gem 'rack'
@@ -84,7 +84,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'konacha-chai-matchers'
 ***REMOVED*** gem 'minitap', "~> 0.5"
-  gem 'minitap'
+***REMOVED*** gem 'minitap'
 ***REMOVED***
 
 group :test do
