@@ -59,10 +59,6 @@ class Api::V1::UsersController < ApplicationController
     respond_with @model
 ***REMOVED***
 
-  def sign_out
-    r***REMOVED***er :nothing
-***REMOVED***
-
   private
 
   def permitted_params

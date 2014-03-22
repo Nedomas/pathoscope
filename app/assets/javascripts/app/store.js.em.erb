@@ -4,9 +4,9 @@ App.Store = DS.Store.ext***REMOVED***
   adapter: DS.ActiveModelAdapter.ext***REMOVED***
     host: '<%= SERVER %>'
     namespace: 'api/v1'
-***REMOVED***  headers:
-***REMOVED***       withCredentials: true
 
 Ember.$.ajaxPrefilter (options) ->
-  options.xhrFields = { withCredentials: true }
+  if options.url.match(/oauth/)
+    options.url = '<%= SERVER %>' + options.url
 
+  options.xhrFields = { withCredentials: true }

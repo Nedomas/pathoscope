@@ -1,5 +1,6 @@
-App.TagRoute = Ember.Route.ext***REMOVED***
+class App.TagRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
+    @get('session.user')
+
+  setupController: (container, model) ->
     debugger
-    @store.find('user', @get('authenticator.currentSession.user.id')).then (user) ->
-      user.get('paths')

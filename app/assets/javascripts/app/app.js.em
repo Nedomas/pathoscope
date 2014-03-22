@@ -1,5 +1,4 @@
 #= require ./store
-#= require_tree ../v***REMOVED***or
 #= require_tree ../initializers
 #= require_tree ../models
 #= require_tree ../mixins
@@ -8,17 +7,19 @@
 #= require ../controllers/item_controller
 #= require ../controllers/notes_controller
 #= require ../controllers/world_controller
+#= require ../controllers/login_controller
 #= require_tree ./views
 #= require_tree ../components
 #= require_tree ./components
 #= require_tree ./templates
 #= require_tree ../templates/components
-#= require ../templates/session
+#= require ../templates/login
 #= require ../templates/item
 #= require ../templates/notes
 #= require_tree ../templates/notes
 #= require_tree ./routes
 #= require ./router
+#= require ../authenticator
 #= require_self
 
 # move components to app/components

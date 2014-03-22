@@ -6,6 +6,10 @@ App.User = DS.Model.ext***REMOVED***
   items: DS.hasMany('item')
   user_paths: DS.hasMany('userPath')
 
+  +computed user_paths.@each
+  fake_ups: ->
+    @store.find('user_path', 1)
+
   +computed paths.@each, items.@each.paths
   maps: ->
     result = []

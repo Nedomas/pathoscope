@@ -3,10 +3,7 @@ App.Link = DS.Model.ext***REMOVED***
   url: DS.attr('string')
   paths: DS.hasMany('path')
   creation_path_id: DS.attr('string')
-***REMOVED*** paths: DS.hasMany('path')
-***REMOVED*** path_ids: DS.hasMany('path')
   item: DS.belongsTo('item')
-***REMOVED*** item_id: DS.attr('string')
 
   +computed item_id
   fake_item: ->

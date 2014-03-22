@@ -9,6 +9,8 @@ PathoscopeLoader = (->
     load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLeanModal)
 
   loadLeanModal = ->
+  ***REMOVED*** setup jQuery
+    window.$pj = jQuery.noConflict()
     load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
 
   loadNormalize = ->
@@ -31,7 +33,7 @@ PathoscopeLoader = (->
     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
 
   loadApp = ->
-    $('body').app***REMOVED***(
+    $pj('body').app***REMOVED***(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
         "<div id='pathoscope-app'>" +
@@ -43,15 +45,15 @@ PathoscopeLoader = (->
     load('head', 'script', server + '/assets/app/application.js', openApp)
 
    openApp = ->
-     $('#pathoscope-trigger').leanModal({ top: 50 })
-     $('#pathoscope-trigger').click()
-     $(document).on 'click', '#pathoscope .close', ->
-       $('#lean_overlay').click()
+     $pj('#pathoscope-trigger').leanModal({ top: 50 })
+     $pj('#pathoscope-trigger').click()
+     $pj(document).on 'click', '#pathoscope .close', ->
+       $pj('#lean_overlay').click()
 
   showLoading = ->
-    $('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
-    $('#pathoscope-loading-trigger').leanModal()
-    $('#pathoscope-loading-trigger').click()
+    $pj('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
+    $pj('#pathoscope-loading-trigger').leanModal()
+    $pj('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->
     done = false

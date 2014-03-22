@@ -1,4 +1,6 @@
 App.Router.map ->
+  @route('login')
+
   @route('index', { path: '/' })
   @route('tag', { path: '/tag' })
 

@@ -1,6 +1,12 @@
+#= require jquery
+#= require lodash.min
 #= require underscore.string.min
+#= require md5.min
 #= require jquery.timeago
-#= require_tree ../v***REMOVED***or
+#= require handlebars
+#= require ember
+#= require ember-data-beta6
+#= require_tree ../../../../v***REMOVED***or/assets/javascripts
 #= require_self
 #= require ./app
 

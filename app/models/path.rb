@@ -67,6 +67,10 @@ class Path < ActiveRecord::Base
 ***REMOVED***
 
   def chosen
-    User.current.user_paths.map(&:path).include?(self)
+    if User.current
+      User.current.user_paths.map(&:path).include?(self)
+    else
+      false
+***REMOVED***
 ***REMOVED***
 ***REMOVED***
