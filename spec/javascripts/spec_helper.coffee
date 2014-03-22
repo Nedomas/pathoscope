@@ -1,9 +1,22 @@
 # Teaspoon includes some support files, but you can use anything from your own support path too.
 # require expect
-# require sinon
+#= require sinon
 #= require chai
+#= require v***REMOVED***or/assets/javascripts/bower_components/ember-mocha-adapter/adapter
+#= require adapter
+#= require application
+#= require_self
 # require support/your-support-file
-#
+
+App.rootElement = 'body'
+Ember.Test.adapter = Ember.Test.MochaAdapter.create()
+App.setupForTesting()
+App.injectTestHelpers()
+
+class App.Store ext***REMOVED***s DS.Store
+  adapter: DS.FixtureAdapter.ext***REMOVED***
+    simulateRemoteResponse: false
+
 # PhantomJS (Teaspoons default driver) doesn't have support for Function.prototype.bind, which has caused confusion. Use
 # this polyfill to avoid the confusion.
 #= require support/bind-poly
@@ -31,7 +44,13 @@
 #
 # window.should = require('chai').should()
 mocha.ui('bdd')
+mocha.globals(['Ember', 'DS', 'App', 'MD5'])
+mocha.timeout(500)
 chai.config.includeStack = true
+$.fx.off = true
+
+afterEach ->
+  App.reset()
 
 # window.assert = chai.assert
 window.expect = chai.expect
@@ -40,4 +59,3 @@ window.expect = chai.expect
 # For more information: http://github.com/modeset/teaspoon
 #
 # You can require javascript files here. A good place to start is by requiring your application.js.
-#= require application

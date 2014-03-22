@@ -6,7 +6,9 @@
 #= require handlebars
 #= require ember
 #= require ember-data-beta6
-#= require_tree ../../../v***REMOVED***or/assets/javascripts
+#= require ../../../v***REMOVED***or/assets/javascripts/flash-message
+#= require ../../../v***REMOVED***or/assets/javascripts/md5.min
+#= require ../../../v***REMOVED***or/assets/javascripts/bower_components/ember-simple-auth/ember-simple-auth
 #= require_self
 #= require app
 
