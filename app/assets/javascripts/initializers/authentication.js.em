@@ -1,3 +1,4 @@
+window._pathoscope = _.noConflict()
 Ember.Application.initializer
   name: 'authentication',
   initialize: (container, application) ->

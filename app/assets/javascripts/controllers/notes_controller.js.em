@@ -1,6 +1,6 @@
-App.NotesNewController = Ember.ObjectController.ext***REMOVED***
-  needs: ['application']
+class App.NotesNewController ext***REMOVED***s Ember.ObjectController
   placeholder: 'What do you think about this?'
+  needs: ['world']
 
   +computed model
   new_note: ->
@@ -13,13 +13,8 @@ App.NotesNewController = Ember.ObjectController.ext***REMOVED***
       new_note = @get('new_note')
       self = this
 
-      @get('controllers.application.current_user').then (user) ->
+      @get('session.user').then (user) ->
         new_note.set('user', user)
         new_note.save()
 
       false
-      ***REMOVED*** self.transitionToRoute('paths')
-
-      ***REMOVED*** transitionToSelf = ->
-      ***REMOVED***   item = new_note.get('item')
-      ***REMOVED***   self.transitionToRoute('map.note', item)

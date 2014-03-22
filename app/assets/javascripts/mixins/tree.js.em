@@ -9,10 +9,10 @@ mixin window.Tree
     @get('grandparent.parentController')
 
   route: ~>
-    if @get('grandgrandparent').toString()?.match(/World/)
-      'world'
-    else
+    if @get('grandparent')?.toString()?.match(/Map/)
       'map'
+    else
+      'world'
 
   actions:
     notesAction: (param) ->
@@ -20,13 +20,11 @@ mixin window.Tree
       false
 
     childrenAction: (item_id) ->
-      nested_by_three = @get('grandparent')?.toString()?.match(/Item/)
+    ***REMOVED*** nested_by_three = @get('grandparent')?.toString()?.match(/Item/)
 
-      if nested_by_three
-        @transitionToRoute(@get('route'), item_id)
-      else
+      if @get('parentController.model.id') == item_id
         @toggleProperty('childrenExpanded')
+      else
+        @transitionToRoute(@get('route'), item_id)
 
       false
-
-

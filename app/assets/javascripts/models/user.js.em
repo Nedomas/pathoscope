@@ -17,7 +17,7 @@ App.User = DS.Model.ext***REMOVED***
 
     @get('paths').forEach (path) ->
       path_items = items.filter (item) ->
-        in_path = _.contains(item.get('paths').toArray(), path)
+        in_path = _pathoscope.contains(item.get('paths').toArray(), path)
         in_path && !item.get('isPath')
 
       sorted_items = Em.ArrayProxy.createWithMixins Ember.SortableMixin,

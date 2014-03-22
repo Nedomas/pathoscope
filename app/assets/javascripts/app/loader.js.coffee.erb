@@ -10,7 +10,7 @@ PathoscopeLoader = (->
 
   loadLeanModal = ->
   ***REMOVED*** setup jQuery
-    window.$pj = jQuery.noConflict()
+    window.$pathoscope = jQuery.noConflict()
     load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
 
   loadNormalize = ->
@@ -24,6 +24,7 @@ PathoscopeLoader = (->
     load('head', 'script', server + "/assets/lodash.min.js", loadHandlebars)
 
   loadHandlebars = ->
+    window._pathoscope = _.noConflict()
     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js", loadEmber)
 
   loadEmber = ->
@@ -33,7 +34,7 @@ PathoscopeLoader = (->
     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
 
   loadApp = ->
-    $pj('body').app***REMOVED***(
+    $pathoscope('body').app***REMOVED***(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
         "<div id='pathoscope-app'>" +
@@ -45,15 +46,15 @@ PathoscopeLoader = (->
     load('head', 'script', server + '/assets/app/application.js', openApp)
 
    openApp = ->
-     $pj('#pathoscope-trigger').leanModal({ top: 50 })
-     $pj('#pathoscope-trigger').click()
-     $pj(document).on 'click', '#pathoscope .close', ->
-       $pj('#lean_overlay').click()
+     $pathoscope('#pathoscope-trigger').leanModal({ top: 50 })
+     $pathoscope('#pathoscope-trigger').click()
+     $pathoscope(document).on 'click', '#pathoscope .close', ->
+       $pathoscope('#lean_overlay').click()
 
   showLoading = ->
-    $pj('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
-    $pj('#pathoscope-loading-trigger').leanModal()
-    $pj('#pathoscope-loading-trigger').click()
+    $pathoscope('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
+    $pathoscope('#pathoscope-loading-trigger').leanModal()
+    $pathoscope('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->
     done = false

@@ -24,36 +24,17 @@ App.Item = DS.Model.ext***REMOVED***
 
   +computed children.@each
   hasChildren: ->
-    !_.isEmpty(@get('children').toArray())
+    !_pathoscope.isEmpty(@get('children').toArray())
 
   +computed parents.@each
   hasParents: ->
-    !_.isEmpty(@get('parents').toArray())
+    !_pathoscope.isEmpty(@get('parents').toArray())
 
   +computed notes.@each
   hasNotes: ->
-    !_.isEmpty(@get('saved_notes').toArray())
+    !_pathoscope.isEmpty(@get('saved_notes').toArray())
 
   +computed notes.@each
   saved_notes: ->
     @get('notes').filter (note) ->
       !note.get('isNew')
-
-
-***REMOVED*** # recalcing itself when parent is observed
-***REMOVED*** +computed parents.@each
-***REMOVED*** siblings: ->
-***REMOVED***   self = this
-***REMOVED***   parents = @get('parents')
-***REMOVED***   has_parents = @get('hasParents')
-***REMOVED***   stopper = true
-
-***REMOVED***   @store.filter 'item', {}, (item) ->
-***REMOVED***     item.get('parents')
-***REMOVED***   ***REMOVED*** if stopper
-    ***REMOVED***   contains_every = item.get('parents').every (parent) ->
-    ***REMOVED***     stopper = false
-    ***REMOVED***     parents.contains(parent)
-    ***REMOVED***   parents_equal = item.get('hasParents') == has_parents
-
-    ***REMOVED***   contains_every && parents_equal && item != self

@@ -11,7 +11,7 @@ App.Link = DS.Model.ext***REMOVED***
 
   +computed title
   short_title: ->
-    _.str.truncate(@get('title'), 30)
+    _pathoscope.str.truncate(@get('title'), 30)
 
   +computed url
   short_url: ->

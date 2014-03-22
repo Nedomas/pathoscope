@@ -9,4 +9,4 @@ App.Map = DS.Model.ext***REMOVED***
 
   +computed children
   hasChildren: ->
-    !_.isEmpty(@get('children'))
+    !_pathoscope.isEmpty(@get('children'))

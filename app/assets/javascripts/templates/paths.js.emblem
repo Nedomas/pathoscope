@@ -20,5 +20,5 @@ article.paths
               | #{path.links_count} links
         div.icon class=path.color_class
 
-    if isAuthenticated
+    if session.isAuthenticated
       outlet
