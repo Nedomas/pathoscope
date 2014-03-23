@@ -60,6 +60,21 @@ window.link_item = {
   "path_ids": [2, 1],
   "link_id": 1
 }
+
+window.testing_path_item = {
+  "id": 4,
+  "context_id": 3,
+  "context_type": "Path",
+  "created_at": "2014-03-21T15:27:28.349Z",
+  "updated_at": "2014-03-21T15:27:28.349Z",
+  "child_ids": [8],
+  "parent_ids": [],
+  "sibling_ids": [1, 2],
+  "note_ids": [],
+  "path_ids": [4],
+  "link_id": null
+}
+
 window.first_user_path = {
   "id": 1,
   "user_id": 1,

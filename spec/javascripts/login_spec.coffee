@@ -10,9 +10,3 @@ describe "Login feature", ->
         login()
         .then ->
           expect(find('h1').text()).to.equal('Paths')
-#         path_titles = _pathoscope.map find('.path .description > a'), (path) ->
-#           $(path).text()
-#
-#         expect(path_titles).to.include('Aerospace')
-#         expect(path_titles).to.include('Programming')
-#         expect(path_titles).to.include('Create new path')

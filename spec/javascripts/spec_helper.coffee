@@ -12,7 +12,7 @@ Ember.testing = true
 
 document.write(
   '<div id="test-app-container">' +
-    '<div id="ember-testing" style="width: 100%; height: 100%;">' +
+    '<div id="ember-testing">' +
     '</div>' +
   '</div>')
 
@@ -36,7 +36,7 @@ App.setupForTesting()
 window.server = sinon.fakeServer.create()
 server.autoRespond = true
 server.xhr.useFilters = true
-
+#
 # server.xhr.addFilter (method, url) ->
 #   debugger
 
@@ -59,19 +59,32 @@ Ember.Test.registerAsyncHelper 'login', ->
     fillIn('.email input', 'john@mayer.com')
     fillIn('.password input', 'testing')
     click('.sign-in button')
+    wait()
+
+window.paths_api = {
+  "paths": [aerospace_path, programming_path],
+  "items": [aerospace_item, programming_item, link_item],
+  "user_paths": [first_user_path]
+}
 
 Ember.Test.registerAsyncHelper 'mockPathsApi', ->
   Ember.run ->
     server.respondWith 'GET', '/api/v1/paths', [
       200,
       { 'Content-Type': 'application/json' },
-      JSON.stringify({
-        "paths": [aerospace_path, programming_path],
-        "items": [aerospace_item, programming_item, link_item],
-        "user_paths": [first_user_path]
-      })
+      JSON.stringify(paths_api)
   ***REMOVED***
     wait()
+
+Ember.Test.registerAsyncHelper 'mockPathsApiPOST', ->
+  Ember.run ->
+    server.respondWith 'POST', '/api/v1/paths', (request) ->
+      paths_api.paths.push(JSON.parse(request.requestBody).path)
+      paths_api.items.push(testing_path_item)
+      request.respond(200, { 'Content-Type': 'application/json' },
+      JSON.stringify(paths_api))
+    wait()
+
 
 
 App.injectTestHelpers()
