@@ -4,8 +4,8 @@ App.CustomAuthenticator = Ember.SimpleAuth.Authenticators.OAuth2.ext***REMOVED**
       // make the request to authenticate the user at ***REMOVED***oint /v3/token
       Ember.$.ajax({
         url:  '/oauth/token',
-      type: 'POST',
-      data: { grant_type: 'password', username: credentials.identification, password: credentials.password }
+        type: 'POST',
+        data: { grant_type: 'password', username: credentials.identification, password: credentials.password }
       }).then(function(response) {
         Ember.run(function() {
           // resolve (including the account id) as the AJAX request was successful; all properties this promise resolves

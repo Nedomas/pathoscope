@@ -10,7 +10,7 @@ Teaspoon.setup do |config|
 
 ***REMOVED*** These paths are app***REMOVED***ed to the Rails assets paths (relative to config.root), and by default is an array that you
 ***REMOVED*** can replace or add to.
-  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets"]
+  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets", 'app/assets/stylesheets']
 
 ***REMOVED*** Fixtures are r***REMOVED***ered through a standard controller. This means you can use things like HAML or RABL/JBuilder, etc.
 ***REMOVED*** to generate fixtures within this path.
@@ -42,7 +42,7 @@ Teaspoon.setup do |config|
   ***REMOVED*** Available frameworks: teaspoon-jasmine, teaspoon-mocha, teaspoon-qunit
   ***REMOVED***
   ***REMOVED*** Note: To use the CoffeeScript source files use `"teaspoon/mocha"` etc.
-    suite.javascripts = ["teaspoon-mocha"]
+    suite.javascripts = ["teaspoon/mocha"]
 
   ***REMOVED*** If you want to change how Teaspoon looks, or include your own stylesheets you can do that here. The default is the
   ***REMOVED*** stylesheet for the HTML reporter.

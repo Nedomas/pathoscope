@@ -1,0 +1,22 @@
+{
+ aerospace_path: {
+    "id": 1,
+    "title": "Aerospace",
+    "color": 1,
+    "users_count": 1,
+    "links_count": 5,
+    "item_id": 1,
+    "user_path_ids": [1],
+    "chosen": false
+  }
+  programming_path: {
+    "id": 2,
+    "title": "Programming",
+    "color": 2,
+    "users_count": 2,
+    "links_count": 4,
+    "item_id": 2,
+    "user_path_ids": [],
+    "chosen": false
+  }
+}

@@ -2,20 +2,79 @@
 # require expect
 #= require sinon
 #= require chai
-#= require v***REMOVED***or/assets/javascripts/bower_components/ember-mocha-adapter/adapter
-#= require adapter
 #= require application
+#= require ../../v***REMOVED***or/assets/javascripts/bower_components/ember-mocha-adapter/adapter
+#= require fixtures/data
 #= require_self
 # require support/your-support-file
 
-App.rootElement = 'body'
+Ember.testing = true
+
+document.write(
+  '<div id="test-app-container">' +
+    '<div id="ember-testing" style="width: 100%; height: 100%;">' +
+    '</div>' +
+  '</div>')
+
+testing = ->
+  helper = {
+    container: ->
+      App.__container__
+    controller: (name) ->
+      helper.container().lookup('controller:' + name)
+    path: ->
+      helper.controller('application').get('currentPath')
+  }
+
+Ember.Test.registerHelper 'path', ->
+  testing().path()
+
+App.rootElement = '#ember-testing'
 Ember.Test.adapter = Ember.Test.MochaAdapter.create()
 App.setupForTesting()
-App.injectTestHelpers()
 
-class App.Store ext***REMOVED***s DS.Store
-  adapter: DS.FixtureAdapter.ext***REMOVED***
-    simulateRemoteResponse: false
+window.server = sinon.fakeServer.create()
+server.autoRespond = true
+server.xhr.useFilters = true
+
+# server.xhr.addFilter (method, url) ->
+#   debugger
+
+window.testHelper = {
+  lookup: (object, object_name) ->
+    name = object_name || "main"
+    App.__container__.lookup(object + ":" + name)
+}
+
+window.getParameterByName = (input, name) ->
+  match = RegExp('[?&]' + name + '=([^&]*)').exec(input)
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
+
+Ember.Test.registerAsyncHelper 'login', ->
+  Ember.run ->
+    server.respondWith 'POST', '/oauth/token', (params) ->
+      { access_token: 'some-token', user_id: 1 }
+
+    visit('/login')
+    fillIn('.email input', 'john@mayer.com')
+    fillIn('.password input', 'testing')
+    click('.sign-in button')
+
+Ember.Test.registerAsyncHelper 'mockPathsApi', ->
+  Ember.run ->
+    server.respondWith 'GET', '/api/v1/paths', [
+      200,
+      { 'Content-Type': 'application/json' },
+      JSON.stringify({
+        "paths": [aerospace_path, programming_path],
+        "items": [aerospace_item, programming_item, link_item],
+        "user_paths": [first_user_path]
+      })
+  ***REMOVED***
+    wait()
+
+
+App.injectTestHelpers()
 
 # PhantomJS (Teaspoons default driver) doesn't have support for Function.prototype.bind, which has caused confusion. Use
 # this polyfill to avoid the confusion.
@@ -43,9 +102,9 @@ class App.Store ext***REMOVED***s DS.Store
 # Examples:
 #
 # window.should = require('chai').should()
-mocha.ui('bdd')
+# mocha.ui('bdd')
 mocha.globals(['Ember', 'DS', 'App', 'MD5'])
-mocha.timeout(500)
+mocha.timeout(5000)
 chai.config.includeStack = true
 $.fx.off = true
 
