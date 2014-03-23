@@ -23,7 +23,7 @@
 #= require_self
 
 # move components to app/components
-_.each Ember.TEMPLATES, (template, key) ->
+_pathoscope.each Ember.TEMPLATES, (template, key) ->
   if !key.match(/app\//)
     Ember.TEMPLATES['app/' + key] = template
     delete Ember.TEMPLATES[key]

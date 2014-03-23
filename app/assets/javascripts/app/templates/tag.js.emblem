@@ -1,7 +1,7 @@
 h1 Select a path to tag
 article.choose-path
-  / each path in model
-  single-item item=fake_ups filled=true isExpanded=false notes=false s***REMOVED***ItemChildren='tagAction'
+  each user_path in model
+    single-item item=user_path.path.item filled=true isExpanded=false notes=false s***REMOVED***ItemChildren='tagAction'
 
 article.new-path
   | Go to Pathoscope to choose a different path

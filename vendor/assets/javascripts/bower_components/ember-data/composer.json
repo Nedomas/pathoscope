@@ -1,0 +1,26 @@
+{
+    "name": "components/ember-data",
+    "description": "A data persistence library for Ember.js.",
+    "type": "component",
+    "license": "MIT",
+    "require": {
+        "components/ember": "1.*"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "ember-data.js"
+          ***REMOVED***,
+            "files": [
+                "ember-data.min.js",
+                "ember-data.prod.js"
+          ***REMOVED***,
+            "shim": {
+                "exports": "Ember",
+                "deps": [
+                    "ember"
+              ***REMOVED***
+            }
+        }
+    }
+}

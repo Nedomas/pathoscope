@@ -39,11 +39,10 @@ class Api::V1::LinksController < ApplicationController
   def create
     link = params[:link]
     path = Path.find(link[:creation_path_id])
-    node = Node.build(link[:url], path, current_user)
+    user = User.find(link[:creation_user_id])
+    node = Node.build(link[:url], path, user)
     link = node.item.context
 
-  ***REMOVED*** links = ActiveModel::ArraySerializer.new(MODEL.all,
-  ***REMOVED***   each_serializer: LinkSerializer).serializable_array
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
     paths = ActiveModel::ArraySerializer.new(Path.all,
@@ -57,7 +56,6 @@ class Api::V1::LinksController < ApplicationController
       paths: paths,
       notes: notes
     }
-  ***REMOVED*** r***REMOVED***er :nothing => true, :status => 204 and return
 ***REMOVED***
 
   def update

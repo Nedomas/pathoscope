@@ -1,3 +1,6 @@
 App.IndexRoute = Ember.Route.ext***REMOVED***
   beforeModel: ->
-    @transitionTo('tag')
+    if @get('session.isAuthenticated')
+      @transitionTo('tag')
+    else
+      @transitionTo('login')

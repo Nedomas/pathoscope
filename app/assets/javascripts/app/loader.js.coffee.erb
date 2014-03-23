@@ -18,20 +18,20 @@ PathoscopeLoader = (->
     load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
 
   loadCSS = ->
-    load('head', 'link', server + '/assets/public/standalone_app.css', loadLodash)
+    load('head', 'link', server + '/assets/public/standalone_app.css', loadApp)
 
-  loadLodash = ->
-    load('head', 'script', server + "/assets/lodash.min.js", loadHandlebars)
-
-  loadHandlebars = ->
-    window._pathoscope = _.noConflict()
-    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js", loadEmber)
-
-  loadEmber = ->
-    load('head', 'script', server + "/assets/ember.js?body=1", loadEmberData)
-
-  loadEmberData = ->
-    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
+#   loadLodash = ->
+#     load('head', 'script', server + "/assets/lodash.min.js", loadHandlebars)
+#
+#   loadHandlebars = ->
+#     window._pathoscope = _.noConflict()
+#     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js", loadEmber)
+#
+#   loadEmber = ->
+#     load('head', 'script', server + "/assets/ember.js?body=1", loadEmberData)
+#
+#   loadEmberData = ->
+#     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
 
   loadApp = ->
     $pathoscope('body').app***REMOVED***(

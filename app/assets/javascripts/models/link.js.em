@@ -3,6 +3,7 @@ App.Link = DS.Model.ext***REMOVED***
   url: DS.attr('string')
   paths: DS.hasMany('path')
   creation_path_id: DS.attr('string')
+  creation_user_id: DS.attr('string')
   item: DS.belongsTo('item')
 
   +computed item_id
