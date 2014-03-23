@@ -12,10 +12,13 @@ class App.NotesNewController ext***REMOVED***s Ember.ObjectController
   actions:
     postAction: ->
       new_note = @get('new_note')
-      self = this
+      _this = this
+    ***REMOVED*** debugger
 
       @get('session.user').then (user) ->
         new_note.set('user', user)
-        new_note.save()
+        new_note.save().then ->
+          _this.set('parentController.parentController.notesExpanded', true)
+        ***REMOVED*** debugger
 
       false
