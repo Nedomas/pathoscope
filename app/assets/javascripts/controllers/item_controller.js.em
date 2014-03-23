@@ -1,4 +1,4 @@
-class App.ItemController ext***REMOVED***s Ember.ObjectController with Tree
+class App.ItemController ext***REMOVED***s Ember.ObjectController
   needs: ['application']
 
   +computed parentController.notesExpandedList.@each
