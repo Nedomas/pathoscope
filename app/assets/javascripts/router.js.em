@@ -9,7 +9,7 @@ App.Router.map ->
 
   @resource('install')
 
-  @resource 'map', { path: '/map/:item_id' }, ->
+  @resource 'map', { path: '/map/:user_path_id' }, ->
     @route('notes')
 
   @resource 'world', { path: '/world/:item_id' }, ->

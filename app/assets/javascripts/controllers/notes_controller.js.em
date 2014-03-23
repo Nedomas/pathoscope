@@ -4,9 +4,10 @@ class App.NotesNewController ext***REMOVED***s Ember.ObjectController
 
   +computed model
   new_note: ->
+    item = @get('model.content') || @get('model')
     @store.createRecord 'note',
       content: '',
-      item: @get('model')
+      item: item
 
   actions:
     postAction: ->
