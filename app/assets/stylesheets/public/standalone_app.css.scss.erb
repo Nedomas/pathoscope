@@ -12,8 +12,16 @@
   display: none;
 }
 
-#pathoscope-app, #pathoscope-login, #pathoscope-success {
+#pathoscope-app, #pathoscope-login, #pathoscope-success, #pathoscope-loader {
   display: none;
+}
+
+#pathoscope-loading {
+  width: 100px;
+  height: 100px;
+  background: url('<%= SERVER %>/assets/loading2.gif') center no-repeat;
+  z-index: 999999999 !important;
+  margin: 0 !important;
 }
 
 #pathoscope-app {
@@ -23,7 +31,7 @@
   height: 500px;
   padding-bottom: 32px;
   background-color: $snow-white;
-  z-index: 999999999 !important;
+  z-index: 999999998 !important;
 
   header {
     height: 64px;

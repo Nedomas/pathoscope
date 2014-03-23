@@ -47,13 +47,16 @@ PathoscopeLoader = (->
 
    openApp = ->
      $pathoscope('#pathoscope-trigger').leanModal({ top: 50 })
+     $pathoscope('#pathoscope-loading').hide()
      $pathoscope('#pathoscope-trigger').click()
      $pathoscope(document).on 'click', '#pathoscope .close', ->
        $pathoscope('#lean_overlay').click()
 
   showLoading = ->
-    $pathoscope('body').app***REMOVED***("<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>")
-    $pathoscope('#pathoscope-loading-trigger').leanModal()
+    $pathoscope('body').app***REMOVED***(
+      "<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>" +
+      '<div id="pathoscope-loading"></div>')
+    $pathoscope('#pathoscope-loading-trigger').leanModal({ top: 400, overlay: 0.6 })
     $pathoscope('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->
