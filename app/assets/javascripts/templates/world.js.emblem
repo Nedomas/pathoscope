@@ -8,10 +8,5 @@ article.world
     div class={ model.hasParents:padded }
       r***REMOVED***er 'item' model
 
-      if childrenExpanded
-        div.padded
-          each child in model.children
-            r***REMOVED***er 'item' child
-
       each sibling in model.siblings
         r***REMOVED***er 'item' sibling

@@ -22,9 +22,13 @@ mixin window.Tree
     childrenAction: (item_id) ->
     ***REMOVED*** nested_by_three = @get('grandparent')?.toString()?.match(/Item/)
 
+    ***REMOVED*** debugger
+    ***REMOVED*** if @get('parentController.model.siblings').isAny('id', item_id)
       if @get('parentController.model.id') == item_id
-        @toggleProperty('childrenExpanded')
+      ***REMOVED*** 'ha'
+        @get('parentController').toggleProperty('childrenExpanded')
       else
         @transitionToRoute(@get('route'), item_id)
+        @set('childrenExpanded', true)
 
       false
