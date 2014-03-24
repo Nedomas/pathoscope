@@ -25,6 +25,7 @@ gem 'pismo'
 gem 'rack-cors', require: 'rack/cors'
 gem 'newrelic_rpm'
 gem 'gon'
+gem 'seojs'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'ember-rails'

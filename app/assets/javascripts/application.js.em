@@ -9,6 +9,7 @@
 #= require ../../../v***REMOVED***or/assets/javascripts/flash-message
 #= require ../../../v***REMOVED***or/assets/javascripts/md5.min
 #= require ../../../v***REMOVED***or/assets/javascripts/bower_components/ember-simple-auth/ember-simple-auth
+#= require ember-google-analytics
 #= require_self
 #= require app
 
