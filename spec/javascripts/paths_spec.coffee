@@ -7,7 +7,7 @@ describe "Paths index", ->
 
   it "shows logged paths", ->
     Ember.run ->
-      mockPathsApi()
+      mockBaseApis()
       login().then ->
         path_titles = _pathoscope.map find('.path .description > a'), (path) ->
           $(path).text()
@@ -18,7 +18,7 @@ describe "Paths index", ->
 
   it "adds a path", ->
     Ember.run ->
-      mockPathsApi()
+      mockBaseApis()
       mockPathsApiPOST()
       login().then ->
         expect(find('.path .description').length).to.equal(3)

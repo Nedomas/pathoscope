@@ -67,6 +67,65 @@ window.paths_api = {
   "user_paths": [first_user_path]
 }
 
+window.user_api = {
+  "user": {
+    "id": 2,
+    "email": "john@mayer.com",
+    "username": "Mayer",
+    "note_ids": [],
+    "path_ids": [],
+    "item_ids": [],
+    "user_path_ids": []
+  },
+  "notes": [],
+  "paths": [aerospace_path, programming_path],
+  "items": [aerospace_item, programming_item, link_item],
+  "user_paths": []
+}
+
+window.link_api = {
+  "link": {
+    "id": 1,
+    "title": "Aerospace engineering",
+    "url": "http://en.wikipedia.org/wiki/Aerospace_engineering",
+    "created_at": "2014-03-21T15:27:28.368Z",
+    "updated_at": "2014-03-21T15:27:28.368Z",
+    "description": null,
+    "item_id": 3,
+    "path_ids": [
+      2,
+      1
+  ***REMOVED***
+  },
+  "items": [aerospace_item, programming_item, link_item],
+  "paths": [aerospace_path, programming_path],
+  "notes": []
+}
+
+Ember.Test.registerAsyncHelper 'mockBaseApis', ->
+  Ember.run ->
+    mockUserApi()
+    mockPathsApi()
+    mockLinkApi()
+
+Ember.Test.registerAsyncHelper 'mockUserApi', ->
+  Ember.run ->
+    server.respondWith 'GET', '/api/v1/paths/2', [
+      200,
+      { 'Content-Type': 'application/json' },
+      JSON.stringify(user_api)
+  ***REMOVED***
+    wait()
+
+Ember.Test.registerAsyncHelper 'mockLinkApi', ->
+  Ember.run ->
+    server.respondWith 'GET', '/api/v1/links/1', [
+      200,
+      { 'Content-Type': 'application/json' },
+      JSON.stringify(link_api)
+  ***REMOVED***
+    wait()
+
 Ember.Test.registerAsyncHelper 'mockPathsApi', ->
   Ember.run ->
     server.respondWith 'GET', '/api/v1/paths', [
