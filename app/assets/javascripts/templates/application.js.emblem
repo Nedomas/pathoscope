@@ -16,13 +16,14 @@ header.ext***REMOVED***full
 
           if dropdownOpen
             li.arrow
-              == rigid-arrow-up
-            ul.dropdown{action 'toggleDropdown'}
-              li
+              a href='#'
+                == rigid-arrow-up
+            ul.dropdown
+              li{action 'toggleDropdown'}
                 link-to 'map' 1 | Mental map
               li
                 a target='_blank' href='http://en.gravatar.com/' Change avatar
-              li
+              li{action 'toggleDropdown'}
                 a{action 'invalidateSession'} href='#' Logout
           else
             li.arrow
