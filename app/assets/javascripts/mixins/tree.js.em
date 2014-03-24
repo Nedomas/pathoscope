@@ -3,12 +3,15 @@ mixin window.Tree
   childrenExpanded: ->
     true
 
-  +computed
+  +computed this
   route: ->
+    debugger
     if this.toString()?.match(/Map/)
       'map'
     else if this.toString()?.match(/World/)
       'world'
+    else if this.toString()?.match(/Done/)
+      'done'
 
   notesExpandedList: Ember.A()
 
@@ -22,6 +25,7 @@ mixin window.Tree
         @toggleProperty('childrenExpanded')
       else
         @set('childrenExpanded', true)
+        debugger
         @transitionToRoute(@get('route'), item_id)
       false
 
