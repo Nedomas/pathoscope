@@ -23,6 +23,7 @@ Pathoscope::Application.routes.draw do
       resources :users
       resources :notes
       get 'credentials/me' => 'credentials#me'
+      get 'expertise/road' => 'expertise#road'
 ***REMOVED***
 ***REMOVED***
 

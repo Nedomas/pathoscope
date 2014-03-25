@@ -13,4 +13,12 @@ class UserPath < ActiveRecord::Base
   def items
     Item.all
 ***REMOVED***
+
+  def siblings
+    UserPath.where(user: user) - [self]
+***REMOVED***
+
+  def sibling_ids
+    siblings.map(&:id)
+***REMOVED***
 ***REMOVED***

@@ -20,7 +20,7 @@ header.ext***REMOVED***full
                 == rigid-arrow-up
             ul.dropdown
               li{action 'toggleDropdown'}
-                link-to 'map' 1 | Mental map
+                link-to 'map' session.user.first_user_path_id | Mental map
               li
                 a target='_blank' href='http://en.gravatar.com/' Change avatar
               li{action 'toggleDropdown'}

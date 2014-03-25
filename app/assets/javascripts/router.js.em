@@ -14,3 +14,5 @@ App.Router.map ->
 
   @resource 'world', { path: '/world/:item_id' }, ->
     @route('notes')
+
+  @resource 'expertise', { path: '/expertise/:path_id' }
