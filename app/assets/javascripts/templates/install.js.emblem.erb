@@ -1,20 +1,27 @@
 h1 Install
 
 article.install
+  if hovered
+    section.drag-to
+      | Click and drag to your Bookmarks bar
+
   section.step-one
-    span.step-number 1
-    h2 Make sure the bookmarks bar is visible
+    p.header-line
+      span.step-number 1
+      span.title Make sure the bookmarks bar is visible
     p.illustration
       <%= image_tag 'browsermockup.png' %>
 
   section.step-two
-    span.step-number 2
-    h2 Drag the app icon to your bookmarks bar
+    p.header-line
+      span.step-number 2
+      span.title Drag the app icon to your bookmarks bar
     p.illustration.install-logo
-      a href="<%= Install.bookmark_js %>" Pathoscope App
+      view App.InstallBookmarklet
 
   section.step-three
-    span.step-number 3
-    h2 Click on the app icon you've just dragged in
+    p.header-line
+      span.step-number 3
+      span.title Click on the app icon you've just dragged in
     p.illustration
       <%= image_tag 'browsermockup.png' %>
