@@ -9,16 +9,15 @@ article.paths
             = path.title
           div.extra
             p.choose
-              if session.isAuthenticated
-                if path.chosen
-                  p Chosen
-                else
-                  a{action 'choose' path} href='#' Choose
             p.people
               | #{path.users_count} people
             p.links
               | #{path.links_count} links
-        div.icon class=path.color_class
-
+        div.icon-half class=path.color_class
+          if session.isAuthenticated
+            if path.chosen
+              p.chosen Chosen
+            else
+              a.choose{action 'choose' path} href='#' Choose
     if session.isAuthenticated
       outlet

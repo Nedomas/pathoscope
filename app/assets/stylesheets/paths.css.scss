@@ -39,20 +39,30 @@
     font: 600 1.3em $open-sans;
   }
 
-  .icon {
+  .icon-half {
+    position: relative;
     display: inline-block;
     width: 35%;
     height: 100%;
     border-radius: 0 1em 1em 0;
   }
 
-  .choose {
-    a {
-      display: inline-block;
-      color: $semiblack;
-      font: 600 1em $open-sans;
-      text-align: center;
-      text-decoration: none;
-    }
+  a.choose, .chosen {
+    font: 600 1.2em $open-sans;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 0 .5em;
+    text-align: center;
+    text-transform: lowercase;
+    text-decoration: none;
+  }
+
+  a.choose {
+    color: $semiwhite;
+  }
+
+  .chosen {
+    color: hsla(180, 17%, 98%, 0.3);
   }
 }

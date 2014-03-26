@@ -4,4 +4,4 @@ li.new-path.path
     div.extra
       .sign-in
         button{action 'createAction'} Create
-  div class="icon background-0"
+  div class="icon-half background-0"
