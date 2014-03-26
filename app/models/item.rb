@@ -54,45 +54,4 @@ class Item < ActiveRecord::Base
   def sibling_ids
     nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id) - [id]
 ***REMOVED***
-
-  class << self
-    def tree
-    ***REMOVED*** final = {}
-      item = Path.find(2).item
-      final = recursive_find_children(item, [item])
-    ***REMOVED*** item.children.each do |child|
-    ***REMOVED***   final[child] = recursive_find_children(child, [])
-    ***REMOVED*** ***REMOVED***
-    ***REMOVED*** final = recursive_find_children(item)
-
-      final
-***REMOVED***
-
-    def recursive_find_children(item, parents)
-      longest_path = []
-      item.children.each do |child|
-        next if parents.include?(child)
-        path = recursive_find_children(child, parents + [child])
-        longest_path = path if longest_path.size < path.size
-  ***REMOVED***
-
-      [item] + longest_path
-    ***REMOVED*** item.children.each_with_index do |child, index|
-    ***REMOVED***   result[index] = child
-    ***REMOVED***   recursive_find_children(child, result)
-    ***REMOVED*** ***REMOVED***
-
-    ***REMOVED*** if first_child = item.children.first
-    ***REMOVED***   recursive_find_children(first_child, result)
-    ***REMOVED*** ***REMOVED***
-
-    ***REMOVED*** result
-***REMOVED***
-
-    def find_no_children
-      Item.all.select do |item|
-        item.children.none?
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
 ***REMOVED***

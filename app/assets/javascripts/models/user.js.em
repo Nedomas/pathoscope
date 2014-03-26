@@ -5,6 +5,7 @@ App.User = DS.Model.ext***REMOVED***
   paths: DS.hasMany('path')
   items: DS.hasMany('item')
   user_paths: DS.hasMany('userPath')
+  installed: DS.attr('boolean')
 
   +computed user_paths.@each
   first_user_path_id: ->

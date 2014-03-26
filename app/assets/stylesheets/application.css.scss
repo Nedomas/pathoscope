@@ -156,7 +156,6 @@ h1 {
 }
 
 .new-path {
-
   input {
     font: 400 1em $open-sans;
     background-color: hsla(0, 0%, 92%, 1);
@@ -181,5 +180,64 @@ h1 {
     border-radius: .5em;
     padding: .75em;
     text-transform: uppercase;
+  }
+}
+
+.expertise {
+  .item {
+    @include row();
+    display: block;
+    margin: .75em auto;
+    height: 4em;
+    width: 40em;
+
+    &.hover {
+      .node svg {
+        fill: $green;
+      }
+    }
+    &.before-start {
+      .node svg {
+        fill: hsla(158, 56%, 83%, 1);
+      }
+    }
+  }
+  .item:after {
+    background: hsla(180, 1%, 82%, 1);
+    display: block;
+    width:1em;
+    height: 3.5em;
+    margin: -1.5em 20em 0;
+    border-radius: 1em;
+  }
+  span {
+    display: inline-block;
+  }
+  .title {
+    width: 18em;
+    text-align: right;
+    height: 4em;
+    font: 1em $open-sans;
+    vertical-align: top;
+    line-height: 4em;
+  }
+  .node {
+    width: 4em;
+    height: 4em;
+
+    svg {
+      height: 3em;
+      width: 3em;
+      margin: .5em 1em;
+      fill: $semigrey;
+    }
+  }
+  .url {
+    text-align: left;
+    width: 18em;
+    height: 4em;
+    vertical-align: top;
+    line-height: 4em;
+    color: $semigrey;
   }
 }

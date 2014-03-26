@@ -1,27 +1,6 @@
-h1 Expertise
-path.title
+h1 Define your expertise in #{path.title}
 
 article.expertise
   ul
     = each item in model
-      li.path
-        item.context.title
-/       li.path
-/         div.description
-/           link-to 'world' path.item class='title'
-/             = path.title
-/           div.extra
-/             p.choose
-/               if session.isAuthenticated
-/                 if path.chosen
-/                   p Chosen
-/                 else
-/                   a{action 'choose' path} href='#' Choose
-/             p.people
-/               | #{path.users_count} people
-/             p.links
-/               | #{path.links_count} links
-/         div.icon class=path.color_class
-/
-/     if session.isAuthenticated
-/       outlet
+      view App.ExpertiseLiView item=item

@@ -1,0 +1,6 @@
+span.title
+  item.context.short_title
+span.node
+  == filled-circle
+span.url
+  item.context.short_url

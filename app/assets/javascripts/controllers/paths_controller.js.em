@@ -6,12 +6,13 @@ App.PathsController = Ember.ArrayController.ext***REMOVED***
     choose: (path) ->
       _this = this
 
-      user_path = self.store.createRecord 'user_path',
-        user: @get('session.user.id'),
-        path: path
+      @get('session.user').then (user) ->
+        user_path = _this.store.createRecord 'user_path',
+          user: user,
+          path: path
 
-      user_path.save().then ->
-        _this.transitionToRoute('map', user_path.get('id'))
+        user_path.save().then ->
+          _this.transitionToRoute('expertise', path.get('id'))
 
 App.PathsNewController = Ember.ObjectController.ext***REMOVED***
   needs: ['application', 'paths']
