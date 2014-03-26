@@ -20,19 +20,6 @@ PathoscopeLoader = (->
   loadCSS = ->
     load('head', 'link', server + '/assets/public/standalone_app.css', loadApp)
 
-#   loadLodash = ->
-#     load('head', 'script', server + "/assets/lodash.min.js", loadHandlebars)
-#
-#   loadHandlebars = ->
-#     window._pathoscope = _.noConflict()
-#     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js", loadEmber)
-#
-#   loadEmber = ->
-#     load('head', 'script', server + "/assets/ember.js?body=1", loadEmberData)
-#
-#   loadEmberData = ->
-#     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.6/ember-data.js", loadApp)
-
   loadApp = ->
     $pathoscope('body').app***REMOVED***(
       "<div id='pathoscope'>" +
@@ -42,11 +29,10 @@ PathoscopeLoader = (->
         "</div>" +
       "</div>")
 
-    console.log 'Assets loaded. Loading application'
     load('head', 'script', server + '/assets/app/application.js', openApp)
 
    openApp = ->
-     $pathoscope('#pathoscope-trigger').leanModal({ top: 50 })
+     $pathoscope('#pathoscope-trigger').leanModal({ top: 30 })
      $pathoscope('#pathoscope-loading').hide()
      $pathoscope('#pathoscope-trigger').click()
      $pathoscope(document).on 'click', '#pathoscope .close', ->
@@ -59,7 +45,7 @@ PathoscopeLoader = (->
         '<div class="dot-left"></div>' +
         '<div class="dot-right"></div>' +
       '</div>')
-    $pathoscope('#pathoscope-loading-trigger').leanModal({ top: 400, overlay: 0.6 })
+    $pathoscope('#pathoscope-loading-trigger').leanModal({ top: 200, overlay: 0.6 })
     $pathoscope('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->

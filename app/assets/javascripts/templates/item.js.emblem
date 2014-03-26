@@ -3,12 +3,3 @@ single-item item=model childrenExpanded=childrenExpanded hasChildren=hasChildren
 if notesExpanded
   / give item
   r***REMOVED***er 'notes' model
-
-/ if childrenExpanded
-/   div.padded
-/     if deadItem
-/       each child in model.children itemController='deadItem'
-/         r***REMOVED***er 'item' child
-/     else
-/       each child in model.children
-/         r***REMOVED***er 'item' child

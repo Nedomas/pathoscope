@@ -1,3 +1,7 @@
+/*
+ *= require hint
+*/
+
 $transitional-green: hsla(105, 18%, 60%, 1);
 $transparent-red: hsla(0, 77%, 62%, 0.7);
 $sky-blue: hsla(192, 50%, 75%, 1);
@@ -141,6 +145,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
         height: 1em;
         padding: 0;
         margin-top: -1.5em;
+        color: $semigrey;
       }
     }
     .meta {

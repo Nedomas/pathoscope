@@ -15,4 +15,6 @@ class App.ItemController ext***REMOVED***s Ember.ObjectController
 
   +computed model.hasChildren
   hasChildren: ->
+    if @get('parentController.hasChildren') == false
+      return false
     @get('model.hasChildren')

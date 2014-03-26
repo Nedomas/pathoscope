@@ -8,5 +8,14 @@ article.done
     div class={ model.hasParents:padded }
       r***REMOVED***er 'item' model
 
+      if childrenExpanded
+        div.padded
+          if deadItem
+            each child in model.children itemController='deadItem'
+              r***REMOVED***er 'item' child
+          else
+            each child in model.children
+              r***REMOVED***er 'item' child
+
       each sibling in model.siblings
         r***REMOVED***er 'item' sibling

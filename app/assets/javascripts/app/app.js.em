@@ -5,6 +5,7 @@
 #= require_tree ./controllers
 #= require ../controllers/application_controller
 #= require ../controllers/item_controller
+#= require ../controllers/dead_item_controller
 #= require ../controllers/notes_controller
 #= require ../controllers/world_controller
 #= require ../controllers/login_controller

@@ -1,9 +1,5 @@
 h1 Success!
 article.choose-path
-  single-item item=model hasChildren=false notesExpanded=true s***REMOVED***ItemNotes='notesAction'
-
-  if notesExpanded
-    / give item
-    r***REMOVED***er 'notes' model
+  r***REMOVED***er 'item' model
 
 outlet
