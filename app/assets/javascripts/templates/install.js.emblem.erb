@@ -3,7 +3,9 @@ h1 Install
 article.install
   if hovered
     section.drag-to
-      | Click and drag to your Bookmarks bar
+      span.up-arrow
+        == arrow-back
+      span.comment Click and drag to your Bookmarks bar
 
   section.step-one
     p.header-line
@@ -11,6 +13,11 @@ article.install
       span.title Make sure the bookmarks bar is visible
     p.illustration
       <%= image_tag 'browsermockup.png' %>
+
+    .comments
+      p In Chrome, navigate to "View/Show Bookmarks Bar"
+      p In Internet Explorer, right click the top browser bar and select "Bookmarks Bar"
+      p In Safari, navigate to "View/Show Favorites Bar"
 
   section.step-two
     p.header-line
