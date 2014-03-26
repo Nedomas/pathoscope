@@ -5,7 +5,7 @@ class App.InstallBookmarklet ext***REMOVED***s Ember.View
   tagName: 'a'
 
   click: (event) ->
-    @get('controller').s***REMOVED***('selectStartAction', @get('item'))
+    event.preventDefault()
   mouseEnter: ->
     @get('controller').s***REMOVED***('setHover', true)
   mouseLeave: ->

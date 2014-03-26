@@ -1,4 +1,9 @@
 li class="box go-up"
+  section.arrow{action 'upAction' item}
+    a href='#'
+      == arrow-back
+      span.back Back
   section.meta
     p.title
-      a{action 'upAction' item} href="#" Go up to #{item.context.short_title}
+      a{action 'upAction' item} href="#"
+        item.context.short_title

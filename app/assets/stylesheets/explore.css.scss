@@ -119,13 +119,35 @@ $sky-blue: hsla(192, 50%, 75%, 1);
   }
 
   .go-up {
-    text-align: center;
-
-    .meta {
-      margin: 1.1em 2em;
+    .arrow {
+      svg {
+        display: block;
+        height: 2em;
+        width: 2em;
+        margin: .5em 0 0 1em;
+        padding: 0;
+        fill: $semigrey;
+      }
 
       a {
+        display: block;
         text-decoration: none;
+        color: $semigrey;
+      }
+
+      a .back {
+        display: block;
+        font-size: .5em $open-sans;
+        height: 1em;
+        padding: 0;
+        margin-top: -1.5em;
+      }
+    }
+    .meta {
+      font-size: 1.2em;
+      margin: 0.95em 2em;
+
+      .title a {
         color: $semigrey;
       }
     }
@@ -140,15 +162,6 @@ $sky-blue: hsla(192, 50%, 75%, 1);
       fill: $semigrey;
     }
   }
-
-  /* .path.closed .arrow a { */
-  /*   background: url('filled.png') center no-repeat; */
-  /*   background-size: contain; */
-  /* } */
-
-  /* .link .arrow.closed { */
-  /*   @include transform(rotate(90deg)); */
-  /* } */
 
   .indicator {
     display: inline-block;
