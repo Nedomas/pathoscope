@@ -39,6 +39,16 @@ header {
     text-decoration: none;
   }
 
+  a.logo {
+    svg {
+      height: 60px;
+      width: 60px;
+      display: inline-block;
+      float: left;
+      margin: .7em 0 0 2em;
+    }
+  }
+
   nav {
     @include row();
     height: 5em;
@@ -239,5 +249,19 @@ h1 {
     vertical-align: top;
     line-height: 4em;
     color: $semigrey;
+  }
+}
+
+.install {
+  .install-logo {
+
+    a {
+      display: block;
+      color: rgba(0, 0, 0, 0);
+      background: url('install_logo.png') left no-repeat;
+      background-size: contain;
+      width: 300px;
+      height: 300px;
+    }
   }
 }

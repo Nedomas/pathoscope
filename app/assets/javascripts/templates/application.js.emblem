@@ -1,6 +1,7 @@
 header.ext***REMOVED***full
   nav
-    a.logo
+    a.logo href='/beta'
+      == logo-svg
     ul
       li
         link-to 'paths' | Paths

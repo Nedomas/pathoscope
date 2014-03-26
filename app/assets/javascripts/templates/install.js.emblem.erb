@@ -1,5 +1,20 @@
-h1 Install the app
+h1 Install
 
-p Drag this link to your bookmarks bar to install the app
+article.install
+  section.step-one
+    span.step-number 1
+    h2 Make sure the bookmarks bar is visible
+    p.illustration
+      <%= image_tag 'browsermockup.png' %>
 
-a href="<%= Install.bookmark_js %>" Pathoscope
+  section.step-two
+    span.step-number 2
+    h2 Drag the app icon to your bookmarks bar
+    p.illustration.install-logo
+      a href="<%= Install.bookmark_js %>" Pathoscope App
+
+  section.step-three
+    span.step-number 3
+    h2 Click on the app icon you've just dragged in
+    p.illustration
+      <%= image_tag 'browsermockup.png' %>

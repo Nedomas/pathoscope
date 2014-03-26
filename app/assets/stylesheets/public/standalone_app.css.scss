@@ -16,12 +16,54 @@
   display: none;
 }
 
+// loading config
+$loader-size: 26px;
+$loader-gutter: $loader-size/5;
+$loader-transform: $loader-size + $loader-gutter * 2;
+
 #pathoscope-loading {
-  width: 100px;
-  height: 100px;
-  background: url('<%= SERVER %>/assets/loading2.gif') center no-repeat;
+  position: relative;
   z-index: 999999999 !important;
   margin: 0 !important;
+  width: $loader-size * 2;
+  height: $loader-size;
+  border-radius: $loader-size/2;
+  border: $loader-size * .75 solid transparent;
+  background: #3d3f3;
+  margin: 0 auto;
+}
+%loader-dot {
+  position: absolute;
+  top: 0;
+  width: $loader-size;
+  height: $loader-size;
+  border-radius: 100%;
+  background: $green;
+  @include animation(left 1.2s ease-in-out infinite);
+}
+
+.dot-left {
+  @ext***REMOVED*** %loader-dot;
+  display: inline-block;
+}
+.dot-right {
+  @ext***REMOVED*** %loader-dot;
+  @include animation-name(right);
+  display: inline-block;
+}
+
+@include keyframes(left) {
+  0% {
+    z-index: 1;
+  }
+  50% {
+    @include transform(translateX($loader-transform));
+  }
+}
+@include keyframes(right) {
+  50% {
+    @include transform(translateX(-$loader-transform));
+  }
 }
 
 #pathoscope-app {
@@ -41,8 +83,6 @@
   .logo {
     float: left;
     display: inline-block;
-    /* background: url('<%= SERVER %>/assets/beseseliu.png') center no-repeat; */
-    /* background-size: contain; */
     height: 56px;
     width: 56px;
     margin-left: 16px;

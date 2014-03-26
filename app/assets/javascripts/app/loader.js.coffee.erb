@@ -55,7 +55,10 @@ PathoscopeLoader = (->
   showLoading = ->
     $pathoscope('body').app***REMOVED***(
       "<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>" +
-      '<div id="pathoscope-loading"></div>')
+      '<div id="pathoscope-loading">' +
+        '<div class="dot-left"></div>' +
+        '<div class="dot-right"></div>' +
+      '</div>')
     $pathoscope('#pathoscope-loading-trigger').leanModal({ top: 400, overlay: 0.6 })
     $pathoscope('#pathoscope-loading-trigger').click()
 
