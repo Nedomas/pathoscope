@@ -1,5 +1,6 @@
-class PS.App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PathsRoute ext***REMOVED***s PS.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
+    debugger
     @store.find('path')
 
   setupController: (controller, model) ->

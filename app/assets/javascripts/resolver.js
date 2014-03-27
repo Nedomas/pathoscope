@@ -11,6 +11,8 @@ window.PS = Ember.Namespace.create();
 // namespaces
 PS.Resolver = Ember.DefaultResolver.ext***REMOVED***({
     resolveOther: function (parsedName) {
+        var original_namespace = _.cloneDeep(parsedName);
+
         var value = this._super(parsedName),
             childNamespaces = Ember.get(parsedName, 'root.childNamespaces');
 
@@ -30,6 +32,9 @@ PS.Resolver = Ember.DefaultResolver.ext***REMOVED***({
             }
         }
 
+        debugger;
+        // return original_namespace;
+        // console.log(parsedName);
         // If reached, no match was found.
         // Ember will take it from here
     }
@@ -51,9 +56,23 @@ PS.Application = Ember.Application.ext***REMOVED***({
     }
 });
 
+PS.Route = Ember.Route.ext***REMOVED***({
+  init: function() {
+    debugger
+  }
+});
 // Ext***REMOVED***ing the default ObjectController behavior
 PS.ObjectController = Ember.ObjectController.ext***REMOVED***({
-    // Add common helpers/properties/features you always use
+  init: function() {
+    debugger
+  }
+  // Add common helpers/properties/features you always use
+});
+
+PS.ArrayController = Ember.ArrayController.ext***REMOVED***({
+  init: function() {
+    debugger
+  }
 });
 
 /**
@@ -61,8 +80,31 @@ PS.ObjectController = Ember.ObjectController.ext***REMOVED***({
  */
 PS.Core = Ember.Namespace.create();
 
+PS.Core.IndexController = PS.ObjectController.ext***REMOVED***({
+  init: function() {
+    debugger;
+  },
+  firstName: null,
+  lastName: null
+});
+
 // Notice we're creating an instance of our PS.Application and providing PS.Core
 // as a child namespace so that IndexController will resolve.
+PS.App = PS.Application.create({
+  childNamespaces: [PS.Core],
+  LOG_TRANSITION: true,
+  LOG_ACTIVE_GENERATION: true,
+  LOG_VIEW_LOOKUPS: true,
+  rootElement: '#ember-container'
+});
+
+PS.App.IndexController = PS.ObjectController.ext***REMOVED***({
+  init: function() {
+    debugger;
+  },
+  firstName: null,
+  lastName: null
+});
 // PS.SomeApp = PS.Application.create({
 //     childNamespaces: [PS.Core]
 // });

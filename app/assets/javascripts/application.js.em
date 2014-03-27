@@ -14,12 +14,12 @@
 #= require_self
 #= require app
 
-PS.App = PS.Application.create
-  childNamespaces: [PS.Core]
-  LOG_TRANSITION: true
-  LOG_ACTIVE_GENERATION: true
-  LOG_VIEW_LOOKUPS: true
-  rootElement: '#ember-container'
+# PS.App = PS.Application.create
+#   childNamespaces: [PS.Core]
+#   LOG_TRANSITION: true
+#   LOG_ACTIVE_GENERATION: true
+#   LOG_VIEW_LOOKUPS: true
+#   rootElement: '#ember-container'
 
 Handlebars.registerHelper "log", (context) ->
   console.log(context)

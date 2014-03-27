@@ -1,6 +1,9 @@
-class PS.App.PathsController ext***REMOVED***s Ember.ArrayController
+class PS.App.PathsController ext***REMOVED***s PS.ArrayController
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true
+
+  init: ->
+    debugger
 
   actions:
     choose: (path) ->
