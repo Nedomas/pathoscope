@@ -10,10 +10,12 @@
 #= require ../../../v***REMOVED***or/assets/javascripts/md5.min
 #= require ../../../v***REMOVED***or/assets/javascripts/bower_components/ember-simple-auth/ember-simple-auth
 #= require ember-google-analytics
+#= require resolver
 #= require_self
 #= require app
 
-window.App = Ember.Application.create
+PS.App = PS.Application.create
+  childNamespaces: [PS.Core]
   LOG_TRANSITION: true
   LOG_ACTIVE_GENERATION: true
   LOG_VIEW_LOOKUPS: true

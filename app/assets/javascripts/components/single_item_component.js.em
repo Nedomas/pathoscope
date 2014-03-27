@@ -1,4 +1,4 @@
-App.SingleItemComponent = Ember.Component.ext***REMOVED***
+PS.Core.SingleItemComponent = Ember.Component.ext***REMOVED***
   tagName: 'li'
   classNames: ['box']
   classNameBindings: ['isPath:path:link']

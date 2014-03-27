@@ -1,4 +1,3 @@
-window._pathoscope = _.noConflict()
 Ember.Application.initializer
   name: 'authentication',
   initialize: (container, application) ->
@@ -10,5 +9,5 @@ Ember.Application.initializer
         if (!Ember.isEmpty(user_id))
           return container.lookup('store:main').find('user', user_id)
   ***REMOVED*** register the custom authenticator so the session can find it
-    container.register('authenticators:custom', App.CustomAuthenticator)
+    container.register('authenticators:custom', PS.Core.CustomAuthenticator)
     Ember.SimpleAuth.setup(container, application)

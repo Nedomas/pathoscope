@@ -1,4 +1,4 @@
-App.Path = DS.Model.ext***REMOVED***
+class PS.Core.Path ext***REMOVED***s DS.Model
   title: DS.attr('string')
   color: DS.attr('string')
   users_count: DS.attr('string')

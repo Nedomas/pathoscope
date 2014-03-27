@@ -12,7 +12,7 @@
 #= require_self
 #= require ./app
 
-window.App = Ember.Application.create
+window.PathoscopeApp = Ember.Application.create
   rootElement: '#pathoscope-container'
   Resolver: Ember.DefaultResolver.ext***REMOVED***
     resolveTemplate: (parsedName) ->

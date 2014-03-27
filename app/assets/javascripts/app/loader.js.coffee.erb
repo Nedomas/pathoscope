@@ -18,9 +18,9 @@ PathoscopeLoader = (->
     load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
 
   loadCSS = ->
-    load('head', 'link', server + '/assets/public/standalone_app.css', loadApp)
+    load('head', 'link', server + '/assets/public/standalone_app.css', loadPathoscopeApp)
 
-  loadApp = ->
+  loadPathoscopeApp = ->
     $pathoscope('body').app***REMOVED***(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
@@ -29,9 +29,9 @@ PathoscopeLoader = (->
         "</div>" +
       "</div>")
 
-    load('head', 'script', server + '/assets/app/application.js', openApp)
+    load('head', 'script', server + '/assets/app/application.js', openPathoscopeApp)
 
-   openApp = ->
+   openPathoscopeApp = ->
      $pathoscope('#pathoscope-trigger').leanModal({ top: 30 })
      $pathoscope('#pathoscope-loading').hide()
      $pathoscope('#pathoscope-trigger').click()

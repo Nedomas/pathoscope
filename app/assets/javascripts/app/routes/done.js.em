@@ -1,3 +1,3 @@
-App.DoneRoute = Ember.Route.ext***REMOVED***
+PathoscopeApp.DoneRoute = Ember.Route.ext***REMOVED***
   model: ->
     @modelFor('done')

@@ -1,4 +1,4 @@
-App.Item = DS.Model.ext***REMOVED***
+class PS.Core.Item ext***REMOVED***s DS.Model
   context_id: DS.attr('string')
   context_type: DS.attr('string')
   parents: DS.hasMany('item', inverse: 'children')

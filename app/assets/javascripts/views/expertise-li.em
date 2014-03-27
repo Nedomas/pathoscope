@@ -1,4 +1,4 @@
-class App.ExpertiseLiView ext***REMOVED***s Ember.View
+class PS.App.ExpertiseLiView ext***REMOVED***s Ember.View
   templateName: 'expertise-li-view'
   classNameBindings: ['hover:hover', 'beforeStart:before-start']
   tagName: 'li'

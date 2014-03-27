@@ -1,4 +1,4 @@
-App.IndexRoute = Ember.Route.ext***REMOVED***
+PathoscopeApp.IndexRoute = Ember.Route.ext***REMOVED***
   beforeModel: ->
     if @get('session.isAuthenticated')
       @transitionTo('tag')

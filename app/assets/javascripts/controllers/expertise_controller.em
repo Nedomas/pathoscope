@@ -1,4 +1,4 @@
-class App.ExpertiseController ext***REMOVED***s Ember.ObjectController
+class PS.App.ExpertiseController ext***REMOVED***s Ember.ObjectController
   before_items: Em.A()
 
   actions:

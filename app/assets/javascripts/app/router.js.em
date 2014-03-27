@@ -1,4 +1,4 @@
-App.Router.map ->
+PathoscopeApp.Router.map ->
   @route('login')
 
   @route('index', { path: '/' })
@@ -8,5 +8,5 @@ App.Router.map ->
     @resource 'world', { path: '/world/:item_id' }
   ***REMOVED*** @route('notes')
 
-App.Router.reopen
+PathoscopeApp.Router.reopen
   location: 'none'

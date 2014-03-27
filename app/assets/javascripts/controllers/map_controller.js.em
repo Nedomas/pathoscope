@@ -1,4 +1,4 @@
-class App.MapController ext***REMOVED***s Ember.ObjectController with Tree
+class PS.App.MapController ext***REMOVED***s Ember.ObjectController with Tree
   actions:
     childrenAction: (item_id) ->
       _this = this

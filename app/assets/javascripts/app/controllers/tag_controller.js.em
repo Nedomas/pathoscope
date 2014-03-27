@@ -1,4 +1,4 @@
-App.TagController = Ember.ArrayController.ext***REMOVED***
+PathoscopeApp.TagController = Ember.ArrayController.ext***REMOVED***
   actions:
     tagAction: (item_id) ->
       store = @store

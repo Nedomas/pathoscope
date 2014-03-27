@@ -1,4 +1,4 @@
-class App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PS.App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
     @store.find('path')
 
@@ -9,6 +9,6 @@ class App.PathsRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.Authent
 
     controller.set('model', saved_paths)
 
-class App.PathsNewRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PS.App.PathsNewRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
     @store.createRecord 'path'

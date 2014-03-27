@@ -1,4 +1,4 @@
-App.Note = DS.Model.ext***REMOVED***
+class PS.Core.Note ext***REMOVED***s DS.Model
   content: DS.attr('string', defaultValue: '')
   item: DS.belongsTo('item')
   user: DS.belongsTo('user')

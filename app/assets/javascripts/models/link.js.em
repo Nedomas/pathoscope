@@ -1,4 +1,4 @@
-App.Link = DS.Model.ext***REMOVED***
+class PS.Core.Link ext***REMOVED***s DS.Model
   title: DS.attr('string')
   url: DS.attr('string')
   paths: DS.hasMany('path')

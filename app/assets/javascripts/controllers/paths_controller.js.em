@@ -1,4 +1,4 @@
-App.PathsController = Ember.ArrayController.ext***REMOVED***
+class PS.App.PathsController ext***REMOVED***s Ember.ArrayController
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true
 
@@ -14,7 +14,7 @@ App.PathsController = Ember.ArrayController.ext***REMOVED***
         user_path.save().then ->
           _this.transitionToRoute('expertise', path.get('id'))
 
-App.PathsNewController = Ember.ObjectController.ext***REMOVED***
+class PS.App.PathsNewController ext***REMOVED***s Ember.ObjectController
   needs: ['application', 'paths']
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true

@@ -1,4 +1,4 @@
-App.User = DS.Model.ext***REMOVED***
+class PS.Core.User ext***REMOVED***s DS.Model
   email: DS.attr('string')
   username: DS.attr('string')
   notes: DS.hasMany('note')

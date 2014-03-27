@@ -1,4 +1,4 @@
-App.Map = DS.Model.ext***REMOVED***
+class PS.Core.Map ext***REMOVED***s DS.Model
   parent: DS.belongsTo('map', async: true, inverse: 'children')
   children: DS.hasMany('map', async: true, inverse: 'parent')
   item: DS.belongsTo('map', async: true, inverse: 'parent')
