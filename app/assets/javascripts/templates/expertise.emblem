@@ -4,3 +4,9 @@ article.expertise
   ul
     = each item in model
       view PS.Web.ExpertiseLiView item=item
+
+    unless model
+      p You are the first one on this path.
+
+      span.button
+        link-to 'world' 1 | Explore other paths

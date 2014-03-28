@@ -6,4 +6,4 @@ class PS.Core.Note ext***REMOVED***s DS.Model
 
   +computed created_at
   time_ago: ->
-    $.timeago(@get('created_at'))
+    $ps.timeago(@get('created_at'))

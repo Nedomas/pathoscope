@@ -1,4 +1,9 @@
 h1 Paths
+.short-notes
+  p Here are all the paths we took.
+  <p>
+    <em>Choose</em> what do you want to learn or <em>create</em> you own path and let others learn from you.
+  </p>
 
 article.paths
   ul

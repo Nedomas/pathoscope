@@ -1,4 +1,11 @@
 h1 World
+.short-notes
+  <p>
+    Here are the learning resources <em>tagged</em> by us.
+  </p>
+  <p>
+    You can <em>explore</em> them to decide what to learn next.
+  </p>
 
 article.world
   ul

@@ -393,3 +393,14 @@ h1 {
     }
   }
 }
+.short-notes {
+  font: 1em $open-sans;
+  color: $less-black;
+  padding: 1em;
+  text-align: center;
+
+  em {
+    font-style: normal;
+    font-weight: 600;
+  }
+}
