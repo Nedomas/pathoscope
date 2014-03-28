@@ -19,6 +19,10 @@ class BookmarksController < ApplicationController
     }
 ***REMOVED***
 
+  def redirect_explore
+    redirect_to '/beta#/explore'
+***REMOVED***
+
   def data
     links = Array(Link.all).join_with_extra_fields
     paths = Array(Path.all).join_with_extra_fields

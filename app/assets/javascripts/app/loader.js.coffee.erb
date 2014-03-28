@@ -32,6 +32,9 @@ PathoscopeLoader = (->
     load('head', 'script', server + '/assets/app/application.js', openPathoscopeApp)
 
    openPathoscopeApp = ->
+     if window.location.origin == '<%= SERVER %>'
+       $pathoscope('#lean_overlay').click ->
+         location.reload()
      $pathoscope('#pathoscope-trigger').leanModal({ top: 30 })
      $pathoscope('#pathoscope-loading').hide()
      $pathoscope('#pathoscope-trigger').click()

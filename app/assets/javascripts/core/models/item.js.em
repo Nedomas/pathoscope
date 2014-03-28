@@ -24,15 +24,15 @@ class PS.Core.Item ext***REMOVED***s DS.Model
 
   +computed children.@each
   hasChildren: ->
-    !_pathoscope.isEmpty(@get('children').toArray())
+    !_ps.isEmpty(@get('children').toArray())
 
   +computed parents.@each
   hasParents: ->
-    !_pathoscope.isEmpty(@get('parents').toArray())
+    !_ps.isEmpty(@get('parents').toArray())
 
   +computed notes.@each
   hasNotes: ->
-    !_pathoscope.isEmpty(@get('saved_notes').toArray())
+    !_ps.isEmpty(@get('saved_notes').toArray())
 
   +computed notes.@each
   saved_notes: ->

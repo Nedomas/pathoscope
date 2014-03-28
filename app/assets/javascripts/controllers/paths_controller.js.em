@@ -1,9 +1,6 @@
-class PS.App.PathsController ext***REMOVED***s PS.ArrayController
+class PS.Web.PathsController ext***REMOVED***s PS.ArrayController
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true
-
-  init: ->
-    debugger
 
   actions:
     choose: (path) ->
@@ -17,7 +14,7 @@ class PS.App.PathsController ext***REMOVED***s PS.ArrayController
         user_path.save().then ->
           _this.transitionToRoute('expertise', path.get('id'))
 
-class PS.App.PathsNewController ext***REMOVED***s Ember.ObjectController
+class PS.Web.PathsNewController ext***REMOVED***s Ember.ObjectController
   needs: ['application', 'paths']
   sortProperties: ['title']
   sortAsc***REMOVED***ing: true

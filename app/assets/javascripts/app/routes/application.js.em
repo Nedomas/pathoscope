@@ -1,4 +1,4 @@
-class PathoscopeApp.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.PathoscopeApplicationRouteMixin
+class PS.Standalone.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
   beforeModel: ->
     @get('session.user')
 

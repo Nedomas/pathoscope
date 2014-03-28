@@ -1,2 +1,2 @@
-class PS.Core.DeadItemController ext***REMOVED***s Ember.ObjectController with Tree
+class PS.Web.DeadItemController ext***REMOVED***s PS.Core.DeadItemController
   hasChildren: false

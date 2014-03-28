@@ -1,4 +1,4 @@
-class PS.Core.Map ext***REMOVED***s DS.Model
+class PS.Website.Map ext***REMOVED***s DS.Model
   parent: DS.belongsTo('map', async: true, inverse: 'children')
   children: DS.hasMany('map', async: true, inverse: 'parent')
   item: DS.belongsTo('map', async: true, inverse: 'parent')
@@ -9,4 +9,4 @@ class PS.Core.Map ext***REMOVED***s DS.Model
 
   +computed children
   hasChildren: ->
-    !_pathoscope.isEmpty(@get('children'))
+    !_ps.isEmpty(@get('children'))

@@ -1,2 +1,1 @@
-class PS.Core.LoginController ext***REMOVED***s Ember.Controller with Ember.SimpleAuth.LoginControllerMixin
-  authenticatorFactory: 'authenticators:custom'
+class PS.Web.LoginController ext***REMOVED***s PS.Core.LoginController

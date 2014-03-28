@@ -1,8 +1,9 @@
-PS.App.Router.reopen
+PS.Website.Router.reopen
   rootURL: '/beta'
 
-PS.App.Router.map ->
+PS.Website.Router.map ->
   @route('login')
+  @route('explore')
 
   @resource 'paths', ->
     @route('new')

@@ -30,6 +30,7 @@ Pathoscope::Application.routes.draw do
   get "launching/index"
   post "launching/get" => 'launching#get'
   delete 'home/sign_out' => 'home#sign_out'
+  get 'explore' => 'bookmarks#redirect_explore'
 
 ***REMOVED*** devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
 

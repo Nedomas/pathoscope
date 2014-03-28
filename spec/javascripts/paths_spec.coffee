@@ -9,7 +9,7 @@ describe "Paths index", ->
     Ember.run ->
       mockBaseApis()
       login().then ->
-        path_titles = _pathoscope.map find('.path .description > a'), (path) ->
+        path_titles = _ps.map find('.path .description > a'), (path) ->
           $(path).text()
 
         expect(path_titles).to.include('Aerospace')
@@ -30,6 +30,6 @@ describe "Paths index", ->
           click('.new-path .extra button').then ->
             expect(find('.path .description').length).to.equal(4)
 
-            path_titles = _pathoscope.map find('.path .description > a'), (path) ->
+            path_titles = _ps.map find('.path .description > a'), (path) ->
               $(path).text()
             expect(path_titles).to.include('Testing path')

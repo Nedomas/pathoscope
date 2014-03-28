@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     nodes.map(&:item).uniq
 ***REMOVED***
 
+  def last_item_id
+    items.last.andand.id
+***REMOVED***
+
   def item_ids
     items.map(&:id)
 ***REMOVED***

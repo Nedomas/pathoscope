@@ -12,9 +12,9 @@ class PS.Core.Link ext***REMOVED***s DS.Model
 
   +computed title
   short_title: ->
-    _pathoscope.str.truncate(@get('title'), 30)
+    _ps.str.truncate(@get('title'), 30)
 
   +computed url
   short_url: ->
-    host = $('<a>').prop('href', @get('url')).prop('host')
+    host = $ps('<a>').prop('href', @get('url')).prop('host')
     host.replace('www.', '')
