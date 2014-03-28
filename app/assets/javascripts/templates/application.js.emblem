@@ -22,6 +22,8 @@ header.ext***REMOVED***full
             ul.dropdown
               li{action 'toggleDropdown'}
                 link-to 'map' session.user.first_user_path_id | Mental map
+              li{action 'toggleDropdown'}
+                link-to 'profile' | Edit Profile
               li
                 a target='_blank' href='http://en.gravatar.com/' Change avatar
               li{action 'toggleDropdown'}

@@ -7,12 +7,7 @@ class PS.Web.PathsController ext***REMOVED***s PS.ArrayController
       _this = this
 
       @get('session.user').then (user) ->
-        user_path = _this.store.createRecord 'user_path',
-          user: user,
-          path: path
-
-        user_path.save().then ->
-          _this.transitionToRoute('expertise', path.get('id'))
+        _this.transitionToRoute('expertise', path.get('id'))
 
 class PS.Web.PathsNewController ext***REMOVED***s Ember.ObjectController
   needs: ['application', 'paths']

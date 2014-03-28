@@ -4,6 +4,7 @@ PS.Website.Router.reopen
 PS.Website.Router.map ->
   @route('login')
   @route('explore')
+  @route('profile')
 
   @resource 'paths', ->
     @route('new')

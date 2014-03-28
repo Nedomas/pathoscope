@@ -17,7 +17,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
   border-radius: .15em;
 }
 
-.session, #pathoscope-app .session {
+.session, #pathoscope-app .session, .profile {
   text-align: center;
 
   h1 {
@@ -28,11 +28,14 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     padding-top: .5em;
   }
 
-  .email, .password {
+  .email, .username, .password, .confirm-password {
     input {
       display: inline-block;
       background-color: hsla(0, 0%, 92%, 1);
-      color: hsla(216, 4%, 72%, 1);
+      @include placeholder {
+        color: hsla(223, 19%, 19%, 0.5);
+      }
+      color: $semiblack;
       width: 20em;
       height: 4em;
       border-width: 0px;
