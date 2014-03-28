@@ -1,5 +1,5 @@
 span.title
-  item.context.short_title
+  item.context.title
 span.node
   == filled-circle
 span.url

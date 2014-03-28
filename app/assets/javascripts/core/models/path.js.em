@@ -17,10 +17,6 @@ class PS.Core.Path ext***REMOVED***s DS.Model
   color_class: ->
     'color-' + @get('color')
 
-  +computed title
-  short_title: ->
-    @get('title')
-
 ***REMOVED*** +computed session.user
 ***REMOVED*** chosen: ->
 ***REMOVED***   debugger

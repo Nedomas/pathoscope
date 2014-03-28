@@ -6,4 +6,4 @@ li class="box go-up"
   section.meta
     p.title
       a{action 'upAction' item} href="#"
-        item.context.short_title
+        item.context.title

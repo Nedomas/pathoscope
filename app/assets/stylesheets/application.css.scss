@@ -7,12 +7,21 @@
 */
 
 @import "settings";
+@include media(min-width 0 max-width 480px) {
+***REMOVED***zenbox_tab {
+    display: none !important;
+  }
+}
 
 html, body {
   font: normal 100% $open-sans;
   color: $semiblack;
   background-color: $snow-white;
   overflow-x: hidden;
+}
+
+main {
+  padding: 0 1em;
 }
 
 .ext***REMOVED***full, .ext***REMOVED***left {
@@ -125,6 +134,29 @@ header {
       }
     }
   }
+
+  @include media(min-width 0 max-width 480px) {
+    nav {
+      height: 15em;
+
+      ul {
+        float: none;
+        margin-left: 7em;
+        text-align: center;
+
+        li {
+          font-size: 1em;
+          display: block;
+        }
+
+        .dropdown {
+          top: 15.5em;
+          right: -2.2em;
+        }
+      }
+
+    }
+  }
 }
 
 footer {
@@ -178,6 +210,11 @@ h1 {
     outline: none;
     border-radius: .5em;
     padding: .5em;
+  }
+  @include media(min-width 480px max-width 768px) {
+    input {
+      font: 400 .8em $open-sans;
+    }
   }
 
   button {
@@ -284,6 +321,15 @@ h1 {
     font: 1.4em $open-sans;
     height: 1.5em;
     vertical-align: middle;
+  }
+
+  @include media(min-width 0 max-width 480px) {
+    .title {
+      font: 600 .95em $open-sans;
+    }
+    img {
+      width: 100%;
+    }
   }
 
   .illustration {

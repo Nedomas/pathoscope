@@ -10,10 +10,6 @@ class PS.Core.Link ext***REMOVED***s DS.Model
   fake_item: ->
     @store.find('item', @get('item_id'))
 
-  +computed title
-  short_title: ->
-    _ps.str.truncate(@get('title'), 30)
-
   +computed url
   short_url: ->
     host = $ps('<a>').prop('href', @get('url')).prop('host')

@@ -29,7 +29,7 @@ section.meta
   else
     p.title
       a target='_blank' href=item.context.url
-        item.context.short_title
+        item.context.title
     p.bottom
       span.url
         a target='_blank' href=item.context.url

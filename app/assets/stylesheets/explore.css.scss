@@ -186,10 +186,26 @@ $sky-blue: hsla(192, 50%, 75%, 1);
 
     .title {
       font: 600 1.1em $open-sans;
+      width: 25em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       a {
         color: $semiblack;
         text-decoration: none;
+      }
+    }
+    @include media(min-width 480px max-width 768px) {
+      .title {
+        width: 15em;
+        font: 600 .9em $open-sans;
+      }
+    }
+    @include media(min-width 0 max-width 480px) {
+      .title {
+        width: 10em;
+        font: 600 .85em $open-sans;
       }
     }
 
