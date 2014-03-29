@@ -32,6 +32,7 @@ gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
 gem 'ember_script-rails', github: 'ghempton/ember-script-rails'
+gem 'sprockets', '2.11.0'
 # gem 'ember_devise_simple_auth', '0.3.1'
 
 gem 'faye-websocket', '0.4.7'

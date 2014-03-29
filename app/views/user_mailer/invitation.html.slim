@@ -2,26 +2,30 @@ doctype html
 html
   head
     title Beta invite to Pathoscope
+    <link href="#{SERVER}/assets/public/invitation.css" media="all" rel="stylesheet" />
   body
     header
       img src="#{SERVER}/assets/pathoscope_rocket.png" alt="Pathoscope"
     main
       p Hello, fellow explorer of the world
 
-      p
-        | You have been selected to be one of the few *Beta* testers of
-        | *Pathoscope* - the *new* social learning tool.
+      section.information
+        <p>
+          | You have been selected to be one of the few <em>Beta</em> testers of <em>Pathoscope</em> - the new <em>social learning tool</em>.
+        </p>
 
-      p
-        | We expect to set you on a *path* and help you to get proficient at some
-        | skills over the *next few weeks*. To get most of it, try to use the tool
-        | at least every few days, so we can teach our robots to serve you with love.
+        p
+          | We expect to set you up on a <em>path</em> and help you to get proficient at some
+          |  skills over the <em>next few weeks</em>. To get most of it, try to use the it
+          |  at least every few days, so we can teach our robots how to serve you with love.
 
-      p Your Beta credentials are:
-      p Login: #{@email}
-      p Password: #{@password}
+      section.credentials
+        p.meta Your credentials are:
+        p <em>Login:</em> #{@email}
+        p <em>Password:</em> #{@password}
 
-      a href='#{SERVER}/beta' Go to Pathoscope
+      a.button href='#{SERVER}/beta' Go to Pathoscope
 
-      p Thank you for waiting,
-      p Robots of Pathoscope.
+      section.thanks
+        p Thank you for waiting,
+        p Robots of Pathoscope.

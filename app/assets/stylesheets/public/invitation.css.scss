@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic-ext);
+$open-sans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+body {
+  font: normal 1em $open-sans;
+}
+
+header {
+  text-align: center;
+  margin: 0 auto;
+}
+main {
+  padding-top: 2em;
+}
+a.button {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 2em;
+  background-color: hsla(162, 100%, 40%, 1);
+  color: white;
+  border-width: 0px;
+  border: none;
+  outline: none;
+  border-radius: .5em;
+  padding: .75em;
+  text-transform: uppercase;
+}
+
+.information {
+  margin-top: 1.5em;
+}
+
+em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.credentials {
+  margin-top: 3em;
+
+  .meta {
+    font-weight: 600;
+  }
+}
+
+.thanks {
+  margin-top: 3em;
+}
