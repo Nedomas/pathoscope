@@ -12,4 +12,4 @@ class PS.Standalone.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.Si
       @flashMessage('You have successfully signed out.')
       @transitionTo('world', 1)
     closeWindow: ->
-      $pathoscope('#lean_overlay').click()
+      $ps('#lean_overlay').click()
