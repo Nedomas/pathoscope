@@ -230,7 +230,34 @@ h1 {
   }
 }
 
+.path-name {
+  font-weight: 600;
+}
+
 .expertise {
+  .empty {
+    text-align: center;
+
+    p {
+      padding-top: 2em;
+      font: 1.3em $open-sans;
+    }
+
+    a.big-button {
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 1.5em;
+      background-color: hsla(162, 100%, 40%, 1);
+      color: $white;
+      border-width: 0px;
+      border: none;
+      outline: none;
+      border-radius: .5em;
+      padding: 1.5em;
+      text-transform: uppercase;
+    }
+  }
+
   .item {
     @include row();
     display: block;

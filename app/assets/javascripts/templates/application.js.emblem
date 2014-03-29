@@ -6,7 +6,7 @@ header.ext***REMOVED***full
       li
         link-to 'paths' | Paths
       li
-        link-to 'world' 1 | World
+        link-to 'explore' | World
       li
         link-to 'install' | Install
       if session.isAuthenticated

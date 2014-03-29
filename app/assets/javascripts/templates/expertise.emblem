@@ -1,4 +1,4 @@
-h1 Define your expertise in #{path.title}
+<h1>Define your expertise in <span class='path-name'>#{path.title}</span></h1>
 
 article.expertise
   ul
@@ -6,7 +6,8 @@ article.expertise
       view PS.Web.ExpertiseLiView item=item
 
     unless model
-      p You are the first one on this path.
+      .empty
+        p You are the first one on this path.
 
-      span.button
-        link-to 'world' 1 | Explore other paths
+        link-to 'world' 1 class='big-button'
+          | Explore other paths

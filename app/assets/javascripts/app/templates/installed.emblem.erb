@@ -1,6 +1,18 @@
-h1 You have successfully installed the app!
+h1 You have successfully installed the app.
+
 article.start-exploring
-  h2 All thats left is exploring!
-  p Explore the resources I've chosen for you, read one of them and click on the Pathoscope App icon again
-  p To start exploring
-  a href='<%= SERVER %>/explore' Click here
+  section.step-four
+    p.header-line
+      span.step-number 4
+      span.title Read an article from the list we've tailored for your expertise.
+    p.illustration
+      <%= image_tag 'step4.gif' %>
+  section.step-five
+    p.header-line
+      span.step-number 5
+      span.title Click on the Pathoscope App icon while in the article website.
+    p.illustration
+      <%= image_tag 'step5.gif' %>
+
+  section.go-choose
+    a.button href='<%= SERVER %>/explore' Choose an article
