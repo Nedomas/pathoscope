@@ -6,11 +6,11 @@ PathoscopeLoader = (->
     loadjQuery()
 
   loadjQuery = ->
-    load('head', 'script', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", loadLeanModal)
+    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js", loadLeanModal)
 
   loadLeanModal = ->
   ***REMOVED*** setup jQuery
-    window.$pathoscope = jQuery.noConflict()
+    window.$ps = jQuery.noConflict()
     load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
 
   loadNormalize = ->
@@ -18,10 +18,19 @@ PathoscopeLoader = (->
     load('head', 'link', server + '/assets/public/normalize.css', loadCSS)
 
   loadCSS = ->
-    load('head', 'link', server + '/assets/public/standalone_app.css', loadPathoscopeApp)
+    load('head', 'link', server + '/assets/public/standalone_app.css', loadHandlebars)
+
+  loadHandlebars = ->
+    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js", loadEmber)
+
+  loadEmber = ->
+    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.0-beta.4/ember.min.js", loadEmberData)
+
+  loadEmberData = ->
+    load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.7/ember-data.min.js", loadPathoscopeApp)
 
   loadPathoscopeApp = ->
-    $pathoscope('body').app***REMOVED***(
+    $ps('body').app***REMOVED***(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
         "<div id='pathoscope-app'>" +
@@ -33,23 +42,23 @@ PathoscopeLoader = (->
 
    openPathoscopeApp = ->
      if window.location.origin == '<%= SERVER %>'
-       $pathoscope('#lean_overlay').click ->
+       $ps('#lean_overlay').click ->
          location.reload()
-     $pathoscope('#pathoscope-trigger').leanModal({ top: 30 })
-     $pathoscope('#pathoscope-loading').hide()
-     $pathoscope('#pathoscope-trigger').click()
-     $pathoscope(document).on 'click', '#pathoscope .close', ->
-       $pathoscope('#lean_overlay').click()
+     $ps('#pathoscope-trigger').leanModal({ top: 30 })
+     $ps('#pathoscope-loading').hide()
+     $ps('#pathoscope-trigger').click()
+     $ps(document).on 'click', '#pathoscope .close', ->
+       $ps('#lean_overlay').click()
 
   showLoading = ->
-    $pathoscope('body').app***REMOVED***(
+    $ps('body').app***REMOVED***(
       "<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>" +
       '<div id="pathoscope-loading">' +
         '<div class="dot-left"></div>' +
         '<div class="dot-right"></div>' +
       '</div>')
-    $pathoscope('#pathoscope-loading-trigger').leanModal({ top: 200, overlay: 0.6 })
-    $pathoscope('#pathoscope-loading-trigger').click()
+    $ps('#pathoscope-loading-trigger').leanModal({ top: 200, overlay: 0.6 })
+    $ps('#pathoscope-loading-trigger').click()
 
   load = (place, tag, url, callback) ->
     done = false

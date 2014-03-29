@@ -1,5 +1,5 @@
 window._ps = _.noConflict();
-window.$ps = $.noConflict();
+window.$ps = jQuery.noConflict();
 
 /**
  * Super namespace that all our libs and apps will live on. We also ext***REMOVED*** all
