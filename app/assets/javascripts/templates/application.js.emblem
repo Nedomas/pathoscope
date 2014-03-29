@@ -23,8 +23,9 @@ header.ext***REMOVED***full
               a{action 'toggleDropdown'} href='#'
                 == rigid-arrow-up
             ul.dropdown
-              li{action 'toggleDropdown'}
-                link-to 'map' session.user.first_user_path_id | Mental map
+              if session.user.first_user_path_id
+                li{action 'toggleDropdown'}
+                  link-to 'map' session.user.first_user_path_id | Mental map
               li{action 'toggleDropdown'}
                 link-to 'profile' | Edit Profile
               li
