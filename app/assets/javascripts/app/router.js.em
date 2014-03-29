@@ -7,6 +7,7 @@ PS.Bookmarklet.Router.map ->
 
   @resource 'done', { path: '/done/:tagged_item_id' }, ->
     @resource 'world', { path: '/world/:item_id' }
+  ***REMOVED*** @route('notes')
 
 PS.Bookmarklet.Router.reopen
   location: 'none'
