@@ -9,7 +9,7 @@ header.ext***REMOVED***full
         if session.user.last_item_id
           link-to 'explore' | World
         else
-          link-to 'world' 27 | World
+          link-to 'world' 33 | World
       li
         link-to 'install' | Install
       if session.isAuthenticated
