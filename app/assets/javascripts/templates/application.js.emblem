@@ -17,7 +17,7 @@ header.ext***REMOVED***full
 
           if dropdownOpen
             li.arrow
-              a href='#'
+              a{action 'toggleDropdown'} href='#'
                 == rigid-arrow-up
             ul.dropdown
               li{action 'toggleDropdown'}
@@ -30,7 +30,8 @@ header.ext***REMOVED***full
                 a{action 'invalidateSession'} href='#' Logout
           else
             li.arrow
-              == rigid-arrow-down
+              a{action 'toggleDropdown'} href='#'
+                == rigid-arrow-down
       else
         li
           link-to 'login' | Sign in

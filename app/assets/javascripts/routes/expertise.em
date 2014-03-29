@@ -10,3 +10,4 @@ class PS.Web.ExpertiseRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.
   setupController: (controller, model) ->
     controller.set('model', model)
     controller.set('path', @store.find('path', @get('path_id')))
+    controller.set('no_resources', model.length == 1)

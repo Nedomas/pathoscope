@@ -3,4 +3,7 @@ span.title
 span.node
   == filled-circle
 span.url
-  item.context.short_url
+  if item.isPath
+    | Starting point
+  else
+    item.context.short_url

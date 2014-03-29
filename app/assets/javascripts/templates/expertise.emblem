@@ -1,11 +1,18 @@
-<h1>Define your expertise in <span class='path-name'>#{path.title}</span></h1>
+h1
+  | Define your expertise in <span class='path-name'>#{path.title}</span>
+
+.short-notes.expertise-notes
+  p
+    | This is where you choose your <em>starting point</em> on a path.
+  p
+    | Choose the resource which is just below your level of knowledge in the skill.
 
 article.expertise
   ul
     = each item in model
       view PS.Web.ExpertiseLiView item=item
 
-    unless model
+    if no_resources
       .empty
         p You are the first one on this path.
 

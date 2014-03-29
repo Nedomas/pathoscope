@@ -2,9 +2,10 @@ class Api::V1::ExpertiseController < ApplicationController
   def road
     path_item = Path.find(params[:path_id]).item
     path_road = recursive_find_children(path_item, [path_item]).reject(&:path?).map(&:id)
+    path_road_with_path = [path_item.id] + path_road
 
     r***REMOVED***er json: {
-      path_road: path_road
+      path_road: path_road_with_path
     }
 ***REMOVED***
 
