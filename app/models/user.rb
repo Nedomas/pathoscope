@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   def self.authenticate!(email, password)
     user = User.where(email: email).first
+    request_mock = OpenStruct.new(remote_ip: '123.456.789.101')
+    user.update_tracked_fields!(request_mock)
     return (user.valid_password?(password) ? user : nil) unless user.nil?
     nil
 ***REMOVED***

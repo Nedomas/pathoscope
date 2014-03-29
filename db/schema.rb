@@ -11,10 +11,20 @@
 #
 # It's strongly recomm***REMOVED***ed that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326000147) do
+ActiveRecord::Schema.define(version: 20140328232745) do
 
 ***REMOVED*** These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beta_testers", force: true do |t|
+    t.string   "email"
+    t.string   "username"
+    t.string   "password"
+    t.boolean  "sent"
+    t.boolean  "logged_in"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+***REMOVED***
 
   create_table "invitations", force: true do |t|
     t.string   "email"
