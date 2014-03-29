@@ -32,4 +32,4 @@ ROLLBAR = %q{
   </script>
 }.freeze
 
-ROLLBAR_ACCESS_TOKEN = c0dd922dd23643cbbf5f68ab3bf2d078
+ROLLBAR_ACCESS_TOKEN = 'c0dd922dd23643cbbf5f68ab3bf2d078'
