@@ -6,7 +6,10 @@ header.ext***REMOVED***full
       li
         link-to 'paths' | Paths
       li
-        link-to 'explore' | World
+        if session.user.last_item_id
+          link-to 'explore' | World
+        else
+          link-to 'world' 1 | World
       li
         link-to 'install' | Install
       if session.isAuthenticated
