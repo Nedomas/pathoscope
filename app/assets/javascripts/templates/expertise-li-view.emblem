@@ -1,7 +1,7 @@
 span.title
   a target='_blank' href=item.context.url
     item.context.title
-span.node
+span.node{action 'selectStart' item}
   == filled-circle
 span.url
   if item.isPath

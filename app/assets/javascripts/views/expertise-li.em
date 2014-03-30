@@ -8,8 +8,6 @@ class PS.Web.ExpertiseLiView ext***REMOVED***s Ember.View
   beforeStart: ->
     @get('controller.before_items').contains(@get('item'))
 
-  click: (event) ->
-    @get('controller').s***REMOVED***('selectStartAction', @get('item'))
   mouseEnter: ->
     @get('controller').s***REMOVED***('hovered', @get('item'))
     @set('hover', true)

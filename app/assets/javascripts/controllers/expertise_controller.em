@@ -7,7 +7,7 @@ class PS.Core.ExpertiseController ext***REMOVED***s Ember.ObjectController
       before_items = model.get('content').slice(0, model.indexOf(item))
       @set('before_items', before_items)
 
-    selectStartAction: (item) ->
+    selectStart: (item) ->
       store = @store
       _this = this
 
