@@ -351,9 +351,16 @@ h1 {
   }
 
   @include media(min-width 0 max-width 480px) {
-    .title {
-      font: 600 .95em $open-sans;
+    .header-line {
+      text-align: center;
+      height: auto;
     }
+
+    .title {
+      font: 600 1em $open-sans;
+      padding: 0;
+    }
+
     img {
       width: 100%;
     }

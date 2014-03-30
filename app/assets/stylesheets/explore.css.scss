@@ -204,7 +204,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     }
     @include media(min-width 0 max-width 480px) {
       .title {
-        width: 10em;
+        width: 7em;
         font: 600 .85em $open-sans;
       }
     }
@@ -220,6 +220,12 @@ $sky-blue: hsla(192, 50%, 75%, 1);
 
     .bottom {
       @include row();
+    }
+    @include media(min-width 0 max-width 480px) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 6em;
     }
 
     .paths {
@@ -237,6 +243,15 @@ $sky-blue: hsla(192, 50%, 75%, 1);
           text-decoration: none;
         }
       }
+    }
+  }
+
+  @include media(min-width 0 max-width 480px) {
+    .link .meta {
+      margin: 0.5em 0;
+    }
+    .path .meta {
+      margin: 1.1em 0;
     }
   }
 
