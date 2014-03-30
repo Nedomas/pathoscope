@@ -5,7 +5,7 @@ class Api::V1::ExpertiseController < ApplicationController
     path_road_with_path = [path_item.id] + path_road
 
     r***REMOVED***er json: {
-      path_road: path_road_with_path
+      path_road: path_road
     }
 ***REMOVED***
 

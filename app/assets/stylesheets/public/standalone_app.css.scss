@@ -115,6 +115,7 @@ $loader-transform: $loader-size + $loader-gutter * 2;
     color: $semiblack;
     padding-bottom: 16px;
     text-align: left;
+    text-transform: none;
   }
 
   .choose-path {

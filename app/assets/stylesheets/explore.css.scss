@@ -34,6 +34,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
       background-color: hsla(0, 0%, 92%, 1);
       @include placeholder {
         color: hsla(223, 19%, 19%, 0.5);
+        font-style: normal;
       }
       color: $semiblack;
       width: 20em;
@@ -77,6 +78,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     border-radius: .5em;
     padding: .75em;
     text-transform: uppercase;
+    font-weight: 400;
   }
 }
 
@@ -291,6 +293,8 @@ $sky-blue: hsla(192, 50%, 75%, 1);
     .info {
       @include row();
       padding-bottom: .75em;
+      background-color: hsla(0, 0%, 97%, 1);
+      height: 100%;
     }
 
     .name {
@@ -345,6 +349,7 @@ $sky-blue: hsla(192, 50%, 75%, 1);
       h3 {
         font: 600 1.1em $open-sans;
         padding-bottom: .3em;
+        text-transform: none;
       }
     }
   }
