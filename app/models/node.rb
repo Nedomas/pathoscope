@@ -11,6 +11,8 @@ class Node < ActiveRecord::Base
       user.update_attribute(:installed, true) unless user.installed
 
       url = clean_url(url)
+      return unless url
+
       item = Item.find_or_create_link(url)
 
       find_by(item_id: item.id, path_id: path.id, user_id: user.id) ||
@@ -31,7 +33,7 @@ class Node < ActiveRecord::Base
 ***REMOVED***
 
     def clean_url(url)
-      url.sub(/(\/)+$/, '').sub(/(#)+$/, '')
+      url.andand.sub(/(\/)+$/, '').andand.sub(/(#)+$/, '')
 ***REMOVED***
 ***REMOVED***
 
