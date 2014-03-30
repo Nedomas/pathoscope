@@ -6,4 +6,5 @@ span.url
   if item.isPath
     | Starting point
   else
-    item.context.short_url
+    a target='_blank' href=item.context.url
+      item.context.short_url
