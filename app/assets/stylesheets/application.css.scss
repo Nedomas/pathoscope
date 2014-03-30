@@ -294,6 +294,11 @@ h1 {
     font: 1em $open-sans;
     vertical-align: top;
     padding-top: 1em;
+
+    a {
+      color: $semiblack;
+      text-decoration: none;
+    }
   }
   .node {
     width: 4em;
@@ -312,7 +317,10 @@ h1 {
     height: 4em;
     vertical-align: top;
     line-height: 4em;
-    color: $semigrey;
+    a {
+      color: $semigrey;
+      text-decoration: none;
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 span.title
-  item.context.title
+  a target='_blank' href=item.context.url
+    item.context.title
 span.node
   == filled-circle
 span.url
