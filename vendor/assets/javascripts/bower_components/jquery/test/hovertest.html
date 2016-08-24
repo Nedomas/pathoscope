@@ -117,7 +117,7 @@ $(function(){
 	});
 	$("#delegateenterbox button").click(function(){
 		$("html")
-			.find("#delegateenterbox").data({ ins: 0, outs: 0 }).***REMOVED***()
+			.find("#delegateenterbox").data({ ins: 0, outs: 0 }).end()
 			.delegate("#delegateenterbox", "mouseenter", countIns )
 			.delegate("#delegateenterbox", "mouseleave", countOuts );
 		$(this).remove();
@@ -146,7 +146,7 @@ $(function(){
 	});
 	$("#delegateoverbox button").click(function(){
 		$(document)
-			.find("#delegateoverbox").data({ ins: 0, outs: 0 }).***REMOVED***()
+			.find("#delegateoverbox").data({ ins: 0, outs: 0 }).end()
 			.delegate("#delegateoverbox", "mouseover", countIns )
 			.delegate("#delegateoverbox", "mouseout", countOuts );
 		$(this).remove();

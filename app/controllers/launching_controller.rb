@@ -1,7 +1,7 @@
 class LaunchingController < ApplicationController
   def index
-    r***REMOVED***er layout: 'launching'
-***REMOVED***
+    render layout: 'launching'
+  end
 
   def get
     invitation = Invitation.new(email: params[:email])
@@ -10,8 +10,8 @@ class LaunchingController < ApplicationController
       flash[:notice] = "You have joined our invite list"
     else
       flash[:alert] = invitation.errors.full_messages.first
-***REMOVED***
+    end
 
     redirect_to root_url
-***REMOVED***
-***REMOVED***
+  end
+end

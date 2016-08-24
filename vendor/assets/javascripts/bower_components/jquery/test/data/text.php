@@ -5,7 +5,7 @@ lorem leo consectetuer adipiscing elit
 Sed lorem leo
 rhoncus sit amet
 elementum at
-bib***REMOVED***um at, eros
+bibendum at, eros
 Cras at mi et tortor egestas vestibulum
 sed Cras at mi vestibulum
 Phasellus sed felis sit amet

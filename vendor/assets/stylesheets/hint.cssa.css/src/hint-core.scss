@@ -17,7 +17,7 @@
 	&:before, &:after {
 		position: absolute;
 
-		// HACK: Trigger hardware accelerated r***REMOVED***ering, otherwise transform was not
+		// HACK: Trigger hardware accelerated rendering, otherwise transform was not
 		// working on a hidden element
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);

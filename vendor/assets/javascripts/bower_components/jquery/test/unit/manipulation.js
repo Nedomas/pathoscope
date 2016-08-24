@@ -2,7 +2,7 @@ module( "manipulation", {
 	teardown: moduleTeardown
 });
 
-// Ensure that an ext***REMOVED***ed Array prototype doesn't break jQuery
+// Ensure that an extended Array prototype doesn't break jQuery
 Array.prototype.arrayProtoFn = function() {
 	throw("arrayProtoFn should not be called");
 };
@@ -44,11 +44,11 @@ test( "text()", function() {
 
 	// Retrieve from document fragments #10864
 	frag = document.createDocumentFragment();
-	frag.app***REMOVED***Child( document.createTextNode("foo") );
+	frag.appendChild( document.createTextNode("foo") );
 
 	equal( jQuery(frag).text(), "foo", "Document Fragment Text node was retrieved from .text()." );
 
-	$newLineTest = jQuery("<div>test<br/>testy</div>").app***REMOVED***To("#moretests");
+	$newLineTest = jQuery("<div>test<br/>testy</div>").appendTo("#moretests");
 	$newLineTest.find("br").replaceWith("\n");
 	equal( $newLineTest.text(), "test\ntesty", "text() does not remove new lines (#11153)" );
 
@@ -103,7 +103,7 @@ test( "text(Function) with incoming value", function() {
 	equal( jQuery("#sap").text(), "foobar", "Check for merged text of more then one element." );
 });
 
-function testApp***REMOVED***ForObject( valueObj, isFragment ) {
+function testAppendForObject( valueObj, isFragment ) {
 	var $base,
 		type = isFragment ? " (DocumentFragment)" : " (Element)",
 		text = "This link has class=\"blog\": Simon Willison's Weblog",
@@ -114,112 +114,112 @@ function testApp***REMOVED***ForObject( valueObj, isFragment ) {
 	if ( isFragment ) {
 		$base = document.createDocumentFragment();
 		jQuery( el ).contents().each(function() {
-			$base.app***REMOVED***Child( this );
+			$base.appendChild( this );
 		});
 		$base = jQuery( $base );
 	} else {
 		$base = jQuery( el );
 	}
 
-	equal( $base.clone().app***REMOVED***( valueObj(first.cloneNode(true)) ).text(),
+	equal( $base.clone().append( valueObj(first.cloneNode(true)) ).text(),
 		text + "Try them out:",
-		"Check for app***REMOVED***ing of element" + type
+		"Check for appending of element" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj([ first.cloneNode(true), yahoo.cloneNode(true) ]) ).text(),
+	equal( $base.clone().append( valueObj([ first.cloneNode(true), yahoo.cloneNode(true) ]) ).text(),
 		text + "Try them out:Yahoo",
-		"Check for app***REMOVED***ing of array of elements" + type
+		"Check for appending of array of elements" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj(jQuery("#yahoo, #first").clone()) ).text(),
+	equal( $base.clone().append( valueObj(jQuery("#yahoo, #first").clone()) ).text(),
 		text + "YahooTry them out:",
-		"Check for app***REMOVED***ing of jQuery object" + type
+		"Check for appending of jQuery object" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj( 5 ) ).text(),
+	equal( $base.clone().append( valueObj( 5 ) ).text(),
 		text + "5",
-		"Check for app***REMOVED***ing a number" + type
+		"Check for appending a number" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj([ jQuery("#first").clone(), jQuery("#yahoo, #google").clone() ]) ).text(),
+	equal( $base.clone().append( valueObj([ jQuery("#first").clone(), jQuery("#yahoo, #google").clone() ]) ).text(),
 		text + "Try them out:GoogleYahoo",
-		"Check for app***REMOVED***ing of array of jQuery objects"
+		"Check for appending of array of jQuery objects"
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj(" text with spaces ") ).text(),
+	equal( $base.clone().append( valueObj(" text with spaces ") ).text(),
 		text + " text with spaces ",
-		"Check for app***REMOVED***ing text with spaces" + type
+		"Check for appending text with spaces" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj([]) ).text(),
+	equal( $base.clone().append( valueObj([]) ).text(),
 		text,
-		"Check for app***REMOVED***ing an empty array" + type
+		"Check for appending an empty array" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj("") ).text(),
+	equal( $base.clone().append( valueObj("") ).text(),
 		text,
-		"Check for app***REMOVED***ing an empty string" + type
+		"Check for appending an empty string" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj(document.getElementsByTagName("foo")) ).text(),
+	equal( $base.clone().append( valueObj(document.getElementsByTagName("foo")) ).text(),
 		text,
-		"Check for app***REMOVED***ing an empty nodelist" + type
+		"Check for appending an empty nodelist" + type
 	);
 
-	equal( $base.clone().app***REMOVED***( "<span></span>", "<span></span>", "<span></span>" ).children().length,
+	equal( $base.clone().append( "<span></span>", "<span></span>", "<span></span>" ).children().length,
 		$base.children().length + 3,
 		"Make sure that multiple arguments works." + type
 	);
 
-	equal( $base.clone().app***REMOVED***( valueObj(document.getElementById("form").cloneNode(true)) ).children("form").length,
+	equal( $base.clone().append( valueObj(document.getElementById("form").cloneNode(true)) ).children("form").length,
 		1,
-		"Check for app***REMOVED***ing a form (#910)" + type
+		"Check for appending a form (#910)" + type
 	);
 }
 
-function testApp***REMOVED***( valueObj ) {
+function testAppend( valueObj ) {
 
 	expect( 78 );
 
-	testApp***REMOVED***ForObject( valueObj, false );
-	testApp***REMOVED***ForObject( valueObj, true );
+	testAppendForObject( valueObj, false );
+	testAppendForObject( valueObj, true );
 
 	var defaultText, result, message, iframe, iframeDoc, j, d,
 		$input, $radioChecked, $radioUnchecked, $radioParent, $map, $table;
 
 	defaultText = "Try them out:";
-	result = jQuery("#first").app***REMOVED***( valueObj("<b>buga</b>") );
+	result = jQuery("#first").append( valueObj("<b>buga</b>") );
 
-	equal( result.text(), defaultText + "buga", "Check if text app***REMOVED***ing works" );
-	equal( jQuery("#select3").app***REMOVED***( valueObj("<option value='app***REMOVED***Test'>App***REMOVED*** Test</option>") ).find("option:last-child").attr("value"), "app***REMOVED***Test", "App***REMOVED***ing html options to select element" );
+	equal( result.text(), defaultText + "buga", "Check if text appending works" );
+	equal( jQuery("#select3").append( valueObj("<option value='appendTest'>Append Test</option>") ).find("option:last-child").attr("value"), "appendTest", "Appending html options to select element" );
 
-	jQuery("form").app***REMOVED***( valueObj("<input name='radiotest' type='radio' checked='checked' />") );
+	jQuery("form").append( valueObj("<input name='radiotest' type='radio' checked='checked' />") );
 	jQuery("form input[name=radiotest]").each(function() {
-		ok( jQuery(this).is(":checked"), "App***REMOVED*** checked radio" );
+		ok( jQuery(this).is(":checked"), "Append checked radio" );
 	}).remove();
 
-	jQuery("form").app***REMOVED***( valueObj("<input name='radiotest2' type='radio' checked    =   'checked' />") );
+	jQuery("form").append( valueObj("<input name='radiotest2' type='radio' checked    =   'checked' />") );
 	jQuery("form input[name=radiotest2]").each(function() {
-		ok( jQuery(this).is(":checked"), "App***REMOVED*** alternately formated checked radio" );
+		ok( jQuery(this).is(":checked"), "Append alternately formated checked radio" );
 	}).remove();
 
-	jQuery("form").app***REMOVED***( valueObj("<input name='radiotest3' type='radio' checked />") );
+	jQuery("form").append( valueObj("<input name='radiotest3' type='radio' checked />") );
 	jQuery("form input[name=radiotest3]").each(function() {
-		ok( jQuery(this).is(":checked"), "App***REMOVED*** HTML5-formated checked radio" );
+		ok( jQuery(this).is(":checked"), "Append HTML5-formated checked radio" );
 	}).remove();
 
-	jQuery("form").app***REMOVED***( valueObj("<input type='radio' checked='checked' name='radiotest4' />") );
+	jQuery("form").append( valueObj("<input type='radio' checked='checked' name='radiotest4' />") );
 	jQuery("form input[name=radiotest4]").each(function() {
-		ok( jQuery(this).is(":checked"), "App***REMOVED*** with name attribute after checked attribute" );
+		ok( jQuery(this).is(":checked"), "Append with name attribute after checked attribute" );
 	}).remove();
 
-	message = "Test for app***REMOVED***ing a DOM node to the contents of an iframe";
+	message = "Test for appending a DOM node to the contents of an iframe";
 	iframe = jQuery("#iframe")[ 0 ];
 	iframeDoc = iframe.contentDocument || iframe.contentWindow && iframe.contentWindow.document;
 
 	try {
 		if ( iframeDoc && iframeDoc.body ) {
-			equal( jQuery(iframeDoc.body).app***REMOVED***( valueObj("<div id='success'>test</div>") )[ 0 ].lastChild.id, "success", message );
+			equal( jQuery(iframeDoc.body).append( valueObj("<div id='success'>test</div>") )[ 0 ].lastChild.id, "success", message );
 		} else {
 			ok( true, message + " - can't test" );
 		}
@@ -227,85 +227,85 @@ function testApp***REMOVED***( valueObj ) {
 		strictEqual( e.message || e, undefined, message );
 	}
 
-	jQuery("<fieldset/>").app***REMOVED***To("#form").app***REMOVED***( valueObj("<leg***REMOVED*** id='leg***REMOVED***'>test</leg***REMOVED***>") );
-	t( "App***REMOVED*** leg***REMOVED***", "#leg***REMOVED***", [ "leg***REMOVED***" ] );
+	jQuery("<fieldset/>").appendTo("#form").append( valueObj("<legend id='legend'>test</legend>") );
+	t( "Append legend", "#legend", [ "legend" ] );
 
-	$map = jQuery("<map/>").app***REMOVED***( valueObj("<area id='map01' shape='rect' coords='50,50,150,150' href='http://www.jquery.com/' alt='jQuery'>") );
+	$map = jQuery("<map/>").append( valueObj("<area id='map01' shape='rect' coords='50,50,150,150' href='http://www.jquery.com/' alt='jQuery'>") );
 
 	equal( $map[ 0 ].childNodes.length, 1, "The area was inserted." );
 	equal( $map[ 0 ].firstChild.nodeName.toLowerCase(), "area", "The area was inserted." );
 
-	jQuery("#select1").app***REMOVED***( valueObj("<OPTION>Test</OPTION>") );
-	equal( jQuery("#select1 option:last-child").text(), "Test", "App***REMOVED***ing OPTION (all caps)" );
+	jQuery("#select1").append( valueObj("<OPTION>Test</OPTION>") );
+	equal( jQuery("#select1 option:last-child").text(), "Test", "Appending OPTION (all caps)" );
 
-	jQuery("#select1").app***REMOVED***( valueObj("<optgroup label='optgroup'><option>optgroup</option></optgroup>") );
+	jQuery("#select1").append( valueObj("<optgroup label='optgroup'><option>optgroup</option></optgroup>") );
 	equal( jQuery("#select1 optgroup").attr("label"), "optgroup", "Label attribute in newly inserted optgroup is correct" );
-	equal( jQuery("#select1 option").last().text(), "optgroup", "App***REMOVED***ing optgroup" );
+	equal( jQuery("#select1 option").last().text(), "optgroup", "Appending optgroup" );
 
 	$table = jQuery("#table");
 
 	jQuery.each( "thead tbody tfoot colgroup caption tr th td".split(" "), function( i, name ) {
-		$table.app***REMOVED***( valueObj( "<" + name + "/>" ) );
-		equal( $table.find( name ).length, 1, "App***REMOVED*** " + name );
+		$table.append( valueObj( "<" + name + "/>" ) );
+		equal( $table.find( name ).length, 1, "Append " + name );
 		ok( jQuery.parseHTML( "<" + name + "/>" ).length, name + " wrapped correctly" );
 	});
 
-	jQuery("#table colgroup").app***REMOVED***( valueObj("<col/>") );
-	equal( jQuery("#table colgroup col").length, 1, "App***REMOVED*** col" );
+	jQuery("#table colgroup").append( valueObj("<col/>") );
+	equal( jQuery("#table colgroup col").length, 1, "Append col" );
 
 	jQuery("#form")
-		.app***REMOVED***( valueObj("<select id='app***REMOVED***Select1'></select>") )
-		.app***REMOVED***( valueObj("<select id='app***REMOVED***Select2'><option>Test</option></select>") );
-	t( "App***REMOVED*** Select", "#app***REMOVED***Select1, #app***REMOVED***Select2", [ "app***REMOVED***Select1", "app***REMOVED***Select2" ] );
+		.append( valueObj("<select id='appendSelect1'></select>") )
+		.append( valueObj("<select id='appendSelect2'><option>Test</option></select>") );
+	t( "Append Select", "#appendSelect1, #appendSelect2", [ "appendSelect1", "appendSelect2" ] );
 
-	equal( "Two nodes", jQuery("<div />").app***REMOVED***( "Two", " nodes" ).text(), "App***REMOVED***ing two text nodes (#4011)" );
-	equal( jQuery("<div />").app***REMOVED***( "1", "", 3 ).text(), "13", "If median is false-like value, subsequent arguments should not be ignored" );
+	equal( "Two nodes", jQuery("<div />").append( "Two", " nodes" ).text(), "Appending two text nodes (#4011)" );
+	equal( jQuery("<div />").append( "1", "", 3 ).text(), "13", "If median is false-like value, subsequent arguments should not be ignored" );
 
 	// using contents will get comments regular, text, and comment nodes
 	j = jQuery("#nonnodes").contents();
-	d = jQuery("<div/>").app***REMOVED***To("#nonnodes").app***REMOVED***( j );
+	d = jQuery("<div/>").appendTo("#nonnodes").append( j );
 
-	equal( jQuery("#nonnodes").length, 1, "Check node,textnode,comment app***REMOVED*** moved leaving just the div" );
-	equal( d.contents().length, 3, "Check node,textnode,comment app***REMOVED*** works" );
-	d.contents().app***REMOVED***To("#nonnodes");
+	equal( jQuery("#nonnodes").length, 1, "Check node,textnode,comment append moved leaving just the div" );
+	equal( d.contents().length, 3, "Check node,textnode,comment append works" );
+	d.contents().appendTo("#nonnodes");
 	d.remove();
-	equal( jQuery("#nonnodes").contents().length, 3, "Check node,textnode,comment app***REMOVED*** cleanup worked" );
+	equal( jQuery("#nonnodes").contents().length, 3, "Check node,textnode,comment append cleanup worked" );
 
-	$input = jQuery("<input type='checkbox'/>").prop( "checked", true ).app***REMOVED***To("#testForm");
-	equal( $input[ 0 ].checked, true, "A checked checkbox that is app***REMOVED***ed stays checked" );
+	$input = jQuery("<input type='checkbox'/>").prop( "checked", true ).appendTo("#testForm");
+	equal( $input[ 0 ].checked, true, "A checked checkbox that is appended stays checked" );
 
 	$radioChecked = jQuery("input[type='radio'][name='R1']").eq( 1 );
 	$radioParent = $radioChecked.parent();
-	$radioUnchecked = jQuery("<input type='radio' name='R1' checked='checked'/>").app***REMOVED***To( $radioParent );
+	$radioUnchecked = jQuery("<input type='radio' name='R1' checked='checked'/>").appendTo( $radioParent );
 	$radioChecked.trigger("click");
 	$radioUnchecked[ 0 ].checked = false;
 
-	jQuery("<div/>").insertBefore($radioParent).app***REMOVED***($radioParent);
+	jQuery("<div/>").insertBefore($radioParent).append($radioParent);
 
-	equal( $radioChecked[ 0 ].checked, true, "Reapp***REMOVED***ing radios uphold which radio is checked" );
-	equal( $radioUnchecked[ 0 ].checked, false, "Reapp***REMOVED***ing radios uphold not being checked" );
+	equal( $radioChecked[ 0 ].checked, true, "Reappending radios uphold which radio is checked" );
+	equal( $radioUnchecked[ 0 ].checked, false, "Reappending radios uphold not being checked" );
 
-	equal( jQuery("<div/>").app***REMOVED***( valueObj("option<area/>") )[ 0 ].childNodes.length, 2, "HTML-string with leading text should be processed correctly" );
+	equal( jQuery("<div/>").append( valueObj("option<area/>") )[ 0 ].childNodes.length, 2, "HTML-string with leading text should be processed correctly" );
 }
 
-test( "app***REMOVED***(String|Element|Array<Element>|jQuery)", function() {
-	testApp***REMOVED***( manipulationBareObj );
+test( "append(String|Element|Array<Element>|jQuery)", function() {
+	testAppend( manipulationBareObj );
 });
 
-test( "app***REMOVED***(Function)", function() {
-	testApp***REMOVED***( manipulationFunctionReturningObj );
+test( "append(Function)", function() {
+	testAppend( manipulationFunctionReturningObj );
 });
 
-test( "app***REMOVED***(param) to object, see #11280", function() {
+test( "append(param) to object, see #11280", function() {
 
 	expect( 5 );
 
-	var object = jQuery( document.createElement("object") ).app***REMOVED***To( document.body );
+	var object = jQuery( document.createElement("object") ).appendTo( document.body );
 
 	equal( object.children().length, 0, "object does not start with children" );
 
-	object.app***REMOVED***( jQuery("<param type='wmode' name='foo'>") );
-	equal( object.children().length, 1, "app***REMOVED***ed param" );
+	object.append( jQuery("<param type='wmode' name='foo'>") );
+	equal( object.children().length, 1, "appended param" );
 	equal( object.children().eq(0).attr("name"), "foo", "param has name=foo" );
 
 	object = jQuery("<object><param type='baz' name='bar'></object>");
@@ -313,7 +313,7 @@ test( "app***REMOVED***(param) to object, see #11280", function() {
 	equal( object.children().eq(0).attr("name"), "bar", "param has name=bar" );
 });
 
-test( "app***REMOVED***(Function) with incoming value", function() {
+test( "append(Function) with incoming value", function() {
 
 	expect( 12 );
 
@@ -322,58 +322,58 @@ test( "app***REMOVED***(Function) with incoming value", function() {
 	defaultText = "Try them out:";
 	old = jQuery("#first").html();
 
-	result = jQuery("#first").app***REMOVED***(function( i, val ) {
+	result = jQuery("#first").append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return "<b>buga</b>";
 	});
-	equal( result.text(), defaultText + "buga", "Check if text app***REMOVED***ing works" );
+	equal( result.text(), defaultText + "buga", "Check if text appending works" );
 
 	select = jQuery("#select3");
 	old = select.html();
 
-	equal( select.app***REMOVED***(function( i, val ) {
+	equal( select.append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
-		return "<option value='app***REMOVED***Test'>App***REMOVED*** Test</option>";
-	}).find("option:last-child").attr("value"), "app***REMOVED***Test", "App***REMOVED***ing html options to select element" );
+		return "<option value='appendTest'>Append Test</option>";
+	}).find("option:last-child").attr("value"), "appendTest", "Appending html options to select element" );
 
 	QUnit.reset();
 	expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").app***REMOVED***(function( i, val ) {
+	jQuery("#sap").append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return document.getElementById("first");
 	});
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of element" );
+	equal( jQuery("#sap").text(), expected, "Check for appending of element" );
 
 	QUnit.reset();
 	expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:Yahoo";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").app***REMOVED***(function( i, val ) {
+	jQuery("#sap").append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return [ document.getElementById("first"), document.getElementById("yahoo") ];
 	});
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of array of elements" );
+	equal( jQuery("#sap").text(), expected, "Check for appending of array of elements" );
 
 	QUnit.reset();
 	expected = "This link has class=\"blog\": Simon Willison's WeblogYahooTry them out:";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").app***REMOVED***(function( i, val ) {
+	jQuery("#sap").append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return jQuery("#yahoo, #first");
 	});
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of jQuery object" );
+	equal( jQuery("#sap").text(), expected, "Check for appending of jQuery object" );
 
 	QUnit.reset();
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").app***REMOVED***(function( i, val ) {
+	jQuery("#sap").append(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return 5;
 	});
-	ok( jQuery("#sap")[ 0 ].innerHTML.match( /5$/ ), "Check for app***REMOVED***ing a number" );
+	ok( jQuery("#sap")[ 0 ].innerHTML.match( /5$/ ), "Check for appending a number" );
 
 	QUnit.reset();
 });
@@ -391,11 +391,11 @@ test( "XML DOM manipulation (#9960)", function() {
 		scxml2 = jQuery( "scxml", xml2 ),
 		state = scxml2.find("state");
 
-	scxml1.app***REMOVED***( state );
-	strictEqual( scxml1[0].lastChild, state[0], "app***REMOVED***" );
+	scxml1.append( state );
+	strictEqual( scxml1[0].lastChild, state[0], "append" );
 
-	scxml1.prep***REMOVED***( state );
-	strictEqual( scxml1[0].firstChild, state[0], "prep***REMOVED***" );
+	scxml1.prepend( state );
+	strictEqual( scxml1[0].firstChild, state[0], "prepend" );
 
 	scxml1.find("#finished").after( state );
 	strictEqual( scxml1[0].lastChild, state[0], "after" );
@@ -407,13 +407,13 @@ test( "XML DOM manipulation (#9960)", function() {
 	deepEqual( jQuery( "state", xml2 ).get(), scxml1.find("state").get(), "replaceWith" );
 });
 
-test( "app***REMOVED*** HTML5 sectioning elements (Bug #6485)", function() {
+test( "append HTML5 sectioning elements (Bug #6485)", function() {
 
 	expect( 2 );
 
 	var article, aside;
 
-	jQuery("#qunit-fixture").app***REMOVED***("<article style='font-size:10px'><section><aside>HTML5 elements</aside></section></article>");
+	jQuery("#qunit-fixture").append("<article style='font-size:10px'><section><aside>HTML5 elements</aside></section></article>");
 
 	article = jQuery("article");
 	aside = jQuery("aside");
@@ -427,8 +427,8 @@ if ( jQuery.css ) {
 
 		expect( 1 );
 
-		jQuery("#qunit-fixture").app***REMOVED***("<article id='article'></article>");
-		jQuery("#article").app***REMOVED***("<section>This section should have a pink background.</section>");
+		jQuery("#qunit-fixture").append("<article id='article'></article>");
+		jQuery("#article").append("<section>This section should have a pink background.</section>");
 
 		// In IE, the missing background color will claim its value is "transparent"
 		notEqual( jQuery("section").css("background-color"), "transparent", "HTML5 elements inherit styles" );
@@ -460,13 +460,13 @@ test( "html() object element #10324", function() {
 
 	expect( 1 );
 
-	var object = jQuery("<object id='object2'><param name='object2test' value='test'></param></object>?").app***REMOVED***To("#qunit-fixture"),
+	var object = jQuery("<object id='object2'><param name='object2test' value='test'></param></object>?").appendTo("#qunit-fixture"),
 		clone = object.clone();
 
 	equal( clone.html(), object.html(), "html() returns correct innerhtml of cloned object elements" );
 });
 
-test( "app***REMOVED***(xml)", function() {
+test( "append(xml)", function() {
 
 	expect( 1 );
 
@@ -499,120 +499,120 @@ test( "app***REMOVED***(xml)", function() {
 	xml1 = xmlDoc.createElement("head");
 	xml2 = xmlDoc.createElement("test");
 
-	ok( jQuery(xml1).app***REMOVED***(xml2), "App***REMOVED*** an xml element to another without raising an exception." );
+	ok( jQuery(xml1).append(xml2), "Append an xml element to another without raising an exception." );
 
 });
 
-test( "app***REMOVED***To(String|Element|Array<Element>|jQuery)", function() {
+test( "appendTo(String|Element|Array<Element>|jQuery)", function() {
 
 	expect( 16 );
 
 	var defaultText, l, expected, num, div;
 
 	defaultText = "Try them out:";
-	jQuery("<b>buga</b>").app***REMOVED***To("#first");
-	equal( jQuery("#first").text(), defaultText + "buga", "Check if text app***REMOVED***ing works" );
-	equal( jQuery("<option value='app***REMOVED***Test'>App***REMOVED*** Test</option>").app***REMOVED***To("#select3").parent().find("option:last-child").attr("value"), "app***REMOVED***Test", "App***REMOVED***ing html options to select element" );
+	jQuery("<b>buga</b>").appendTo("#first");
+	equal( jQuery("#first").text(), defaultText + "buga", "Check if text appending works" );
+	equal( jQuery("<option value='appendTest'>Append Test</option>").appendTo("#select3").parent().find("option:last-child").attr("value"), "appendTest", "Appending html options to select element" );
 
 	l = jQuery("#first").children().length + 2;
 	jQuery("<strong>test</strong>");
 	jQuery("<strong>test</strong>");
 	jQuery([ jQuery("<strong>test</strong>")[ 0 ], jQuery("<strong>test</strong>")[ 0 ] ])
-		.app***REMOVED***To("#first");
+		.appendTo("#first");
 	equal( jQuery("#first").children().length, l, "Make sure the elements were inserted." );
 	equal( jQuery("#first").children().last()[ 0 ].nodeName.toLowerCase(), "strong", "Verify the last element." );
 
 	QUnit.reset();
 	expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:";
-	jQuery( document.getElementById("first") ).app***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of element" );
+	jQuery( document.getElementById("first") ).appendTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for appending of element" );
 
 	expected = "This link has class=\"blog\": Simon Willison's WeblogTry them out:Yahoo";
-	jQuery([ document.getElementById("first"), document.getElementById("yahoo") ]).app***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of array of elements" );
+	jQuery([ document.getElementById("first"), document.getElementById("yahoo") ]).appendTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for appending of array of elements" );
 
 	QUnit.reset();
-	ok( jQuery(document.createElement("script")).app***REMOVED***To("body").length, "Make sure a disconnected script can be app***REMOVED***ed." );
+	ok( jQuery(document.createElement("script")).appendTo("body").length, "Make sure a disconnected script can be appended." );
 
 	expected = "This link has class=\"blog\": Simon Willison's WeblogYahooTry them out:";
-	jQuery("#yahoo, #first").app***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for app***REMOVED***ing of jQuery object" );
+	jQuery("#yahoo, #first").appendTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for appending of jQuery object" );
 
-	jQuery("#select1").app***REMOVED***To("#foo");
-	t( "App***REMOVED*** select", "#foo select", [ "select1" ] );
+	jQuery("#select1").appendTo("#foo");
+	t( "Append select", "#foo select", [ "select1" ] );
 
 	div = jQuery("<div/>").on( "click", function() {
 		ok( true, "Running a cloned click." );
 	});
-	div.app***REMOVED***To("#qunit-fixture, #moretests");
+	div.appendTo("#qunit-fixture, #moretests");
 
 	jQuery("#qunit-fixture div").last().trigger("click");
 	jQuery("#moretests div").last().trigger("click");
 
-	div = jQuery("<div/>").app***REMOVED***To("#qunit-fixture, #moretests");
+	div = jQuery("<div/>").appendTo("#qunit-fixture, #moretests");
 
-	equal( div.length, 2, "app***REMOVED***To returns the inserted elements" );
+	equal( div.length, 2, "appendTo returns the inserted elements" );
 
 	div.addClass("test");
 
-	ok( jQuery("#qunit-fixture div").last().hasClass("test"), "app***REMOVED***To element was modified after the insertion" );
-	ok( jQuery("#moretests div").last().hasClass("test"), "app***REMOVED***To element was modified after the insertion" );
+	ok( jQuery("#qunit-fixture div").last().hasClass("test"), "appendTo element was modified after the insertion" );
+	ok( jQuery("#moretests div").last().hasClass("test"), "appendTo element was modified after the insertion" );
 
 	div = jQuery("<div/>");
-	jQuery("<span>a</span><b>b</b>").filter("span").app***REMOVED***To( div );
+	jQuery("<span>a</span><b>b</b>").filter("span").appendTo( div );
 
 	equal( div.children().length, 1, "Make sure the right number of children were inserted." );
 
 	div = jQuery("#moretests div");
 
 	num = jQuery("#qunit-fixture div").length;
-	div.remove().app***REMOVED***To("#qunit-fixture");
+	div.remove().appendTo("#qunit-fixture");
 
 	equal( jQuery("#qunit-fixture div").length, num, "Make sure all the removed divs were inserted." );
 });
 
-function testPrep***REMOVED***( val ) {
+function testPrepend( val ) {
 
 	expect( 6 );
 
 	var defaultText, result, expected;
 
 	defaultText = "Try them out:";
-	result = jQuery("#first").prep***REMOVED***( val("<b>buga</b>") );
+	result = jQuery("#first").prepend( val("<b>buga</b>") );
 
-	equal( result.text(), "buga" + defaultText, "Check if text prep***REMOVED***ing works" );
-	equal( jQuery("#select3").prep***REMOVED***( val("<option value='prep***REMOVED***Test'>Prep***REMOVED*** Test</option>" ) ).find("option:first-child").attr("value"), "prep***REMOVED***Test", "Prep***REMOVED***ing html options to select element" );
+	equal( result.text(), "buga" + defaultText, "Check if text prepending works" );
+	equal( jQuery("#select3").prepend( val("<option value='prependTest'>Prepend Test</option>" ) ).find("option:first-child").attr("value"), "prependTest", "Prepending html options to select element" );
 
 	QUnit.reset();
 	expected = "Try them out:This link has class=\"blog\": Simon Willison's Weblog";
-	jQuery("#sap").prep***REMOVED***( val(document.getElementById("first")) );
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of element" );
+	jQuery("#sap").prepend( val(document.getElementById("first")) );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of element" );
 
 	QUnit.reset();
 	expected = "Try them out:YahooThis link has class=\"blog\": Simon Willison's Weblog";
-	jQuery("#sap").prep***REMOVED***( val([ document.getElementById("first"), document.getElementById("yahoo") ]) );
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of array of elements" );
+	jQuery("#sap").prepend( val([ document.getElementById("first"), document.getElementById("yahoo") ]) );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of array of elements" );
 
 	QUnit.reset();
 	expected = "YahooTry them out:This link has class=\"blog\": Simon Willison's Weblog";
-	jQuery("#sap").prep***REMOVED***( val(jQuery("#yahoo, #first")) );
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of jQuery object" );
+	jQuery("#sap").prepend( val(jQuery("#yahoo, #first")) );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of jQuery object" );
 
 	QUnit.reset();
 	expected = "Try them out:GoogleYahooThis link has class=\"blog\": Simon Willison's Weblog";
-	jQuery("#sap").prep***REMOVED***( val([ jQuery("#first"), jQuery("#yahoo, #google") ]) );
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of array of jQuery objects" );
+	jQuery("#sap").prepend( val([ jQuery("#first"), jQuery("#yahoo, #google") ]) );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of array of jQuery objects" );
 }
 
-test( "prep***REMOVED***(String|Element|Array<Element>|jQuery)", function() {
-	testPrep***REMOVED***( manipulationBareObj );
+test( "prepend(String|Element|Array<Element>|jQuery)", function() {
+	testPrepend( manipulationBareObj );
 });
 
-test( "prep***REMOVED***(Function)", function() {
-	testPrep***REMOVED***( manipulationFunctionReturningObj );
+test( "prepend(Function)", function() {
+	testPrepend( manipulationFunctionReturningObj );
 });
 
-test( "prep***REMOVED***(Function) with incoming value", function() {
+test( "prepend(Function) with incoming value", function() {
 
 	expect( 10 );
 
@@ -620,85 +620,85 @@ test( "prep***REMOVED***(Function) with incoming value", function() {
 
 	defaultText = "Try them out:";
 	old = jQuery("#first").html();
-	result = jQuery("#first").prep***REMOVED***(function( i, val ) {
+	result = jQuery("#first").prepend(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return "<b>buga</b>";
 	});
 
-	equal( result.text(), "buga" + defaultText, "Check if text prep***REMOVED***ing works" );
+	equal( result.text(), "buga" + defaultText, "Check if text prepending works" );
 
 	old = jQuery("#select3").html();
 
-	equal( jQuery("#select3").prep***REMOVED***(function( i, val ) {
+	equal( jQuery("#select3").prepend(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
-		return "<option value='prep***REMOVED***Test'>Prep***REMOVED*** Test</option>";
-	}).find("option:first-child").attr("value"), "prep***REMOVED***Test", "Prep***REMOVED***ing html options to select element" );
+		return "<option value='prependTest'>Prepend Test</option>";
+	}).find("option:first-child").attr("value"), "prependTest", "Prepending html options to select element" );
 
 	QUnit.reset();
 	expected = "Try them out:This link has class=\"blog\": Simon Willison's Weblog";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").prep***REMOVED***(function( i, val ) {
+	jQuery("#sap").prepend(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return document.getElementById("first");
 	});
 
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of element" );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of element" );
 
 	QUnit.reset();
 	expected = "Try them out:YahooThis link has class=\"blog\": Simon Willison's Weblog";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").prep***REMOVED***(function( i, val ) {
+	jQuery("#sap").prepend(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return [ document.getElementById("first"), document.getElementById("yahoo") ];
 	});
 
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of array of elements" );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of array of elements" );
 
 	QUnit.reset();
 	expected = "YahooTry them out:This link has class=\"blog\": Simon Willison's Weblog";
 	old = jQuery("#sap").html();
 
-	jQuery("#sap").prep***REMOVED***(function( i, val ) {
+	jQuery("#sap").prepend(function( i, val ) {
 		equal( val, old, "Make sure the incoming value is correct." );
 		return jQuery("#yahoo, #first");
 	});
 
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of jQuery object" );
+	equal( jQuery("#sap").text(), expected, "Check for prepending of jQuery object" );
 });
 
-test( "prep***REMOVED***To(String|Element|Array<Element>|jQuery)", function() {
+test( "prependTo(String|Element|Array<Element>|jQuery)", function() {
 
 	expect( 6 );
 
 	var defaultText, expected;
 
 	defaultText = "Try them out:";
-	jQuery("<b>buga</b>").prep***REMOVED***To("#first");
-	equal( jQuery("#first").text(), "buga" + defaultText, "Check if text prep***REMOVED***ing works" );
-	equal( jQuery("<option value='prep***REMOVED***Test'>Prep***REMOVED*** Test</option>").prep***REMOVED***To("#select3").parent().find("option:first-child").attr("value"), "prep***REMOVED***Test", "Prep***REMOVED***ing html options to select element" );
+	jQuery("<b>buga</b>").prependTo("#first");
+	equal( jQuery("#first").text(), "buga" + defaultText, "Check if text prepending works" );
+	equal( jQuery("<option value='prependTest'>Prepend Test</option>").prependTo("#select3").parent().find("option:first-child").attr("value"), "prependTest", "Prepending html options to select element" );
 
 	QUnit.reset();
 	expected = "Try them out:This link has class=\"blog\": Simon Willison's Weblog";
-	jQuery( document.getElementById("first") ).prep***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of element" );
+	jQuery( document.getElementById("first") ).prependTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for prepending of element" );
 
 	QUnit.reset();
 	expected = "Try them out:YahooThis link has class=\"blog\": Simon Willison's Weblog";
-	jQuery( [ document.getElementById("first"), document.getElementById("yahoo") ] ).prep***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of array of elements" );
+	jQuery( [ document.getElementById("first"), document.getElementById("yahoo") ] ).prependTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for prepending of array of elements" );
 
 	QUnit.reset();
 	expected = "YahooTry them out:This link has class=\"blog\": Simon Willison's Weblog";
-	jQuery("#yahoo, #first").prep***REMOVED***To("#sap");
-	equal( jQuery("#sap").text(), expected, "Check for prep***REMOVED***ing of jQuery object" );
+	jQuery("#yahoo, #first").prependTo("#sap");
+	equal( jQuery("#sap").text(), expected, "Check for prepending of jQuery object" );
 
 	QUnit.reset();
-	jQuery("<select id='prep***REMOVED***Select1'></select>").prep***REMOVED***To("#form");
-	jQuery("<select id='prep***REMOVED***Select2'><option>Test</option></select>").prep***REMOVED***To("#form");
+	jQuery("<select id='prependSelect1'></select>").prependTo("#form");
+	jQuery("<select id='prependSelect2'><option>Test</option></select>").prependTo("#form");
 
-	t( "Prep***REMOVED*** Select", "#prep***REMOVED***Select2, #prep***REMOVED***Select1", [ "prep***REMOVED***Select2", "prep***REMOVED***Select1" ] );
+	t( "Prepend Select", "#prependSelect2, #prependSelect1", [ "prependSelect2", "prependSelect1" ] );
 });
 
 function testBefore( val ) {
@@ -891,7 +891,7 @@ function testReplaceWith( val ) {
 	ok( jQuery("#first")[ 0 ], "Replace element with element" );
 	ok( !jQuery("#anchor2")[ 0 ], "Verify that original element is gone, after element" );
 
-	jQuery("#qunit-fixture").app***REMOVED***("<div id='bar'><div id='baz'></div></div>");
+	jQuery("#qunit-fixture").append("<div id='bar'><div id='baz'></div></div>");
 	jQuery("#baz").replaceWith( val("Baz") );
 	equal( jQuery("#bar").text(),"Baz", "Replace element with text" );
 	ok( !jQuery("#baz")[ 0 ], "Verify that original element is gone, after element" );
@@ -918,13 +918,13 @@ function testReplaceWith( val ) {
 	deepEqual( jQuery("#anchor1").contents().get(), [ tmp ], "Replace text node with element" );
 
 
-	tmp = jQuery("<div/>").app***REMOVED***To("#qunit-fixture").on( "click", function() {
+	tmp = jQuery("<div/>").appendTo("#qunit-fixture").on( "click", function() {
 		ok( true, "Newly bound click run." );
 	});
-	y = jQuery("<div/>").app***REMOVED***To("#qunit-fixture").on( "click", function() {
+	y = jQuery("<div/>").appendTo("#qunit-fixture").on( "click", function() {
 		ok( false, "Previously bound click run." );
 	});
-	child = y.app***REMOVED***("<b>test</b>").find("b").on( "click", function() {
+	child = y.append("<b>test</b>").find("b").on( "click", function() {
 		ok( true, "Child bound click run." );
 		return false;
 	});
@@ -936,10 +936,10 @@ function testReplaceWith( val ) {
 	child.trigger("click"); // Shouldn't be run
 
 
-	y = jQuery("<div/>").app***REMOVED***To("#qunit-fixture").on( "click", function() {
+	y = jQuery("<div/>").appendTo("#qunit-fixture").on( "click", function() {
 		ok( false, "Previously bound click run." );
 	});
-	child2 = y.app***REMOVED***("<u>test</u>").find("u").on( "click", function() {
+	child2 = y.append("<u>test</u>").find("u").on( "click", function() {
 		ok( true, "Child 2 bound click run." );
 		return false;
 	});
@@ -970,12 +970,12 @@ function testReplaceWith( val ) {
 	non_existent = jQuery("#does-not-exist").replaceWith( val("<b>should not throw an error</b>") );
 	equal( non_existent.length, 0, "Length of non existent element." );
 
-	$div = jQuery("<div class='replacewith'></div>").app***REMOVED***To("#qunit-fixture");
+	$div = jQuery("<div class='replacewith'></div>").appendTo("#qunit-fixture");
 	$div.replaceWith( val("<div class='replacewith'></div><script>" +
 		"equal( jQuery('.replacewith').length, 1, 'Check number of elements in page.' );" +
 		"</script>") );
 
-	jQuery("#qunit-fixture").app***REMOVED***("<div id='replaceWith'></div>");
+	jQuery("#qunit-fixture").append("<div id='replaceWith'></div>");
 	equal( jQuery("#qunit-fixture").find("div[id=replaceWith]").length, 1, "Make sure only one div exists." );
 	jQuery("#replaceWith").replaceWith( val("<div id='replaceWith'></div>") );
 	equal( jQuery("#qunit-fixture").find("div[id=replaceWith]").length, 1, "Make sure only one div exists after replacement." );
@@ -1066,12 +1066,12 @@ test( "jQuery.clone() (#8017)", function() {
 	equal( main.childNodes.length, clone.childNodes.length, "Simple child length to ensure a large dom tree copies correctly" );
 });
 
-test( "app***REMOVED*** to multiple elements (#8070)", function() {
+test( "append to multiple elements (#8070)", function() {
 
 	expect( 2 );
 
-	var selects = jQuery("<select class='test8070'></select><select class='test8070'></select>").app***REMOVED***To("#qunit-fixture");
-	selects.app***REMOVED***("<OPTION>1</OPTION><OPTION>2</OPTION>");
+	var selects = jQuery("<select class='test8070'></select><select class='test8070'></select>").appendTo("#qunit-fixture");
+	selects.append("<OPTION>1</OPTION><OPTION>2</OPTION>");
 
 	equal( selects[ 0 ].childNodes.length, 2, "First select got two nodes" );
 	equal( selects[ 1 ].childNodes.length, 2, "Second select got two nodes" );
@@ -1080,16 +1080,16 @@ test( "app***REMOVED*** to multiple elements (#8070)", function() {
 test( "table manipulation", function() {
 	expect( 2 );
 
-	var table = jQuery("<table style='font-size:16px'></table>").app***REMOVED***To("#qunit-fixture").empty(),
+	var table = jQuery("<table style='font-size:16px'></table>").appendTo("#qunit-fixture").empty(),
 		height = table[0].offsetHeight;
 
-	table.app***REMOVED***("<tr><td>DATA</td></tr>");
-	ok( table[0].offsetHeight - height >= 15, "app***REMOVED***ed rows are visible" );
+	table.append("<tr><td>DATA</td></tr>");
+	ok( table[0].offsetHeight - height >= 15, "appended rows are visible" );
 
 	table.empty();
 	height = table[0].offsetHeight;
-	table.prep***REMOVED***("<tr><td>DATA</td></tr>");
-	ok( table[0].offsetHeight - height >= 15, "prep***REMOVED***ed rows are visible" );
+	table.prepend("<tr><td>DATA</td></tr>");
+	ok( table[0].offsetHeight - height >= 15, "prepended rows are visible" );
 });
 
 test( "clone()", function() {
@@ -1099,7 +1099,7 @@ test( "clone()", function() {
 	var div, clone, form, body;
 
 	equal( jQuery("#en").text(), "This is a normal link: Yahoo", "Assert text for #en" );
-	equal( jQuery("#first").app***REMOVED***( jQuery("#yahoo").clone() ).text(), "Try them out:Yahoo", "Check for clone" );
+	equal( jQuery("#first").append( jQuery("#yahoo").clone() ).text(), "Try them out:Yahoo", "Check for clone" );
 	equal( jQuery("#en").text(), "This is a normal link: Yahoo", "Reassert text for #en" );
 
 	jQuery.each( "table thead tbody tfoot tr td div button ul ol li select option textarea iframe".split(" "), function( i, nodeName ) {
@@ -1125,7 +1125,7 @@ test( "clone()", function() {
 	div.remove();
 
 	// Verify that cloned children can keep event listeners
-	div = jQuery("<div/>").app***REMOVED***([ document.createElement("table"), document.createElement("table") ]);
+	div = jQuery("<div/>").append([ document.createElement("table"), document.createElement("table") ]);
 	div.find("table").on( "click", function() {
 		ok( true, "Bound event still exists." );
 	});
@@ -1210,8 +1210,8 @@ test( "clone()", function() {
 	form.action = "/test/";
 
 	div = document.createElement("div");
-	div.app***REMOVED***Child( document.createTextNode("test") );
-	form.app***REMOVED***Child( div );
+	div.appendChild( document.createTextNode("test") );
+	form.appendChild( div );
 
 	equal( jQuery(form).clone().children().length, 1, "Make sure we just get the form back." );
 
@@ -1505,7 +1505,7 @@ test( "clone()/html() don't expose jQuery/Sizzle expandos (#12858)", function() 
 
 	expect( 2 );
 
-	var $content = jQuery("<div><b><i>text</i></b></div>").app***REMOVED***To("#qunit-fixture"),
+	var $content = jQuery("<div><b><i>text</i></b></div>").appendTo("#qunit-fixture"),
 		expected = /^<b><i>text<\/i><\/b>$/i;
 
 	// Attach jQuery and Sizzle data (the latter with a non-qSA nth-child)
@@ -1576,7 +1576,7 @@ test( "remove() event cleaning ", 1, function() {
 	first = jQuery("#ap").children().first();
 	cleanUp = first.on( "click", function() {
 		count++;
-	}).remove().app***REMOVED***To("#qunit-fixture").trigger("click");
+	}).remove().appendTo("#qunit-fixture").trigger("click");
 
 	strictEqual( 0, count, "Event handler has been removed" );
 
@@ -1593,7 +1593,7 @@ test( "remove() in document order #13779", 1, function() {
 		cleanData.call( this, nodes );
 	};
 
-	jQuery("#qunit-fixture").app***REMOVED***(
+	jQuery("#qunit-fixture").append(
 		jQuery.parseHTML(
 			"<div class='removal-fixture'>1</div>" +
 			"<div class='removal-fixture'>2</div>" +
@@ -1619,7 +1619,7 @@ test( "detach() event cleaning ", 1, function() {
 	first = jQuery("#ap").children().first();
 	cleanUp = first.on( "click", function() {
 		count++;
-	}).detach().app***REMOVED***To("#qunit-fixture").trigger("click");
+	}).detach().appendTo("#qunit-fixture").trigger("click");
 
 	strictEqual( 1, count, "Event handler has not been removed" );
 
@@ -1704,7 +1704,7 @@ test( "jQuery.cleanData", function() {
 			ok( false, type + " " + pos + " Click event fired." );
 		}).on( "focus", function() {
 			ok( false, type + " " + pos + " Focus event fired." );
-		}).***REMOVED***().app***REMOVED***To("body");
+		}).end().appendTo("body");
 
 		div[ 0 ].detachEvent = div[ 0 ].removeEventListener = function( t ) {
 			ok( true, type + " Outer " + t + " event unbound" );
@@ -1724,12 +1724,12 @@ test( "jQuery.buildFragment - no plain-text caching (Bug #6779)", function() {
 
 	// DOM manipulation fails if added text matches an Object method
 	var i,
-		$f = jQuery( "<div />" ).app***REMOVED***To( "#qunit-fixture" ),
-		bad = [ "start-", "toString", "hasOwnProperty", "app***REMOVED***", "here&there!", "-***REMOVED***" ];
+		$f = jQuery( "<div />" ).appendTo( "#qunit-fixture" ),
+		bad = [ "start-", "toString", "hasOwnProperty", "append", "here&there!", "-end" ];
 
 	for ( i = 0; i < bad.length; i++ ) {
 		try {
-			$f.app***REMOVED***( bad[ i ] );
+			$f.append( bad[ i ] );
 		}
 		catch( e ) {}
 	}
@@ -1747,21 +1747,21 @@ test( "jQuery.html - execute scripts escaped with html comment or CDATA (#9221)"
 				"ok( true, '<!-- handled' );",
 				"//-->",
 				"</script>"
-			].join("\n")).app***REMOVED***To("#qunit-fixture");
+			].join("\n")).appendTo("#qunit-fixture");
 	jQuery([
 				"<script type='text/javascript'>",
 				"<![CDATA[",
 				"ok( true, '<![CDATA[ handled' );",
 				"//]]>",
 				"</script>"
-			].join("\n")).app***REMOVED***To("#qunit-fixture");
+			].join("\n")).appendTo("#qunit-fixture");
 	jQuery([
 				"<script type='text/javascript'>",
 				"<!--//--><![CDATA[//><!--",
 				"ok( true, '<!--//--><![CDATA[//><!-- (Drupal case) handled' );",
 				"//--><!]]>",
 				"</script>"
-			].join("\n")).app***REMOVED***To("#qunit-fixture");
+			].join("\n")).appendTo("#qunit-fixture");
 });
 
 test( "jQuery.buildFragment - plain objects are not a document #8950", function() {
@@ -1791,7 +1791,7 @@ test( "Cloned, detached HTML5 elems (#10667,10670)", function() {
 	expect( 7 );
 
 	var $clone,
-		$section = jQuery( "<section>" ).app***REMOVED***To( "#qunit-fixture" );
+		$section = jQuery( "<section>" ).appendTo( "#qunit-fixture" );
 
 	// First clone
 	$clone = $section.clone();
@@ -1819,7 +1819,7 @@ test( "Cloned, detached HTML5 elems (#10667,10670)", function() {
 	$clone.off("click");
 
 	// Add a child node with text to the original
-	$section.app***REMOVED***("<p>Hello</p>");
+	$section.append("<p>Hello</p>");
 
 	// Third clone (will have child node and text)
 	$clone = $section.clone( true );
@@ -1872,15 +1872,15 @@ test( "Guard against exceptions when clearing safeChildNodes", function() {
 	ok( div && div.jquery, "Created nodes safely, guarded against exceptions on safeChildNodes[ -1 ]" );
 });
 
-test( "Ensure oldIE creates a new set on app***REMOVED***To (#8894)", function() {
+test( "Ensure oldIE creates a new set on appendTo (#8894)", function() {
 
 	expect( 5 );
 
-	strictEqual( jQuery("<div/>").clone().addClass("test").app***REMOVED***To("<div/>").***REMOVED***().***REMOVED***().hasClass("test"), false, "Check jQuery.fn.app***REMOVED***To after jQuery.clone" );
-	strictEqual( jQuery("<div/>").find("p").***REMOVED***().addClass("test").app***REMOVED***To("<div/>").***REMOVED***().***REMOVED***().hasClass("test"), false, "Check jQuery.fn.app***REMOVED***To after jQuery.fn.find" );
-	strictEqual( jQuery("<div/>").text("test").addClass("test").app***REMOVED***To("<div/>").***REMOVED***().***REMOVED***().hasClass("test"), false, "Check jQuery.fn.app***REMOVED***To after jQuery.fn.text" );
-	strictEqual( jQuery("<bdi/>").clone().addClass("test").app***REMOVED***To("<div/>").***REMOVED***().***REMOVED***().hasClass("test"), false, "Check jQuery.fn.app***REMOVED***To after clone html5 element" );
-	strictEqual( jQuery("<p/>").app***REMOVED***To("<div/>").***REMOVED***().length, jQuery("<p>test</p>").app***REMOVED***To("<div/>").***REMOVED***().length, "Elements created with createElement and with createDocumentFragment should be treated alike" );
+	strictEqual( jQuery("<div/>").clone().addClass("test").appendTo("<div/>").end().end().hasClass("test"), false, "Check jQuery.fn.appendTo after jQuery.clone" );
+	strictEqual( jQuery("<div/>").find("p").end().addClass("test").appendTo("<div/>").end().end().hasClass("test"), false, "Check jQuery.fn.appendTo after jQuery.fn.find" );
+	strictEqual( jQuery("<div/>").text("test").addClass("test").appendTo("<div/>").end().end().hasClass("test"), false, "Check jQuery.fn.appendTo after jQuery.fn.text" );
+	strictEqual( jQuery("<bdi/>").clone().addClass("test").appendTo("<div/>").end().end().hasClass("test"), false, "Check jQuery.fn.appendTo after clone html5 element" );
+	strictEqual( jQuery("<p/>").appendTo("<div/>").end().length, jQuery("<p>test</p>").appendTo("<div/>").end().length, "Elements created with createElement and with createDocumentFragment should be treated alike" );
 });
 
 test( "html() - script exceptions bubble (#11743)", function() {
@@ -1924,10 +1924,10 @@ test( "manipulate mixed jQuery and text (#12384, #12346)", function() {
 
 	expect( 2 );
 
-	var div = jQuery("<div>a</div>").app***REMOVED***( "&nbsp;", jQuery("<span>b</span>"), "&nbsp;", jQuery("<span>c</span>") ),
+	var div = jQuery("<div>a</div>").append( "&nbsp;", jQuery("<span>b</span>"), "&nbsp;", jQuery("<span>c</span>") ),
 		nbsp = String.fromCharCode( 160 );
 
-	equal( div.text(), "a" + nbsp + "b" + nbsp+ "c", "App***REMOVED***ing mixed jQuery with text nodes" );
+	equal( div.text(), "a" + nbsp + "b" + nbsp+ "c", "Appending mixed jQuery with text nodes" );
 
 	div = jQuery("<div><div></div></div>")
 		.find("div")
@@ -1971,24 +1971,24 @@ test( "script evaluation (#11795)", function() {
 			"<script>ok( true, 'evaluated: inner no type' );</script>",
 		"</div>"
 	].join(""));
-	scriptsIn.app***REMOVED***To( jQuery("<div class='detached'/>") );
+	scriptsIn.appendTo( jQuery("<div class='detached'/>") );
 	objGlobal.ok = isOk;
 
-	scriptsOut = fixture.app***REMOVED***( scriptsIn ).find("script");
+	scriptsOut = fixture.append( scriptsIn ).find("script");
 	equal( scriptsOut[ 0 ].type, "something/else", "Non-evaluated type." );
 	equal( scriptsOut[ 1 ].type, "text/javascript", "Evaluated type." );
 	deepEqual( scriptsOut.get(), fixture.find("script").get(), "All script tags remain." );
 
 	objGlobal.ok = notOk;
-	scriptsOut = scriptsOut.add( scriptsOut.clone() ).app***REMOVED***To( fixture.find("div") );
+	scriptsOut = scriptsOut.add( scriptsOut.clone() ).appendTo( fixture.find("div") );
 	deepEqual( fixture.find("div script").get(), scriptsOut.get(), "Scripts cloned without reevaluation" );
-	fixture.app***REMOVED***( scriptsOut.detach() );
+	fixture.append( scriptsOut.detach() );
 	deepEqual( fixture.children("script").get(), scriptsOut.get(), "Scripts detached without reevaluation" );
 	objGlobal.ok = isOk;
 
 	if ( jQuery.ajax ) {
 		Globals.register("testBar");
-		jQuery("#qunit-fixture").app***REMOVED***( "<script src='" + url("data/test.js") + "'/>" );
+		jQuery("#qunit-fixture").append( "<script src='" + url("data/test.js") + "'/>" );
 		strictEqual( window["testBar"], "bar", "Global script evaluation" );
 	} else {
 		ok( true, "No jQuery.ajax" );
@@ -2010,7 +2010,7 @@ test( "jQuery._evalUrl (#12838)", function() {
 		equal( ( input.url || input ).slice( -1 ), expectedArgument, message );
 		expectedArgument++;
 	};
-	jQuery("#qunit-fixture").app***REMOVED***("<script src='1'/><script src='2'/>");
+	jQuery("#qunit-fixture").append("<script src='1'/><script src='2'/>");
 	equal( expectedArgument, 3, "synchronous execution" );
 
 	message = "custom implementation";
@@ -2019,7 +2019,7 @@ test( "jQuery._evalUrl (#12838)", function() {
 	jQuery.ajax = function( options ) {
 		strictEqual( options, {}, "Unexpected call to jQuery.ajax" );
 	};
-	jQuery("#qunit-fixture").app***REMOVED***("<script src='3'/><script src='4'/>");
+	jQuery("#qunit-fixture").append("<script src='3'/><script src='4'/>");
 
 	jQuery.ajax = ajax;
 	jQuery._evalUrl = evalUrl;
@@ -2032,8 +2032,8 @@ test( "insertAfter, insertBefore, etc do not work when destination is original e
 	var elems;
 
 	jQuery.each([
-		"app***REMOVED***To",
-		"prep***REMOVED***To",
+		"appendTo",
+		"prependTo",
 		"insertBefore",
 		"insertAfter",
 		"replaceAll"
@@ -2042,7 +2042,7 @@ test( "insertAfter, insertBefore, etc do not work when destination is original e
 			"<ul id='test4087-complex'><li class='test4087'><div>c1</div>h1</li><li><div>c2</div>h2</li></ul>",
 			"<div id='test4087-simple'><div class='test4087-1'>1<div class='test4087-2'>2</div><div class='test4087-3'>3</div></div></div>",
 			"<div id='test4087-multiple'><div class='test4087-multiple'>1</div><div class='test4087-multiple'>2</div></div>"
-		].join("") ).app***REMOVED***To( "#qunit-fixture" );
+		].join("") ).appendTo( "#qunit-fixture" );
 
 		// complex case based on http://jsfiddle.net/pbramos/gZ7vB/
 		jQuery("#test4087-complex div")[ name ]("#test4087-complex li:last-child div:last-child");
@@ -2070,7 +2070,7 @@ test( "Index for function argument should be received (#13094)", 2, function() {
 
 test( "Make sure jQuery.fn.remove can work on elements in documentFragment", 1, function() {
 	var fragment = document.createDocumentFragment(),
-		div = fragment.app***REMOVED***Child( document.createElement("div") );
+		div = fragment.appendChild( document.createElement("div") );
 
 	jQuery( div ).remove();
 
@@ -2101,7 +2101,7 @@ test( "Make sure specific elements with content created correctly (#13232)", 20,
 		args.push( html );
 	});
 
-	jQuery.fn.app***REMOVED***.apply( jQuery("<div/>"), args ).children().each(function( i ) {
+	jQuery.fn.append.apply( jQuery("<div/>"), args ).children().each(function( i ) {
 		ok( jQuery.nodeName( this, results[ i ] ) );
 	});
 });

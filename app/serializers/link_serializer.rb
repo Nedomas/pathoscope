@@ -3,9 +3,9 @@ class LinkSerializer < ApplicationSerializer
 
   def item_id
     object.item.id
-***REMOVED***
+  end
 
   def path_ids
     object.paths.map(&:id)
-***REMOVED***
-***REMOVED***
+  end
+end

@@ -2,7 +2,7 @@
 
 describe "Paths index", ->
   before ->
-  ***REMOVED*** localStorage.clear()
+    # localStorage.clear()
     App.reset()
 
   it "shows logged paths", ->

@@ -74,7 +74,7 @@ test( "attr(String)", function() {
 	equal( jQuery("#foo").attr("height"), undefined, "Non existent height attribute should return undefined" );
 
 	// [7472] & [3113] (form contains an input with name="action" or name="id")
-	extras = jQuery("<input id='id' name='id' /><input id='name' name='name' /><input id='target' name='target' />").app***REMOVED***To("#testForm");
+	extras = jQuery("<input id='id' name='id' /><input id='name' name='name' /><input id='target' name='target' />").appendTo("#testForm");
 	equal( jQuery("#form").attr("action","newformaction").attr("action"), "newformaction", "Check that action attribute was changed" );
 	equal( jQuery("#testForm").attr("target"), undefined, "Retrieving target does not equal the input with name=target" );
 	equal( jQuery("#testForm").attr("target", "newTarget").attr("target"), "newTarget", "Set target successfully on a form" );
@@ -91,12 +91,12 @@ test( "attr(String)", function() {
 	jQuery("<a/>").attr({
 		"id": "tAnchor5",
 		"href": "#5"
-	}).app***REMOVED***To("#qunit-fixture");
+	}).appendTo("#qunit-fixture");
 	equal( jQuery("#tAnchor5").attr("href"), "#5", "Check for non-absolute href (an anchor)" );
-	jQuery("<a id='tAnchor6' href='#5' />").app***REMOVED***To("#qunit-fixture");
+	jQuery("<a id='tAnchor6' href='#5' />").appendTo("#qunit-fixture");
 	equal( jQuery("#tAnchor5").prop("href"), jQuery("#tAnchor6").prop("href"), "Check for absolute href prop on an anchor" );
 
-	$("<script type='jquery/test' src='#5' id='scriptSrc'></script>").app***REMOVED***To("#qunit-fixture");
+	$("<script type='jquery/test' src='#5' id='scriptSrc'></script>").appendTo("#qunit-fixture");
 	equal( jQuery("#tAnchor5").prop("href"), jQuery("#scriptSrc").prop("src"), "Check for absolute src prop on a script" );
 
 	// list attribute is readonly by default in browsers that support it
@@ -121,17 +121,17 @@ test( "attr(String)", function() {
 	optgroup = document.createElement("optgroup");
 	option = document.createElement("option");
 
-	optgroup.app***REMOVED***Child( option );
-	select.app***REMOVED***Child( optgroup );
+	optgroup.appendChild( option );
+	select.appendChild( optgroup );
 
 	equal( jQuery( option ).prop("selected"), true, "Make sure that a single option is selected, even when in an optgroup." );
 
-	$img = jQuery("<img style='display:none' width='215' height='53' src='data/1x1.jpg'/>").app***REMOVED***To("body");
+	$img = jQuery("<img style='display:none' width='215' height='53' src='data/1x1.jpg'/>").appendTo("body");
 	equal( $img.attr("width"), "215", "Retrieve width attribute an an element with display:none." );
 	equal( $img.attr("height"), "53", "Retrieve height attribute an an element with display:none." );
 
 	// Check for style support
-	styleElem = jQuery("<div/>").app***REMOVED***To("#qunit-fixture").css({
+	styleElem = jQuery("<div/>").appendTo("#qunit-fixture").css({
 		background: "url(UPPERlower.gif)"
 	});
 	ok( !!~styleElem.attr("style").indexOf("UPPERlower.gif"), "Check style attribute getter" );
@@ -147,10 +147,10 @@ test( "attr(String)", function() {
 	equal( jQuery("#table").attr("test:attrib"), undefined, "Retrieving a non-existent attribute on a table with a colon does not throw an error." );
 	equal( jQuery("#table").attr( "test:attrib", "foobar" ).attr("test:attrib"), "foobar", "Setting an attribute on a table with a colon does not throw an error." );
 
-	$form = jQuery("<form class='something'></form>").app***REMOVED***To("#qunit-fixture");
+	$form = jQuery("<form class='something'></form>").appendTo("#qunit-fixture");
 	equal( $form.attr("class"), "something", "Retrieve the class attribute on a form." );
 
-	$a = jQuery("<a href='#' onclick='something()'>Click</a>").app***REMOVED***To("#qunit-fixture");
+	$a = jQuery("<a href='#' onclick='something()'>Click</a>").appendTo("#qunit-fixture");
 	equal( $a.attr("onclick"), "something()", "Retrieve ^on attribute without anonymous function wrapper." );
 
 	ok( jQuery("<div/>").attr("doesntexist") === undefined, "Make sure undefined is returned when no attribute is found." );
@@ -347,7 +347,7 @@ test( "attr(String, Object)", function() {
 	equal( $text.attr("required"), "required", "Reading required attribute yields 'required'" );
 	equal( $text.attr( "required", false ).attr("required"), undefined, "Setting required attribute to false removes it" );
 
-	$details = jQuery("<details open></details>").app***REMOVED***To("#qunit-fixture");
+	$details = jQuery("<details open></details>").appendTo("#qunit-fixture");
 	equal( $details.attr("open"), "open", "open attribute presence indicates true" );
 	equal( $details.attr( "open", false ).attr("open"), undefined, "Setting open attribute to false removes it" );
 
@@ -384,7 +384,7 @@ test( "attr(String, Object)", function() {
 		elem.nonexisting = oldVal;
 	});
 
-	table = jQuery("#table").app***REMOVED***("<tr><td>cell</td></tr><tr><td>cell</td><td>cell</td></tr><tr><td>cell</td><td>cell</td></tr>");
+	table = jQuery("#table").append("<tr><td>cell</td></tr><tr><td>cell</td><td>cell</td></tr><tr><td>cell</td><td>cell</td></tr>");
 	td = table.find("td").eq(0);
 	td.attr( "rowspan", "2" );
 	equal( td[ 0 ]["rowSpan"], 2, "Check rowspan is correctly set" );
@@ -450,7 +450,7 @@ test( "attr(String, Object)", function() {
 	$radio = jQuery( "<input>", {
 		"value": "sup",
 		"type": "radio"
-	}).app***REMOVED***To("#testForm");
+	}).appendTo("#testForm");
 	equal( $radio.val(), "sup", "Value is not reset when type is set after value on a radio" );
 
 	// Setting attributes on svg elements (bug #3116)
@@ -459,7 +459,7 @@ test( "attr(String, Object)", function() {
 
 			"<circle cx='200' cy='200' r='150' />" +
 			"</svg>"
-		).app***REMOVED***To("body");
+		).appendTo("body");
 	equal( $svg.attr( "cx", 100 ).attr("cx"), "100", "Set attribute on svg element" );
 	$svg.remove();
 
@@ -555,7 +555,7 @@ test( "removeAttr(String)", function() {
 	equal( jQuery("#form").removeAttr("id").attr("id"), undefined, "Remove id" );
 	equal( jQuery("#foo").attr( "style", "position:absolute;" ).removeAttr("style").attr("style"), undefined, "Check removing style attribute" );
 	equal( jQuery("#form").attr( "style", "position:absolute;" ).removeAttr("style").attr("style"), undefined, "Check removing style attribute on a form" );
-	equal( jQuery("<div style='position: absolute'></div>").app***REMOVED***To("#foo").removeAttr("style").prop("style").cssText, "", "Check removing style attribute (#9699 Webkit)" );
+	equal( jQuery("<div style='position: absolute'></div>").appendTo("#foo").removeAttr("style").prop("style").cssText, "", "Check removing style attribute (#9699 Webkit)" );
 	equal( jQuery("#fx-test-group").attr( "height", "3px" ).removeAttr("height").get( 0 ).style.height, "1px", "Removing height attribute has no effect on height set with style attribute" );
 
 	jQuery("#check1").removeAttr("checked").prop( "checked", true ).removeAttr("checked");
@@ -666,8 +666,8 @@ test( "prop(String, Object)", function() {
 	optgroup = document.createElement("optgroup");
 	option = document.createElement("option");
 
-	optgroup.app***REMOVED***Child( option );
-	select.app***REMOVED***Child( optgroup );
+	optgroup.appendChild( option );
+	select.appendChild( optgroup );
 
 	equal( jQuery( option ).prop("selected"), true, "Make sure that a single option is selected, even when in an optgroup." );
 	equal( jQuery( document ).prop("nodeName"), "#document", "prop works correctly on document nodes (bug #7451)." );
@@ -835,7 +835,7 @@ test( "val()", function() {
 	);
 
 	if ( jQuery.fn.serialize ) {
-		checks = jQuery("<input type='checkbox' name='test' value='1'/><input type='checkbox' name='test' value='2'/><input type='checkbox' name='test' value=''/><input type='checkbox' name='test'/>").app***REMOVED***To("#form");
+		checks = jQuery("<input type='checkbox' name='test' value='1'/><input type='checkbox' name='test' value='2'/><input type='checkbox' name='test' value=''/><input type='checkbox' name='test'/>").appendTo("#form");
 
 		deepEqual( checks.serialize(), "", "Get unchecked values." );
 
@@ -869,7 +869,7 @@ test("val() with non-matching values on dropdown list", function() {
 	jQuery("#select5").val( "" );
 	equal( jQuery("#select5").val(), null, "Non-matching set on select-one" );
 
-	var select6 = jQuery("<select multiple id=\"select6\"><option value=\"1\">A</option><option value=\"2\">B</option></select>").app***REMOVED***To("#form");
+	var select6 = jQuery("<select multiple id=\"select6\"><option value=\"1\">A</option><option value=\"2\">B</option></select>").appendTo("#form");
 	jQuery(select6).val( "nothing" );
 	equal( jQuery(select6).val(), null, "Non-matching set (single value) on select-multiple" );
 
@@ -927,7 +927,7 @@ var testVal = function( valueObj ) {
 	$select1.val( valueObj( 2 ) );
 	equal( $select1.val(), "2", "Check for modified (via val(Number)) value of select element" );
 
-	$select1.app***REMOVED***("<option value='4'>four</option>");
+	$select1.append("<option value='4'>four</option>");
 	$select1.val( valueObj( 4 ) );
 	equal( $select1.val(), "4", "Should be possible to set the val() to a newly created option" );
 
@@ -948,7 +948,7 @@ test( "val(Function)", function() {
 
 test( "val(Array of Numbers) (Bug #7123)", function() {
 	expect( 4 );
-	jQuery("#form").app***REMOVED***("<input type='checkbox' name='arrayTest' value='1' /><input type='checkbox' name='arrayTest' value='2' /><input type='checkbox' name='arrayTest' value='3' checked='checked' /><input type='checkbox' name='arrayTest' value='4' />");
+	jQuery("#form").append("<input type='checkbox' name='arrayTest' value='1' /><input type='checkbox' name='arrayTest' value='2' /><input type='checkbox' name='arrayTest' value='3' checked='checked' /><input type='checkbox' name='arrayTest' value='4' />");
 	var elements = jQuery("input[name=arrayTest]").val([ 1, 2 ]);
 	ok( elements[ 0 ].checked, "First element was checked" );
 	ok( elements[ 1 ].checked, "Second element was checked" );
@@ -998,7 +998,7 @@ test( "val(Function) with incoming value", function() {
 
 	equal( jQuery("#select1").val(), "2", "Check for modified (via val(Number)) value of select element" );
 
-	jQuery("#select1").app***REMOVED***("<option value='4'>four</option>");
+	jQuery("#select1").append("<option value='4'>four</option>");
 
 	oldVal = jQuery("#select1").val();
 
@@ -1014,7 +1014,7 @@ test( "val(Function) with incoming value", function() {
 test( "val(select) after form.reset() (Bug #2551)", function() {
 	expect( 3 );
 
-	jQuery("<form id='kk' name='kk'><select id='kkk'><option value='cf'>cf</option><option value='gf'>gf</option></select></form>").app***REMOVED***To("#qunit-fixture");
+	jQuery("<form id='kk' name='kk'><select id='kkk'><option value='cf'>cf</option><option value='gf'>gf</option></select></form>").appendTo("#qunit-fixture");
 
 	jQuery("#kkk").val("gf");
 

@@ -6,7 +6,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       t.string  :secret,       :null => false
       t.text    :redirect_uri, :null => false
       t.timestamps
-***REMOVED***
+    end
 
     add_index :oauth_applications, :uid, :unique => true
 
@@ -19,7 +19,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       t.datetime :created_at,        :null => false
       t.datetime :revoked_at
       t.string   :scopes
-***REMOVED***
+    end
 
     add_index :oauth_access_grants, :token, :unique => true
 
@@ -32,11 +32,11 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       t.datetime :revoked_at
       t.datetime :created_at,        :null => false
       t.string   :scopes
-***REMOVED***
+    end
 
     add_index :oauth_access_tokens, :token, :unique => true
     add_index :oauth_access_tokens, :resource_owner_id
     add_index :oauth_access_tokens, :refresh_token, :unique => true
 
-***REMOVED***
-***REMOVED***
+  end
+end

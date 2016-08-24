@@ -4,4 +4,4 @@ Konacha.configure do |config|
   config.stylesheets  = %w(application)
   require 'capybara/poltergeist'
   config.driver = :poltergeist
-***REMOVED*** if defined?(Konacha)
+end if defined?(Konacha)

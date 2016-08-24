@@ -1,4 +1,4 @@
-class PS.Web.ExploreRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PS.Web.ExploreRoute extends Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   beforeModel: ->
     if @get('session.isAuthenticated')
       last_item_id = @get('session.user.last_item_id')

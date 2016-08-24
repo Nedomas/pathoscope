@@ -1,1 +1,1 @@
-class PS.Web.NotesNewController ext***REMOVED***s PS.Core.NotesNewController
+class PS.Web.NotesNewController extends PS.Core.NotesNewController

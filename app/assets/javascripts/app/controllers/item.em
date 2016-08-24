@@ -1,1 +1,1 @@
-class PS.Standalone.ItemController ext***REMOVED***s PS.Core.ItemController
+class PS.Standalone.ItemController extends PS.Core.ItemController

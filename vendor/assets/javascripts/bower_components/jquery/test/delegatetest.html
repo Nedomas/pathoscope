@@ -181,9 +181,9 @@ for ( var i=0; i < events.length; i++ ) {
 		} else {
 			$(id+" input,"+id+" button,"+id+" select,"+id+" textarea").live(type, $cell, blinker);
 		}
-		$row.app***REMOVED***($cell);
+		$row.append($cell);
 	});
-	$("#changes tbody").app***REMOVED***($row);
+	$("#changes tbody").append($row);
 }
 
 // Ensure that cloned elements get the delegated event magic; this is
@@ -192,7 +192,7 @@ for ( var i=0; i < events.length; i++ ) {
 // (Only care about the live change for this third select element.)
 var sel1 = $("#select-one select:first-child");
 if ( typeof(sel1[0].fireEvent) !== "undefined" ) {
-	sel1.trigger( "beforeactivate" ).clone().app***REMOVED***To("#select-one");
+	sel1.trigger( "beforeactivate" ).clone().appendTo("#select-one");
 	//alert($("#select-one select").map(function(){ return this._change_attached || "undef"; }).get().join("|"));
 }
 

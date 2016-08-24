@@ -1,1 +1,1 @@
-class PS.Bookmarklet.UserPath ext***REMOVED***s PS.Core.UserPath
+class PS.Bookmarklet.UserPath extends PS.Core.UserPath

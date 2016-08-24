@@ -5,7 +5,7 @@
   doneTimeout = null;
   isAsync = false;
 
-  Ember.Test.MochaAdapter = Ember.Test.Adapter.ext***REMOVED***({
+  Ember.Test.MochaAdapter = Ember.Test.Adapter.extend({
     init: function() {
       this._super();
       window.Mocha.interfaces['ember-bdd'] = emberBdd;
@@ -92,7 +92,7 @@
 
       context.it = context.specify = function(title, fn){
         var suite = suites[0], test;
-        if (suite.p***REMOVED***ing) {
+        if (suite.pending) {
           fn = null;
         }
         if (!fn || fn.length === 1) {
@@ -122,7 +122,7 @@
       context.xcontext =
       context.describe.skip = function(title, fn){
         var suite = Mocha.Suite.create(suites[0], title);
-        suite.p***REMOVED***ing = true;
+        suite.pending = true;
         suites.unshift(suite);
         fn.call(suite);
         suites.shift();

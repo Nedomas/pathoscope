@@ -1,2 +1,2 @@
-class PS.Web.DeadItemController ext***REMOVED***s PS.Core.DeadItemController
+class PS.Web.DeadItemController extends PS.Core.DeadItemController
   hasChildren: false

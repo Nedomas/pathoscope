@@ -8,13 +8,13 @@
         "handlebars",
         "mustache",
         "html"
-  ***REMOVED***,
+    ],
     "authors": [
         {
             "name": "Chris Wanstrath",
             "homepage": "http://chriswanstrath.com"
         }
-  ***REMOVED***,
+    ],
     "require": {
         "robloach/component-installer": "*"
     },
@@ -23,10 +23,10 @@
             "name": "handlebars",
             "scripts": [
                 "handlebars.js"
-          ***REMOVED***,
+            ],
             "files": [
                 "handlebars.runtime.js"
-          ***REMOVED***,
+            ],
             "shim": {
                 "exports": "Handlebars"
             }

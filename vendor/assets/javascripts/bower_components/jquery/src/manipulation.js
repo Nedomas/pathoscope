@@ -29,25 +29,25 @@ wrapMap.optgroup = wrapMap.option;
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
 wrapMap.th = wrapMap.td;
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	text: function( value ) {
 		return jQuery.access( this, function( value ) {
 			return value === undefined ?
 				jQuery.text( this ) :
-				this.empty().app***REMOVED***( ( this[ 0 ] && this[ 0 ].ownerDocument || document ).createTextNode( value ) );
+				this.empty().append( ( this[ 0 ] && this[ 0 ].ownerDocument || document ).createTextNode( value ) );
 		}, null, value, arguments.length );
 	},
 
-	app***REMOVED***: function() {
+	append: function() {
 		return this.domManip( arguments, function( elem ) {
 			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
 				var target = manipulationTarget( this, elem );
-				target.app***REMOVED***Child( elem );
+				target.appendChild( elem );
 			}
 		});
 	},
 
-	prep***REMOVED***: function() {
+	prepend: function() {
 		return this.domManip( arguments, function( elem ) {
 			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
 				var target = manipulationTarget( this, elem );
@@ -155,7 +155,7 @@ jQuery.fn.ext***REMOVED***({
 			}
 
 			if ( elem ) {
-				this.empty().app***REMOVED***( value );
+				this.empty().append( value );
 			}
 		}, null, value, arguments.length );
 	},
@@ -228,7 +228,7 @@ jQuery.fn.ext***REMOVED***({
 				scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
 				hasScripts = scripts.length;
 
-				// Use the original fragment for the last item instead of the first because it can ***REMOVED*** up
+				// Use the original fragment for the last item instead of the first because it can end up
 				// being emptied incorrectly in certain situations (#8070).
 				for ( ; i < l; i++ ) {
 					node = fragment;
@@ -276,8 +276,8 @@ jQuery.fn.ext***REMOVED***({
 });
 
 jQuery.each({
-	app***REMOVED***To: "app***REMOVED***",
-	prep***REMOVED***To: "prep***REMOVED***",
+	appendTo: "append",
+	prependTo: "prepend",
 	insertBefore: "before",
 	insertAfter: "after",
 	replaceAll: "replaceWith"
@@ -302,7 +302,7 @@ jQuery.each({
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var i, l, srcElements, destElements,
 			clone = elem.cloneNode( true ),
@@ -369,14 +369,14 @@ jQuery.ext***REMOVED***({
 
 				// Convert html into DOM nodes
 				} else {
-					tmp = tmp || fragment.app***REMOVED***Child( context.createElement("div") );
+					tmp = tmp || fragment.appendChild( context.createElement("div") );
 
 					// Deserialize a standard representation
 					tag = ( rtagName.exec( elem ) || ["", ""] )[ 1 ].toLowerCase();
 					wrap = wrapMap[ tag ] || wrapMap._default;
 					tmp.innerHTML = wrap[ 1 ] + elem.replace( rxhtmlTag, "<$1></$2>" ) + wrap[ 2 ];
 
-					// Desc***REMOVED*** through wrappers to the right content
+					// Descend through wrappers to the right content
 					j = wrap[ 0 ];
 					while ( j-- ) {
 						tmp = tmp.lastChild;
@@ -410,8 +410,8 @@ jQuery.ext***REMOVED***({
 
 			contains = jQuery.contains( elem.ownerDocument, elem );
 
-			// App***REMOVED*** to fragment
-			tmp = getAll( fragment.app***REMOVED***Child( elem ), "script" );
+			// Append to fragment
+			tmp = getAll( fragment.appendChild( elem ), "script" );
 
 			// Preserve script evaluation history
 			if ( contains ) {
@@ -484,7 +484,7 @@ function manipulationTarget( elem, content ) {
 		jQuery.nodeName( content.nodeType === 1 ? content : content.firstChild, "tr" ) ?
 
 		elem.getElementsByTagName("tbody")[0] ||
-			elem.app***REMOVED***Child( elem.ownerDocument.createElement("tbody") ) :
+			elem.appendChild( elem.ownerDocument.createElement("tbody") ) :
 		elem;
 }
 
@@ -545,7 +545,7 @@ function cloneCopyEvent( src, dest ) {
 	// 2. Copy user data
 	if ( data_user.hasData( src ) ) {
 		udataOld = data_user.access( src );
-		udataCur = jQuery.ext***REMOVED***( {}, udataOld );
+		udataCur = jQuery.extend( {}, udataOld );
 
 		data_user.set( dest, udataCur );
 	}

@@ -1,4 +1,4 @@
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	queue: function( elem, type, data ) {
 		var queue;
 
@@ -53,7 +53,7 @@ jQuery.ext***REMOVED***({
 		}
 	},
 
-	// not int***REMOVED***ed for public consumption - generates a queueHooks object, or returns the current one
+	// not intended for public consumption - generates a queueHooks object, or returns the current one
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return data_priv.get( elem, key ) || data_priv.access( elem, key, {
@@ -64,7 +64,7 @@ jQuery.ext***REMOVED***({
 	}
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	queue: function( type, data ) {
 		var setter = 2;
 

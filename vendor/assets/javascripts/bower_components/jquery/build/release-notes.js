@@ -26,7 +26,7 @@ http.request({
 		data.push( chunk );
 	});
 
-	res.on( "***REMOVED***", function() {
+	res.on( "end", function() {
 		var match,
 			file = data.join(""),
 			cur;
@@ -55,5 +55,5 @@ http.request({
 		}
 
 	});
-}).***REMOVED***();
+}).end();
 

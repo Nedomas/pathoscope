@@ -3,13 +3,13 @@ class PathSerializer < ApplicationSerializer
 
   def item_id
     object.item.id
-***REMOVED***
+  end
 
   def users_count
     object.users.count
-***REMOVED***
+  end
 
   def links_count
     object.links.count
-***REMOVED***
-***REMOVED***
+  end
+end

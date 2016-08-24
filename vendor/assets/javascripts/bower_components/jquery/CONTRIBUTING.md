@@ -55,7 +55,7 @@ Sometimes, bugs are introduced in newer versions of jQuery that do not exist in 
 
 ### Reduce, reduce, reduce!
 
-When you are experiencing a problem, the most useful thing you can possibly do is to [reduce your code](http://webkit.org/quality/reduction.html) to the bare minimum required to reproduce the issue. This makes it *much* easier to isolate and fix the off***REMOVED***ing code. Bugs that are reported without reduced test cases take on average 9001% longer to fix than bugs that are submitted with them, so you really should try to do this if at all possible.
+When you are experiencing a problem, the most useful thing you can possibly do is to [reduce your code](http://webkit.org/quality/reduction.html) to the bare minimum required to reproduce the issue. This makes it *much* easier to isolate and fix the offending code. Bugs that are reported without reduced test cases take on average 9001% longer to fix than bugs that are submitted with them, so you really should try to do this if at all possible.
 
 ## jQuery Core Style Guide
 
@@ -68,7 +68,7 @@ See: [jQuery Core Style Guide](http://docs.jquery.com/JQuery_Core_Style_Guidelin
 
 Starting in jQuery 1.8, a newly overhauled development workflow has been introduced. In this new system, we rely on node & gruntjs to automate the building and validation of source code—while you write code.
 
-The Ajax tests still dep***REMOVED*** on PHP running locally*, so make sure you have the following installed:
+The Ajax tests still depend on PHP running locally*, so make sure you have the following installed:
 
 * Some kind of localhost server program that supports PHP (any will do)
 * Node.js
@@ -78,7 +78,7 @@ The Ajax tests still dep***REMOVED*** on PHP running locally*, so make sure you 
 
 Maintaining a list of platform specific instructions is outside of the scope of this document and there is plenty of existing documentation for the above technologies.
 
-* The PHP dep***REMOVED***ency will soon be shed in favor of an all-node solution.
+* The PHP dependency will soon be shed in favor of an all-node solution.
 
 
 ### Build a Local Copy of jQuery
@@ -168,7 +168,7 @@ $ git add filename
 ```
 
 
-( I recomm***REMOVED*** NEVER, EVER using "git add . " )
+( I recommend NEVER, EVER using "git add . " )
 
 Once you've staged all of your changed files, go ahead and commit them
 
@@ -196,7 +196,7 @@ $ git checkout master
 
 ### Test Suite Tips...
 
-During the process of writing your patch, you will run the test suite MANY times. You can speed up the process by narrowing the running test suite down to the module you are testing by either double clicking the title of the test or app***REMOVED***ing it to the url. The following examples assume you're working on a local repo, hosted on your localhost server.
+During the process of writing your patch, you will run the test suite MANY times. You can speed up the process by narrowing the running test suite down to the module you are testing by either double clicking the title of the test or appending it to the url. The following examples assume you're working on a local repo, hosted on your localhost server.
 
 Example:
 

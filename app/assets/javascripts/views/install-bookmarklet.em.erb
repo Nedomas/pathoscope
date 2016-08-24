@@ -1,4 +1,4 @@
-class PS.Web.InstallBookmarklet ext***REMOVED***s Ember.View
+class PS.Web.InstallBookmarklet extends Ember.View
   templateName: 'install-bookmarklet'
   attributeBindings: ['href']
   href: "<%= Install.bookmark_js %>"
@@ -7,7 +7,7 @@ class PS.Web.InstallBookmarklet ext***REMOVED***s Ember.View
   click: (event) ->
     event.preventDefault()
   mouseEnter: ->
-    @get('controller').s***REMOVED***('setHover', true)
+    @get('controller').send('setHover', true)
   mouseLeave: ->
-    @get('controller').s***REMOVED***('setHover', false)
+    @get('controller').send('setHover', false)
 

@@ -1,4 +1,4 @@
-jQuery.ext***REMOVED***({
+jQuery.extend({
 
 	Deferred: function( func ) {
 		var tuples = [
@@ -7,7 +7,7 @@ jQuery.ext***REMOVED***({
 				[ "reject", "fail", jQuery.Callbacks("once memory"), "rejected" ],
 				[ "notify", "progress", jQuery.Callbacks("memory") ]
 			],
-			state = "p***REMOVED***ing",
+			state = "pending",
 			promise = {
 				state: function() {
 					return state;
@@ -41,7 +41,7 @@ jQuery.ext***REMOVED***({
 				// Get a promise for this deferred
 				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
-					return obj != null ? jQuery.ext***REMOVED***( obj, promise ) : promise;
+					return obj != null ? jQuery.extend( obj, promise ) : promise;
 				}
 			},
 			deferred = {};

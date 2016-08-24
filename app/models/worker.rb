@@ -5,9 +5,9 @@ class Worker
         if path.color > 4
           path.add_color
           path.save
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        end
+      end
+    end
 
     def get_screens
       Webshot.capybara_setup!
@@ -17,40 +17,40 @@ class Worker
         puts "Getting thumbnail for #{link.url}"
         link.capture_thumbnail(ws) rescue nil
         link.capture_screenshot(ws) rescue nil
-  ***REMOVED***
+      end
 
       puts "Done"
-***REMOVED***
+    end
 
     def update_fuzzy
       [Link, Path].each do |model|
         model.bulk_update_fuzzy_title
-  ***REMOVED***
-***REMOVED***
+      end
+    end
 
     def update_path_descriptions
       Path.all.each do |path|
-      ***REMOVED*** api = "http://en.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&titles=#{path.title}&rvprop=content&rvsection=0&rvparse"
-      ***REMOVED*** resp = Faraday.get(api)
-      ***REMOVED*** wiki = JSON.parse(resp.body)['query']['pages'].values.first['revisions'].first['*']
-      ***REMOVED*** safe_wiki = ActionView::Base.full_sanitizer.sanitize(wiki)
-      ***REMOVED*** wiki = Wikipedia::article(path.title)
+        # api = "http://en.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&titles=#{path.title}&rvprop=content&rvsection=0&rvparse"
+        # resp = Faraday.get(api)
+        # wiki = JSON.parse(resp.body)['query']['pages'].values.first['revisions'].first['*']
+        # safe_wiki = ActionView::Base.full_sanitizer.sanitize(wiki)
+        # wiki = Wikipedia::article(path.title)
         resp = RubyWebSearch::Google.search(:query => "define+#{path.title}")
         definition = resp.results.first[:content]
         sane_definition = ActionView::Base.full_sanitizer.sanitize(definition)
-      ***REMOVED*** api = "http://www.google.com/dictionary/json?callback=a&sl=en&tl=en&q=#{path.title}"
-      ***REMOVED*** resp = Faraday.get(api)
-      ***REMOVED*** json = resp.body.sub('a(', '').sub(',200,null)', '')
-      ***REMOVED*** definition = JSON.parse(json)["primaries"].last["entries"].last["terms"].last["text"]
+        # api = "http://www.google.com/dictionary/json?callback=a&sl=en&tl=en&q=#{path.title}"
+        # resp = Faraday.get(api)
+        # json = resp.body.sub('a(', '').sub(',200,null)', '')
+        # definition = JSON.parse(json)["primaries"].last["entries"].last["terms"].last["text"]
         path.update_attribute(:description, sane_definition)
-  ***REMOVED***
-***REMOVED***
+      end
+    end
 
     def update_link_descriptions
       Link.all.each do |link|
         doc = Pismo::Document.new(link.url)
         link.update_attributes(title: doc.title, description: doc.lede)
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+      end
+    end
+  end
+end

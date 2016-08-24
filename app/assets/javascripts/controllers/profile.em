@@ -1,1 +1,1 @@
-class PS.Web.ProfileController ext***REMOVED***s Ember.ObjectController
+class PS.Web.ProfileController extends Ember.ObjectController

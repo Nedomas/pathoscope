@@ -62,11 +62,11 @@ var define, requireModule, require, requirejs;
 
 define("activemodel-adapter/lib/initializers", 
   ["../../ember-data/lib/system/container_proxy","./system/active_model_serializer","./system/active_model_adapter"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__) {
+  function(__dependency1__, __dependency2__, __dependency3__) {
     "use strict";
-    var ContainerProxy = __dep***REMOVED***ency1__["default"];
-    var ActiveModelSerializer = __dep***REMOVED***ency2__["default"];
-    var ActiveModelAdapter = __dep***REMOVED***ency3__["default"];
+    var ContainerProxy = __dependency1__["default"];
+    var ActiveModelSerializer = __dependency2__["default"];
+    var ActiveModelAdapter = __dependency3__["default"];
 
     Ember.onLoad('Ember.Application', function(Application) {
       Application.initializer({
@@ -77,7 +77,7 @@ define("activemodel-adapter/lib/initializers",
           proxy.registerDeprecations([
             {deprecated: 'serializer:_ams',  valid: 'serializer:-active-model'},
             {deprecated: 'adapter:_ams',     valid: 'adapter:-active-model'}
-        ***REMOVED***);
+          ]);
 
           application.register('serializer:-active-model', ActiveModelSerializer);
           application.register('adapter:-active-model', ActiveModelAdapter);
@@ -87,11 +87,11 @@ define("activemodel-adapter/lib/initializers",
   });
 define("activemodel-adapter/lib/main", 
   ["./system","./initializers","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var ActiveModelAdapter = __dep***REMOVED***ency1__.ActiveModelAdapter;
-    var ActiveModelSerializer = __dep***REMOVED***ency1__.ActiveModelSerializer;
-    var EmbeddedRecordsMixin = __dep***REMOVED***ency1__.EmbeddedRecordsMixin;
+    var ActiveModelAdapter = __dependency1__.ActiveModelAdapter;
+    var ActiveModelSerializer = __dependency1__.ActiveModelSerializer;
+    var EmbeddedRecordsMixin = __dependency1__.EmbeddedRecordsMixin;
 
 
     __exports__.ActiveModelAdapter = ActiveModelAdapter;
@@ -100,11 +100,11 @@ define("activemodel-adapter/lib/main",
   });
 define("activemodel-adapter/lib/system", 
   ["./system/embedded_records_mixin","./system/active_model_adapter","./system/active_model_serializer","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     "use strict";
-    var EmbeddedRecordsMixin = __dep***REMOVED***ency1__["default"];
-    var ActiveModelAdapter = __dep***REMOVED***ency2__["default"];
-    var ActiveModelSerializer = __dep***REMOVED***ency3__["default"];
+    var EmbeddedRecordsMixin = __dependency1__["default"];
+    var ActiveModelAdapter = __dependency2__["default"];
+    var ActiveModelSerializer = __dependency3__["default"];
 
     __exports__.EmbeddedRecordsMixin = EmbeddedRecordsMixin;
     __exports__.ActiveModelAdapter = ActiveModelAdapter;
@@ -112,13 +112,13 @@ define("activemodel-adapter/lib/system",
   });
 define("activemodel-adapter/lib/system/active_model_adapter", 
   ["../../../ember-data/lib/adapters","../../../ember-data/lib/system/adapter","../../../ember-inflector/lib/main","./active_model_serializer","./embedded_records_mixin","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     "use strict";
-    var RESTAdapter = __dep***REMOVED***ency1__.RESTAdapter;
-    var InvalidError = __dep***REMOVED***ency2__.InvalidError;
-    var pluralize = __dep***REMOVED***ency3__.pluralize;
-    var ActiveModelSerializer = __dep***REMOVED***ency4__["default"];
-    var EmbeddedRecordsMixin = __dep***REMOVED***ency5__["default"];
+    var RESTAdapter = __dependency1__.RESTAdapter;
+    var InvalidError = __dependency2__.InvalidError;
+    var pluralize = __dependency3__.pluralize;
+    var ActiveModelSerializer = __dependency4__["default"];
+    var EmbeddedRecordsMixin = __dependency5__["default"];
 
     /**
       @module ember-data
@@ -135,16 +135,16 @@ define("activemodel-adapter/lib/system/active_model_adapter",
       [active_model_serializers](http://github.com/rails-api/active_model_serializers)
       Ruby gem.
 
-      This adapter ext***REMOVED***s the DS.RESTAdapter by making consistent use of the camelization,
+      This adapter extends the DS.RESTAdapter by making consistent use of the camelization,
       decamelization and pluralization methods to normalize the serialized JSON into a
-      format that is compatible with a conventional Rails back***REMOVED*** and Ember Data.
+      format that is compatible with a conventional Rails backend and Ember Data.
 
-    ***REMOVED***# JSON Structure
+      ## JSON Structure
 
       The ActiveModelAdapter expects the JSON returned from your server to follow
       the REST adapter conventions substituting underscored keys for camelcased ones.
 
-    ***REMOVED***## Conventional Names
+      ### Conventional Names
 
       Attribute names in your JSON payload should be the underscored versions of
       the attributes in your Ember.js models.
@@ -152,7 +152,7 @@ define("activemodel-adapter/lib/system/active_model_adapter",
       For example, if you have a `Person` model:
 
       ```js
-      App.FamousPerson = DS.Model.ext***REMOVED***({
+      App.FamousPerson = DS.Model.extend({
         firstName: DS.attr('string'),
         lastName: DS.attr('string'),
         occupation: DS.attr('string')
@@ -174,10 +174,10 @@ define("activemodel-adapter/lib/system/active_model_adapter",
       @class ActiveModelAdapter
       @constructor
       @namespace DS
-      @ext***REMOVED***s DS.Adapter
+      @extends DS.Adapter
     **/
 
-    var ActiveModelAdapter = RESTAdapter.ext***REMOVED***({
+    var ActiveModelAdapter = RESTAdapter.extend({
       defaultSerializer: '-active-model',
       /**
         The ActiveModelAdapter overrides the `pathForType` method to build
@@ -240,10 +240,10 @@ define("activemodel-adapter/lib/system/active_model_adapter",
   });
 define("activemodel-adapter/lib/system/active_model_serializer", 
   ["../../../ember-inflector/lib/main","../../../ember-data/lib/serializers/rest_serializer","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var singularize = __dep***REMOVED***ency1__.singularize;
-    var RESTSerializer = __dep***REMOVED***ency2__["default"];
+    var singularize = __dependency1__.singularize;
+    var RESTSerializer = __dependency2__["default"];
     /**
       @module ember-data
     */
@@ -255,7 +255,7 @@ define("activemodel-adapter/lib/system/active_model_serializer",
         decamelize = Ember.String.decamelize,
         underscore = Ember.String.underscore;
 
-    var ActiveModelSerializer = RESTSerializer.ext***REMOVED***({
+    var ActiveModelSerializer = RESTSerializer.extend({
       // SERIALIZE
 
       /**
@@ -270,7 +270,7 @@ define("activemodel-adapter/lib/system/active_model_serializer",
       },
 
       /**
-        Underscores relationship names and app***REMOVED***s "_id" or "_ids" when serializing
+        Underscores relationship names and appends "_id" or "_ids" when serializing
         relationship keys.
 
         @method keyForRelationship
@@ -456,12 +456,12 @@ define("activemodel-adapter/lib/system/active_model_serializer",
   });
 define("activemodel-adapter/lib/system/embedded_records_mixin", 
   ["../../../ember-inflector/lib/main","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     var get = Ember.get;
     var forEach = Ember.EnumerableUtils.forEach;
 
-    var pluralize = __dep***REMOVED***ency1__.pluralize;
+    var pluralize = __dependency1__.pluralize;
 
     /**
       The EmbeddedRecordsMixin allows you to add embedded record support to your
@@ -470,7 +470,7 @@ define("activemodel-adapter/lib/system/embedded_records_mixin",
       define your embedded relations.
 
       ```js
-      App.PostSerializer = DS.ActiveModelSerializer.ext***REMOVED***(DS.EmbeddedRecordsMixin, {
+      App.PostSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
         attrs: {
           comments: {embedded: 'always'}
         }
@@ -587,21 +587,21 @@ define("activemodel-adapter/lib/system/embedded_records_mixin",
   });
 define("ember-data/lib/adapters", 
   ["./adapters/fixture_adapter","./adapters/rest_adapter","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var FixtureAdapter = __dep***REMOVED***ency1__["default"];
-    var RESTAdapter = __dep***REMOVED***ency2__["default"];
+    var FixtureAdapter = __dependency1__["default"];
+    var RESTAdapter = __dependency2__["default"];
 
     __exports__.RESTAdapter = RESTAdapter;
     __exports__.FixtureAdapter = FixtureAdapter;
   });
 define("ember-data/lib/adapters/fixture_adapter", 
   ["../system/adapter","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
@@ -612,7 +612,7 @@ define("ember-data/lib/adapters/fixture_adapter",
 
     var counter = 0;
 
-    var Adapter = __dep***REMOVED***ency1__["default"];
+    var Adapter = __dependency1__["default"];
 
     /**
       `DS.FixtureAdapter` is an adapter that loads records from memory.
@@ -629,9 +629,9 @@ define("ember-data/lib/adapters/fixture_adapter",
 
       @class FixtureAdapter
       @namespace DS
-      @ext***REMOVED***s DS.Adapter
+      @extends DS.Adapter
     */
-    var FixtureAdapter = Adapter.ext***REMOVED***({
+    var FixtureAdapter = Adapter.extend({
       // by default, fixtures are already in normalized form
       serializer: null,
 
@@ -943,13 +943,13 @@ define("ember-data/lib/adapters/fixture_adapter",
   });
 define("ember-data/lib/adapters/rest_adapter", 
   ["../system/adapter","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var Adapter = __dep***REMOVED***ency1__["default"];
+    var Adapter = __dependency1__["default"];
     var get = Ember.get, set = Ember.set;
     var forEach = Ember.ArrayPolyfills.forEach;
 
@@ -961,12 +961,12 @@ define("ember-data/lib/adapters/rest_adapter",
       This adapter is designed around the idea that the JSON exchanged with
       the server should be conventional.
 
-    ***REMOVED***# JSON Structure
+      ## JSON Structure
 
       The REST adapter expects the JSON returned from your server to follow
       these conventions.
 
-    ***REMOVED***## Object Root
+      ### Object Root
 
       The JSON payload should be an object that contains the record inside a
       root property. For example, in response to a `GET` request for
@@ -981,7 +981,7 @@ define("ember-data/lib/adapters/rest_adapter",
       }
       ```
 
-    ***REMOVED***## Conventional Names
+      ### Conventional Names
 
       Attribute names in your JSON payload should be the camelCased versions of
       the attributes in your Ember.js models.
@@ -989,7 +989,7 @@ define("ember-data/lib/adapters/rest_adapter",
       For example, if you have a `Person` model:
 
       ```js
-      App.Person = DS.Model.ext***REMOVED***({
+      App.Person = DS.Model.extend({
         firstName: DS.attr('string'),
         lastName: DS.attr('string'),
         occupation: DS.attr('string')
@@ -1008,9 +1008,9 @@ define("ember-data/lib/adapters/rest_adapter",
       }
       ```
 
-    ***REMOVED***# Customization
+      ## Customization
 
-    ***REMOVED***## Endpoint path customization
+      ### Endpoint path customization
 
       Endpoint paths can be prefixed with a `namespace` by setting the namespace
       property on the adapter:
@@ -1022,7 +1022,7 @@ define("ember-data/lib/adapters/rest_adapter",
       ```
       Requests for `App.Person` would now target `/api/1/people/1`.
 
-    ***REMOVED***## Host customization
+      ### Host customization
 
       An adapter can target other hosts by setting the `host` property.
 
@@ -1032,7 +1032,7 @@ define("ember-data/lib/adapters/rest_adapter",
       });
       ```
 
-    ***REMOVED***## Headers customization
+      ### Headers customization
 
       Some APIs require HTTP headers, e.g. to provide an API key. An array of
       headers can be added to the adapter which are passed with every request:
@@ -1049,9 +1049,9 @@ define("ember-data/lib/adapters/rest_adapter",
       @class RESTAdapter
       @constructor
       @namespace DS
-      @ext***REMOVED***s DS.Adapter
+      @extends DS.Adapter
     */
-    var RESTAdapter = Adapter.ext***REMOVED***({
+    var RESTAdapter = Adapter.extend({
       defaultSerializer: '-rest',
       /**
         Endpoint paths can be prefixed with a `namespace` by setting the namespace
@@ -1419,10 +1419,10 @@ define("ember-data/lib/adapters/rest_adapter",
         By default, it pluralizes the type's name (for example,
         'post' becomes 'posts' and 'person' becomes 'people').
 
-      ***REMOVED***## Pathname customization
+        ### Pathname customization
 
         For example if you have an object LineItem with an
-    ***REMOVED***point of "/line_items/".
+        endpoint of "/line_items/".
 
         ```js
         DS.RESTAdapter.reopen({
@@ -1450,7 +1450,7 @@ define("ember-data/lib/adapters/rest_adapter",
         `errors` object available on the record.
 
         ```javascript
-        App.ApplicationAdapter = DS.RESTAdapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.RESTAdapter.extend({
           ajaxError: function(jqXHR) {
             var error = this._super(jqXHR);
 
@@ -1489,7 +1489,7 @@ define("ember-data/lib/adapters/rest_adapter",
         HTTP request.
 
         When the server responds with a payload, Ember Data will call into `extractSingle`
-        or `extractArray` (dep***REMOVED***ing on whether the original query was for one record or
+        or `extractArray` (depending on whether the original query was for one record or
         many records).
 
         By default, `ajax` method has the following behavior:
@@ -1548,7 +1548,7 @@ define("ember-data/lib/adapters/rest_adapter",
 
         if (this.headers !== undefined) {
           var headers = this.headers;
-          hash.beforeS***REMOVED*** = function (xhr) {
+          hash.beforeSend = function (xhr) {
             forEach.call(Ember.keys(headers), function(key) {
               xhr.setRequestHeader(key, headers[key]);
             });
@@ -1667,18 +1667,18 @@ define("ember-data/lib/ext/date",
   });
 define("ember-data/lib/initializers", 
   ["./system/store","./serializers","./adapters","./system/debug/debug_adapter","./system/container_proxy","./transforms"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __dep***REMOVED***ency6__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __dependency6__) {
     "use strict";
-    var Store = __dep***REMOVED***ency1__["default"];
-    var JSONSerializer = __dep***REMOVED***ency2__.JSONSerializer;
-    var RESTSerializer = __dep***REMOVED***ency2__.RESTSerializer;
-    var RESTAdapter = __dep***REMOVED***ency3__.RESTAdapter;
-    var DebugAdapter = __dep***REMOVED***ency4__["default"];
-    var ContainerProxy = __dep***REMOVED***ency5__["default"];
-    var BooleanTransform = __dep***REMOVED***ency6__.BooleanTransform;
-    var DateTransform = __dep***REMOVED***ency6__.DateTransform;
-    var StringTransform = __dep***REMOVED***ency6__.StringTransform;
-    var NumberTransform = __dep***REMOVED***ency6__.NumberTransform;
+    var Store = __dependency1__["default"];
+    var JSONSerializer = __dependency2__.JSONSerializer;
+    var RESTSerializer = __dependency2__.RESTSerializer;
+    var RESTAdapter = __dependency3__.RESTAdapter;
+    var DebugAdapter = __dependency4__["default"];
+    var ContainerProxy = __dependency5__["default"];
+    var BooleanTransform = __dependency6__.BooleanTransform;
+    var DateTransform = __dependency6__.DateTransform;
+    var StringTransform = __dependency6__.StringTransform;
+    var NumberTransform = __dependency6__.NumberTransform;
 
     /**
       @module ember-data
@@ -1698,11 +1698,11 @@ define("ember-data/lib/initializers",
 
       For example, imagine an Ember.js application with the following classes:
 
-      App.Store = DS.Store.ext***REMOVED***({
+      App.Store = DS.Store.extend({
         adapter: 'custom'
       });
 
-      App.PostsController = Ember.ArrayController.ext***REMOVED***({
+      App.PostsController = Ember.ArrayController.extend({
         // ...
       });
 
@@ -1730,7 +1730,7 @@ define("ember-data/lib/initializers",
             {deprecated: 'serializer:_default',  valid: 'serializer:-default'},
             {deprecated: 'serializer:_rest',     valid: 'serializer:-rest'},
             {deprecated: 'adapter:_rest',        valid: 'adapter:-rest'}
-        ***REMOVED***);
+          ]);
 
           // new go forward paths
           application.register('serializer:-default', JSONSerializer);
@@ -1780,7 +1780,7 @@ define("ember-data/lib/initializers",
   });
 define("ember-data/lib/main", 
   ["./core","./ext/date","./system/store","./system/model","./system/changes","./system/adapter","./system/debug","./system/record_arrays","./system/record_array_manager","./adapters","./serializers/json_serializer","./serializers/rest_serializer","../../ember-inflector/lib/main","../../activemodel-adapter/lib/main","./transforms","./system/relationships","./initializers","./system/container_proxy","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __dep***REMOVED***ency6__, __dep***REMOVED***ency7__, __dep***REMOVED***ency8__, __dep***REMOVED***ency9__, __dep***REMOVED***ency10__, __dep***REMOVED***ency11__, __dep***REMOVED***ency12__, __dep***REMOVED***ency13__, __dep***REMOVED***ency14__, __dep***REMOVED***ency15__, __dep***REMOVED***ency16__, __dep***REMOVED***ency17__, __dep***REMOVED***ency18__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __dependency6__, __dependency7__, __dependency8__, __dependency9__, __dependency10__, __dependency11__, __dependency12__, __dependency13__, __dependency14__, __dependency15__, __dependency16__, __dependency17__, __dependency18__, __exports__) {
     "use strict";
     /**
       Ember Data
@@ -1792,49 +1792,49 @@ define("ember-data/lib/main",
     // support RSVP 2.x via resolve,  but prefer RSVP 3.x's Promise.cast
     Ember.RSVP.Promise.cast = Ember.RSVP.Promise.cast || Ember.RSVP.resolve;
 
-    var DS = __dep***REMOVED***ency1__["default"];
+    var DS = __dependency1__["default"];
 
-    var Store = __dep***REMOVED***ency3__.Store;
-    var PromiseArray = __dep***REMOVED***ency3__.PromiseArray;
-    var PromiseObject = __dep***REMOVED***ency3__.PromiseObject;
-    var Model = __dep***REMOVED***ency4__.Model;
-    var Errors = __dep***REMOVED***ency4__.Errors;
-    var RootState = __dep***REMOVED***ency4__.RootState;
-    var attr = __dep***REMOVED***ency4__.attr;
-    var AttributeChange = __dep***REMOVED***ency5__.AttributeChange;
-    var RelationshipChange = __dep***REMOVED***ency5__.RelationshipChange;
-    var RelationshipChangeAdd = __dep***REMOVED***ency5__.RelationshipChangeAdd;
-    var RelationshipChangeRemove = __dep***REMOVED***ency5__.RelationshipChangeRemove;
-    var OneToManyChange = __dep***REMOVED***ency5__.OneToManyChange;
-    var ManyToNoneChange = __dep***REMOVED***ency5__.ManyToNoneChange;
-    var OneToOneChange = __dep***REMOVED***ency5__.OneToOneChange;
-    var ManyToManyChange = __dep***REMOVED***ency5__.ManyToManyChange;
-    var InvalidError = __dep***REMOVED***ency6__.InvalidError;
-    var Adapter = __dep***REMOVED***ency6__.Adapter;
-    var DebugAdapter = __dep***REMOVED***ency7__["default"];
-    var RecordArray = __dep***REMOVED***ency8__.RecordArray;
-    var FilteredRecordArray = __dep***REMOVED***ency8__.FilteredRecordArray;
-    var AdapterPopulatedRecordArray = __dep***REMOVED***ency8__.AdapterPopulatedRecordArray;
-    var ManyArray = __dep***REMOVED***ency8__.ManyArray;
-    var RecordArrayManager = __dep***REMOVED***ency9__["default"];
-    var RESTAdapter = __dep***REMOVED***ency10__.RESTAdapter;
-    var FixtureAdapter = __dep***REMOVED***ency10__.FixtureAdapter;
-    var JSONSerializer = __dep***REMOVED***ency11__["default"];
-    var RESTSerializer = __dep***REMOVED***ency12__["default"];
-    var ActiveModelAdapter = __dep***REMOVED***ency14__.ActiveModelAdapter;
-    var ActiveModelSerializer = __dep***REMOVED***ency14__.ActiveModelSerializer;
-    var EmbeddedRecordsMixin = __dep***REMOVED***ency14__.EmbeddedRecordsMixin;
+    var Store = __dependency3__.Store;
+    var PromiseArray = __dependency3__.PromiseArray;
+    var PromiseObject = __dependency3__.PromiseObject;
+    var Model = __dependency4__.Model;
+    var Errors = __dependency4__.Errors;
+    var RootState = __dependency4__.RootState;
+    var attr = __dependency4__.attr;
+    var AttributeChange = __dependency5__.AttributeChange;
+    var RelationshipChange = __dependency5__.RelationshipChange;
+    var RelationshipChangeAdd = __dependency5__.RelationshipChangeAdd;
+    var RelationshipChangeRemove = __dependency5__.RelationshipChangeRemove;
+    var OneToManyChange = __dependency5__.OneToManyChange;
+    var ManyToNoneChange = __dependency5__.ManyToNoneChange;
+    var OneToOneChange = __dependency5__.OneToOneChange;
+    var ManyToManyChange = __dependency5__.ManyToManyChange;
+    var InvalidError = __dependency6__.InvalidError;
+    var Adapter = __dependency6__.Adapter;
+    var DebugAdapter = __dependency7__["default"];
+    var RecordArray = __dependency8__.RecordArray;
+    var FilteredRecordArray = __dependency8__.FilteredRecordArray;
+    var AdapterPopulatedRecordArray = __dependency8__.AdapterPopulatedRecordArray;
+    var ManyArray = __dependency8__.ManyArray;
+    var RecordArrayManager = __dependency9__["default"];
+    var RESTAdapter = __dependency10__.RESTAdapter;
+    var FixtureAdapter = __dependency10__.FixtureAdapter;
+    var JSONSerializer = __dependency11__["default"];
+    var RESTSerializer = __dependency12__["default"];
+    var ActiveModelAdapter = __dependency14__.ActiveModelAdapter;
+    var ActiveModelSerializer = __dependency14__.ActiveModelSerializer;
+    var EmbeddedRecordsMixin = __dependency14__.EmbeddedRecordsMixin;
 
-    var Transform = __dep***REMOVED***ency15__.Transform;
-    var DateTransform = __dep***REMOVED***ency15__.DateTransform;
-    var NumberTransform = __dep***REMOVED***ency15__.NumberTransform;
-    var StringTransform = __dep***REMOVED***ency15__.StringTransform;
-    var BooleanTransform = __dep***REMOVED***ency15__.BooleanTransform;
+    var Transform = __dependency15__.Transform;
+    var DateTransform = __dependency15__.DateTransform;
+    var NumberTransform = __dependency15__.NumberTransform;
+    var StringTransform = __dependency15__.StringTransform;
+    var BooleanTransform = __dependency15__.BooleanTransform;
 
-    var hasMany = __dep***REMOVED***ency16__.hasMany;
-    var belongsTo = __dep***REMOVED***ency16__.belongsTo;
+    var hasMany = __dependency16__.hasMany;
+    var belongsTo = __dependency16__.belongsTo;
 
-    var ContainerProxy = __dep***REMOVED***ency18__["default"];
+    var ContainerProxy = __dependency18__["default"];
 
     DS.Store         = Store;
     DS.PromiseArray  = PromiseArray;
@@ -1890,10 +1890,10 @@ define("ember-data/lib/main",
   });
 define("ember-data/lib/serializers", 
   ["./serializers/json_serializer","./serializers/rest_serializer","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var JSONSerializer = __dep***REMOVED***ency1__["default"];
-    var RESTSerializer = __dep***REMOVED***ency2__["default"];
+    var JSONSerializer = __dependency1__["default"];
+    var RESTSerializer = __dependency2__["default"];
 
     __exports__.JSONSerializer = JSONSerializer;
     __exports__.RESTSerializer = RESTSerializer;
@@ -1910,16 +1910,16 @@ define("ember-data/lib/serializers/json_serializer",
       This process involves normalizing property names, transforming
       attribute values and serializing relationships.
 
-      For maximum performance Ember Data recomm***REMOVED***s you use the
+      For maximum performance Ember Data recommends you use the
       [RESTSerializer](DS.RESTSerializer.html) or one of its subclasses.
 
-      `JSONSerializer` is useful for simpler or legacy back***REMOVED***s that may
+      `JSONSerializer` is useful for simpler or legacy backends that may
       not support the http://jsonapi.org/ spec.
 
       @class JSONSerializer
       @namespace DS
     */
-    var JSONSerializer = Ember.Object.ext***REMOVED***({
+    var JSONSerializer = Ember.Object.extend({
       /**
         The primaryKey is used when serializing and deserializing
         data. Ember Data always uses the `id` property to store the id of
@@ -1931,7 +1931,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.ApplicationSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.JSONSerializer.extend({
           primaryKey: '_id'
         });
         ```
@@ -1979,7 +1979,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.ApplicationSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.JSONSerializer.extend({
           normalize: function(type, hash) {
             var fields = Ember.get(type, 'fields');
             fields.forEach(function(field) {
@@ -2017,7 +2017,7 @@ define("ember-data/lib/serializers/json_serializer",
         For example, consider this model:
 
         ```javascript
-        App.Comment = DS.Model.ext***REMOVED***({
+        App.Comment = DS.Model.extend({
           title: DS.attr(),
           body: DS.attr(),
 
@@ -2043,7 +2043,7 @@ define("ember-data/lib/serializers/json_serializer",
         By default, belongs-to relationships are converted into
         IDs when inserted into the JSON hash.
 
-      ***REMOVED***# IDs
+        ## IDs
 
         `serialize` takes an options hash with a single option:
         `includeId`. If this option is `true`, `serialize` will,
@@ -2052,7 +2052,7 @@ define("ember-data/lib/serializers/json_serializer",
         The adapter passes in `includeId: true` when serializing
         a record for `createRecord`, but not for `updateRecord`.
 
-      ***REMOVED***# Customization
+        ## Customization
 
         Your server may expect a different JSON format than the
         built-in serialization format.
@@ -2061,7 +2061,7 @@ define("ember-data/lib/serializers/json_serializer",
         return a JSON hash of your choosing.
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           serialize: function(post, options) {
             var json = {
               POST_TTL: post.get('title'),
@@ -2078,14 +2078,14 @@ define("ember-data/lib/serializers/json_serializer",
         });
         ```
 
-      ***REMOVED***# Customizing an App-Wide Serializer
+        ## Customizing an App-Wide Serializer
 
         If you want to define a serializer for your entire
         application, you'll probably want to use `eachAttribute`
         and `eachRelationship` on the record.
 
         ```javascript
-        App.ApplicationSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.JSONSerializer.extend({
           serialize: function(record, options) {
             var json = {};
 
@@ -2126,14 +2126,14 @@ define("ember-data/lib/serializers/json_serializer",
         }
         ```
 
-      ***REMOVED***# Tweaking the Default JSON
+        ## Tweaking the Default JSON
 
         If you just want to do some small tweaks on the default JSON,
         you can call super first and make the tweaks on the returned
         JSON.
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           serialize: function(record, options) {
             var json = this._super.apply(this, arguments);
 
@@ -2185,7 +2185,7 @@ define("ember-data/lib/serializers/json_serializer",
        write:
 
        ```javascript
-       App.ApplicationSerializer = DS.JSONSerializer.ext***REMOVED***({
+       App.ApplicationSerializer = DS.JSONSerializer.extend({
          serializeAttribute: function(record, json, key, attributes) {
            json.attributes = json.attributes || {};
            this._super(record, json.attributes, key, attributes);
@@ -2222,7 +2222,7 @@ define("ember-data/lib/serializers/json_serializer",
        Example
 
        ```javascript
-       App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+       App.PostSerializer = DS.JSONSerializer.extend({
          serializeBelongsTo: function(record, json, relationship) {
            var key = relationship.key;
 
@@ -2265,7 +2265,7 @@ define("ember-data/lib/serializers/json_serializer",
        Example
 
        ```javascript
-       App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+       App.PostSerializer = DS.JSONSerializer.extend({
          serializeHasMany: function(record, json, relationship) {
            var key = relationship.key;
            if (key === 'comments') {
@@ -2302,7 +2302,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.CommentSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.CommentSerializer = DS.JSONSerializer.extend({
           serializePolymorphicType: function(record, json, relationship) {
             var key = relationship.key,
                 belongsTo = get(record, key);
@@ -2510,7 +2510,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           extractSingle: function(store, type, payload) {
             payload.comments = payload._embedded.comment;
             delete payload._embedded;
@@ -2537,7 +2537,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           extractArray: function(store, type, payload) {
             return payload.map(function(json) {
               return this.extractSingle(store, type, json);
@@ -2564,7 +2564,7 @@ define("ember-data/lib/serializers/json_serializer",
         Example
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           extractMeta: function(store, type, payload) {
             if (payload && payload._pagination) {
               store.metaForType(type, payload._pagination);
@@ -2593,7 +2593,7 @@ define("ember-data/lib/serializers/json_serializer",
        Example
 
        ```javascript
-       App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+       App.ApplicationSerializer = DS.RESTSerializer.extend({
          keyForAttribute: function(attr) {
            return Ember.String.underscore(attr).toUpperCase();
          }
@@ -2614,7 +2614,7 @@ define("ember-data/lib/serializers/json_serializer",
        Example
 
         ```javascript
-        App.PostSerializer = DS.JSONSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.JSONSerializer.extend({
           keyForRelationship: function(key, relationship) {
              return 'rel_' + Ember.String.underscore(key);
           }
@@ -2646,13 +2646,13 @@ define("ember-data/lib/serializers/json_serializer",
   });
 define("ember-data/lib/serializers/rest_serializer", 
   ["./json_serializer","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var JSONSerializer = __dep***REMOVED***ency1__["default"];
+    var JSONSerializer = __dependency1__["default"];
     var get = Ember.get, set = Ember.set;
     var forEach = Ember.ArrayPolyfills.forEach;
     var map = Ember.ArrayPolyfills.map;
@@ -2672,7 +2672,7 @@ define("ember-data/lib/serializers/rest_serializer",
 
       See the `normalize` documentation for more information.
 
-    ***REMOVED***# Across the Board Normalization
+      ## Across the Board Normalization
 
       There are also a number of hooks that you might find useful to defined
       across-the-board rules for your payload. These rules will be useful
@@ -2686,7 +2686,7 @@ define("ember-data/lib/serializers/rest_serializer",
       name in your model to a key in your JSON.
 
       ```js
-      App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+      App.ApplicationSerializer = DS.RESTSerializer.extend({
         keyForAttribute: function(attr) {
           return Ember.String.underscore(attr).toUpperCase();
         }
@@ -2699,9 +2699,9 @@ define("ember-data/lib/serializers/rest_serializer",
 
       @class RESTSerializer
       @namespace DS
-      @ext***REMOVED***s DS.JSONSerializer
+      @extends DS.JSONSerializer
     */
-    var RESTSerializer = JSONSerializer.ext***REMOVED***({
+    var RESTSerializer = JSONSerializer.extend({
       /**
         If you want to do normalizations specific to some part of the payload, you
         can specify those under `normalizeHash`.
@@ -2729,7 +2729,7 @@ define("ember-data/lib/serializers/rest_serializer",
         You use `normalizeHash` to normalize just the comments:
 
         ```javascript
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           normalizeHash: {
             comments: function(hash) {
               hash.id = hash._id;
@@ -2795,7 +2795,7 @@ define("ember-data/lib/serializers/rest_serializer",
         `id`, you can specify how to normalize just the comments:
 
         ```js
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           normalizeHash: {
             comments: function(hash) {
               hash.id = hash._id;
@@ -2836,7 +2836,7 @@ define("ember-data/lib/serializers/rest_serializer",
         For example, you might want to remove some extraneous data from the payload:
 
         ```js
-        App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.RESTSerializer.extend({
           normalizePayload: function(type, payload) {
             delete payload.version;
             delete payload.status;
@@ -2958,7 +2958,7 @@ define("ember-data/lib/serializers/rest_serializer",
         into shape:
 
         ```js
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           // First, restructure the top-level so it's organized by type
           extractSingle: function(store, type, payload, id, requestType) {
             var comments = payload._embedded.comment;
@@ -3086,7 +3086,7 @@ define("ember-data/lib/serializers/rest_serializer",
         into shape:
 
         ```js
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           // First, restructure the top-level so it's organized by type
           // and the comments are listed under a post's `comments` key.
           extractArray: function(store, type, payload, id, requestType) {
@@ -3237,7 +3237,7 @@ define("ember-data/lib/serializers/rest_serializer",
         the expected camelcased versions.
 
         ```js
-        App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.RESTSerializer.extend({
           typeForRoot: function(root) {
             var camelized = Ember.String.camelize(root);
             return Ember.String.singularize(camelized);
@@ -3265,7 +3265,7 @@ define("ember-data/lib/serializers/rest_serializer",
         For example, consider this model:
 
         ```js
-        App.Comment = DS.Model.ext***REMOVED***({
+        App.Comment = DS.Model.extend({
           title: DS.attr(),
           body: DS.attr(),
 
@@ -3291,7 +3291,7 @@ define("ember-data/lib/serializers/rest_serializer",
         By default, belongs-to relationships are converted into
         IDs when inserted into the JSON hash.
 
-      ***REMOVED***# IDs
+        ## IDs
 
         `serialize` takes an options hash with a single option:
         `includeId`. If this option is `true`, `serialize` will,
@@ -3300,7 +3300,7 @@ define("ember-data/lib/serializers/rest_serializer",
         The adapter passes in `includeId: true` when serializing
         a record for `createRecord`, but not for `updateRecord`.
 
-      ***REMOVED***# Customization
+        ## Customization
 
         Your server may expect a different JSON format than the
         built-in serialization format.
@@ -3309,7 +3309,7 @@ define("ember-data/lib/serializers/rest_serializer",
         return a JSON hash of your choosing.
 
         ```js
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           serialize: function(post, options) {
             var json = {
               POST_TTL: post.get('title'),
@@ -3326,14 +3326,14 @@ define("ember-data/lib/serializers/rest_serializer",
         });
         ```
 
-      ***REMOVED***# Customizing an App-Wide Serializer
+        ## Customizing an App-Wide Serializer
 
         If you want to define a serializer for your entire
         application, you'll probably want to use `eachAttribute`
         and `eachRelationship` on the record.
 
         ```js
-        App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.RESTSerializer.extend({
           serialize: function(record, options) {
             var json = {};
 
@@ -3374,14 +3374,14 @@ define("ember-data/lib/serializers/rest_serializer",
         }
         ```
 
-      ***REMOVED***# Tweaking the Default JSON
+        ## Tweaking the Default JSON
 
         If you just want to do some small tweaks on the default JSON,
         you can call super first and make the tweaks on the returned
         JSON.
 
         ```js
-        App.PostSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.PostSerializer = DS.RESTSerializer.extend({
           serialize: function(record, options) {
             var json = this._super(record, options);
 
@@ -3403,11 +3403,11 @@ define("ember-data/lib/serializers/rest_serializer",
 
       /**
         You can use this method to customize the root keys serialized into the JSON.
-        By default the REST Serializer s***REMOVED***s camelized root keys.
+        By default the REST Serializer sends camelized root keys.
         For example, your server may expect underscored root objects.
 
         ```js
-        App.ApplicationSerializer = DS.RESTSerializer.ext***REMOVED***({
+        App.ApplicationSerializer = DS.RESTSerializer.extend({
           serializeIntoHash: function(data, type, record, options) {
             var root = Ember.String.decamelize(type.typeKey);
             data[root] = this.serialize(record, options);
@@ -3428,7 +3428,7 @@ define("ember-data/lib/serializers/rest_serializer",
 
       /**
         You can use this method to customize how polymorphic objects are serialized.
-        By default the JSON Serializer creates the key by app***REMOVED***ing `Type` to
+        By default the JSON Serializer creates the key by appending `Type` to
         the attribute and value from the model's camelcased model name.
 
         @method serializePolymorphicType
@@ -3471,7 +3471,7 @@ define("ember-data/lib/system/adapter",
       Example
 
       ```javascript
-      App.ApplicationAdapter = DS.RESTAdapter.ext***REMOVED***({
+      App.ApplicationAdapter = DS.RESTAdapter.extend({
         ajaxError: function(jqXHR) {
           var error = this._super(jqXHR);
 
@@ -3500,7 +3500,7 @@ define("ember-data/lib/system/adapter",
       @namespace DS
     */
     var InvalidError = function(errors) {
-      var tmp = Error.prototype.constructor.call(this, "The back***REMOVED*** rejected the commit because it was invalid: " + Ember.inspect(errors));
+      var tmp = Error.prototype.constructor.call(this, "The backend rejected the commit because it was invalid: " + Ember.inspect(errors));
       this.errors = errors;
 
       for (var i=0, l=errorProps.length; i<l; i++) {
@@ -3517,12 +3517,12 @@ define("ember-data/lib/system/adapter",
       adapter is not invoked directly instead its functionality is accessed
       through the `store`.
 
-    ***REMOVED***## Creating an Adapter
+      ### Creating an Adapter
 
       First, create a new subclass of `DS.Adapter`:
 
       ```javascript
-      App.MyAdapter = DS.Adapter.ext***REMOVED***({
+      App.MyAdapter = DS.Adapter.extend({
         // ...your code here
       });
       ```
@@ -3536,7 +3536,7 @@ define("ember-data/lib/system/adapter",
       ```
 
       `DS.Adapter` is an abstract base class that you should override in your
-      application to customize it for your back***REMOVED***. The minimum set of methods
+      application to customize it for your backend. The minimum set of methods
       that you should implement is:
 
         * `find()`
@@ -3557,10 +3557,10 @@ define("ember-data/lib/system/adapter",
 
       @class Adapter
       @namespace DS
-      @ext***REMOVED***s Ember.Object
+      @extends Ember.Object
     */
 
-    var Adapter = Ember.Object.ext***REMOVED***({
+    var Adapter = Ember.Object.extend({
 
       /**
         If you would like your adapter to use a custom serializer you can
@@ -3572,7 +3572,7 @@ define("ember-data/lib/system/adapter",
         `application` serializer.
 
         ```javascript
-        var DjangoAdapter = DS.Adapter.ext***REMOVED***({
+        var DjangoAdapter = DS.Adapter.extend({
           defaultSerializer: 'django'
         });
         ```
@@ -3591,7 +3591,7 @@ define("ember-data/lib/system/adapter",
         Here is an example `find` implementation:
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           find: function(store, type, id) {
             var url = [type, id].join('/');
 
@@ -3622,7 +3622,7 @@ define("ember-data/lib/system/adapter",
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           findAll: function(store, type, sinceToken) {
             var url = type;
             var query = { since: sinceToken };
@@ -3655,7 +3655,7 @@ define("ember-data/lib/system/adapter",
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           findQuery: function(store, type, query) {
             var url = type;
             return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -3689,7 +3689,7 @@ define("ember-data/lib/system/adapter",
         Most traditional REST-like HTTP APIs will not use this method. Instead, the ID
         of the record will be set by the server, and your adapter will update the store
         with the new ID when it calls `didCreateRecord()`. Only implement this method if
-        you int***REMOVED*** to generate record IDs on the client-side.
+        you intend to generate record IDs on the client-side.
 
         The `generateIdForRecord()` method will be invoked with the requesting store as
         the first parameter and the newly created record as the second parameter:
@@ -3714,7 +3714,7 @@ define("ember-data/lib/system/adapter",
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           createRecord: function(store, type, record) {
             var data = this.serialize(record, { includeId: true });
             var url = type;
@@ -3737,12 +3737,12 @@ define("ember-data/lib/system/adapter",
         Implement this method in a subclass to handle the creation of
         new records.
 
-        Serializes the record and s***REMOVED*** it to the server.
+        Serializes the record and send it to the server.
 
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           createRecord: function(store, type, record) {
             var data = this.serialize(record, { includeId: true });
             var url = type;
@@ -3776,12 +3776,12 @@ define("ember-data/lib/system/adapter",
         Implement this method in a subclass to handle the updating of
         a record.
 
-        Serializes the record update and s***REMOVED*** it to the server.
+        Serializes the record update and send it to the server.
 
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           updateRecord: function(store, type, record) {
             var data = this.serialize(record, { includeId: true });
             var id = record.get('id');
@@ -3816,12 +3816,12 @@ define("ember-data/lib/system/adapter",
         Implement this method in a subclass to handle the deletion of
         a record.
 
-        S***REMOVED***s a delete request for the record to the server.
+        Sends a delete request for the record to the server.
 
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           deleteRecord: function(store, type, record) {
             var data = this.serialize(record, { includeId: true });
             var id = record.get('id');
@@ -3862,7 +3862,7 @@ define("ember-data/lib/system/adapter",
         Example
 
         ```javascript
-        App.ApplicationAdapter = DS.Adapter.ext***REMOVED***({
+        App.ApplicationAdapter = DS.Adapter.extend({
           findMany: function(store, type, ids) {
             var url = type;
             return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -3898,21 +3898,21 @@ define("ember-data/lib/system/adapter",
   });
 define("ember-data/lib/system/changes", 
   ["./changes/attribute_change","./changes/relationship_change","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var AttributeChange = __dep***REMOVED***ency1__["default"];
+    var AttributeChange = __dependency1__["default"];
 
-    var RelationshipChange = __dep***REMOVED***ency2__.RelationshipChange;
-    var RelationshipChangeAdd = __dep***REMOVED***ency2__.RelationshipChangeAdd;
-    var RelationshipChangeRemove = __dep***REMOVED***ency2__.RelationshipChangeRemove;
-    var OneToManyChange = __dep***REMOVED***ency2__.OneToManyChange;
-    var ManyToNoneChange = __dep***REMOVED***ency2__.ManyToNoneChange;
-    var OneToOneChange = __dep***REMOVED***ency2__.OneToOneChange;
-    var ManyToManyChange = __dep***REMOVED***ency2__.ManyToManyChange;
+    var RelationshipChange = __dependency2__.RelationshipChange;
+    var RelationshipChangeAdd = __dependency2__.RelationshipChangeAdd;
+    var RelationshipChangeRemove = __dependency2__.RelationshipChangeRemove;
+    var OneToManyChange = __dependency2__.OneToManyChange;
+    var ManyToNoneChange = __dependency2__.ManyToNoneChange;
+    var OneToOneChange = __dependency2__.OneToOneChange;
+    var ManyToManyChange = __dependency2__.ManyToManyChange;
 
     __exports__.AttributeChange = AttributeChange;
     __exports__.RelationshipChange = RelationshipChange;
@@ -3956,7 +3956,7 @@ define("ember-data/lib/system/changes/attribute_change",
     AttributeChange.prototype = {
       sync: function() {
         if (this.value !== this.oldValue) {
-          this.record.s***REMOVED***('becomeDirty');
+          this.record.send('becomeDirty');
           this.record.updateRecordArraysLater();
         }
 
@@ -3966,7 +3966,7 @@ define("ember-data/lib/system/changes/attribute_change",
 
       /**
         If the AttributeChange is destroyed (either by being rolled back
-        or being committed), remove it from the list of p***REMOVED***ing changes
+        or being committed), remove it from the list of pending changes
         on the record.
 
         @method destroy
@@ -3980,13 +3980,13 @@ define("ember-data/lib/system/changes/attribute_change",
   });
 define("ember-data/lib/system/changes/relationship_change", 
   ["../model","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var Model = __dep***REMOVED***ency1__.Model;
+    var Model = __dependency1__.Model;
 
     var get = Ember.get, set = Ember.set;
     var forEach = Ember.EnumerableUtils.forEach;
@@ -4356,13 +4356,13 @@ define("ember-data/lib/system/changes/relationship_change",
 
       if (secondRecord instanceof Model && firstRecord instanceof Model) {
         if(this.secondRecordKind === "belongsTo"){
-          secondRecord.susp***REMOVED***RelationshipObservers(function(){
+          secondRecord.suspendRelationshipObservers(function(){
             set(secondRecord, secondRecordName, firstRecord);
           });
 
          }
          else if(this.secondRecordKind === "hasMany"){
-          secondRecord.susp***REMOVED***RelationshipObservers(function(){
+          secondRecord.suspendRelationshipObservers(function(){
             var relationship = get(secondRecord, secondRecordName);
             if (isValue(relationship)) { relationship.addObject(firstRecord); }
           });
@@ -4371,12 +4371,12 @@ define("ember-data/lib/system/changes/relationship_change",
 
       if (firstRecord instanceof Model && secondRecord instanceof Model && get(firstRecord, firstRecordName) !== secondRecord) {
         if(this.firstRecordKind === "belongsTo"){
-          firstRecord.susp***REMOVED***RelationshipObservers(function(){
+          firstRecord.suspendRelationshipObservers(function(){
             set(firstRecord, firstRecordName, secondRecord);
           });
         }
         else if(this.firstRecordKind === "hasMany"){
-          firstRecord.susp***REMOVED***RelationshipObservers(function(){
+          firstRecord.suspendRelationshipObservers(function(){
             var relationship = get(firstRecord, firstRecordName);
             if (isValue(relationship)) { relationship.addObject(secondRecord); }
           });
@@ -4398,12 +4398,12 @@ define("ember-data/lib/system/changes/relationship_change",
 
       if (secondRecord instanceof Model && firstRecord instanceof Model) {
         if(this.secondRecordKind === "belongsTo"){
-          secondRecord.susp***REMOVED***RelationshipObservers(function(){
+          secondRecord.suspendRelationshipObservers(function(){
             set(secondRecord, secondRecordName, null);
           });
         }
         else if(this.secondRecordKind === "hasMany"){
-          secondRecord.susp***REMOVED***RelationshipObservers(function(){
+          secondRecord.suspendRelationshipObservers(function(){
             var relationship = get(secondRecord, secondRecordName);
             if (isValue(relationship)) { relationship.removeObject(firstRecord); }
           });
@@ -4412,12 +4412,12 @@ define("ember-data/lib/system/changes/relationship_change",
 
       if (firstRecord instanceof Model && get(firstRecord, firstRecordName)) {
         if(this.firstRecordKind === "belongsTo"){
-          firstRecord.susp***REMOVED***RelationshipObservers(function(){
+          firstRecord.suspendRelationshipObservers(function(){
             set(firstRecord, firstRecordName, null);
           });
          }
          else if(this.firstRecordKind === "hasMany"){
-           firstRecord.susp***REMOVED***RelationshipObservers(function(){
+           firstRecord.suspendRelationshipObservers(function(){
              var relationship = get(firstRecord, firstRecordName);
              if (isValue(relationship)) { relationship.removeObject(secondRecord); }
           });
@@ -4488,41 +4488,41 @@ define("ember-data/lib/system/container_proxy",
   });
 define("ember-data/lib/system/debug", 
   ["./debug/debug_info","./debug/debug_adapter","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var DebugAdapter = __dep***REMOVED***ency2__["default"];
+    var DebugAdapter = __dependency2__["default"];
 
     __exports__["default"] = DebugAdapter;
   });
 define("ember-data/lib/system/debug/debug_adapter", 
   ["../model","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
-    var Model = __dep***REMOVED***ency1__.Model;
+    var Model = __dependency1__.Model;
     var get = Ember.get, capitalize = Ember.String.capitalize, underscore = Ember.String.underscore;
 
     /**
-      Ext***REMOVED*** `Ember.DataAdapter` with ED specific code.
+      Extend `Ember.DataAdapter` with ED specific code.
 
       @class DebugAdapter
       @namespace DS
-      @ext***REMOVED***s Ember.DataAdapter
+      @extends Ember.DataAdapter
       @private
     */
-    var DebugAdapter = Ember.DataAdapter.ext***REMOVED***({
+    var DebugAdapter = Ember.DataAdapter.extend({
       getFilters: function() {
         return [
           { name: 'isNew', desc: 'New' },
           { name: 'isModified', desc: 'Modified' },
           { name: 'isClean', desc: 'Clean' }
-      ***REMOVED***;
+        ];
       },
 
       detect: function(klass) {
@@ -4617,9 +4617,9 @@ define("ember-data/lib/system/debug/debug_adapter",
   });
 define("ember-data/lib/system/debug/debug_info", 
   ["../model","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Model = __dep***REMOVED***ency1__.Model;
+    var Model = __dependency1__.Model;
 
     Model.reopen({
 
@@ -4673,7 +4673,7 @@ define("ember-data/lib/system/debug/debug_info",
             name: 'Flags',
             properties: ['isLoaded', 'isDirty', 'isSaving', 'isDeleted', 'isError', 'isNew', 'isValid']
           }
-      ***REMOVED***;
+        ];
 
         return {
           propertyInfo: {
@@ -4691,16 +4691,16 @@ define("ember-data/lib/system/debug/debug_info",
   });
 define("ember-data/lib/system/model", 
   ["./model/model","./model/attributes","./model/states","./model/errors","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var Model = __dep***REMOVED***ency1__["default"];
-    var attr = __dep***REMOVED***ency2__["default"];
-    var RootState = __dep***REMOVED***ency3__["default"];
-    var Errors = __dep***REMOVED***ency4__["default"];
+    var Model = __dependency1__["default"];
+    var attr = __dependency2__["default"];
+    var RootState = __dependency3__["default"];
+    var Errors = __dependency4__["default"];
 
     __exports__.Model = Model;
     __exports__.RootState = RootState;
@@ -4709,9 +4709,9 @@ define("ember-data/lib/system/model",
   });
 define("ember-data/lib/system/model/attributes", 
   ["./model","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Model = __dep***REMOVED***ency1__["default"];
+    var Model = __dependency1__["default"];
 
     /**
       @module ember-data
@@ -4733,7 +4733,7 @@ define("ember-data/lib/system/model/attributes",
 
         ```javascript
 
-        App.Person = DS.Model.ext***REMOVED***({
+        App.Person = DS.Model.extend({
           firstName: attr('string'),
           lastName: attr('string'),
           birthday: attr('date')
@@ -4779,7 +4779,7 @@ define("ember-data/lib/system/model/attributes",
         Example
 
         ```javascript
-        App.Person = DS.Model.ext***REMOVED***({
+        App.Person = DS.Model.extend({
           firstName: attr(),
           lastName: attr('string'),
           birthday: attr('date')
@@ -4833,7 +4833,7 @@ define("ember-data/lib/system/model/attributes",
         Example
 
         ```javascript
-        App.Person = DS.Model.ext***REMOVED***({
+        App.Person = DS.Model.extend({
           firstName: attr('string'),
           lastName: attr('string'),
           birthday: attr('date')
@@ -4882,7 +4882,7 @@ define("ember-data/lib/system/model/attributes",
         Example
 
         ```javascript
-        App.Person = DS.Model.ext***REMOVED***({
+        App.Person = DS.Model.extend({
           firstName: attr(),
           lastName: attr('string'),
           birthday: attr('date')
@@ -4959,7 +4959,7 @@ define("ember-data/lib/system/model/attributes",
       ```javascript
       var attr = DS.attr;
 
-      App.User = DS.Model.ext***REMOVED***({
+      App.User = DS.Model.extend({
         username: attr('string'),
         email: attr('string'),
         verified: attr('boolean', {defaultValue: false})
@@ -4992,7 +4992,7 @@ define("ember-data/lib/system/model/attributes",
             // the 'didSetProperty' handler if it is no different from the original value
             this._attributes[key] = value;
 
-            this.s***REMOVED***('didSetProperty', {
+            this.send('didSetProperty', {
               name: key,
               oldValue: oldValue,
               originalValue: this._data[key],
@@ -5030,11 +5030,11 @@ define("ember-data/lib/system/model/errors",
 
       @class Errors
       @namespace DS
-      @ext***REMOVED***s Ember.Object
+      @extends Ember.Object
       @uses Ember.Enumerable
       @uses Ember.Evented
      */
-    var Errors = Ember.Object.ext***REMOVED***(Ember.Enumerable, Ember.Evented, {
+    var Errors = Ember.Object.extend(Ember.Enumerable, Ember.Evented, {
       /**
         Register with target handler
 
@@ -5134,7 +5134,7 @@ define("ember-data/lib/system/model/errors",
       isEmpty: Ember.computed.not('length').readOnly(),
 
       /**
-        Adds error messages to a given attribute and s***REMOVED***s
+        Adds error messages to a given attribute and sends
         `becameInvalid` event to the record.
 
         @method add
@@ -5171,7 +5171,7 @@ define("ember-data/lib/system/model/errors",
       },
 
       /**
-        Removes all error messages from the given attribute and s***REMOVED***s
+        Removes all error messages from the given attribute and sends
         `becameValid` event to the record if there no more errors left.
 
         @method remove
@@ -5192,7 +5192,7 @@ define("ember-data/lib/system/model/errors",
       },
 
       /**
-        Removes all error messages and s***REMOVED***s `becameValid` event
+        Removes all error messages and sends `becameValid` event
         to the record.
 
         @method clear
@@ -5222,10 +5222,10 @@ define("ember-data/lib/system/model/errors",
   });
 define("ember-data/lib/system/model/model", 
   ["./states","./errors","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var RootState = __dep***REMOVED***ency1__["default"];
-    var Errors = __dep***REMOVED***ency2__["default"];
+    var RootState = __dependency1__["default"];
+    var Errors = __dependency2__["default"];
     /**
       @module ember-data
     */
@@ -5240,14 +5240,14 @@ define("ember-data/lib/system/model/model",
 
     /**
 
-      The model class that all Ember Data records desc***REMOVED*** from.
+      The model class that all Ember Data records descend from.
 
       @class Model
       @namespace DS
-      @ext***REMOVED***s Ember.Object
+      @extends Ember.Object
       @uses Ember.Evented
     */
-    var Model = Ember.Object.ext***REMOVED***(Ember.Evented, {
+    var Model = Ember.Object.extend(Ember.Evented, {
       _recordArrays: undefined,
       _relationships: undefined,
       _loadingRecordArrays: undefined,
@@ -5326,7 +5326,7 @@ define("ember-data/lib/system/model/model",
         If this property is `true` the record is in the `saving` state. A
         record enters the saving state when `save` is called, but the
         adapter has not yet acknowledged that the changes have been
-        persisted to the back***REMOVED***.
+        persisted to the backend.
 
         Example
 
@@ -5424,7 +5424,7 @@ define("ember-data/lib/system/model/model",
 
       /**
         If `true` the adapter reported that it was unable to save local
-        changes to the back***REMOVED***. This may also result in the record having
+        changes to the backend. This may also result in the record having
         its `isValid` property become false if the adapter reported that
         server-side validations failed.
 
@@ -5520,9 +5520,9 @@ define("ember-data/lib/system/model/model",
         var errors = Errors.create();
 
         errors.registerHandlers(this, function() {
-          this.s***REMOVED***('becameInvalid');
+          this.send('becameInvalid');
         }, function() {
-          this.s***REMOVED***('becameValid');
+          this.send('becameValid');
         });
 
         return errors;
@@ -5636,12 +5636,12 @@ define("ember-data/lib/system/model/model",
       },
 
       /**
-        @method s***REMOVED***
+        @method send
         @private
         @param {String} name
         @param {Object} context
       */
-      s***REMOVED***: function(name, context) {
+      send: function(name, context) {
         var currentState = get(this, 'currentState');
 
         if (!currentState[name]) {
@@ -5716,7 +5716,7 @@ define("ember-data/lib/system/model/model",
         @param {Promise} promise
       */
       loadingData: function(promise) {
-        this.s***REMOVED***('loadingData', promise);
+        this.send('loadingData', promise);
       },
 
       /**
@@ -5724,7 +5724,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       loadedData: function() {
-        this.s***REMOVED***('loadedData');
+        this.send('loadedData');
       },
 
       /**
@@ -5732,7 +5732,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       notFound: function() {
-        this.s***REMOVED***('notFound');
+        this.send('notFound');
       },
 
       /**
@@ -5740,7 +5740,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       pushedData: function() {
-        this.s***REMOVED***('pushedData');
+        this.send('pushedData');
       },
 
       /**
@@ -5752,7 +5752,7 @@ define("ember-data/lib/system/model/model",
         Example
 
         ```javascript
-        App.ModelDeleteRoute = Ember.Route.ext***REMOVED***({
+        App.ModelDeleteRoute = Ember.Route.extend({
           actions: {
             softDelete: function() {
               this.get('model').deleteRecord();
@@ -5770,7 +5770,7 @@ define("ember-data/lib/system/model/model",
         @method deleteRecord
       */
       deleteRecord: function() {
-        this.s***REMOVED***('deleteRecord');
+        this.send('deleteRecord');
       },
 
       /**
@@ -5779,7 +5779,7 @@ define("ember-data/lib/system/model/model",
         Example
 
         ```javascript
-        App.ModelDeleteRoute = Ember.Route.ext***REMOVED***({
+        App.ModelDeleteRoute = Ember.Route.extend({
           actions: {
             delete: function() {
               var controller = this.controller;
@@ -5807,7 +5807,7 @@ define("ember-data/lib/system/model/model",
       unloadRecord: function() {
         if (this.isDestroyed) { return; }
 
-        this.s***REMOVED***('unloadRecord');
+        this.send('unloadRecord');
       },
 
       /**
@@ -5843,7 +5843,7 @@ define("ember-data/lib/system/model/model",
         Example
 
         ```javascript
-        App.Mascot = DS.Model.ext***REMOVED***({
+        App.Mascot = DS.Model.extend({
           name: attr('string')
         });
 
@@ -5875,7 +5875,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       adapterWillCommit: function() {
-        this.s***REMOVED***('willCommit');
+        this.send('willCommit');
       },
 
       /**
@@ -5896,12 +5896,12 @@ define("ember-data/lib/system/model/model",
 
         this._inFlightAttributes = {};
 
-        this.s***REMOVED***('didCommit');
+        this.send('didCommit');
         this.updateRecordArraysLater();
 
         if (!data) { return; }
 
-        this.susp***REMOVED***RelationshipObservers(function() {
+        this.suspendRelationshipObservers(function() {
           this.notifyPropertyChange('data');
         });
       },
@@ -5911,7 +5911,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       adapterDidDirty: function() {
-        this.s***REMOVED***('becomeDirty');
+        this.send('becomeDirty');
         this.updateRecordArraysLater();
       },
 
@@ -5977,7 +5977,7 @@ define("ember-data/lib/system/model/model",
 
         if (data) { this.pushedData(); }
 
-        this.susp***REMOVED***RelationshipObservers(function() {
+        this.suspendRelationshipObservers(function() {
           this.notifyPropertyChange('data');
         });
       },
@@ -6043,9 +6043,9 @@ define("ember-data/lib/system/model/model",
           this._inFlightAttributes = {};
         }
 
-        this.s***REMOVED***('rolledBack');
+        this.send('rolledBack');
 
-        this.susp***REMOVED***RelationshipObservers(function() {
+        this.suspendRelationshipObservers(function() {
           this.notifyPropertyChange('data');
         });
       },
@@ -6063,27 +6063,27 @@ define("ember-data/lib/system/model/model",
         inverse relationship or marking records as dirty).
 
         The specific implementation will likely change as Ember proper provides
-        better infrastructure for susp***REMOVED***ing groups of observers, and if Array
+        better infrastructure for suspending groups of observers, and if Array
         observation becomes more unified with regular observers.
 
-        @method susp***REMOVED***RelationshipObservers
+        @method suspendRelationshipObservers
         @private
         @param callback
         @param binding
       */
-      susp***REMOVED***RelationshipObservers: function(callback, binding) {
+      suspendRelationshipObservers: function(callback, binding) {
         var observers = get(this.constructor, 'relationshipNames').belongsTo;
         var self = this;
 
         try {
-          this._susp***REMOVED***edRelationships = true;
-          Ember._susp***REMOVED***Observers(self, observers, null, 'belongsToDidChange', function() {
-            Ember._susp***REMOVED***BeforeObservers(self, observers, null, 'belongsToWillChange', function() {
+          this._suspendedRelationships = true;
+          Ember._suspendObservers(self, observers, null, 'belongsToDidChange', function() {
+            Ember._suspendBeforeObservers(self, observers, null, 'belongsToWillChange', function() {
               callback.call(binding || self);
             });
           });
         } finally {
-          this._susp***REMOVED***edRelationships = false;
+          this._suspendedRelationships = false;
         }
       },
 
@@ -6126,7 +6126,7 @@ define("ember-data/lib/system/model/model",
         Example
 
         ```javascript
-        App.ModelViewRoute = Ember.Route.ext***REMOVED***({
+        App.ModelViewRoute = Ember.Route.extend({
           actions: {
             reload: function() {
               this.get('model').reload();
@@ -6147,7 +6147,7 @@ define("ember-data/lib/system/model/model",
 
         var promiseLabel = "DS: Model#reload of " + this;
         var promise = new Promise(function(resolve){
-           record.s***REMOVED***('reloadRecord', resolve);
+           record.send('reloadRecord', resolve);
         }, promiseLabel).then(function() {
           record.set('isReloading', false);
           record.set('isError', false);
@@ -6199,7 +6199,7 @@ define("ember-data/lib/system/model/model",
         @private
       */
       adapterDidError: function() {
-        this.s***REMOVED***('becameError');
+        this.send('becameError');
         set(this, 'isError', true);
       },
 
@@ -6239,7 +6239,7 @@ define("ember-data/lib/system/model/model",
 
       /**
         Alias DS.Model's `create` method to `_create`. This allows us to create DS.Model
-        instances from within the store, but if ***REMOVED*** users accidentally call `create()`
+        instances from within the store, but if end users accidentally call `create()`
         (instead of `createRecord()`), we can raise an error.
 
         @method _create
@@ -6250,7 +6250,7 @@ define("ember-data/lib/system/model/model",
 
       /**
         Override the class' `create()` method to raise an error. This
-        prevents ***REMOVED*** users from inadvertently calling `create()` instead
+        prevents end users from inadvertently calling `create()` instead
         of `createRecord()`. The store is still able to create instances
         by calling the `_create()` method. To create an instance of a
         `DS.Model` use [store.createRecord](DS.Store.html#method_createRecord).
@@ -6280,7 +6280,7 @@ define("ember-data/lib/system/model/states",
       through during its lifecycle.
     */
     /**
-    ***REMOVED***## State
+      ### State
 
       Each record has a `currentState` property that explicitly tracks what
       state a record is in at any given time. For instance, if a record is
@@ -6293,7 +6293,7 @@ define("ember-data/lib/system/model/states",
 
       Events are sent by the record or its store to the record's
       `currentState` property. How the state reacts to these events is
-      dep***REMOVED***ent on which state it is in. In some states, certain events
+      dependent on which state it is in. In some states, certain events
       will be invalid and will cause an exception to be raised.
 
       States are hierarchical and every state is a substate of the
@@ -6344,11 +6344,11 @@ define("ember-data/lib/system/model/states",
       state about the record if needed; you should never store data on the state
       object itself.
 
-    ***REMOVED***## Events and Flags
+      ### Events and Flags
 
       A state may implement zero or more events and flags.
 
-    ***REMOVED***### Events
+      #### Events
 
       Events are named functions that are invoked when sent to a record. The
       record will first look for a method with the given name on the
@@ -6371,11 +6371,11 @@ define("ember-data/lib/system/model/states",
       To trigger this event:
 
       ```javascript
-      record.s***REMOVED***('myEvent', 'foo');
+      record.send('myEvent', 'foo');
       //=> "Received myEvent with foo"
       ```
 
-      Note that an optional parameter can be sent to a record's `s***REMOVED***()` method,
+      Note that an optional parameter can be sent to a record's `send()` method,
       which will be passed as the second parameter to the event handler.
 
       Events should transition to a different state if appropriate. This can be
@@ -6399,12 +6399,12 @@ define("ember-data/lib/system/model/states",
 
       Remember that *only events* should ever cause a state transition. You should
       never call `transitionTo()` from outside a state's event handler. If you are
-      tempted to do so, create a new event and s***REMOVED*** that to the state manager.
+      tempted to do so, create a new event and send that to the state manager.
 
-    ***REMOVED***### Flags
+      #### Flags
 
       Flags are Boolean values that can be used to introspect a record's current
-      state in a more user-fri***REMOVED***ly way than examining its state path. For example,
+      state in a more user-friendly way than examining its state path. For example,
       instead of doing this:
 
       ```javascript
@@ -6459,9 +6459,9 @@ define("ember-data/lib/system/model/states",
     function didSetProperty(record, context) {
       if (context.value === context.originalValue) {
         delete record._attributes[context.name];
-        record.s***REMOVED***('propertyWasReset', context.name);
+        record.send('propertyWasReset', context.name);
       } else if (context.value !== context.oldValue) {
-        record.s***REMOVED***('becomeDirty');
+        record.send('becomeDirty');
       }
 
       record.updateRecordArraysLater();
@@ -6480,14 +6480,14 @@ define("ember-data/lib/system/model/states",
     //   created (but not yet saved) or deleted.
     // * isSaving: The record has been committed, but
     //   the adapter has not yet acknowledged that the changes have
-    //   been persisted to the back***REMOVED***.
+    //   been persisted to the backend.
     // * isDeleted: The record was marked for deletion. When `isDeleted`
     //   is true and `isDirty` is true, the record is deleted locally
     //   but the deletion was not yet persisted. When `isSaving` is
     //   true, the change is in-flight. When both `isDirty` and
     //   `isSaving` are false, the change has persisted.
     // * isError: The adapter reported that it was unable to save
-    //   local changes to the back***REMOVED***. This may also result in the
+    //   local changes to the backend. This may also result in the
     //   record having its `isValid` property become false if the
     //   adapter reported that server-side validations failed.
     // * isNew: The record was created on the client and the adapter
@@ -6509,7 +6509,7 @@ define("ember-data/lib/system/model/states",
     // `inFlight`: the store has handed off the record to be saved,
     //   but the adapter has not yet acknowledged success.
     // `invalid`: the record has invalid information and cannot be
-    //   s***REMOVED*** to the adapter yet.
+    //   send to the adapter yet.
     var DirtyState = {
       initialState: 'uncommitted',
 
@@ -6519,7 +6519,7 @@ define("ember-data/lib/system/model/states",
       // SUBSTATES
 
       // When a record first becomes dirty, it is `uncommitted`.
-      // This means that there are local p***REMOVED***ing changes, but they
+      // This means that there are local pending changes, but they
       // have not yet begun to be saved, and are not invalid.
       uncommitted: {
         // EVENTS
@@ -6533,7 +6533,7 @@ define("ember-data/lib/system/model/states",
             break;
           }
 
-          if (!stillDirty) { record.s***REMOVED***('rolledBack'); }
+          if (!stillDirty) { record.send('rolledBack'); }
         },
 
         pushedData: Ember.K,
@@ -6583,12 +6583,12 @@ define("ember-data/lib/system/model/states",
           var dirtyType = get(this, 'dirtyType');
 
           record.transitionTo('saved');
-          record.s***REMOVED***('invokeLifecycleCallbacks', dirtyType);
+          record.send('invokeLifecycleCallbacks', dirtyType);
         },
 
         becameInvalid: function(record) {
           record.transitionTo('invalid');
-          record.s***REMOVED***('invokeLifecycleCallbacks');
+          record.send('invokeLifecycleCallbacks');
         },
 
         becameError: function(record) {
@@ -6747,7 +6747,7 @@ define("ember-data/lib/system/model/states",
         loadedData: function(record) {
           record.transitionTo('loaded.created.uncommitted');
 
-          record.susp***REMOVED***RelationshipObservers(function() {
+          record.suspendRelationshipObservers(function() {
             record.notifyPropertyChange('data');
           });
         },
@@ -6848,7 +6848,7 @@ define("ember-data/lib/system/model/states",
           },
 
           didCommit: function(record) {
-            record.s***REMOVED***('invokeLifecycleCallbacks', get(record, 'lastDirtyType'));
+            record.send('invokeLifecycleCallbacks', get(record, 'lastDirtyType'));
           },
 
           // loaded.saved.notFound would be triggered by a failed
@@ -6925,7 +6925,7 @@ define("ember-data/lib/system/model/states",
           didCommit: function(record) {
             record.transitionTo('saved');
 
-            record.s***REMOVED***('invokeLifecycleCallbacks');
+            record.send('invokeLifecycleCallbacks');
           },
 
           becameError: function(record) {
@@ -6987,13 +6987,13 @@ define("ember-data/lib/system/model/states",
   });
 define("ember-data/lib/system/record_array_manager", 
   ["./record_arrays","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var ManyArray = __dep***REMOVED***ency1__.ManyArray;
+    var ManyArray = __dependency1__.ManyArray;
     var get = Ember.get, set = Ember.set;
     var forEach = Ember.EnumerableUtils.forEach;
 
@@ -7001,9 +7001,9 @@ define("ember-data/lib/system/record_array_manager",
       @class RecordArrayManager
       @namespace DS
       @private
-      @ext***REMOVED***s Ember.Object
+      @extends Ember.Object
     */
-    var RecordArrayManager = Ember.Object.ext***REMOVED***({
+    var RecordArrayManager = Ember.Object.extend({
       init: function() {
         this.filteredRecordArrays = Ember.MapWithDefault.create({
           defaultValue: function() { return []; }
@@ -7290,16 +7290,16 @@ define("ember-data/lib/system/record_array_manager",
   });
 define("ember-data/lib/system/record_arrays", 
   ["./record_arrays/record_array","./record_arrays/filtered_record_array","./record_arrays/adapter_populated_record_array","./record_arrays/many_array","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var RecordArray = __dep***REMOVED***ency1__["default"];
-    var FilteredRecordArray = __dep***REMOVED***ency2__["default"];
-    var AdapterPopulatedRecordArray = __dep***REMOVED***ency3__["default"];
-    var ManyArray = __dep***REMOVED***ency4__["default"];
+    var RecordArray = __dependency1__["default"];
+    var FilteredRecordArray = __dependency2__["default"];
+    var AdapterPopulatedRecordArray = __dependency3__["default"];
+    var ManyArray = __dependency4__["default"];
 
     __exports__.RecordArray = RecordArray;
     __exports__.FilteredRecordArray = FilteredRecordArray;
@@ -7308,9 +7308,9 @@ define("ember-data/lib/system/record_arrays",
   });
 define("ember-data/lib/system/record_arrays/adapter_populated_record_array", 
   ["./record_array","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var RecordArray = __dep***REMOVED***ency1__["default"];
+    var RecordArray = __dependency1__["default"];
     /**
       @module ember-data
     */
@@ -7325,9 +7325,9 @@ define("ember-data/lib/system/record_arrays/adapter_populated_record_array",
 
       @class AdapterPopulatedRecordArray
       @namespace DS
-      @ext***REMOVED***s DS.RecordArray
+      @extends DS.RecordArray
     */
-    var AdapterPopulatedRecordArray = RecordArray.ext***REMOVED***({
+    var AdapterPopulatedRecordArray = RecordArray.extend({
       query: null,
 
       replace: function() {
@@ -7361,9 +7361,9 @@ define("ember-data/lib/system/record_arrays/adapter_populated_record_array",
   });
 define("ember-data/lib/system/record_arrays/filtered_record_array", 
   ["./record_array","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var RecordArray = __dep***REMOVED***ency1__["default"];
+    var RecordArray = __dependency1__["default"];
 
     /**
       @module ember-data
@@ -7379,9 +7379,9 @@ define("ember-data/lib/system/record_arrays/filtered_record_array",
 
       @class FilteredRecordArray
       @namespace DS
-      @ext***REMOVED***s DS.RecordArray
+      @extends DS.RecordArray
     */
-    var FilteredRecordArray = RecordArray.ext***REMOVED***({
+    var FilteredRecordArray = RecordArray.extend({
       /**
         The filterFunction is a function used to test records from the store to
         determine if they should be part of the record array.
@@ -7430,10 +7430,10 @@ define("ember-data/lib/system/record_arrays/filtered_record_array",
   });
 define("ember-data/lib/system/record_arrays/many_array", 
   ["./record_array","../changes","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var RecordArray = __dep***REMOVED***ency1__["default"];
-    var RelationshipChange = __dep***REMOVED***ency2__.RelationshipChange;
+    var RecordArray = __dependency1__["default"];
+    var RelationshipChange = __dependency2__.RelationshipChange;
 
     /**
       @module ember-data
@@ -7453,18 +7453,18 @@ define("ember-data/lib/system/record_arrays/many_array",
       The `ManyArray` is instantiated lazily the first time the relationship is
       requested.
 
-    ***REMOVED***## Inverses
+      ### Inverses
 
       Often, the relationships in Ember Data applications will have
       an inverse. For example, imagine the following models are
       defined:
 
       ```javascript
-      App.Post = DS.Model.ext***REMOVED***({
+      App.Post = DS.Model.extend({
         comments: DS.hasMany('comment')
       });
 
-      App.Comment = DS.Model.ext***REMOVED***({
+      App.Comment = DS.Model.extend({
         post: DS.belongsTo('post')
       });
       ```
@@ -7480,9 +7480,9 @@ define("ember-data/lib/system/record_arrays/many_array",
 
       @class ManyArray
       @namespace DS
-      @ext***REMOVED***s DS.RecordArray
+      @extends DS.RecordArray
     */
-    var ManyArray = RecordArray.ext***REMOVED***({
+    var ManyArray = RecordArray.extend({
       init: function() {
         this._super.apply(this, arguments);
         this._changesToSync = Ember.OrderedSet.create();
@@ -7578,7 +7578,7 @@ define("ember-data/lib/system/record_arrays/many_array",
         var owner = get(this, 'owner'),
             name = get(this, 'name');
 
-        if (!owner._susp***REMOVED***edRelationships) {
+        if (!owner._suspendedRelationships) {
           // This code is the first half of code that continues inside
           // of arrayContentDidChange. It gets or creates a change from
           // the child object, adds the current owner as the old
@@ -7612,7 +7612,7 @@ define("ember-data/lib/system/record_arrays/many_array",
             name = get(this, 'name'),
             store = get(this, 'store');
 
-        if (!owner._susp***REMOVED***edRelationships) {
+        if (!owner._suspendedRelationships) {
           // This code is the second half of code that started in
           // `arrayContentWillChange`. It gets or creates a change
           // from the child object, and adds the current owner as
@@ -7668,13 +7668,13 @@ define("ember-data/lib/system/record_arrays/many_array",
   });
 define("ember-data/lib/system/record_arrays/record_array", 
   ["../store","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var PromiseArray = __dep***REMOVED***ency1__.PromiseArray;
+    var PromiseArray = __dependency1__.PromiseArray;
     var get = Ember.get, set = Ember.set;
 
     /**
@@ -7686,11 +7686,11 @@ define("ember-data/lib/system/record_arrays/record_array",
 
       @class RecordArray
       @namespace DS
-      @ext***REMOVED***s Ember.ArrayProxy
+      @extends Ember.ArrayProxy
       @uses Ember.Evented
     */
 
-    var RecordArray = Ember.ArrayProxy.ext***REMOVED***(Ember.Evented, {
+    var RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
       /**
         The model type contained by this record array.
 
@@ -7858,14 +7858,14 @@ define("ember-data/lib/system/record_arrays/record_array",
   });
 define("ember-data/lib/system/relationships", 
   ["./relationships/belongs_to","./relationships/has_many","../system/relationships/ext","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     "use strict";
     /**
       @module ember-data
     */
 
-    var belongsTo = __dep***REMOVED***ency1__["default"];
-    var hasMany = __dep***REMOVED***ency2__["default"];
+    var belongsTo = __dependency1__["default"];
+    var hasMany = __dependency2__["default"];
 
 
     __exports__.belongsTo = belongsTo;
@@ -7873,14 +7873,14 @@ define("ember-data/lib/system/relationships",
   });
 define("ember-data/lib/system/relationships/belongs_to", 
   ["../model","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     var get = Ember.get, set = Ember.set,
         isNone = Ember.isNone;
 
     var Promise = Ember.RSVP.Promise;
 
-    var Model = __dep***REMOVED***ency1__.Model;
+    var Model = __dependency1__.Model;
 
     /**
       @module ember-data
@@ -7930,30 +7930,30 @@ define("ember-data/lib/system/relationships/belongs_to",
       - `inverse`: A string used to identify the inverse property on a
         related model in a One-To-Many relationship. See [Explicit Inverses](#toc_explicit-inverses)
 
-    ***REMOVED***### One-To-One
+      #### One-To-One
       To declare a one-to-one relationship between two models, use
       `DS.belongsTo`:
 
       ```javascript
-      App.User = DS.Model.ext***REMOVED***({
+      App.User = DS.Model.extend({
         profile: DS.belongsTo('profile')
       });
 
-      App.Profile = DS.Model.ext***REMOVED***({
+      App.Profile = DS.Model.extend({
         user: DS.belongsTo('user')
       });
       ```
 
-    ***REMOVED***### One-To-Many
+      #### One-To-Many
       To declare a one-to-many relationship between two models, use
       `DS.belongsTo` in combination with `DS.hasMany`, like this:
 
       ```javascript
-      App.Post = DS.Model.ext***REMOVED***({
+      App.Post = DS.Model.extend({
         comments: DS.hasMany('comment')
       });
 
-      App.Comment = DS.Model.ext***REMOVED***({
+      App.Comment = DS.Model.extend({
         post: DS.belongsTo('post')
       });
       ```
@@ -8011,7 +8011,7 @@ define("ember-data/lib/system/relationships/belongs_to",
 
     /**
       These observers observe all `belongsTo` relationships on the record. See
-      `relationships/ext` to see how these observers get their dep***REMOVED***encies.
+      `relationships/ext` to see how these observers get their dependencies.
 
       @class Model
       @namespace DS
@@ -8066,10 +8066,10 @@ define("ember-data/lib/system/relationships/belongs_to",
   });
 define("ember-data/lib/system/relationships/ext", 
   ["../../../../ember-inflector/lib/system","../model"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__) {
+  function(__dependency1__, __dependency2__) {
     "use strict";
-    var singularize = __dep***REMOVED***ency1__.singularize;
-    var Model = __dep***REMOVED***ency2__.Model;
+    var singularize = __dependency1__.singularize;
+    var Model = __dependency2__.Model;
 
     var get = Ember.get, set = Ember.set;
 
@@ -8101,7 +8101,7 @@ define("ember-data/lib/system/relationships/ext",
         being defined. So, for example, when the user does this:
 
         ```javascript
-        DS.Model.ext***REMOVED***({
+        DS.Model.extend({
           parent: DS.belongsTo('user')
         });
         ```
@@ -8157,7 +8157,7 @@ define("ember-data/lib/system/relationships/ext",
         For example, if you define a model like this:
 
        ```javascript
-        App.Post = DS.Model.ext***REMOVED***({
+        App.Post = DS.Model.extend({
           comments: DS.hasMany('comment')
         });
        ```
@@ -8232,7 +8232,7 @@ define("ember-data/lib/system/relationships/ext",
         For example, given the following model definition:
 
         ```javascript
-        App.Blog = DS.Model.ext***REMOVED***({
+        App.Blog = DS.Model.extend({
           users: DS.hasMany('user'),
           owner: DS.belongsTo('user'),
           posts: DS.hasMany('post')
@@ -8286,7 +8286,7 @@ define("ember-data/lib/system/relationships/ext",
         definition:
 
         ```javascript
-        App.Blog = DS.Model.ext***REMOVED***({
+        App.Blog = DS.Model.extend({
           users: DS.hasMany('user'),
           owner: DS.belongsTo('user'),
 
@@ -8329,7 +8329,7 @@ define("ember-data/lib/system/relationships/ext",
         For example, given a model with this definition:
 
         ```javascript
-        App.Blog = DS.Model.ext***REMOVED***({
+        App.Blog = DS.Model.extend({
           users: DS.hasMany('user'),
           owner: DS.belongsTo('user'),
 
@@ -8382,7 +8382,7 @@ define("ember-data/lib/system/relationships/ext",
         definition:
 
         ```javascript
-        App.Blog = DS.Model.ext***REMOVED***({
+        App.Blog = DS.Model.extend({
           users: DS.hasMany('user'),
           owner: DS.belongsTo('user'),
 
@@ -8439,7 +8439,7 @@ define("ember-data/lib/system/relationships/ext",
 
         ```javascript
 
-        App.Blog = DS.Model.ext***REMOVED***({
+        App.Blog = DS.Model.extend({
           users: DS.hasMany('user'),
           owner: DS.belongsTo('user'),
 
@@ -8620,35 +8620,35 @@ define("ember-data/lib/system/relationships/has_many",
       - `async`: A boolean value used to explicitly declare this to be an async relationship.
       - `inverse`: A string used to identify the inverse property on a related model.
 
-    ***REMOVED***### One-To-Many
+      #### One-To-Many
       To declare a one-to-many relationship between two models, use
       `DS.belongsTo` in combination with `DS.hasMany`, like this:
 
       ```javascript
-      App.Post = DS.Model.ext***REMOVED***({
+      App.Post = DS.Model.extend({
         comments: DS.hasMany('comment')
       });
 
-      App.Comment = DS.Model.ext***REMOVED***({
+      App.Comment = DS.Model.extend({
         post: DS.belongsTo('post')
       });
       ```
 
-    ***REMOVED***### Many-To-Many
+      #### Many-To-Many
       To declare a many-to-many relationship between two models, use
       `DS.hasMany`:
 
       ```javascript
-      App.Post = DS.Model.ext***REMOVED***({
+      App.Post = DS.Model.extend({
         tags: DS.hasMany('tag')
       });
 
-      App.Tag = DS.Model.ext***REMOVED***({
+      App.Tag = DS.Model.extend({
         posts: DS.hasMany('post')
       });
       ```
 
-    ***REMOVED***### Explicit Inverses
+      #### Explicit Inverses
 
       Ember Data will do its best to discover which relationships map to
       one another. In the one-to-many code above, for example, Ember Data
@@ -8664,14 +8664,14 @@ define("ember-data/lib/system/relationships/has_many",
       var belongsTo = DS.belongsTo,
           hasMany = DS.hasMany;
 
-      App.Comment = DS.Model.ext***REMOVED***({
+      App.Comment = DS.Model.extend({
         onePost: belongsTo('post'),
         twoPost: belongsTo('post'),
         redPost: belongsTo('post'),
         bluePost: belongsTo('post')
       });
 
-      App.Post = DS.Model.ext***REMOVED***({
+      App.Post = DS.Model.extend({
         comments: hasMany('comment', {
           inverse: 'redPost'
         })
@@ -8753,7 +8753,7 @@ define("ember-data/lib/system/store",
       Define your application's store like this:
 
       ```javascript
-      MyApp.Store = DS.Store.ext***REMOVED***();
+      MyApp.Store = DS.Store.extend();
       ```
 
       Most Ember.js applications will only have a single `DS.Store` that is
@@ -8773,9 +8773,9 @@ define("ember-data/lib/system/store",
       var person = store.find(App.Person, 123);
       ```
 
-      By default, the store will talk to your back***REMOVED*** using a standard
+      By default, the store will talk to your backend using a standard
       REST mechanism. You can customize how the store talks to your
-      back***REMOVED*** by specifying a custom adapter:
+      backend by specifying a custom adapter:
 
       ```javascript
        MyApp.store = DS.Store.create({
@@ -8788,9 +8788,9 @@ define("ember-data/lib/system/store",
 
       @class Store
       @namespace DS
-      @ext***REMOVED***s Ember.Object
+      @extends Ember.Object
     */
-    Store = Ember.Object.ext***REMOVED***({
+    Store = Ember.Object.extend({
 
       /**
         @method init
@@ -8803,11 +8803,11 @@ define("ember-data/lib/system/store",
           store: this
         });
         this._relationshipChanges = {};
-        this._p***REMOVED***ingSave = [];
+        this._pendingSave = [];
       },
 
       /**
-        The adapter to use to communicate to a back***REMOVED*** server or other persistence layer.
+        The adapter to use to communicate to a backend server or other persistence layer.
 
         This can be specified as an instance, class, or string.
 
@@ -9577,7 +9577,7 @@ define("ember-data/lib/system/store",
         This method is called by `record.save`, and gets passed a
         resolver for the promise that `record.save` returns.
 
-        It schedules saving to happen at the ***REMOVED*** of the run loop.
+        It schedules saving to happen at the end of the run loop.
 
         @method scheduleSave
         @private
@@ -9586,22 +9586,22 @@ define("ember-data/lib/system/store",
       */
       scheduleSave: function(record, resolver) {
         record.adapterWillCommit();
-        this._p***REMOVED***ingSave.push([record, resolver]);
-        once(this, 'flushP***REMOVED***ingSave');
+        this._pendingSave.push([record, resolver]);
+        once(this, 'flushPendingSave');
       },
 
       /**
-        This method is called at the ***REMOVED*** of the run loop, and
+        This method is called at the end of the run loop, and
         flushes any records passed into `scheduleSave`
 
-        @method flushP***REMOVED***ingSave
+        @method flushPendingSave
         @private
       */
-      flushP***REMOVED***ingSave: function() {
-        var p***REMOVED***ing = this._p***REMOVED***ingSave.slice();
-        this._p***REMOVED***ingSave = [];
+      flushPendingSave: function() {
+        var pending = this._pendingSave.slice();
+        this._pendingSave = [];
 
-        forEach(p***REMOVED***ing, function(tuple) {
+        forEach(pending, function(tuple) {
           var record = tuple[0], resolver = tuple[1],
               adapter = this.adapterFor(record.constructor),
               operation;
@@ -9786,7 +9786,7 @@ define("ember-data/lib/system/store",
         For this model:
 
         ```js
-        App.Person = DS.Model.ext***REMOVED***({
+        App.Person = DS.Model.extend({
           firstName: DS.attr(),
           lastName: DS.attr(),
 
@@ -9866,10 +9866,10 @@ define("ember-data/lib/system/store",
         var pushData = {
           posts: [
             {id: 1, post_title: "Great post", comment_ids: [2]}
-        ***REMOVED***,
+          ],
           comments: [
             {id: 2, comment_body: "Insightful comment"}
-        ***REMOVED***
+          ]
         }
 
         store.pushPayload('post', pushData);
@@ -10198,10 +10198,10 @@ define("ember-data/lib/system/store",
 
       @class PromiseArray
       @namespace DS
-      @ext***REMOVED***s Ember.ArrayProxy
+      @extends Ember.ArrayProxy
       @uses Ember.PromiseProxyMixin
     */
-    PromiseArray = Ember.ArrayProxy.ext***REMOVED***(Ember.PromiseProxyMixin);
+    PromiseArray = Ember.ArrayProxy.extend(Ember.PromiseProxyMixin);
     /**
       A `PromiseObject` is an object that acts like both an `Ember.Object`
       and a promise. When the promise is resolved the the resulting value
@@ -10228,10 +10228,10 @@ define("ember-data/lib/system/store",
 
       @class PromiseObject
       @namespace DS
-      @ext***REMOVED***s Ember.ObjectProxy
+      @extends Ember.ObjectProxy
       @uses Ember.PromiseProxyMixin
     */
-    PromiseObject = Ember.ObjectProxy.ext***REMOVED***(Ember.PromiseProxyMixin);
+    PromiseObject = Ember.ObjectProxy.extend(Ember.PromiseProxyMixin);
 
     function promiseObject(promise, label) {
       return PromiseObject.create({
@@ -10401,13 +10401,13 @@ define("ember-data/lib/system/store",
   });
 define("ember-data/lib/transforms", 
   ["./transforms/base","./transforms/number","./transforms/date","./transforms/string","./transforms/boolean","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     "use strict";
-    var Transform = __dep***REMOVED***ency1__["default"];
-    var NumberTransform = __dep***REMOVED***ency2__["default"];
-    var DateTransform = __dep***REMOVED***ency3__["default"];
-    var StringTransform = __dep***REMOVED***ency4__["default"];
-    var BooleanTransform = __dep***REMOVED***ency5__["default"];
+    var Transform = __dependency1__["default"];
+    var NumberTransform = __dependency2__["default"];
+    var DateTransform = __dependency3__["default"];
+    var StringTransform = __dependency4__["default"];
+    var BooleanTransform = __dependency5__["default"];
 
     __exports__.Transform = Transform;
     __exports__.NumberTransform = NumberTransform;
@@ -10429,7 +10429,7 @@ define("ember-data/lib/transforms/base",
       Example
 
       ```javascript
-      App.RawTransform = DS.Transform.ext***REMOVED***({
+      App.RawTransform = DS.Transform.extend({
         deserialize: function(serialized) {
           return serialized;
         },
@@ -10443,7 +10443,7 @@ define("ember-data/lib/transforms/base",
 
       ```javascript
       var attr = DS.attr;
-      App.Requirement = DS.Model.ext***REMOVED***({
+      App.Requirement = DS.Model.extend({
         name: attr('string'),
         optionsArray: attr('raw')
       });
@@ -10452,7 +10452,7 @@ define("ember-data/lib/transforms/base",
       @class Transform
       @namespace DS
      */
-    var Transform = Ember.Object.ext***REMOVED***({
+    var Transform = Ember.Object.extend({
       /**
         When given a deserialized value from a record attribute this
         method must return the serialized value.
@@ -10495,9 +10495,9 @@ define("ember-data/lib/transforms/base",
   });
 define("ember-data/lib/transforms/boolean", 
   ["./base","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Transform = __dep***REMOVED***ency1__["default"];
+    var Transform = __dependency1__["default"];
 
     /**
       The `DS.BooleanTransform` class is used to serialize and deserialize
@@ -10509,7 +10509,7 @@ define("ember-data/lib/transforms/boolean",
 
       ```javascript
       var attr = DS.attr;
-      App.User = DS.Model.ext***REMOVED***({
+      App.User = DS.Model.extend({
         isAdmin: attr('boolean'),
         name: attr('string'),
         email: attr('string')
@@ -10517,10 +10517,10 @@ define("ember-data/lib/transforms/boolean",
       ```
 
       @class BooleanTransform
-      @ext***REMOVED***s DS.Transform
+      @extends DS.Transform
       @namespace DS
      */
-    var BooleanTransform = Transform.ext***REMOVED***({
+    var BooleanTransform = Transform.extend({
       deserialize: function(serialized) {
         var type = typeof serialized;
 
@@ -10543,7 +10543,7 @@ define("ember-data/lib/transforms/boolean",
   });
 define("ember-data/lib/transforms/date", 
   ["./base","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
     /**
       The `DS.DateTransform` class is used to serialize and deserialize
@@ -10553,7 +10553,7 @@ define("ember-data/lib/transforms/date",
 
       ```javascript
       var attr = DS.attr;
-      App.Score = DS.Model.ext***REMOVED***({
+      App.Score = DS.Model.extend({
         value: attr('number'),
         player: DS.belongsTo('player'),
         date: attr('date')
@@ -10561,11 +10561,11 @@ define("ember-data/lib/transforms/date",
       ```
 
       @class DateTransform
-      @ext***REMOVED***s DS.Transform
+      @extends DS.Transform
       @namespace DS
      */
-    var Transform = __dep***REMOVED***ency1__["default"];
-    var DateTransform = Transform.ext***REMOVED***({
+    var Transform = __dependency1__["default"];
+    var DateTransform = Transform.extend({
 
       deserialize: function(serialized) {
         var type = typeof serialized;
@@ -10618,9 +10618,9 @@ define("ember-data/lib/transforms/date",
   });
 define("ember-data/lib/transforms/number", 
   ["./base","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Transform = __dep***REMOVED***ency1__["default"];
+    var Transform = __dependency1__["default"];
 
     var empty = Ember.isEmpty;
 
@@ -10634,7 +10634,7 @@ define("ember-data/lib/transforms/number",
 
       ```javascript
       var attr = DS.attr;
-      App.Score = DS.Model.ext***REMOVED***({
+      App.Score = DS.Model.extend({
         value: attr('number'),
         player: DS.belongsTo('player'),
         date: attr('date')
@@ -10642,10 +10642,10 @@ define("ember-data/lib/transforms/number",
       ```
 
       @class NumberTransform
-      @ext***REMOVED***s DS.Transform
+      @extends DS.Transform
       @namespace DS
      */
-    var NumberTransform = Transform.ext***REMOVED***({
+    var NumberTransform = Transform.extend({
 
       deserialize: function(serialized) {
         return empty(serialized) ? null : Number(serialized);
@@ -10660,9 +10660,9 @@ define("ember-data/lib/transforms/number",
   });
 define("ember-data/lib/transforms/string", 
   ["./base","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Transform = __dep***REMOVED***ency1__["default"];
+    var Transform = __dependency1__["default"];
     var none = Ember.isNone;
 
     /**
@@ -10675,7 +10675,7 @@ define("ember-data/lib/transforms/string",
 
       ```javascript
       var attr = DS.attr;
-      App.User = DS.Model.ext***REMOVED***({
+      App.User = DS.Model.extend({
         isAdmin: attr('boolean'),
         name: attr('string'),
         email: attr('string')
@@ -10683,10 +10683,10 @@ define("ember-data/lib/transforms/string",
       ```
 
       @class StringTransform
-      @ext***REMOVED***s DS.Transform
+      @extends DS.Transform
       @namespace DS
      */
-    var StringTransform = Transform.ext***REMOVED***({
+    var StringTransform = Transform.extend({
 
       deserialize: function(serialized) {
         return none(serialized) ? null : String(serialized);
@@ -10702,10 +10702,10 @@ define("ember-data/lib/transforms/string",
   });
 define("ember-inflector/lib/ext/string", 
   ["../system/string"],
-  function(__dep***REMOVED***ency1__) {
+  function(__dependency1__) {
     "use strict";
-    var pluralize = __dep***REMOVED***ency1__.pluralize;
-    var singularize = __dep***REMOVED***ency1__.singularize;
+    var pluralize = __dependency1__.pluralize;
+    var singularize = __dependency1__.singularize;
 
     if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.String) {
       /**
@@ -10731,12 +10731,12 @@ define("ember-inflector/lib/ext/string",
   });
 define("ember-inflector/lib/main", 
   ["./system","./ext/string","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var Inflector = __dep***REMOVED***ency1__.Inflector;
-    var inflections = __dep***REMOVED***ency1__.inflections;
-    var pluralize = __dep***REMOVED***ency1__.pluralize;
-    var singularize = __dep***REMOVED***ency1__.singularize;
+    var Inflector = __dependency1__.Inflector;
+    var inflections = __dependency1__.inflections;
+    var pluralize = __dependency1__.pluralize;
+    var singularize = __dependency1__.singularize;
 
     Inflector.defaultRules = inflections;
     Ember.Inflector        = Inflector;
@@ -10752,14 +10752,14 @@ define("ember-inflector/lib/main",
   });
 define("ember-inflector/lib/system", 
   ["./system/inflector","./system/string","./system/inflections","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     "use strict";
-    var Inflector = __dep***REMOVED***ency1__["default"];
+    var Inflector = __dependency1__["default"];
 
-    var pluralize = __dep***REMOVED***ency2__.pluralize;
-    var singularize = __dep***REMOVED***ency2__.singularize;
+    var pluralize = __dependency2__.pluralize;
+    var singularize = __dependency2__.singularize;
 
-    var defaultRules = __dep***REMOVED***ency3__["default"];
+    var defaultRules = __dependency3__["default"];
 
     
     Inflector.inflector = new Inflector(defaultRules);
@@ -10796,7 +10796,7 @@ define("ember-inflector/lib/system/inflections",
         [/^(ox)$/i, '$1en'],
         [/^(oxen)$/i, '$1'],
         [/(quiz)$/i, '$1zes']
-    ***REMOVED***,
+      ],
 
       singular: [
         [/s$/i, ''],
@@ -10826,7 +10826,7 @@ define("ember-inflector/lib/system/inflections",
         [/(matr)ices$/i, '$1ix'],
         [/(quiz)zes$/i, '$1'],
         [/(database)s$/i, '$1']
-    ***REMOVED***,
+      ],
 
       irregularPairs: [
         ['person', 'people'],
@@ -10836,7 +10836,7 @@ define("ember-inflector/lib/system/inflections",
         ['move', 'moves'],
         ['cow', 'kine'],
         ['zombie', 'zombies']
-    ***REMOVED***,
+      ],
 
       uncountable: [
         'equipment',
@@ -10849,7 +10849,7 @@ define("ember-inflector/lib/system/inflections",
         'sheep',
         'jeans',
         'police'
-    ***REMOVED***
+      ]
     };
 
     __exports__["default"] = defaultRules;
@@ -10925,7 +10925,7 @@ define("ember-inflector/lib/system/inflector",
         singular: [ /\s$/, '' ],
         irregularPairs: [
           [ 'cow', 'kine' ]
-      ***REMOVED***,
+        ],
         uncountable: [ 'fish' ]
       };
 
@@ -11060,9 +11060,9 @@ define("ember-inflector/lib/system/inflector",
   });
 define("ember-inflector/lib/system/string", 
   ["./inflector","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     "use strict";
-    var Inflector = __dep***REMOVED***ency1__["default"];
+    var Inflector = __dependency1__["default"];
     var pluralize = function(word) {
       return Inflector.inflector.pluralize(word);
     };

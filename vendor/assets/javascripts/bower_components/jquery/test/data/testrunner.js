@@ -42,7 +42,7 @@ this.testSubproject = function( label, url, risTests ) {
 		var args = arguments,
 			i = args.length - 1;
 
-		// Prep***REMOVED*** subproject-scoped module name to test name
+		// Prepend subproject-scoped module name to test name
 		args[0] = sub + ": " + name;
 
 		// Find test function and wrap to require subproject fixture
@@ -83,7 +83,7 @@ this.testSubproject = function( label, url, risTests ) {
 					html = "<script src='" + url + src + "'></script>";
 				if ( risTests.test( src ) ) {
 					if ( originaljQuery.isReady ) {
-						originaljQuery("head").first().app***REMOVED***( html );
+						originaljQuery("head").first().append( html );
 					} else {
 						document.write( html );
 					}
@@ -339,7 +339,7 @@ this.Globals = (function() {
 		// Reset internal jQuery state
 		jQuery.event.global = {};
 		if ( ajaxSettings ) {
-			jQuery.ajaxSettings = jQuery.ext***REMOVED***( true, {}, ajaxSettings );
+			jQuery.ajaxSettings = jQuery.extend( true, {}, ajaxSettings );
 		} else {
 			delete jQuery.ajaxSettings;
 		}

@@ -1,4 +1,4 @@
-PS.Core.SingleItemComponent = Ember.Component.ext***REMOVED***
+PS.Core.SingleItemComponent = Ember.Component.extend
   tagName: 'li'
   classNames: ['box']
   classNameBindings: ['isPath:path:link']
@@ -14,7 +14,7 @@ PS.Core.SingleItemComponent = Ember.Component.ext***REMOVED***
 
   actions:
     itemChildrenAction: (param) ->
-      @s***REMOVED***Action('s***REMOVED***ItemChildren', param)
+      @sendAction('sendItemChildren', param)
     itemNotesAction: (param) ->
-      @s***REMOVED***Action('s***REMOVED***ItemNotes', param)
+      @sendAction('sendItemNotes', param)
 

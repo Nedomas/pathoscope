@@ -14,12 +14,12 @@
 				success = true,
 				error = "";
 
-			script.parentNode.app***REMOVED***Child( div );
+			script.parentNode.appendChild( div );
 			div.innerHTML = "<iframe name=\"test\" src=\"" + src + "\">";
 
 			jQuery(function() {
 				try {
-					jQuery( "<div>hello<div>world</div>!</div>" ).app***REMOVED***To( "#qunit-fixture" );
+					jQuery( "<div>hello<div>world</div>!</div>" ).appendTo( "#qunit-fixture" );
 				} catch( e ) {
 					success = false;
 					error = e;

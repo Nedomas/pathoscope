@@ -1,1 +1,1 @@
-class PS.Bookmarklet.Note ext***REMOVED***s PS.Core.Note
+class PS.Bookmarklet.Note extends PS.Core.Note

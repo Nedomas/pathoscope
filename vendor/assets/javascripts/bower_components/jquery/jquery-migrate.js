@@ -268,7 +268,7 @@ jQuery.sub = function() {
 	function jQuerySub( selector, context ) {
 		return new jQuerySub.fn.init( selector, context );
 	}
-	jQuery.ext***REMOVED***( true, jQuerySub, this );
+	jQuery.extend( true, jQuerySub, this );
 	jQuerySub.superclass = this;
 	jQuerySub.fn = jQuerySub.prototype = this();
 	jQuerySub.fn.constructor = jQuerySub;
@@ -347,15 +347,15 @@ if ( !jQuery.clean ) {
 					// Return truthy to indicate that it has been handled
 					return scripts ?
 						scripts.push( elem.parentNode ? elem.parentNode.removeChild( elem ) : elem ) :
-						fragment.app***REMOVED***Child( elem );
+						fragment.appendChild( elem );
 				}
 			};
 
 			for ( i = 0; (elem = ret[i]) != null; i++ ) {
 				// Check if we're done after handling an executable script
 				if ( !( jQuery.nodeName( elem, "script" ) && handleScript( elem ) ) ) {
-					// App***REMOVED*** to fragment and handle embedded scripts
-					fragment.app***REMOVED***Child( elem );
+					// Append to fragment and handle embedded scripts
+					fragment.appendChild( elem );
 					if ( typeof elem.getElementsByTagName !== "undefined" ) {
 						// handleScript alters the DOM, so use jQuery.merge to ensure snapshot iteration
 						jsTags = jQuery.grep( jQuery.merge( [], elem.getElementsByTagName("script") ), handleScript );
@@ -378,7 +378,7 @@ var eventAdd = jQuery.event.add,
 	oldToggle = jQuery.fn.toggle,
 	oldLive = jQuery.fn.live,
 	oldDie = jQuery.fn.die,
-	ajaxEvents = "ajaxStart|ajaxStop|ajaxS***REMOVED***|ajaxComplete|ajaxError|ajaxSuccess",
+	ajaxEvents = "ajaxStart|ajaxStop|ajaxSend|ajaxComplete|ajaxError|ajaxSuccess",
 	rajaxEvent = new RegExp( "\\b(?:" + ajaxEvents + ")\\b" ),
 	rhoverHack = /(?:^|\s)hover(\.\S+|)\b/,
 	hoverHack = function( events ) {

@@ -1,1 +1,1 @@
-class PS.Standalone.WorldController ext***REMOVED***s PS.Core.WorldController
+class PS.Standalone.WorldController extends PS.Core.WorldController

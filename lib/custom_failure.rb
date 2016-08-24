@@ -7,7 +7,7 @@ class CustomFailure < Devise::FailureApp
       recall
     else
       redirect
-***REMOVED***
-***REMOVED***
+    end
+  end
 
-***REMOVED***
+end

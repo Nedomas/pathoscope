@@ -1,4 +1,4 @@
-<h2>Res***REMOVED*** confirmation instructions</h2>
+<h2>Resend confirmation instructions</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
@@ -6,7 +6,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.submit "Res***REMOVED*** confirmation instructions" %></div>
-<% ***REMOVED*** %>
+  <div><%= f.submit "Resend confirmation instructions" %></div>
+<% end %>
 
-<%= r***REMOVED***er "devise/shared/links" %>
+<%= render "devise/shared/links" %>

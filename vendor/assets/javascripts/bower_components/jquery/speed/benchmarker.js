@@ -36,7 +36,7 @@
     "[name=p]", "[name=marketplace]",
     "ul li", "form input",
     "#page #e2econtent", "#page #e2e"
-***REMOVED***;
+  ];
 
   jQuery.fn.benchmark = function() {
     this.each(function() {
@@ -52,7 +52,7 @@
 
   jQuery(function() {
     for(i = 0; i < jQuery.benchmarker.tests.length; i++) {
-      jQuery("tbody").app***REMOVED***("<tr><td class='test'>" + jQuery.benchmarker.tests[i] + "</td></tr>");
+      jQuery("tbody").append("<tr><td class='test'>" + jQuery.benchmarker.tests[i] + "</td></tr>");
     }
     jQuery("tbody tr:first-child").remove();
     jQuery("td.test").before("<td><input type='checkbox' checked='checked' /></td>");
@@ -66,7 +66,7 @@
     jQuery("button.deselectAll").bind("click", function() { jQuery("input[type=checkbox]").each(function() { this.checked = false }) })
 
     jQuery("#addTest").bind("click", function() {
-      jQuery("table").app***REMOVED***("<tr><td><input type='checkbox' /></td><td><input type='text' /><button>Add</button></td></tr>");
+      jQuery("table").append("<tr><td><input type='checkbox' /></td><td><input type='text' /><button>Add</button></td></tr>");
       jQuery("div#time-test > button").each(function() { this.disabled = true; })
       jQuery("tbody tr:last button").bind("click", function() {
         var td = jQuery(this).parent();
@@ -81,7 +81,7 @@
       return "<th>" + extra + i + "</th>"
     }).join("");
 
-    jQuery("thead tr").app***REMOVED***(headers);
+    jQuery("thead tr").append(headers);
 
     var footers = "";
     for(i = 0; i < jQuery.benchmarker.libraries.length; i++)
@@ -91,8 +91,8 @@
     for(i = 0; i < jQuery.benchmarker.libraries.length; i++)
       wlfooters += "<td><span class='wins'>W</span> / <span class='fails'>F</span></th>"
 
-    jQuery("tfoot tr:first").app***REMOVED***(footers);
-    jQuery("tfoot tr:last").app***REMOVED***(wlfooters);
+    jQuery("tfoot tr:first").append(footers);
+    jQuery("tfoot tr:last").append(wlfooters);
 
   });
 
@@ -118,12 +118,12 @@
              (libRes.length > 0 && (jqRes.length == libRes.length)) ||
              ((libraries[0] == "cssQuery" || libraries[0] == "jQuery") && code.match(/nth\-child/) && (libRes.length > 0)) ||
              ((libraries[0] == "jQold") && jqRes.length > 0)) {
-             jQuery(el).parent().app***REMOVED***("<td>" + Math.round(diff / times * 100) / 100 + "ms</td>");
+             jQuery(el).parent().append("<td>" + Math.round(diff / times * 100) / 100 + "ms</td>");
            } else {
-             jQuery(el).parent().app***REMOVED***("<td class='fail'>FAIL</td>");
+             jQuery(el).parent().append("<td class='fail'>FAIL</td>");
            }
          } catch(e) {
-           jQuery(el).parent().app***REMOVED***("<td class='fail'>FAIL</td>");
+           jQuery(el).parent().append("<td class='fail'>FAIL</td>");
          }
        setTimeout(benchmarkList(list, times, libraries), 100);
      } else if(libraries[1]) {

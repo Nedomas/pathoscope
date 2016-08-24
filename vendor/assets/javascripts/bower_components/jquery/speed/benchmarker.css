@@ -42,12 +42,12 @@
      text-align: center;
    }
 
- ***REMOVED***time-test {
+   #time-test {
      margin: 1em 0;
      padding: .5em;
      background: #e3e3e3;
    }
- ***REMOVED***time-taken {
+   #time-taken {
      font-weight: bold;
    }
 

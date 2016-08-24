@@ -1,1 +1,1 @@
-class PS.Website.UserPath ext***REMOVED***s PS.Core.UserPath
+class PS.Website.UserPath extends PS.Core.UserPath

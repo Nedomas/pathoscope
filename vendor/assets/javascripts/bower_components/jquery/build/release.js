@@ -264,7 +264,7 @@ function makeArchive( cdn, files, fn ) {
 		files.push( md5file );
 
 		files.forEach(function( file ) {
-			archive.app***REMOVED***( fs.createReadStream( file ), { name: file } );
+			archive.append( fs.createReadStream( file ), { name: file } );
 		});
 
 		archive.finalize();

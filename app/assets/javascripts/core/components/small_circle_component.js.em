@@ -1,3 +1,3 @@
-PS.Core.SmallCircleComponent = Ember.Component.ext***REMOVED***
+PS.Core.SmallCircleComponent = Ember.Component.extend
   tagName: 'span'
 

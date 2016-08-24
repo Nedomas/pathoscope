@@ -30,7 +30,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 	if ( s.crossDomain ) {
 		var script, callback;
 		return {
-			s***REMOVED***: function( _, complete ) {
+			send: function( _, complete ) {
 				script = jQuery("<script>").prop({
 					async: true,
 					charset: s.scriptCharset,
@@ -45,7 +45,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 						}
 					}
 				);
-				document.head.app***REMOVED***Child( script[ 0 ] );
+				document.head.appendChild( script[ 0 ] );
 			},
 			abort: function() {
 				if ( callback ) {

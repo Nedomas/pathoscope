@@ -1,1 +1,1 @@
-class PS.Website.User ext***REMOVED***s PS.Core.User
+class PS.Website.User extends PS.Core.User

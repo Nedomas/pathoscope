@@ -262,7 +262,7 @@
    * 2. Remove padding so people aren't caught out if they zero out fieldsets.
    */
 
-  leg***REMOVED*** {
+  legend {
       border: 0; /* 1 */
       padding: 0; /* 2 */
   }
@@ -404,7 +404,7 @@
   small, strike, strong, sub, sup, tt, var,
   b, u, i, center,
   dl, dt, dd, ol, ul, li,
-  fieldset, form, label, leg***REMOVED***,
+  fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed,
   figure, figcaption, footer, header, hgroup,
@@ -449,7 +449,7 @@
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     -webkit-margin-start: 0;
-    -webkit-margin-***REMOVED***: 0;
+    -webkit-margin-end: 0;
     -webkit-padding-start: 0;
   }
   * {

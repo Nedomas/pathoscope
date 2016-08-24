@@ -17,5 +17,5 @@ Gem::Specification.new do |gem|
     'handlebars.js',
     'handlebars.runtime.js',
     'lib/handlebars/source.rb'
-***REMOVED***
-***REMOVED***
+  ]
+end

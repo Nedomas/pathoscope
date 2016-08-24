@@ -1,4 +1,4 @@
-PS.Standalone.IndexRoute = Ember.Route.ext***REMOVED***
+PS.Standalone.IndexRoute = Ember.Route.extend
   beforeModel: ->
     if window.location.origin == '<%= SERVER %>'
       @transitionTo('installed')

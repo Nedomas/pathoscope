@@ -4,6 +4,6 @@ class CreateItems < ActiveRecord::Migration
       t.references :context, polymorphic: true
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

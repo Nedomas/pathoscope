@@ -1,4 +1,4 @@
-header.ext***REMOVED***full
+header.extendfull
   nav
     link-to 'paths' classNames='logo'
       == logo-svg
@@ -46,4 +46,4 @@ flashMessage
 
 main
   outlet
-footer.ext***REMOVED***full
+footer.extendfull

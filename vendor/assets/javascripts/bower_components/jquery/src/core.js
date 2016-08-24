@@ -89,7 +89,7 @@ jQuery.fn = jQuery.prototype = {
 		// Handle HTML strings
 		if ( typeof selector === "string" ) {
 			if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
-				// Assume that strings that start and ***REMOVED*** with <> are HTML and skip the regex check
+				// Assume that strings that start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
 
 			} else {
@@ -248,7 +248,7 @@ jQuery.fn = jQuery.prototype = {
 		}));
 	},
 
-	***REMOVED***: function() {
+	end: function() {
 		return this.prevObject || this.constructor(null);
 	},
 
@@ -262,7 +262,7 @@ jQuery.fn = jQuery.prototype = {
 // Give the init function the jQuery prototype for later instantiation
 jQuery.fn.init.prototype = jQuery.fn;
 
-jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
+jQuery.extend = jQuery.fn.extend = function() {
 	var options, name, src, copy, copyIsArray, clone,
 		target = arguments[0] || {},
 		i = 1,
@@ -282,7 +282,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 		target = {};
 	}
 
-	// ext***REMOVED*** jQuery itself if only one argument is passed
+	// extend jQuery itself if only one argument is passed
 	if ( length === i ) {
 		target = this;
 		--i;
@@ -291,12 +291,12 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 	for ( ; i < length; i++ ) {
 		// Only deal with non-null/undefined values
 		if ( (options = arguments[ i ]) != null ) {
-			// Ext***REMOVED*** the base object
+			// Extend the base object
 			for ( name in options ) {
 				src = target[ name ];
 				copy = options[ name ];
 
-				// Prevent never-***REMOVED***ing loop
+				// Prevent never-ending loop
 				if ( target === copy ) {
 					continue;
 				}
@@ -312,7 +312,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 					}
 
 					// Never move original objects, clone them
-					target[ name ] = jQuery.ext***REMOVED***( deep, clone, copy );
+					target[ name ] = jQuery.extend( deep, clone, copy );
 
 				// Don't bring in undefined values
 				} else if ( copy !== undefined ) {
@@ -326,7 +326,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 	return target;
 };
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	// Unique for each copy of jQuery on the page
 	expando: "jQuery" + ( core_version + Math.random() ).replace( /\D/g, "" ),
 
@@ -361,7 +361,7 @@ jQuery.ext***REMOVED***({
 	// Handle when the DOM is ready
 	ready: function( wait ) {
 
-		// Abort if there are p***REMOVED***ing holds or we're already ready
+		// Abort if there are pending holds or we're already ready
 		if ( wait === true ? --jQuery.readyWait : jQuery.isReady ) {
 			return;
 		}
@@ -518,7 +518,7 @@ jQuery.ext***REMOVED***({
 			if ( code.indexOf("use strict") === 1 ) {
 				script = document.createElement("script");
 				script.text = code;
-				document.head.app***REMOVED***Child( script ).parentNode.removeChild( script );
+				document.head.appendChild( script ).parentNode.removeChild( script );
 			} else {
 			// Otherwise, avoid the DOM node creation, insertion
 			// and removal by using an indirect global eval
@@ -528,7 +528,7 @@ jQuery.ext***REMOVED***({
 	},
 
 	// Convert dashed to camelCase; used by the css and data modules
-	// Microsoft forgot to hump their v***REMOVED***or prefix (#9572)
+	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 	},

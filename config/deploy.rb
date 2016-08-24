@@ -24,7 +24,7 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/home/#{user}/apps/#{application}"
 
 set :ssh_options, {
-***REMOVED*** verbose: :debug,
+  # verbose: :debug,
   keys: %w(~/.ssh/macbook ~/.ssh/id_rsa),
   forward_agent: true
 }
@@ -56,7 +56,7 @@ set :linked_dirs, %w{public/screenshots public/thumbnails}
 # set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets v***REMOVED***or/bundle public/system}
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -65,21 +65,21 @@ set :linked_dirs, %w{public/screenshots public/thumbnails}
 # set :keep_releases, 5
 
 namespace :deploy do
-***REMOVED*** task :start do ; ***REMOVED***
-***REMOVED*** task :stop do ; ***REMOVED***
+  # task :start do ; end
+  # task :stop do ; end
 
-***REMOVED*** task :restart, roles: :app, except: { no_release: true } do
-***REMOVED***   execute("#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}")
-***REMOVED*** ***REMOVED***
+  # task :restart, roles: :app, except: { no_release: true } do
+  #   execute("#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}")
+  # end
 
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-    ***REMOVED*** Your restart mechanism here, for example:
-    ***REMOVED*** execute("touch #{File.join(current_path,'tmp','restart.txt')}")
+      # Your restart mechanism here, for example:
+      # execute("touch #{File.join(current_path,'tmp','restart.txt')}")
       execute("touch #{release_path.join('tmp/restart.txt')}", shell: :sh)
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   desc 'Clean app'
   task :clean do
@@ -88,8 +88,8 @@ namespace :deploy do
       execute("cd #{current_path}; RAILS_ENV=production rake db:create", shell: :sh)
       execute("cd #{current_path}; RAILS_ENV=production rake db:migrate", shell: :sh)
       execute("cd #{current_path}; RAILS_ENV=production rake db:seed", shell: :sh)
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   task :notify_rollbar do
     on roles(:app) do |h|
@@ -98,19 +98,19 @@ namespace :deploy do
       rollbar_token = ENV['ROLLBAR_TOKEN']
       rails_env = fetch(:rails_env, 'production')
       execute "curl https://api.rollbar.com/api/1/deploy/ -F access_token=#{rollbar_token} -F environment=#{rails_env} -F revision=#{revision} -F local_username=#{local_user} >/dev/null 2>&1", :once => true
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   after :publishing, :restart
   after :deploy, 'notify_rollbar'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-    ***REMOVED*** Here we can do anything such as:
-    ***REMOVED*** within release_path do
-    ***REMOVED***   execute :rake, 'cache:clear'
-    ***REMOVED*** ***REMOVED***
-***REMOVED***
-***REMOVED***
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
 
-***REMOVED***
+end

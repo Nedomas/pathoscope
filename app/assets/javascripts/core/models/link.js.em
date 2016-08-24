@@ -1,4 +1,4 @@
-class PS.Core.Link ext***REMOVED***s DS.Model
+class PS.Core.Link extends DS.Model
   title: DS.attr('string')
   url: DS.attr('string')
   paths: DS.hasMany('path')

@@ -10,10 +10,10 @@ var supportsScroll, supportsFixedPosition,
 		// Only run once
 		checkSupport = false;
 
-		var checkFixed = jQuery("<div/>").css({ position: "fixed", top: "20px" }).app***REMOVED***To("#qunit-fixture");
+		var checkFixed = jQuery("<div/>").css({ position: "fixed", top: "20px" }).appendTo("#qunit-fixture");
 
-		// Must app***REMOVED*** to body because #qunit-fixture is hidden and elements inside it don't have a scrollTop
-		forceScroll.app***REMOVED***To("body");
+		// Must append to body because #qunit-fixture is hidden and elements inside it don't have a scrollTop
+		forceScroll.appendTo("body");
 		window.scrollTo( 200, 200 );
 		supportsScroll = document.documentElement.scrollTop || document.body.scrollTop;
 		forceScroll.detach();
@@ -29,7 +29,7 @@ module("offset", { setup: function(){
 
 	// Force a scroll value on the main window to ensure incorrect results
 	// if offset is using the scroll offset of the parent window
-	forceScroll.app***REMOVED***To("body");
+	forceScroll.appendTo("body");
 	window.scrollTo( 1, 1 );
 	forceScroll.detach();
 }, teardown: moduleTeardown });
@@ -417,14 +417,14 @@ testIframe("offset/scroll", "scroll", function( $, win ) {
 	var ie = /msie [678]/i.test( navigator.userAgent );
 
 	if ( ie ) {
-		ok( true, "TestSwarm's iframe has hosed this test in oldIE, we surr***REMOVED***er" );
+		ok( true, "TestSwarm's iframe has hosed this test in oldIE, we surrender" );
 	} else {
 		equal( $("#scroll-1").offset().top, 7, "jQuery('#scroll-1').offset().top" );
 	}
 	equal( $("#scroll-1").offset().left, 7, "jQuery('#scroll-1').offset().left" );
 
 	if ( ie ) {
-		ok( true, "TestSwarm's iframe has hosed this test in oldIE, we surr***REMOVED***er" );
+		ok( true, "TestSwarm's iframe has hosed this test in oldIE, we surrender" );
 	} else {
 		equal( $("#scroll-1-1").offset().top, 11, "jQuery('#scroll-1-1').offset().top" );
 	}
@@ -504,25 +504,25 @@ test("offsetParent", function(){
 	equal( header.length, 1, "Only one offsetParent found." );
 	equal( header[0], document.documentElement, "The html element is the offsetParent of #qunit." );
 
-	div = jQuery("#nothidd***REMOVED***ivchild").offsetParent();
+	div = jQuery("#nothiddendivchild").offsetParent();
 	equal( div.length, 1, "Only one offsetParent found." );
-	equal( div[0], document.getElementById("qunit-fixture"), "The #qunit-fixture is the offsetParent of #nothidd***REMOVED***ivchild." );
+	equal( div[0], document.getElementById("qunit-fixture"), "The #qunit-fixture is the offsetParent of #nothiddendivchild." );
 
-	jQuery("#nothidd***REMOVED***iv").css("position", "relative");
+	jQuery("#nothiddendiv").css("position", "relative");
 
-	div = jQuery("#nothidd***REMOVED***ivchild").offsetParent();
+	div = jQuery("#nothiddendivchild").offsetParent();
 	equal( div.length, 1, "Only one offsetParent found." );
-	equal( div[0], jQuery("#nothidd***REMOVED***iv")[0], "The div is the offsetParent." );
+	equal( div[0], jQuery("#nothiddendiv")[0], "The div is the offsetParent." );
 
-	div = jQuery("body, #nothidd***REMOVED***ivchild").offsetParent();
+	div = jQuery("body, #nothiddendivchild").offsetParent();
 	equal( div.length, 2, "Two offsetParent found." );
 	equal( div[0], document.documentElement, "The html element is the offsetParent of the body." );
-	equal( div[1], jQuery("#nothidd***REMOVED***iv")[0], "The div is the offsetParent." );
+	equal( div[1], jQuery("#nothiddendiv")[0], "The div is the offsetParent." );
 
 	area = jQuery("#imgmap area").offsetParent();
 	equal( area[0], document.documentElement, "The html element is the offsetParent of the body." );
 
-	div = jQuery("<div>").css({ "position": "absolute" }).app***REMOVED***To("body");
+	div = jQuery("<div>").css({ "position": "absolute" }).appendTo("body");
 	equal( div.offsetParent()[0], document.documentElement, "Absolutely positioned div returns html as offset parent, see #12139" );
 
 	div.remove();
@@ -531,7 +531,7 @@ test("offsetParent", function(){
 test("fractions (see #7730 and #7885)", function() {
 	expect(2);
 
-	jQuery("body").app***REMOVED***("<div id='fractions'/>");
+	jQuery("body").append("<div id='fractions'/>");
 
 	var result,
 		expected = { "top": 1000, "left": 1000 },

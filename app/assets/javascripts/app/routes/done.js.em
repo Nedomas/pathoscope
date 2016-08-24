@@ -1,3 +1,3 @@
-PS.Standalone.DoneRoute = Ember.Route.ext***REMOVED***
+PS.Standalone.DoneRoute = Ember.Route.extend
   model: ->
     @modelFor('done')

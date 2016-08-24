@@ -1,4 +1,4 @@
-class PS.Core.User ext***REMOVED***s DS.Model
+class PS.Core.User extends DS.Model
   email: DS.attr('string')
   username: DS.attr('string')
   password: DS.attr('string')

@@ -1,4 +1,4 @@
-class PS.Core.Note ext***REMOVED***s DS.Model
+class PS.Core.Note extends DS.Model
   content: DS.attr('string', defaultValue: '')
   item: DS.belongsTo('item')
   user: DS.belongsTo('user')

@@ -60,7 +60,7 @@ var selector_hasDuplicate,
 		return a.compareDocumentPosition ? -1 : 1;
 	};
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	find: function( selector, context, results, seed ) {
 		var elem, nodeType,
 			i = 0;
@@ -151,7 +151,7 @@ jQuery.ext***REMOVED***({
 	}
 });
 
-jQuery.ext***REMOVED***( jQuery.find, {
+jQuery.extend( jQuery.find, {
 	matches: function( expr, elements ) {
 		return jQuery.find( expr, null, null, elements );
 	},

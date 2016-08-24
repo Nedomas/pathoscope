@@ -43,11 +43,11 @@ $loader-transform: $loader-size + $loader-gutter * 2;
 }
 
 .dot-left {
-  @ext***REMOVED*** %loader-dot;
+  @extend %loader-dot;
   display: inline-block;
 }
 .dot-right {
-  @ext***REMOVED*** %loader-dot;
+  @extend %loader-dot;
   @include animation-name(right);
   display: inline-block;
 }

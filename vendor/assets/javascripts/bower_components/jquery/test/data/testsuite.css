@@ -128,9 +128,9 @@ div#fx-tests div.noback {
    that have been set as display: none in stylesheets */
 div#show-tests * { display: none; }
 
-#nothidd***REMOVED***iv { font-size: 16px; }
-#nothidd***REMOVED***ivchild.em { font-size: 2em; }
-#nothidd***REMOVED***ivchild.prct { font-size: 150%; }
+#nothiddendiv { font-size: 16px; }
+#nothiddendivchild.em { font-size: 2em; }
+#nothiddendivchild.prct { font-size: 150%; }
 
 /* For testing type on vml in IE #7071 */
 v\:oval { behavior:url(#default#VML); display:inline-block; }

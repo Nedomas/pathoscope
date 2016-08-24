@@ -21,5 +21,5 @@ setTimeout( function() {
 		script.attachEvent( "onreadystatechange", assetLoaded );
 	}
 	script.src = "data/readywaitasset.js";
-	document.getElementsByTagName("head")[0].app***REMOVED***Child(script);
+	document.getElementsByTagName("head")[0].appendChild(script);
 }, 2000 );

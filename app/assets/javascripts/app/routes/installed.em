@@ -1,1 +1,1 @@
-class PS.Standalone.InstalledRoute ext***REMOVED***s Ember.Route
+class PS.Standalone.InstalledRoute extends Ember.Route

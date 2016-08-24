@@ -6,7 +6,7 @@
 <script src="../../jquery.js"></script>
 <script type="text/javascript">
 jQuery.when( jQuery.ready ).done(function() {
-	jQuery("body").app***REMOVED***("<div>modifying DOM</div>");
+	jQuery("body").append("<div>modifying DOM</div>");
 	window.parent.iframeCallback( $("div").text() === "modifying DOM" );
 });
 </script>

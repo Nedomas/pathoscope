@@ -18,7 +18,7 @@ class Node < ActiveRecord::Base
       find_by(item_id: item.id, path_id: path.id, user_id: user.id) ||
         create(item_id: item.id, path_id: path.id, user_id: user.id,
           parent: last_in_path(path, user) || path.node)
-***REMOVED***
+    end
 
     def build_path(title, user)
       item = Item.create_path(title.capitalize)
@@ -26,23 +26,23 @@ class Node < ActiveRecord::Base
       user.paths << path unless user.paths.include?(path)
 
       create(item_id: item.id, path_id: path.id, user_id: user.id)
-***REMOVED***
+    end
 
     def last_in_path(path, user)
       where(path_id: path.id, user_id: user.id).last
-***REMOVED***
+    end
 
     def clean_url(url)
       url.andand.sub(/(\/)+$/, '').andand.sub(/(#)+$/, '')
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   def path
     Path.find(path_id)
-***REMOVED***
+  end
 
   def url
     link.url
-***REMOVED***
+  end
 
-***REMOVED***
+end

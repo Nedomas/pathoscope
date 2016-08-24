@@ -1,4 +1,4 @@
 .notes
   / model is item
   notes-box notes=model.saved_notes hasNotes=model.hasNotes
-  r***REMOVED***er 'notes.new' model
+  render 'notes.new' model

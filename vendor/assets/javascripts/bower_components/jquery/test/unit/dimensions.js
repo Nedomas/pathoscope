@@ -32,7 +32,7 @@ function testWidth( val ) {
 	expect(9);
 	var $div, blah;
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	$div.width( val(30) );
 	equal($div.width(), 30, "Test set to 30 correctly");
 	$div.hide();
@@ -47,9 +47,9 @@ function testWidth( val ) {
 
 	$div.css({ "display": "", "border": "", "padding": "" });
 
-	jQuery("#nothidd***REMOVED***ivchild").css({ "width": 20, "padding": "3px", "border": "2px solid #fff" });
-	equal(jQuery("#nothidd***REMOVED***ivchild").width(), 20, "Test child width with border and padding");
-	jQuery("#nothidd***REMOVED***iv, #nothidd***REMOVED***ivchild").css({ "border": "", "padding": "", "width": "" });
+	jQuery("#nothiddendivchild").css({ "width": 20, "padding": "3px", "border": "2px solid #fff" });
+	equal(jQuery("#nothiddendivchild").width(), 20, "Test child width with border and padding");
+	jQuery("#nothiddendiv, #nothiddendivchild").css({ "border": "", "padding": "", "width": "" });
 
 	blah = jQuery("blah");
 	equal( blah.width( val(10) ), blah, "Make sure that setting a width on an empty set returns the set." );
@@ -71,7 +71,7 @@ test("width(Function)", function() {
 test("width(Function(args))", function() {
 	expect( 2 );
 
-	var $div = jQuery("#nothidd***REMOVED***iv");
+	var $div = jQuery("#nothiddendiv");
 	$div.width( 30 ).width(function(i, width) {
 		equal( width, 30, "Make sure previous value is correct." );
 		return width + 1;
@@ -85,7 +85,7 @@ function testHeight( val ) {
 
 	var $div, blah;
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	$div.height( val(30) );
 	equal($div.height(), 30, "Test set to 30 correctly");
 	$div.hide();
@@ -100,9 +100,9 @@ function testHeight( val ) {
 
 	$div.css({ "display": "", "border": "", "padding": "", "height": "1px" });
 
-	jQuery("#nothidd***REMOVED***ivchild").css({ "height": 20, "padding": "3px", "border": "2px solid #fff" });
-	equal(jQuery("#nothidd***REMOVED***ivchild").height(), 20, "Test child height with border and padding");
-	jQuery("#nothidd***REMOVED***iv, #nothidd***REMOVED***ivchild").css({ "border": "", "padding": "", "height": "" });
+	jQuery("#nothiddendivchild").css({ "height": 20, "padding": "3px", "border": "2px solid #fff" });
+	equal(jQuery("#nothiddendivchild").height(), 20, "Test child height with border and padding");
+	jQuery("#nothiddendiv, #nothiddendivchild").css({ "border": "", "padding": "", "height": "" });
 
 	blah = jQuery("blah");
 	equal( blah.height( val(10) ), blah, "Make sure that setting a height on an empty set returns the set." );
@@ -124,7 +124,7 @@ test("height(Function)", function() {
 test("height(Function(args))", function() {
 	expect( 2 );
 
-	var $div = jQuery("#nothidd***REMOVED***iv");
+	var $div = jQuery("#nothiddendiv");
 	$div.height( 30 ).height(function(i, height) {
 		equal( height, 30, "Make sure previous value is correct." );
 		return height + 1;
@@ -143,7 +143,7 @@ test("innerWidth()", function() {
 	equal(jQuery(window).innerWidth(), winWidth, "Test on window");
 	equal(jQuery(document).innerWidth(), docWidth, "Test on document");
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	// set styles
 	$div.css({
 		"margin": 10,
@@ -179,7 +179,7 @@ test("innerHeight()", function() {
 	equal(jQuery(window).innerHeight(), winHeight, "Test on window");
 	equal(jQuery(document).innerHeight(), docHeight, "Test on document");
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	// set styles
 	$div.css({
 		"margin": 10,
@@ -217,7 +217,7 @@ test("outerWidth()", function() {
 	equal( jQuery( document ).outerWidth(), docWidth, "Test on document without margin option" );
 	equal( jQuery( document ).outerWidth( true ), docWidth, "Test on document with margin option" );
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	$div.css("width", 30);
 
 	equal($div.outerWidth(), 30, "Test with only width set");
@@ -251,8 +251,8 @@ test("child of a hidden elem (or unconnected node) has accurate inner/outer/Widt
 	var $divNormal = jQuery("<div>").css({ "width": "100px", "height": "100px", "border": "10px solid white", "padding": "2px", "margin": "3px" }),
 		$divChild = $divNormal.clone(),
 		$divUnconnected = $divNormal.clone(),
-		$divHiddenParent = jQuery("<div>").css( "display", "none" ).app***REMOVED***( $divChild ).app***REMOVED***To("body");
-	$divNormal.app***REMOVED***To("body");
+		$divHiddenParent = jQuery("<div>").css( "display", "none" ).append( $divChild ).appendTo("body");
+	$divNormal.appendTo("body");
 
 	// tests that child div of a hidden div works the same as a normal div
 	equal( $divChild.width(), $divNormal.width(), "child of a hidden element width() is wrong see #9441" );
@@ -284,7 +284,7 @@ test("child of a hidden elem (or unconnected node) has accurate inner/outer/Widt
 test("getting dimensions shouldn't modify runtimeStyle see #9233", function() {
 	expect( 1 );
 
-	var $div = jQuery( "<div>" ).app***REMOVED***To( "#qunit-fixture" ),
+	var $div = jQuery( "<div>" ).appendTo( "#qunit-fixture" ),
 		div = $div.get( 0 ),
 		runtimeStyle = div.runtimeStyle;
 
@@ -305,7 +305,7 @@ test("getting dimensions shouldn't modify runtimeStyle see #9233", function() {
 });
 
 test( "table dimensions", 2, function() {
-	var table = jQuery("<table><colgroup><col/><col/></colgroup><tbody><tr><td></td><td>a</td></tr><tr><td></td><td>a</td></tr></tbody></table>").app***REMOVED***To("#qunit-fixture"),
+	var table = jQuery("<table><colgroup><col/><col/></colgroup><tbody><tr><td></td><td>a</td></tr><tr><td></td><td>a</td></tr></tbody></table>").appendTo("#qunit-fixture"),
 		tdElem = table.find("td").first(),
 		colElem = table.find("col").first().width( 300 );
 
@@ -322,8 +322,8 @@ test("box-sizing:border-box child of a hidden elem (or unconnected node) has acc
 	var $divNormal = jQuery("<div>").css({ "boxSizing": "border-box", "width": "100px", "height": "100px", "border": "10px solid white", "padding": "2px", "margin": "3px" }),
 		$divChild = $divNormal.clone(),
 		$divUnconnected = $divNormal.clone(),
-		$divHiddenParent = jQuery("<div>").css( "display", "none" ).app***REMOVED***( $divChild ).app***REMOVED***To("body");
-	$divNormal.app***REMOVED***To("body");
+		$divHiddenParent = jQuery("<div>").css( "display", "none" ).append( $divChild ).appendTo("body");
+	$divNormal.appendTo("body");
 
 	// tests that child div of a hidden div works the same as a normal div
 	equal( $divChild.width(), $divNormal.width(), "child of a hidden element width() is wrong see #10413" );
@@ -365,7 +365,7 @@ test("outerHeight()", function() {
 	equal( jQuery( document ).outerHeight(), docHeight, "Test on document without margin option" );
 	equal( jQuery( document ).outerHeight( true ), docHeight, "Test on document with margin option" );
 
-	$div = jQuery("#nothidd***REMOVED***iv");
+	$div = jQuery("#nothiddendiv");
 	$div.css("height", 30);
 
 	equal($div.outerHeight(), 30, "Test with only width set");
@@ -393,10 +393,10 @@ test("outerHeight()", function() {
 
 test("passing undefined is a setter #5571", function() {
 	expect(4);
-	equal(jQuery("#nothidd***REMOVED***iv").height(30).height(undefined).height(), 30, ".height(undefined) is chainable (#5571)");
-	equal(jQuery("#nothidd***REMOVED***iv").height(30).innerHeight(undefined).height(), 30, ".innerHeight(undefined) is chainable (#5571)");
-	equal(jQuery("#nothidd***REMOVED***iv").height(30).outerHeight(undefined).height(), 30, ".outerHeight(undefined) is chainable (#5571)");
-	equal(jQuery("#nothidd***REMOVED***iv").width(30).width(undefined).width(), 30, ".width(undefined) is chainable (#5571)");
+	equal(jQuery("#nothiddendiv").height(30).height(undefined).height(), 30, ".height(undefined) is chainable (#5571)");
+	equal(jQuery("#nothiddendiv").height(30).innerHeight(undefined).height(), 30, ".innerHeight(undefined) is chainable (#5571)");
+	equal(jQuery("#nothiddendiv").height(30).outerHeight(undefined).height(), 30, ".outerHeight(undefined) is chainable (#5571)");
+	equal(jQuery("#nothiddendiv").width(30).width(undefined).width(), 30, ".width(undefined) is chainable (#5571)");
 });
 
 test( "getters on non elements should return null", function() {
@@ -419,8 +419,8 @@ test("setters with and without box-sizing:border-box", function(){
 	expect(20);
 
 	// Support: Firefox, Android 2.3 (Prefixed box-sizing versions).
-	var el_bb = jQuery("<div style='width:114px;height:114px;margin:5px;padding:3px;border:4px solid white;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;'>test</div>").app***REMOVED***To("#qunit-fixture"),
-		el = jQuery("<div style='width:100px;height:100px;margin:5px;padding:3px;border:4px solid white;'>test</div>").app***REMOVED***To("#qunit-fixture"),
+	var el_bb = jQuery("<div style='width:114px;height:114px;margin:5px;padding:3px;border:4px solid white;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;'>test</div>").appendTo("#qunit-fixture"),
+		el = jQuery("<div style='width:100px;height:100px;margin:5px;padding:3px;border:4px solid white;'>test</div>").appendTo("#qunit-fixture"),
 		expected = 100;
 
 	equal( el_bb.width( 101 ).width(), expected + 1, "test border-box width(int) by roundtripping" );

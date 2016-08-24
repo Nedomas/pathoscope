@@ -8,70 +8,70 @@ class Link < ActiveRecord::Base
 
   def item_id
     item.id
-***REMOVED***
+  end
 
   def short_title
     title.andand.truncate(50)
-***REMOVED***
+  end
 
   def short_url
     URI(url).host.gsub('www.', '')
-***REMOVED***
+  end
 
   def get_title!
     doc = Pismo::Document.new(url) rescue doc = OpenStruct.new(title: 'None')
     self.title = doc.title
     save!
-***REMOVED***
+  end
 
   def get_screens!
     Webshot.capybara_setup!
     ws = Webshot::Screenshot.new
     capture_thumbnail(ws)
     capture_screenshot(ws)
-***REMOVED***
+  end
 
   def capture_thumbnail(ws)
     ws.capture(url, save_thumbnail_path, width: 100, height: 100, quality: 100)
-***REMOVED***
+  end
 
   def capture_screenshot(ws)
     ws.capture(url, save_screenshot_path, width: 768, height: 900, quality: 100)
-***REMOVED***
+  end
 
   def save_thumbnail_path
     "public/thumbnails/#{id}.png"
-***REMOVED***
+  end
 
   def save_screenshot_path
     "public/screenshots/#{id}.png"
-***REMOVED***
+  end
 
   def thumbnail_path
     "/thumbnails/#{id}.png"
-***REMOVED***
+  end
 
   def external_thumbnail_path
     SERVER + thumbnail_path
-***REMOVED***
+  end
 
   def screenshot_path
     "/screenshots/#{id}.png"
-***REMOVED***
+  end
 
   def hover_content
     "<img src='#{screenshot_path}' height='600'>"
-***REMOVED***
+  end
 
   def color
     'link'
-***REMOVED***
+  end
 
   def paths
     item.nodes.map(&:path).uniq
-***REMOVED***
+  end
 
   def path_ids
     item.nodes.map(&:path_id).uniq.sort
-***REMOVED***
-***REMOVED***
+  end
+end

@@ -8,7 +8,7 @@ module( "ajax", {
 		};
 	},
 	teardown: function() {
-		jQuery( document ).off( "ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxError ajaxSuccess" );
+		jQuery( document ).off( "ajaxStart ajaxStop ajaxSend ajaxComplete ajaxError ajaxSuccess" );
 		moduleTeardown.apply( this, arguments );
 	}
 });
@@ -22,7 +22,7 @@ module( "ajax", {
 	function addGlobalEvents( expected ) {
 		return function() {
 			expected = expected || "";
-			jQuery( document ).on( "ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxError ajaxSuccess", function( e ) {
+			jQuery( document ).on( "ajaxStart ajaxStop ajaxSend ajaxComplete ajaxError ajaxSuccess", function( e ) {
 				ok( expected.indexOf(e.type) !== -1, e.type );
 			});
 		};
@@ -36,10 +36,10 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - success callbacks", 8, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxSuccess"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxSuccess"),
 		url: url("data/name.html"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
 		success: function() {
 			ok( true, "success" );
@@ -50,12 +50,12 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - success callbacks - (url, options) syntax", 8, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxSuccess"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxSuccess"),
 		create: function( options ) {
 			return jQuery.ajax( url("data/name.html"), options );
 		},
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
 		success: function() {
 			ok( true, "success" );
@@ -66,13 +66,13 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - success callbacks (late binding)", 8, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxSuccess"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxSuccess"),
 		url: url("data/name.html"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
 		success: true,
-		afterS***REMOVED***: function( request ) {
+		afterSend: function( request ) {
 			request.complete(function() {
 				ok( true, "complete" );
 			}).success(function() {
@@ -84,10 +84,10 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - success callbacks (oncomplete binding)", 8, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxSuccess"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxSuccess"),
 		url: url("data/name.html"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
 		success: true,
 		complete: function( xhr ) {
@@ -102,12 +102,12 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - error callbacks", 8, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxError"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxError"),
 		url: url("data/name.php?wait=5"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
-		afterS***REMOVED***: function( request ) {
+		afterSend: function( request ) {
 			request.abort();
 		},
 		error: function() {
@@ -125,7 +125,7 @@ module( "ajax", {
 				strictEqual( textStatus, "abort", "textStatus is 'abort' for abort" );
 				strictEqual( errorThrown, "abort", "errorThrown is 'abort' for abort" );
 			},
-			afterS***REMOVED***: function( request ) {
+			afterSend: function( request ) {
 				request.abort();
 			}
 		},
@@ -135,7 +135,7 @@ module( "ajax", {
 				strictEqual( textStatus, "mystatus", "textStatus is 'mystatus' for abort('mystatus')" );
 				strictEqual( errorThrown, "mystatus", "errorThrown is 'mystatus' for abort('mystatus')" );
 			},
-			afterS***REMOVED***: function( request ) {
+			afterSend: function( request ) {
 				request.abort("mystatus");
 			}
 		}
@@ -164,11 +164,11 @@ module( "ajax", {
 						data: {
 							"x": 1
 						},
-						beforeS***REMOVED***: function() {
+						beforeSend: function() {
 							if ( !previousUrl ) {
 								previousUrl = this.url;
 							} else {
-								strictEqual( this.url, previousUrl, "url parameters are not re-app***REMOVED***ed" );
+								strictEqual( this.url, previousUrl, "url parameters are not re-appended" );
 								start();
 								return false;
 							}
@@ -184,11 +184,11 @@ module( "ajax", {
 
 	ajaxTest( "jQuery.ajax() - headers", 4, {
 		setup: function() {
-			jQuery( document ).ajaxS***REMOVED***(function( evt, xhr ) {
-				xhr.setRequestHeader( "ajax-s***REMOVED***", "test" );
+			jQuery( document ).ajaxSend(function( evt, xhr ) {
+				xhr.setRequestHeader( "ajax-send", "test" );
 			});
 		},
-		url: url("data/headers.php?keys=siMPle_SometHing-elsE_OthEr_ajax-s***REMOVED***"),
+		url: url("data/headers.php?keys=siMPle_SometHing-elsE_OthEr_ajax-send"),
 		headers: {
 			"siMPle": "value",
 			"SometHing-elsE": "other value",
@@ -196,8 +196,8 @@ module( "ajax", {
 		},
 		success: function( data, _, xhr ) {
 			var i, emptyHeader,
-				requestHeaders = jQuery.ext***REMOVED***( this.headers, {
-					"ajax-s***REMOVED***": "test"
+				requestHeaders = jQuery.extend( this.headers, {
+					"ajax-send": "test"
 				}),
 				tmp = [];
 			for ( i in requestHeaders ) {
@@ -223,7 +223,7 @@ module( "ajax", {
 		headers: {
 			Accept: "very wrong accept value"
 		},
-		beforeS***REMOVED***: function( xhr ) {
+		beforeSend: function( xhr ) {
 			xhr.setRequestHeader("Accept", "*/*");
 		},
 		success: function( data ) {
@@ -250,7 +250,7 @@ module( "ajax", {
 
 	ajaxTest( "jQuery.ajax() - protocol-less urls", 1, {
 		url: "//somedomain.com",
-		beforeS***REMOVED***: function( xhr, settings ) {
+		beforeSend: function( xhr, settings ) {
 			equal( settings.url, location.protocol + "//somedomain.com", "Make sure that the protocol is added." );
 			return false;
 		},
@@ -260,7 +260,7 @@ module( "ajax", {
 	ajaxTest( "jQuery.ajax() - hash", 3, [
 		{
 			url: "data/name.html#foo",
-			beforeS***REMOVED***: function( xhr, settings ) {
+			beforeSend: function( xhr, settings ) {
 				equal( settings.url, "data/name.html", "Make sure that the URL is trimmed." );
 				return false;
 			},
@@ -268,7 +268,7 @@ module( "ajax", {
 		},
 		{
 			url: "data/name.html?abc#foo",
-			beforeS***REMOVED***: function( xhr, settings ) {
+			beforeSend: function( xhr, settings ) {
 				equal( settings.url, "data/name.html?abc", "Make sure that the URL is trimmed." );
 				return false;
 			},
@@ -279,7 +279,7 @@ module( "ajax", {
 			data: {
 				"test": 123
 			},
-			beforeS***REMOVED***: function( xhr, settings ) {
+			beforeSend: function( xhr, settings ) {
 				equal( settings.url, "data/name.html?abc&test=123", "Make sure that the URL is trimmed." );
 				return false;
 			},
@@ -289,10 +289,10 @@ module( "ajax", {
 
 	ajaxTest( "jQuery.ajax() - cross-domain detection", 7, function() {
 		function request( url, title, crossDomainOrOptions ) {
-			return jQuery.ext***REMOVED***( {
+			return jQuery.extend( {
 				dataType: "jsonp",
 				url: url,
-				beforeS***REMOVED***: function( _, s ) {
+				beforeSend: function( _, s ) {
 					ok( crossDomainOrOptions === false ? !s.crossDomain : s.crossDomain, title );
 					return false;
 				},
@@ -342,12 +342,12 @@ module( "ajax", {
 	});
 
 	ajaxTest( "jQuery.ajax() - abort", 9, {
-		setup: addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxError ajaxComplete"),
+		setup: addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxError ajaxComplete"),
 		url: url("data/name.php?wait=5"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
-		afterS***REMOVED***: function( xhr ) {
+		afterSend: function( xhr ) {
 			strictEqual( xhr.readyState, 1, "XHR readyState indicates successful dispatch" );
 			xhr.abort();
 			strictEqual( xhr.readyState, 0, "XHR readyState indicates successful abortion" );
@@ -374,8 +374,8 @@ module( "ajax", {
 
 		return {
 			setup: function() {
-				jQuery( context ).app***REMOVED***To("#foo")
-					.ajaxS***REMOVED***( event )
+				jQuery( context ).appendTo("#foo")
+					.ajaxSend( event )
 					.ajaxComplete( event )
 					.ajaxError( event )
 					.ajaxSuccess( event );
@@ -383,13 +383,13 @@ module( "ajax", {
 			requests: [{
 				url: url("data/name.html"),
 				context: context,
-				beforeS***REMOVED***: callback("beforeS***REMOVED***"),
+				beforeSend: callback("beforeSend"),
 				success: callback("success"),
 				complete: callback("complete")
 			}, {
 				url: url("data/404.html"),
 				context: context,
-				beforeS***REMOVED***: callback("beforeS***REMOVED***"),
+				beforeSend: callback("beforeSend"),
 				error: callback("error"),
 				complete: callback("complete")
 			}]
@@ -404,7 +404,7 @@ module( "ajax", {
 		}
 		return {
 			url: url("data/404.html"),
-			beforeS***REMOVED***: nocallback("beforeS***REMOVED***"),
+			beforeSend: nocallback("beforeSend"),
 			error: nocallback("error"),
 			complete:  nocallback("complete")
 		};
@@ -413,10 +413,10 @@ module( "ajax", {
 	ajaxTest( "jQuery.ajax() - context modification", 1, {
 		url: url("data/name.html"),
 		context: {},
-		beforeS***REMOVED***: function() {
+		beforeSend: function() {
 			this.test = "foo";
 		},
-		afterS***REMOVED***: function() {
+		afterSend: function() {
 			strictEqual( this.context.test, "foo", "Make sure the original object is maintained." );
 		},
 		success: true
@@ -450,8 +450,8 @@ module( "ajax", {
 		setup: addGlobalEvents(""),
 		global: false,
 		url: url("data/name.html"),
-		beforeS***REMOVED***: function() {
-			ok( true, "beforeS***REMOVED***" );
+		beforeSend: function() {
+			ok( true, "beforeSend" );
 		},
 		success: function() {
 			ok( true, "success" );
@@ -501,22 +501,22 @@ module( "ajax", {
 		}
 	]);
 
-	ajaxTest( "jQuery.ajax() - beforeS***REMOVED***", 1, {
+	ajaxTest( "jQuery.ajax() - beforeSend", 1, {
 		url: url("data/name.html"),
-		beforeS***REMOVED***: function() {
+		beforeSend: function() {
 			this.check = true;
 		},
 		success: function() {
-			ok( this.check, "check beforeS***REMOVED*** was executed" );
+			ok( this.check, "check beforeSend was executed" );
 		}
 	});
 
-	ajaxTest( "jQuery.ajax() - beforeS***REMOVED***, cancel request manually", 2, {
+	ajaxTest( "jQuery.ajax() - beforeSend, cancel request manually", 2, {
 		create: function() {
 			return jQuery.ajax({
 				url: url("data/name.html"),
-				beforeS***REMOVED***: function( xhr ) {
-					ok( true, "beforeS***REMOVED*** got called, canceling" );
+				beforeSend: function( xhr ) {
+					ok( true, "beforeSend got called, canceling" );
 					xhr.abort();
 				},
 				success: function() {
@@ -555,7 +555,7 @@ module( "ajax", {
 		dataType: "text",
 		async: false,
 		success: true,
-		afterS***REMOVED***: function( xhr ) {
+		afterSend: function( xhr ) {
 			ok( /^\{ "data"/.test( xhr.responseText ), "check returned text" );
 		}
 	});
@@ -565,7 +565,7 @@ module( "ajax", {
 		async: false,
 		dataType: "text",
 		success: true,
-		afterS***REMOVED***: function( xhr ) {
+		afterSend: function( xhr ) {
 			var result;
 			xhr.done(function( data ) {
 				ok( true, "success callback executed" );
@@ -613,7 +613,7 @@ module( "ajax", {
 			return {
 				url: url,
 				cache: false,
-				beforeS***REMOVED***: function() {
+				beforeSend: function() {
 					var parameter, tmp;
 					while(( tmp = re.exec( this.url ) )) {
 						strictEqual( parameter, undefined, title + ": only one 'no-cache' parameter" );
@@ -730,7 +730,7 @@ module( "ajax", {
 						dataType: "jsonp",
 						crossDomain: crossDomain,
 						jsonpCallback: "functionToCleanUp",
-						beforeS***REMOVED***: function( jqXHR ) {
+						beforeSend: function( jqXHR ) {
 							xhr = jqXHR;
 							return false;
 						}
@@ -746,7 +746,7 @@ module( "ajax", {
 				jsonp: false,
 				jsonpCallback: "XXX",
 				crossDomain: crossDomain,
-				beforeS***REMOVED***: function() {
+				beforeSend: function() {
 					ok( /^data\/jsonp.php\?callback=XXX&_=\d+$/.test( this.url ), "The URL wasn't messed with (GET, custom callback name with no url manipulation)" );
 				},
 				success: function( data ) {
@@ -1014,7 +1014,7 @@ module( "ajax", {
 				}
 			);
 		}
-		/* jQuery.each arguments ***REMOVED*** */
+		/* jQuery.each arguments end */
 	);
 
 	ajaxTest( "jQuery.ajax() - failing cross-domain (non-existing)", 1, {
@@ -1148,7 +1148,7 @@ module( "ajax", {
 				});
 
 			}
-			/* jQuery.each arguments ***REMOVED****/
+			/* jQuery.each arguments end*/
 		);
 	});
 
@@ -1189,11 +1189,11 @@ module( "ajax", {
 	ajaxTest( "jQuery.ajax() - overrideMimeType", 2, [
 		{
 			url: url("data/json.php"),
-			beforeS***REMOVED***: function( xhr ) {
+			beforeSend: function( xhr ) {
 				xhr.overrideMimeType( "application/json" );
 			},
 			success: function( json ) {
-				ok( json.data, "Mimetype overridden using beforeS***REMOVED***" );
+				ok( json.data, "Mimetype overridden using beforeSend" );
 			}
 		},
 		{
@@ -1213,12 +1213,12 @@ module( "ajax", {
 		dataType: "json"
 	});
 
-	ajaxTest( "#2688 - jQuery.ajax() - beforeS***REMOVED***, cancel request", 2, {
+	ajaxTest( "#2688 - jQuery.ajax() - beforeSend, cancel request", 2, {
 		create: function() {
 			return jQuery.ajax({
 				url: url("data/name.html"),
-				beforeS***REMOVED***: function() {
-					ok( true, "beforeS***REMOVED*** got called, canceling" );
+				beforeSend: function() {
+					ok( true, "beforeSend got called, canceling" );
 					return false;
 				},
 				success: function() {
@@ -1269,7 +1269,7 @@ module( "ajax", {
 			url: "data/jsonp.php",
 			dataType: "jsonp",
 			crossDomain: crossDomain,
-			beforeS***REMOVED***: function() {
+			beforeSend: function() {
 				strictEqual( this.cache, false, "cache must be false on JSON request" );
 				return false;
 			},
@@ -1318,7 +1318,7 @@ module( "ajax", {
 			url: "data/jsonp.php",
 			dataType: "jsonp",
 			crossDomain: crossDomain,
-			beforeS***REMOVED***: function( jqXHR, s ) {
+			beforeSend: function( jqXHR, s ) {
 				s.callback = s.jsonpCallback;
 			},
 			success: function() {
@@ -1328,7 +1328,7 @@ module( "ajax", {
 					url: "data/jsonp.php",
 					dataType: "jsonp",
 					crossDomain: crossDomain,
-					beforeS***REMOVED***: function() {
+					beforeSend: function() {
 						strictEqual( this.jsonpCallback, previous.callback, "JSONP callback name is re-used" );
 						return false;
 					}
@@ -1344,8 +1344,8 @@ module( "ajax", {
 		try {
 			jQuery.ajax( "non-existing", {
 				context: context,
-				beforeS***REMOVED***: function() {
-					ok( this === context, "context was not deep ext***REMOVED***ed" );
+				beforeSend: function() {
+					ok( this === context, "context was not deep extended" );
 					return false;
 				}
 			});
@@ -1460,7 +1460,7 @@ module( "ajax", {
 			var parsedXML = jQuery( jQuery.parseXML("<tab title=\"Added\">blibli</tab>") ).find("tab");
 			ajaxXML = jQuery( ajaxXML );
 			try {
-				ajaxXML.find("infowindowtab").app***REMOVED***( parsedXML );
+				ajaxXML.find("infowindowtab").append( parsedXML );
 			} catch( e ) {
 				strictEqual( e, undefined, "error" );
 				return;
@@ -1612,7 +1612,7 @@ module( "ajax", {
 			ok( false, "Global event triggered" );
 		});
 
-		jQuery("#qunit-fixture").app***REMOVED***("<script src='data/evalScript.php'></script>");
+		jQuery("#qunit-fixture").append("<script src='data/evalScript.php'></script>");
 
 		jQuery( document ).off("ajaxStart ajaxStop");
 	});
@@ -1710,7 +1710,7 @@ module( "ajax", {
 	// check if load can be called with only url
 	asyncTest( "jQuery.fn.load( String )", 2, function() {
 		jQuery.ajaxSetup({
-			beforeS***REMOVED***: function() {
+			beforeSend: function() {
 				strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});
@@ -1718,7 +1718,7 @@ module( "ajax", {
 	});
 
 	asyncTest( "jQuery.fn.load() - 404 error callbacks", 6, function() {
-		addGlobalEvents("ajaxStart ajaxStop ajaxS***REMOVED*** ajaxComplete ajaxError")();
+		addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxError")();
 		jQuery( document ).ajaxStop( start );
 		jQuery("<div/>").load( "data/404.html", function() {
 			ok( true, "complete" );
@@ -1728,7 +1728,7 @@ module( "ajax", {
 	// check if load can be called with url and null data
 	asyncTest( "jQuery.fn.load( String, null )", 2, function() {
 		jQuery.ajaxSetup({
-			beforeS***REMOVED***: function() {
+			beforeSend: function() {
 				strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});
@@ -1738,7 +1738,7 @@ module( "ajax", {
 	// check if load can be called with url and undefined data
 	asyncTest( "jQuery.fn.load( String, undefined )", 2, function() {
 		jQuery.ajaxSetup({
-			beforeS***REMOVED***: function() {
+			beforeSend: function() {
 				strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});

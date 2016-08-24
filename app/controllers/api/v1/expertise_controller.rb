@@ -4,10 +4,10 @@ class Api::V1::ExpertiseController < ApplicationController
     path_road = recursive_find_children(path_item, [path_item]).reject(&:path?).map(&:id)
     path_road_with_path = [path_item.id] + path_road
 
-    r***REMOVED***er json: {
+    render json: {
       path_road: path_road
     }
-***REMOVED***
+  end
 
   def recursive_find_children(item, parents)
     longest_path = []
@@ -15,8 +15,8 @@ class Api::V1::ExpertiseController < ApplicationController
       next if parents.include?(child)
       path = recursive_find_children(child, parents + [child])
       longest_path = path if longest_path.size < path.size
-***REMOVED***
+    end
 
     [item] + longest_path
-***REMOVED***
-***REMOVED***
+  end
+end

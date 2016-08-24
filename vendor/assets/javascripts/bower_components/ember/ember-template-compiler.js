@@ -17,7 +17,7 @@ var Ember = { assert: function() {}, FEATURES: { isEnabled: function() {} } };
 @submodule ember-handlebars-compiler
 */
 
-// Eliminate dep***REMOVED***ency on any Ember to simplify precompilation workflow
+// Eliminate dependency on any Ember to simplify precompilation workflow
 var objectCreate = Object.create || function(parent) {
   function F() {}
   F.prototype = parent;
@@ -42,12 +42,12 @@ Ember.assert("Ember Handlebars requires Handlebars version 1.0 or 1.1, " +
   Prepares the Handlebars templating library for use inside Ember's view
   system.
 
-  The `Ember.Handlebars` object is the standard Handlebars library, ext***REMOVED***ed to
+  The `Ember.Handlebars` object is the standard Handlebars library, extended to
   use Ember's `get()` method instead of direct property access, which allows
   computed properties to be used inside templates.
 
   To create an `Ember.Handlebars` template, call `Ember.Handlebars.compile()`.
-  This will return a function that can be used by `Ember.View` for r***REMOVED***ering.
+  This will return a function that can be used by `Ember.View` for rendering.
 
   @class Handlebars
   @namespace Ember
@@ -57,7 +57,7 @@ Ember.Handlebars = objectCreate(Handlebars);
 /**
   Register a bound helper or custom view helper.
 
-***REMOVED***# Simple bound helper example
+  ## Simple bound helper example
 
   ```javascript
   Ember.Handlebars.helper('capitalize', function(value) {
@@ -72,30 +72,30 @@ Ember.Handlebars = objectCreate(Handlebars);
   ```
 
   In this case, when the `name` property of the template's context changes,
-  the r***REMOVED***ered value of the helper will update to reflect this change.
+  the rendered value of the helper will update to reflect this change.
 
   For more examples of bound helpers, see documentation for
   `Ember.Handlebars.registerBoundHelper`.
 
-***REMOVED***# Custom view helper example
+  ## Custom view helper example
 
-  Assuming a view subclass named `App.Cal***REMOVED***arView` were defined, a helper
-  for r***REMOVED***ering instances of this view could be registered as follows:
+  Assuming a view subclass named `App.CalendarView` were defined, a helper
+  for rendering instances of this view could be registered as follows:
 
   ```javascript
-  Ember.Handlebars.helper('cal***REMOVED***ar', App.Cal***REMOVED***arView):
+  Ember.Handlebars.helper('calendar', App.CalendarView):
   ```
 
   The above bound helper can be used inside of templates as follows:
 
   ```handlebars
-  {{cal***REMOVED***ar}}
+  {{calendar}}
   ```
 
   Which is functionally equivalent to:
 
   ```handlebars
-  {{view App.Cal***REMOVED***arView}}
+  {{view App.CalendarView}}
   ```
 
   Options in the helper will be passed to the view in exactly the same
@@ -105,7 +105,7 @@ Ember.Handlebars = objectCreate(Handlebars);
   @for Ember.Handlebars
   @param {String} name
   @param {Function|Ember.View} function or view class constructor
-  @param {String} dep***REMOVED***entKeys*
+  @param {String} dependentKeys*
 */
 Ember.Handlebars.helper = function(name, value) {
   Ember.assert("You tried to register a component named '" + name + "', but component names must include a '-'", !Ember.Component.detect(value) || name.match(/-/));
@@ -118,7 +118,7 @@ Ember.Handlebars.helper = function(name, value) {
 };
 
 /**
-  Returns a helper function that r***REMOVED***ers the provided ViewClass.
+  Returns a helper function that renders the provided ViewClass.
 
   Used internally by Ember.Handlebars.helper and other methods
   involving helper/component registration.
@@ -181,14 +181,14 @@ Ember.Handlebars.JavaScriptCompiler.prototype.initializeBuffer = function() {
 
 /**
   Override the default buffer for Ember Handlebars. By default, Handlebars
-  creates an empty String at the beginning of each invocation and app***REMOVED***s to
-  it. Ember's Handlebars overrides this to app***REMOVED*** to a single shared buffer.
+  creates an empty String at the beginning of each invocation and appends to
+  it. Ember's Handlebars overrides this to append to a single shared buffer.
 
   @private
-  @method app***REMOVED***ToBuffer
+  @method appendToBuffer
   @param string {String}
 */
-Ember.Handlebars.JavaScriptCompiler.prototype.app***REMOVED***ToBuffer = function(string) {
+Ember.Handlebars.JavaScriptCompiler.prototype.appendToBuffer = function(string) {
   return "data.buffer.push("+string+");";
 };
 
@@ -245,7 +245,7 @@ Ember.Handlebars.Compiler.prototype.mustache = function(mustache) {
 
     // Update the mustache node to include a hash value indicating whether the original node
     // was escaped. This will allow us to properly escape values when the underlying value
-    // changes and we need to re-r***REMOVED***er the value.
+    // changes and we need to re-render the value.
     if (!mustache.escaped) {
       mustache.hash = mustache.hash || new Handlebars.AST.HashNode([]);
       mustache.hash.pairs.push(["unescaped", new Handlebars.AST.StringNode("true")]);

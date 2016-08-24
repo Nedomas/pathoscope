@@ -7,8 +7,8 @@ class Api::V1::TokensController < Doorkeeper::TokensController
       self.response_body = response.body.merge!(user_id: response.token.resource_owner_id).to_json
     else
       self.response_body = response.body.to_json
-***REMOVED***
+    end
 
     self.status        = response.status
-***REMOVED***
-***REMOVED***
+  end
+end

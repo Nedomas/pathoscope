@@ -8,12 +8,12 @@
 # role :web, %w{deploy@example.com}
 # role :db,  %w{deploy@example.com}
 
-# Ext***REMOVED***ed Server Syntax
+# Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
-# ext***REMOVED***ed properties on the server.
+# extended properties on the server.
 # server '198.211.126.66', user: 'main', roles: %w{web app}
 
 # you can set custom ssh options
@@ -34,6 +34,6 @@
 #     keys: %w(/home/user_name/.ssh/id_rsa),
 #     forward_agent: false,
 #     auth_methods: %w(publickey password)
-#   ***REMOVED*** password: 'please use keys'
+#     # password: 'please use keys'
 #   }
 # setting per server overrides global ssh_options

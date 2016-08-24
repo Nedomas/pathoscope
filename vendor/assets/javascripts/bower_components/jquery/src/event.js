@@ -88,7 +88,7 @@ jQuery.event = {
 			special = jQuery.event.special[ type ] || {};
 
 			// handleObj is passed to all event handlers
-			handleObj = jQuery.ext***REMOVED***({
+			handleObj = jQuery.extend({
 				type: type,
 				origType: origType,
 				data: data,
@@ -189,7 +189,7 @@ jQuery.event = {
 			}
 
 			// Remove generic event handler if we removed something and no more handlers exist
-			// (avoids potential for ***REMOVED***less recursion during removal of special event handlers)
+			// (avoids potential for endless recursion during removal of special event handlers)
 			if ( origCount && !handlers.length ) {
 				if ( !special.teardown || special.teardown.call( elem, namespaces, elemData.handle ) === false ) {
 					jQuery.removeEvent( elem, type, elemData.handle );
@@ -251,7 +251,7 @@ jQuery.event = {
 			event.target = elem;
 		}
 
-		// Clone any incoming data and prep***REMOVED*** the event, creating the handler arg list
+		// Clone any incoming data and prepend the event, creating the handler arg list
 		data = data == null ?
 			[ event ] :
 			jQuery.makeArray( data, [ event ] );
@@ -581,7 +581,7 @@ jQuery.event = {
 		// Piggyback on a donor event to simulate a different one.
 		// Fake originalEvent to avoid donor's stopPropagation, but if the
 		// simulated event prevents default then we do the same on the donor.
-		var e = jQuery.ext***REMOVED***(
+		var e = jQuery.extend(
 			new jQuery.Event(),
 			event,
 			{
@@ -630,7 +630,7 @@ jQuery.Event = function( src, props ) {
 
 	// Put explicitly provided properties onto the event object
 	if ( props ) {
-		jQuery.ext***REMOVED***( this, props );
+		jQuery.extend( this, props );
 	}
 
 	// Create a timestamp if incoming event doesn't have one
@@ -725,7 +725,7 @@ if ( !jQuery.support.focusinBubbles ) {
 	});
 }
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 
 	on: function( types, selector, data, fn, /*INTERNAL*/ one ) {
 		var origFn, type;

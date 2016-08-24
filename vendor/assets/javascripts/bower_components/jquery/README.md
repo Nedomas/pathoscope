@@ -49,7 +49,7 @@ Install the grunt-cli package so that you will have the correct version of grunt
 npm install -g grunt-cli
 ```
 
-Enter the jquery directory and install the Node dep***REMOVED***encies, this time *without* specifying a global install:
+Enter the jquery directory and install the Node dependencies, this time *without* specifying a global install:
 
 ```bash
 cd jquery && npm install
@@ -79,7 +79,7 @@ For example, an app that only used JSONP for `$.ajax()` and did not need to calc
 - **ajax**: All AJAX functionality: `$.ajax()`, `$.get()`, `$.post()`, `$.ajaxSetup()`, `.load()`, transports, and ajax event shorthands such as `.ajaxStart()`.
 - **ajax/xhr**: The XMLHTTPRequest AJAX transport only.
 - **ajax/script**: The `<script>` AJAX transport only; used to retrieve scripts.
-- **ajax/jsonp**: The JSONP AJAX transport only; dep***REMOVED***s on the ajax/script transport.
+- **ajax/jsonp**: The JSONP AJAX transport only; depends on the ajax/script transport.
 - **css**: The `.css()` method plus non-animated `.show()`, `.hide()` and `.toggle()`.
 - **deprecated**: Methods documented as deprecated but not yet removed; currently only `.andSelf()`.
 - **dimensions**: The `.width()` and `.height()` methods, including `inner-` and `outer-` variations.
@@ -89,7 +89,7 @@ For example, an app that only used JSONP for `$.ajax()` and did not need to calc
 - **wrap**: The `.wrap()`, `.wrapAll()`, `.wrapInner()`, and `.unwrap()` methods.
 - **sizzle**: The Sizzle selector engine. When this module is excluded, it is replaced by a rudimentary selector engine based on the browser's `querySelectorAll` method that does not support jQuery selector extensions or enhanced semantics. See the selector-native.js file for details.
 
-The grunt build process is aware of dep***REMOVED***encies across modules. If you explicitly remove a module, its dep***REMOVED***ent modules will be removed as well. For example, excluding the css module also excludes effects, since the effects module uses `.css()` to animate CSS properties. These dep***REMOVED***encies are listed in Gruntfile.js and the build process shows a message for each dep***REMOVED***ent module it excludes.
+The grunt build process is aware of dependencies across modules. If you explicitly remove a module, its dependent modules will be removed as well. For example, excluding the css module also excludes effects, since the effects module uses `.css()` to animate CSS properties. These dependencies are listed in Gruntfile.js and the build process shows a message for each dependent module it excludes.
 
 To create a custom build of the latest stable version, first check out the version:
 
@@ -97,7 +97,7 @@ To create a custom build of the latest stable version, first check out the versi
 git pull; git checkout $(git describe --abbrev=0 --tags)
 ```
 
-Then, make sure all Node dep***REMOVED***encies are installed and all Git submodules are checked out:
+Then, make sure all Node dependencies are installed and all Git submodules are checked out:
 
 ```bash
 npm install && grunt
@@ -111,7 +111,7 @@ Exclude all **ajax** functionality:
 grunt custom:-ajax
 ```
 
-Exclude **css**, **effects**, **offset**, **dimensions**, and **position**. Excluding **css** automatically excludes its dep***REMOVED***ent modules:
+Exclude **css**, **effects**, **offset**, **dimensions**, and **position**. Excluding **css** automatically excludes its dependent modules:
 
 ```bash
 grunt custom:-css,-position

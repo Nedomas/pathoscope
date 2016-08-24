@@ -65,7 +65,7 @@ Data.prototype = {
 			// Fallback to a less secure definition
 			} catch ( e ) {
 				descriptor[ this.expando ] = unlock;
-				jQuery.ext***REMOVED***( owner, descriptor );
+				jQuery.extend( owner, descriptor );
 			}
 		}
 
@@ -92,7 +92,7 @@ Data.prototype = {
 		} else {
 			// Fresh assignments by object are shallow copied
 			if ( jQuery.isEmptyObject( cache ) ) {
-				jQuery.ext***REMOVED***( this.cache[ unlock ], data );
+				jQuery.extend( this.cache[ unlock ], data );
 			// Otherwise, copy the properties one-by-one to the cache object
 			} else {
 				for ( prop in data ) {
@@ -135,7 +135,7 @@ Data.prototype = {
 		}
 
 		// [*]When the key is not a string, or both a key and value
-		// are specified, set or ext***REMOVED*** (existing objects) with either:
+		// are specified, set or extend (existing objects) with either:
 		//
 		//   1. An object of properties
 		//   2. A key and value
@@ -201,7 +201,7 @@ data_user = new Data();
 data_priv = new Data();
 
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	acceptData: Data.accepts,
 
 	hasData: function( elem ) {
@@ -227,7 +227,7 @@ jQuery.ext***REMOVED***({
 	}
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	data: function( key, value ) {
 		var attrs, name,
 			elem = this[ 0 ],

@@ -1,1 +1,1 @@
-class PS.Web.LoginController ext***REMOVED***s PS.Core.LoginController
+class PS.Web.LoginController extends PS.Core.LoginController

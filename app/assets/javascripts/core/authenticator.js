@@ -1,7 +1,7 @@
-PS.Core.CustomAuthenticator = Ember.SimpleAuth.Authenticators.OAuth2.ext***REMOVED***({
+PS.Core.CustomAuthenticator = Ember.SimpleAuth.Authenticators.OAuth2.extend({
   authenticate: function(credentials) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      // make the request to authenticate the user at ***REMOVED***oint /v3/token
+      // make the request to authenticate the user at endoint /v3/token
       Ember.$.ajax({
         url:  '/oauth/token',
         type: 'POST',

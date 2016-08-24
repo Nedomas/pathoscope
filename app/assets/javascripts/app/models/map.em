@@ -1,4 +1,4 @@
-class PS.Bookmarklet.Map ext***REMOVED***s DS.Model
+class PS.Bookmarklet.Map extends DS.Model
   parent: DS.belongsTo('map', async: true, inverse: 'children')
   children: DS.hasMany('map', async: true, inverse: 'parent')
   item: DS.belongsTo('map', async: true, inverse: 'parent')

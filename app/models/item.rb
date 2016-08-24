@@ -7,51 +7,51 @@ class Item < ActiveRecord::Base
     def find_or_create_link(url)
       link = Link.find_or_create_by(url: url)
       find_or_create_by(context: link)
-***REMOVED***
+    end
 
     def create_path(title)
       path = Path.create(title: title)
       find_or_create_by(context: path)
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   def path?
     context_type == 'Path'
-***REMOVED***
+  end
 
   def link?
     context_type == 'Link'
-***REMOVED***
+  end
 
   def paths
     nodes.map(&:path).uniq
-***REMOVED***
+  end
 
   def path_ids
     paths.map(&:id)
-***REMOVED***
+  end
 
   def link_id
     context.id if link?
-***REMOVED***
+  end
 
   def children
     nodes.map(&:children).flatten.map(&:item).uniq
-***REMOVED***
+  end
 
   def child_ids
     nodes.map(&:children).flatten.map(&:item).uniq.map(&:id)
-***REMOVED***
+  end
 
   def parent_ids
     nodes.map(&:parent).flatten.compact.map(&:item).uniq.map(&:id)
-***REMOVED***
+  end
 
   def siblings
     nodes.map(&:siblings).flatten.compact.map(&:item).uniq
-***REMOVED***
+  end
 
   def sibling_ids
     nodes.map(&:siblings).flatten.compact.map(&:item).uniq.map(&:id) - [id]
-***REMOVED***
-***REMOVED***
+  end
+end

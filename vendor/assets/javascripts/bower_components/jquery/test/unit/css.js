@@ -9,7 +9,7 @@ test("css(String|Hash)", function() {
 
 	var $child, div, div2, width, height, child, prctval, checkval, old;
 
-	$child = jQuery("#nothidd***REMOVED***ivchild").css({ "width": "20%", "height": "20%" });
+	$child = jQuery("#nothiddendivchild").css({ "width": "20%", "height": "20%" });
 	notEqual( $child.css("width"), "20px", "Retrieving a width percentage on the child of a hidden div returns percentage" );
 	notEqual( $child.css("height"), "20px", "Retrieving a height percentage on the child of a hidden div returns percentage" );
 
@@ -25,7 +25,7 @@ test("css(String|Hash)", function() {
 	equal( div.css("width"), "4px", "Width on disconnected node." );
 	equal( div.css("height"), "4px", "Height on disconnected node." );
 
-	div2 = jQuery( "<div style='display:none;'><input type='text' style='height:20px;'/><textarea style='height:20px;'/><div style='height:20px;'></div></div>").app***REMOVED***To("body");
+	div2 = jQuery( "<div style='display:none;'><input type='text' style='height:20px;'/><textarea style='height:20px;'/><div style='height:20px;'></div></div>").appendTo("body");
 
 	equal( div2.find("input").css("height"), "20px", "Height on hidden input." );
 	equal( div2.find("textarea").css("height"), "20px", "Height on hidden textarea." );
@@ -34,13 +34,13 @@ test("css(String|Hash)", function() {
 	div2.remove();
 
 	// handle negative numbers by setting to zero #11604
-	jQuery("#nothidd***REMOVED***iv").css( {"width": 1, "height": 1} );
+	jQuery("#nothiddendiv").css( {"width": 1, "height": 1} );
 
-	width = parseFloat(jQuery("#nothidd***REMOVED***iv").css("width"));
-	height = parseFloat(jQuery("#nothidd***REMOVED***iv").css("height"));
-	jQuery("#nothidd***REMOVED***iv").css({ "overflow":"hidden", "width": -1, "height": -1 });
-	equal( parseFloat(jQuery("#nothidd***REMOVED***iv").css("width")), 0, "Test negative width set to 0");
-	equal( parseFloat(jQuery("#nothidd***REMOVED***iv").css("height")), 0, "Test negative height set to 0");
+	width = parseFloat(jQuery("#nothiddendiv").css("width"));
+	height = parseFloat(jQuery("#nothiddendiv").css("height"));
+	jQuery("#nothiddendiv").css({ "overflow":"hidden", "width": -1, "height": -1 });
+	equal( parseFloat(jQuery("#nothiddendiv").css("width")), 0, "Test negative width set to 0");
+	equal( parseFloat(jQuery("#nothiddendiv").css("height")), 0, "Test negative height set to 0");
 
 	equal( jQuery("<div style='display: none;'>").css("display"), "none", "Styles on disconnected nodes");
 
@@ -62,8 +62,8 @@ test("css(String|Hash)", function() {
 	jQuery("#empty").css({ "opacity": "1" });
 	equal( jQuery("#empty").css("opacity"), "1", "Assert opacity is taken from style attribute when set vs stylesheet in IE with filters" );
 
-	div = jQuery("#nothidd***REMOVED***iv");
-	child = jQuery("#nothidd***REMOVED***ivchild");
+	div = jQuery("#nothiddendiv");
+	child = jQuery("#nothiddendivchild");
 
 	equal( parseInt(div.css("fontSize"), 10), 16, "Verify fontSize px set." );
 	equal( parseInt(div.css("font-size"), 10), 16, "Verify fontSize px set." );
@@ -76,7 +76,7 @@ test("css(String|Hash)", function() {
 	child.attr("class", "em");
 	equal( parseInt(child.css("fontSize"), 10), 32, "Verify fontSize em set." );
 
-	// Have to verify this as the result dep***REMOVED***s upon the browser's CSS
+	// Have to verify this as the result depends upon the browser's CSS
 	// support for font-size percentages
 	child.attr("class", "prct");
 	prctval = parseInt(child.css("fontSize"), 10);
@@ -112,7 +112,7 @@ test("css(String|Hash)", function() {
 
 test("css() explicit and relative values", function() {
 	expect( 30 );
-	var $elem = jQuery("#nothidd***REMOVED***iv");
+	var $elem = jQuery("#nothiddendiv");
 
 	$elem.css({ "width": 1, "height": 1, "paddingLeft": "1px", "opacity": 1 });
 	equal( $elem.css("width"), "1px", "Initial css set or width/height works (hash)" );
@@ -205,8 +205,8 @@ test("css(String, Object)", function() {
 	expect( 19 );
 	var j, div, display, ret, success;
 
-	jQuery("#nothidd***REMOVED***iv").css("top", "-1em");
-	ok( jQuery("#nothidd***REMOVED***iv").css("top"), -16, "Check negative number in EMs." );
+	jQuery("#nothiddendiv").css("top", "-1em");
+	ok( jQuery("#nothiddendiv").css("top"), -16, "Check negative number in EMs." );
 
 	jQuery("#floatTest").css("float", "left");
 	equal( jQuery("#floatTest").css("float"), "left", "Modified CSS float using \"float\": Assert float is left");
@@ -230,7 +230,7 @@ test("css(String, Object)", function() {
 	jQuery("#t2037")[0].innerHTML = jQuery("#t2037")[0].innerHTML;
 	equal( jQuery("#t2037 .hidden").css("display"), "none", "Make sure browser thinks it is hidden" );
 
-	div = jQuery("#nothidd***REMOVED***iv");
+	div = jQuery("#nothiddendiv");
 	display = div.css("display");
 	ret = div.css("display", undefined);
 
@@ -258,7 +258,7 @@ test( "css(Array)", function() {
 		expectedSingle = {
 			"width": "16px"
 		},
-		elem = jQuery("<div></div>").app***REMOVED***To("#qunit-fixture");
+		elem = jQuery("<div></div>").appendTo("#qunit-fixture");
 
 	deepEqual( elem.css( expectedMany ).css([ "overflow", "width" ]), expectedMany, "Getting multiple element array" );
 	deepEqual( elem.css( expectedSingle ).css([ "width" ]), expectedSingle, "Getting single element array" );
@@ -273,7 +273,7 @@ test("css(String, Function)", function() {
 	jQuery("<div id='cssFunctionTest'><div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div></div>")
-		.app***REMOVED***To("body");
+		.appendTo("body");
 
 	index = 0;
 
@@ -304,7 +304,7 @@ test("css(String, Function) with incoming value", function() {
 	jQuery("<div id='cssFunctionTest'><div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div></div>")
-		.app***REMOVED***To("body");
+		.appendTo("body");
 
 	index = 0;
 
@@ -335,7 +335,7 @@ test("css(Object) where values are Functions", function() {
 	jQuery("<div id='cssFunctionTest'><div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div></div>")
-		.app***REMOVED***To("body");
+		.appendTo("body");
 
 	index = 0;
 
@@ -366,7 +366,7 @@ test("css(Object) where values are Functions with incoming values", function() {
 	jQuery("<div id='cssFunctionTest'><div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div>" +
 				 "<div class='cssFunction'></div></div>")
-		.app***REMOVED***To("body");
+		.appendTo("body");
 
 	index = 0;
 
@@ -391,32 +391,32 @@ test("css(Object) where values are Functions with incoming values", function() {
 test("show(); hide()", function() {
 	expect(22);
 
-	var hidd***REMOVED***iv, div, pass, old, test;
+	var hiddendiv, div, pass, old, test;
 
-	hidd***REMOVED***iv = jQuery("div.hidden");
-	hidd***REMOVED***iv.hide();
-	equal( hidd***REMOVED***iv.css("display"), "none", "Non-detached div hidden" );
-	hidd***REMOVED***iv.show();
-	equal( hidd***REMOVED***iv.css("display"), "block", "Pre-hidden div shown" );
+	hiddendiv = jQuery("div.hidden");
+	hiddendiv.hide();
+	equal( hiddendiv.css("display"), "none", "Non-detached div hidden" );
+	hiddendiv.show();
+	equal( hiddendiv.css("display"), "block", "Pre-hidden div shown" );
 
 	div = jQuery("<div>").hide();
 	equal( div.css("display"), "none", "Detached div hidden" );
-	div.app***REMOVED***To("#qunit-fixture").show();
+	div.appendTo("#qunit-fixture").show();
 	equal( div.css("display"), "block", "Pre-hidden div shown" );
 
 	QUnit.reset();
 
-	hidd***REMOVED***iv = jQuery("div.hidden");
+	hiddendiv = jQuery("div.hidden");
 
-	equal(jQuery.css( hidd***REMOVED***iv[0], "display"), "none", "hidd***REMOVED***iv is display: none");
+	equal(jQuery.css( hiddendiv[0], "display"), "none", "hiddendiv is display: none");
 
-	hidd***REMOVED***iv.css("display", "block");
-	equal(jQuery.css( hidd***REMOVED***iv[0], "display"), "block", "hidd***REMOVED***iv is display: block");
+	hiddendiv.css("display", "block");
+	equal(jQuery.css( hiddendiv[0], "display"), "block", "hiddendiv is display: block");
 
-	hidd***REMOVED***iv.show();
-	equal(jQuery.css( hidd***REMOVED***iv[0], "display"), "block", "hidd***REMOVED***iv is display: block");
+	hiddendiv.show();
+	equal(jQuery.css( hiddendiv[0], "display"), "block", "hiddendiv is display: block");
 
-	hidd***REMOVED***iv.css("display","");
+	hiddendiv.css("display","");
 
 	pass = true;
 	div = jQuery("#qunit-fixture div");
@@ -428,7 +428,7 @@ test("show(); hide()", function() {
 	ok( pass, "Show" );
 
 	// #show-tests * is set display: none in CSS
-	jQuery("#qunit-fixture").app***REMOVED***("<div id='show-tests'><div><p><a href='#'></a></p><code></code><pre></pre><span></span></div><table><thead><tr><th></th></tr></thead><tbody><tr><td></td></tr></tbody></table><ul><li></li></ul></div><table id='test-table'></table>");
+	jQuery("#qunit-fixture").append("<div id='show-tests'><div><p><a href='#'></a></p><code></code><pre></pre><span></span></div><table><thead><tr><th></th></tr></thead><tbody><tr><td></td></tr></tbody></table><ul><li></li></ul></div><table id='test-table'></table>");
 
 	old = jQuery("#test-table").show().css("display") !== "table";
 	jQuery("#test-table").remove();
@@ -462,8 +462,8 @@ test("show(); hide()", function() {
 
 test("show() resolves correct default display #8099", function() {
 	expect(7);
-	var tt8099 = jQuery("<tt/>").app***REMOVED***To("body"),
-			dfn8099 = jQuery("<dfn/>", { "html": "foo"}).app***REMOVED***To("body");
+	var tt8099 = jQuery("<tt/>").appendTo("body"),
+			dfn8099 = jQuery("<dfn/>", { "html": "foo"}).appendTo("body");
 
 	equal( tt8099.css("display"), "none", "default display override for all tt" );
 	equal( tt8099.show().css("display"), "inline", "Correctly resolves display:inline" );
@@ -486,27 +486,27 @@ test( "show() resolves correct default display for detached nodes", function(){
 	var div, span, tr, trDisplay;
 
 	div = jQuery("<div class='hidden'>");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "block", "Make sure a detached, pre-hidden( through stylesheets ) div is visible." );
 
 	div = jQuery("<div style='display: none'>");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "block", "Make sure a detached, pre-hidden( through inline style ) div is visible." );
 
 	span = jQuery("<span class='hidden'/>");
-	span.show().app***REMOVED***To("#qunit-fixture");
+	span.show().appendTo("#qunit-fixture");
 	equal( span.css("display"), "inline", "Make sure a detached, pre-hidden( through stylesheets ) span has default display." );
 
 	span = jQuery("<span style='display: inline'/>");
-	span.show().app***REMOVED***To("#qunit-fixture");
+	span.show().appendTo("#qunit-fixture");
 	equal( span.css("display"), "inline", "Make sure a detached, pre-hidden( through inline style ) span has default display." );
 
 	div = jQuery("<div><div class='hidden'></div></div>").children("div");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "block", "Make sure a detached, pre-hidden( through stylesheets ) div inside another visible div is visible." );
 
 	div = jQuery("<div><div style='display: none'></div></div>").children("div");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "block", "Make sure a detached, pre-hidden( through inline style ) div inside another visible div is visible." );
 
 	div = jQuery("div.hidden");
@@ -515,27 +515,27 @@ test( "show() resolves correct default display for detached nodes", function(){
 	div.remove();
 
 	span = jQuery("<span>");
-	span.app***REMOVED***To("#qunit-fixture").detach().show().app***REMOVED***To("#qunit-fixture" );
+	span.appendTo("#qunit-fixture").detach().show().appendTo("#qunit-fixture" );
 	equal( span.css("display"), "inline", "Make sure a detached( through detach() ), pre-hidden span has default display." );
 	span.remove();
 
 	div = jQuery("<div>");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	ok( !!div.get( 0 ).style.display, "Make sure not hidden div has a inline style." );
 	div.remove();
 
 	div = jQuery( document.createElement("div") );
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "block", "Make sure a pre-created element has default display." );
 	div.remove();
 
 	div = jQuery("<div style='display: inline'/>");
-	div.show().app***REMOVED***To("#qunit-fixture");
+	div.show().appendTo("#qunit-fixture");
 	equal( div.css("display"), "inline", "Make sure that element has same display when it was created." );
 	div.remove();
 
 	tr = jQuery("<tr/>");
-	jQuery("#table").app***REMOVED***( tr );
+	jQuery("#table").append( tr );
 	trDisplay = tr.css( "display" );
 	tr.detach().hide().show();
 
@@ -551,7 +551,7 @@ test("show() resolves correct default display #10227", function() {
 	expect(2);
 
 	var body = jQuery("body");
-	body.app***REMOVED***(
+	body.append(
 		"<p id='ddisplay'>a<style>body{display:none}</style></p>"
 	);
 
@@ -569,7 +569,7 @@ test("show() resolves correct default display when iframe display:none #12904", 
 
 	var ddisplay = jQuery(
 		"<p id='ddisplay'>a<style>p{display:none}iframe{display:none !important}</style></p>"
-	).app***REMOVED***To("body");
+	).appendTo("body");
 
 	equal( ddisplay.css("display"), "none", "Initial display: none" );
 
@@ -597,7 +597,7 @@ test("toggle()", function() {
 	x.toggle(true);
 	ok( x.is(":visible"), "is visible again" );
 
-	div = jQuery("<div style='display:none'><div></div></div>").app***REMOVED***To("#qunit-fixture");
+	div = jQuery("<div style='display:none'><div></div></div>").appendTo("#qunit-fixture");
 	x = div.find("div");
 	strictEqual( x.toggle().css( "display" ), "none", "is hidden" );
 	strictEqual( x.toggle().css( "display" ), "block", "is visible" );
@@ -616,7 +616,7 @@ test("hide hidden elements (bug #7141)", function() {
 	expect(3);
 	QUnit.reset();
 
-	var div = jQuery("<div style='display:none'></div>").app***REMOVED***To("#qunit-fixture");
+	var div = jQuery("<div style='display:none'></div>").appendTo("#qunit-fixture");
 	equal( div.css("display"), "none", "Element is hidden by default" );
 	div.hide();
 	ok( !jQuery._data(div, "olddisplay"), "olddisplay is undefined after hiding an already-hidden element" );
@@ -666,9 +666,9 @@ test("marginRight computed style (bug #3333)", function() {
 test("box model properties incorrectly returning % instead of px, see #10639 and #12088", function() {
 	expect( 2 );
 
-	var container = jQuery("<div/>").width( 400 ).app***REMOVED***To("#qunit-fixture"),
-		el = jQuery("<div/>").css({ "width": "50%", "marginRight": "50%" }).app***REMOVED***To( container ),
-		el2 = jQuery("<div/>").css({ "width": "50%", "minWidth": "300px", "marginLeft": "25%" }).app***REMOVED***To( container );
+	var container = jQuery("<div/>").width( 400 ).appendTo("#qunit-fixture"),
+		el = jQuery("<div/>").css({ "width": "50%", "marginRight": "50%" }).appendTo( container ),
+		el2 = jQuery("<div/>").css({ "width": "50%", "minWidth": "300px", "marginLeft": "25%" }).appendTo( container );
 
 	equal( el.css("marginRight"), "200px", "css('marginRight') returning % instead of px, see #10639" );
 	equal( el2.css("marginLeft"), "100px", "css('marginLeft') returning incorrect pixel value, see #12088" );
@@ -677,7 +677,7 @@ test("box model properties incorrectly returning % instead of px, see #10639 and
 test("jQuery.cssProps behavior, (bug #8402)", function() {
 	expect( 2 );
 
-	var div = jQuery( "<div>" ).app***REMOVED***To(document.body).css({
+	var div = jQuery( "<div>" ).appendTo(document.body).css({
 		"position": "absolute",
 		"top": 0,
 		"left": 10
@@ -692,7 +692,7 @@ test("jQuery.cssProps behavior, (bug #8402)", function() {
 
 test("widows & orphans #8936", function () {
 
-	var $p = jQuery("<p>").app***REMOVED***To("#qunit-fixture");
+	var $p = jQuery("<p>").appendTo("#qunit-fixture");
 
 	if ( "widows" in $p[0].style ) {
 		expect(4);
@@ -733,7 +733,7 @@ test("can't get css for disconnected in IE<9, see #10254 and #8388", function() 
 });
 
 test("can't get background-position in IE<9, see #10796", function() {
-	var div = jQuery( "<div/>" ).app***REMOVED***To( "#qunit-fixture" ),
+	var div = jQuery( "<div/>" ).appendTo( "#qunit-fixture" ),
 		units = [
 			"0 0",
 			"12px 12px",
@@ -757,32 +757,32 @@ test("can't get background-position in IE<9, see #10796", function() {
 
 test("percentage properties for bottom and right in IE<9 should not be incorrectly transformed to pixels, see #11311", function() {
 	expect( 1 );
-	var div = jQuery("<div style='position: absolute; width: 1px; height: 20px; bottom:50%;'></div>").app***REMOVED***To( "#qunit-fixture" );
+	var div = jQuery("<div style='position: absolute; width: 1px; height: 20px; bottom:50%;'></div>").appendTo( "#qunit-fixture" );
 	ok( window.getComputedStyle || div.css( "bottom" ) === "50%", "position properties get incorrectly transformed in IE<8, see #11311" );
 });
 
 if ( jQuery.fn.offset ) {
 	test("percentage properties for left and top should be transformed to pixels, see #9505", function() {
 		expect( 2 );
-		var parent = jQuery("<div style='position:relative;width:200px;height:200px;margin:0;padding:0;border-width:0'></div>").app***REMOVED***To( "#qunit-fixture" ),
-			div = jQuery("<div style='position: absolute; width: 20px; height: 20px; top:50%; left:50%'></div>").app***REMOVED***To( parent );
+		var parent = jQuery("<div style='position:relative;width:200px;height:200px;margin:0;padding:0;border-width:0'></div>").appendTo( "#qunit-fixture" ),
+			div = jQuery("<div style='position: absolute; width: 20px; height: 20px; top:50%; left:50%'></div>").appendTo( parent );
 
 		equal( div.css("top"), "100px", "position properties not transformed to pixels, see #9505" );
 		equal( div.css("left"), "100px", "position properties not transformed to pixels, see #9505" );
 	});
 }
 
-test("Do not app***REMOVED*** px (#9548, #12990)", function() {
+test("Do not append px (#9548, #12990)", function() {
 	expect( 2 );
 
-	var $div = jQuery("<div>").app***REMOVED***To("#qunit-fixture");
+	var $div = jQuery("<div>").appendTo("#qunit-fixture");
 
 	$div.css( "fill-opacity", 1 );
-	equal( $div.css("fill-opacity"), 1, "Do not app***REMOVED*** px to 'fill-opacity'" );
+	equal( $div.css("fill-opacity"), 1, "Do not append px to 'fill-opacity'" );
 
 	$div.css( "column-count", 1 );
 	if ( $div.css("column-count") ) {
-		equal( $div.css("column-count"), 1, "Do not app***REMOVED*** px to 'column-count'" );
+		equal( $div.css("column-count"), 1, "Do not append px to 'column-count'" );
 	} else {
 		ok( true, "No support for column-count CSS property" );
 	}
@@ -793,7 +793,7 @@ test("css('width') and css('height') should respect box-sizing, see #11004", fun
 
 	// Support: Firefox, Android 2.3 (Prefixed box-sizing versions).
 	var el_dis = jQuery("<div style='width:300px;height:300px;margin:2px;padding:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;'>test</div>"),
-		el = el_dis.clone().app***REMOVED***To("#qunit-fixture");
+		el = el_dis.clone().appendTo("#qunit-fixture");
 
 	equal( el.css("width"), el.css("width", el.css("width")).css("width"), "css('width') is not respecting box-sizing, see #11004");
 	equal( el_dis.css("width"), el_dis.css("width", el_dis.css("width")).css("width"), "css('width') is not respecting box-sizing for disconnected element, see #11004");
@@ -804,7 +804,7 @@ test("css('width') and css('height') should respect box-sizing, see #11004", fun
 test("certain css values of 'normal' should be convertable to a number, see #8627", function() {
 	expect ( 2 );
 
-	var el = jQuery("<div style='letter-spacing:normal;font-weight:normal;'>test</div>").app***REMOVED***To("#qunit-fixture");
+	var el = jQuery("<div style='letter-spacing:normal;font-weight:normal;'>test</div>").appendTo("#qunit-fixture");
 
 	ok( jQuery.isNumeric( parseFloat( el.css("letterSpacing") ) ), "css('letterSpacing') not convertable to number, see #8627" );
 	ok( jQuery.isNumeric( parseFloat( el.css("fontWeight") ) ), "css('fontWeight') not convertable to number, see #8627" );
@@ -813,7 +813,7 @@ test("certain css values of 'normal' should be convertable to a number, see #862
 // only run this test in IE9
 if ( document.documentMode === 9 ) {
 	test( ".css('filter') returns a string in IE9, see #12537", 1, function() {
-		equal( jQuery("<div style='-ms-filter:\"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, ***REMOVED***Colorstr=#ECECEC)\";'></div>").css("filter"), "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, ***REMOVED***Colorstr=#ECECEC)", "IE9 returns the correct value from css('filter')." );
+		equal( jQuery("<div style='-ms-filter:\"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#ECECEC)\";'></div>").css("filter"), "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#ECECEC)", "IE9 returns the correct value from css('filter')." );
 	});
 }
 
@@ -863,10 +863,10 @@ test( "css opacity consistency across browsers (#12685)", function() {
 	var el,
 		fixture = jQuery("#qunit-fixture");
 
-	// App***REMOVED*** style element
-	jQuery("<style>.opacityWithSpaces_t12685 { opacity: 0.1; filter: alpha(opacity = 10); } .opacityNoSpaces_t12685 { opacity: 0.2; filter: alpha(opacity=20); }</style>").app***REMOVED***To( fixture );
+	// Append style element
+	jQuery("<style>.opacityWithSpaces_t12685 { opacity: 0.1; filter: alpha(opacity = 10); } .opacityNoSpaces_t12685 { opacity: 0.2; filter: alpha(opacity=20); }</style>").appendTo( fixture );
 
-	el = jQuery("<div class='opacityWithSpaces_t12685'></div>").app***REMOVED***To(fixture);
+	el = jQuery("<div class='opacityWithSpaces_t12685'></div>").appendTo(fixture);
 
 	equal( Math.round( el.css("opacity") * 100 ), 10, "opacity from style sheet (filter:alpha with spaces)" );
 	el.removeClass("opacityWithSpaces_t12685").addClass("opacityNoSpaces_t12685");
@@ -880,24 +880,24 @@ test( "css opacity consistency across browsers (#12685)", function() {
 test( ":visible/:hidden selectors", function() {
 	expect( 13 );
 
-	ok( jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modifying CSS display: Assert element is visible" );
-	jQuery("#nothidd***REMOVED***iv").css({ display: "none" });
-	ok( !jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modified CSS display: Assert element is hidden" );
-	jQuery("#nothidd***REMOVED***iv").css({"display": "block"});
-	ok( jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modified CSS display: Assert element is visible");
+	ok( jQuery("#nothiddendiv").is(":visible"), "Modifying CSS display: Assert element is visible" );
+	jQuery("#nothiddendiv").css({ display: "none" });
+	ok( !jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is hidden" );
+	jQuery("#nothiddendiv").css({"display": "block"});
+	ok( jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is visible");
 	ok( jQuery(window).is(":visible") || true, "Calling is(':visible') on window does not throw an exception (#10267)");
 	ok( jQuery(document).is(":visible") || true, "Calling is(':visible') on document does not throw an exception (#10267)");
 
-	ok( jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modifying CSS display: Assert element is visible");
-	jQuery("#nothidd***REMOVED***iv").css("display", "none");
-	ok( !jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modified CSS display: Assert element is hidden");
-	jQuery("#nothidd***REMOVED***iv").css("display", "block");
-	ok( jQuery("#nothidd***REMOVED***iv").is(":visible"), "Modified CSS display: Assert element is visible");
+	ok( jQuery("#nothiddendiv").is(":visible"), "Modifying CSS display: Assert element is visible");
+	jQuery("#nothiddendiv").css("display", "none");
+	ok( !jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is hidden");
+	jQuery("#nothiddendiv").css("display", "block");
+	ok( jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is visible");
 
 	// ok( !jQuery("#siblingspan").is(":visible"), "Span with no content not visible (#13132)" );
-	// var $newDiv = jQuery("<div><span></span></div>").app***REMOVED***To("#qunit-fixture");
+	// var $newDiv = jQuery("<div><span></span></div>").appendTo("#qunit-fixture");
 	// equal( $newDiv.find(":visible").length, 0, "Span with no content not visible (#13132)" );
-	// var $br = jQuery("<br/>").app***REMOVED***To("#qunit-fixture");
+	// var $br = jQuery("<br/>").appendTo("#qunit-fixture");
 	// ok( !$br.is(":visible"), "br element not visible (#10406)");
 
 	var $table = jQuery("#table");
@@ -906,7 +906,7 @@ test( ":visible/:hidden selectors", function() {
 	$table.css("display", "none").html("<tr><td>cell</td><td>cell</td></tr>");
 	equal(jQuery("#table td:visible").length, 0, "hidden cell children not perceived as visible (#4512)");
 
-	t( "Is Visible", "#qunit-fixture div:visible:lt(2)", ["foo", "nothidd***REMOVED***iv"] );
+	t( "Is Visible", "#qunit-fixture div:visible:lt(2)", ["foo", "nothiddendiv"] );
 	t( "Is Not Hidden", "#qunit-fixture:hidden", [] );
 	t( "Is Hidden", "#form input:hidden", ["hidden1","hidden2"] );
 });
@@ -995,14 +995,14 @@ asyncTest( "Make sure initialized display value for disconnected nodes is correc
 	var display = jQuery("#display").css("display"),
 		div = jQuery("<div/>");
 
-	equal( div.css( "display", "inline" ).hide().show().app***REMOVED***To("body").css( "display" ), "inline", "Initialized display value has returned" );
+	equal( div.css( "display", "inline" ).hide().show().appendTo("body").css( "display" ), "inline", "Initialized display value has returned" );
 	div.remove();
 
 	div.css( "display", "none" ).hide();
 	equal( jQuery._data( div[ 0 ], "olddisplay" ), undefined, "olddisplay is undefined after hiding a detached and hidden element" );
 	div.remove();
 
-	div.css( "display", "inline-block" ).hide().app***REMOVED***To("body").fadeIn(function() {
+	div.css( "display", "inline-block" ).hide().appendTo("body").fadeIn(function() {
 		equal( div.css( "display" ), "inline-block", "Initialized display value has returned" );
 		div.remove();
 

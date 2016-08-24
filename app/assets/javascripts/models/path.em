@@ -1,1 +1,1 @@
-class PS.Website.Path ext***REMOVED***s PS.Core.Path
+class PS.Website.Path extends PS.Core.Path

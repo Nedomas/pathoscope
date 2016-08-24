@@ -3,7 +3,7 @@ jQuery.support = (function( support ) {
 		fragment = document.createDocumentFragment(),
 		div = document.createElement("div"),
 		select = document.createElement("select"),
-		opt = select.app***REMOVED***Child( document.createElement("option") );
+		opt = select.appendChild( document.createElement("option") );
 
 	// Finish early in limited environments
 	if ( !input.type ) {
@@ -46,7 +46,7 @@ jQuery.support = (function( support ) {
 	input.setAttribute( "checked", "t" );
 	input.setAttribute( "name", "t" );
 
-	fragment.app***REMOVED***Child( input );
+	fragment.appendChild( input );
 
 	// Support: Safari 5.1, Android 4.x, Android 2.3
 	// old WebKit doesn't clone checked state correctly in fragments
@@ -76,7 +76,7 @@ jQuery.support = (function( support ) {
 		container.style.cssText = "border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px";
 
 		// Check box-sizing and margin behavior.
-		body.app***REMOVED***Child( container ).app***REMOVED***Child( div );
+		body.appendChild( container ).appendChild( div );
 		div.innerHTML = "";
 		// Support: Firefox, Android 2.3 (Prefixed box-sizing versions).
 		div.style.cssText = "-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%";
@@ -96,7 +96,7 @@ jQuery.support = (function( support ) {
 			// Check if div with explicit width and no margin-right incorrectly
 			// gets computed margin-right based on width of container. (#3333)
 			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
-			marginDiv = div.app***REMOVED***Child( document.createElement("div") );
+			marginDiv = div.appendChild( document.createElement("div") );
 			marginDiv.style.cssText = div.style.cssText = divReset;
 			marginDiv.style.marginRight = marginDiv.style.width = "0";
 			div.style.width = "1px";

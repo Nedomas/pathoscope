@@ -1,4 +1,4 @@
-class PS.Core.ItemController ext***REMOVED***s PS.ObjectController
+class PS.Core.ItemController extends PS.ObjectController
   needs: ['application']
 
   +computed parentController.notesExpandedList.@each

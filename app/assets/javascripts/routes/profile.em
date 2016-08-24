@@ -1,4 +1,4 @@
-class PS.Web.ProfileRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PS.Web.ProfileRoute extends Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: ->
     @get('session.user')
 
@@ -6,7 +6,7 @@ class PS.Web.ProfileRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.Au
     save: (user) ->
       _this = this
 
-    ***REMOVED*** validate
+      # validate
       password_changed = user.changedAttributes()['password']
       password_exists = user.changedAttributes()['password']?[1]?.length
       username_changed = user.changedAttributes()['username']

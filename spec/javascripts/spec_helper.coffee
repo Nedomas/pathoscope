@@ -3,7 +3,7 @@
 #= require sinon
 #= require chai
 #= require application
-#= require ../../v***REMOVED***or/assets/javascripts/bower_components/ember-mocha-adapter/adapter
+#= require ../../vendor/assets/javascripts/bower_components/ember-mocha-adapter/adapter
 #= require fixtures/data
 #= require_self
 # require support/your-support-file
@@ -95,7 +95,7 @@ window.link_api = {
     "path_ids": [
       2,
       1
-  ***REMOVED***
+    ]
   },
   "items": [aerospace_item, programming_item, link_item],
   "paths": [aerospace_path, programming_path],
@@ -114,7 +114,7 @@ Ember.Test.registerAsyncHelper 'mockUserApi', ->
       200,
       { 'Content-Type': 'application/json' },
       JSON.stringify(user_api)
-  ***REMOVED***
+    ]
     wait()
 
 Ember.Test.registerAsyncHelper 'mockLinkApi', ->
@@ -123,7 +123,7 @@ Ember.Test.registerAsyncHelper 'mockLinkApi', ->
       200,
       { 'Content-Type': 'application/json' },
       JSON.stringify(link_api)
-  ***REMOVED***
+    ]
     wait()
 
 Ember.Test.registerAsyncHelper 'mockPathsApi', ->
@@ -132,7 +132,7 @@ Ember.Test.registerAsyncHelper 'mockPathsApi', ->
       200,
       { 'Content-Type': 'application/json' },
       JSON.stringify(paths_api)
-  ***REMOVED***
+    ]
     wait()
 
 Ember.Test.registerAsyncHelper 'mockPathsApiPOST', ->

@@ -1,5 +1,5 @@
-PS.Core.GoUpComponent = Ember.Component.ext***REMOVED***
+PS.Core.GoUpComponent = Ember.Component.extend
   actions:
     upAction: (params) ->
-      @s***REMOVED***Action('s***REMOVED***NodeUp', params)
+      @sendAction('sendNodeUp', params)
 

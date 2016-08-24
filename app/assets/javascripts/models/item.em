@@ -1,1 +1,1 @@
-class PS.Website.Item ext***REMOVED***s PS.Core.Item
+class PS.Website.Item extends PS.Core.Item

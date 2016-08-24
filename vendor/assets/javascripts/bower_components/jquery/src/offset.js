@@ -85,7 +85,7 @@ jQuery.offset = {
 };
 
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 
 	position: function() {
 		if ( !this[ 0 ] ) {

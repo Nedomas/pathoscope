@@ -1,1 +1,1 @@
-class PS.Core.WorldController ext***REMOVED***s Ember.ObjectController with Tree
+class PS.Core.WorldController extends Ember.ObjectController with Tree

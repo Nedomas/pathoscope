@@ -288,7 +288,7 @@ jQuery.fn = jQuery.prototype = {
 		}));
 	},
 	
-	***REMOVED***: function() {
+	end: function() {
 		return this.prevObject || jQuery(null);
 	},
 
@@ -302,7 +302,7 @@ jQuery.fn = jQuery.prototype = {
 // Give the init function the jQuery prototype for later instantiation
 jQuery.fn.init.prototype = jQuery.fn;
 
-jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
+jQuery.extend = jQuery.fn.extend = function() {
 	// copy reference to target object
 	var target = arguments[0] || {}, i = 1, length = arguments.length, deep = false, options, name, src, copy;
 
@@ -319,7 +319,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 		target = {};
 	}
 
-	// ext***REMOVED*** jQuery itself if only one argument is passed
+	// extend jQuery itself if only one argument is passed
 	if ( length === i ) {
 		target = this;
 		--i;
@@ -328,12 +328,12 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 	for ( ; i < length; i++ ) {
 		// Only deal with non-null/undefined values
 		if ( (options = arguments[ i ]) != null ) {
-			// Ext***REMOVED*** the base object
+			// Extend the base object
 			for ( name in options ) {
 				src = target[ name ];
 				copy = options[ name ];
 
-				// Prevent never-***REMOVED***ing loop
+				// Prevent never-ending loop
 				if ( target === copy ) {
 					continue;
 				}
@@ -344,7 +344,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 						: jQuery.isArray(copy) ? [] : {};
 
 					// Never move original objects, clone them
-					target[ name ] = jQuery.ext***REMOVED***( deep, clone, copy );
+					target[ name ] = jQuery.extend( deep, clone, copy );
 
 				// Don't bring in undefined values
 				} else if ( copy !== undefined ) {
@@ -358,7 +358,7 @@ jQuery.ext***REMOVED*** = jQuery.fn.ext***REMOVED*** = function() {
 	return target;
 };
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	noConflict: function( deep ) {
 		window.$ = _$;
 
@@ -528,12 +528,12 @@ jQuery.ext***REMOVED***({
 				script = document.createElement("script");
 
 			if ( jQuery.support.scriptEval ) {
-				script.app***REMOVED***Child( document.createTextNode( data ) );
+				script.appendChild( document.createTextNode( data ) );
 			} else {
 				script.text = data;
 			}
 
-			// Use insertBefore instead of app***REMOVED***Child to circumvent an IE6 bug.
+			// Use insertBefore instead of appendChild to circumvent an IE6 bug.
 			// This arises when a base node is used (#2709).
 			head.insertBefore( script, head.firstChild );
 			head.removeChild( script );
@@ -876,9 +876,9 @@ function now() {
 
 		// Make sure that a selected-by-default option has a working selected property.
 		// (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
-		optSelected: document.createElement("select").app***REMOVED***Child( document.createElement("option") ).selected,
+		optSelected: document.createElement("select").appendChild( document.createElement("option") ).selected,
 
-		parentNode: div.removeChild( div.app***REMOVED***Child( document.createElement("div") ) ).parentNode === null,
+		parentNode: div.removeChild( div.appendChild( document.createElement("div") ) ).parentNode === null,
 
 		// Will be defined later
 		deleteExpando: true,
@@ -890,13 +890,13 @@ function now() {
 
 	script.type = "text/javascript";
 	try {
-		script.app***REMOVED***Child( document.createTextNode( "window." + id + "=1;" ) );
+		script.appendChild( document.createTextNode( "window." + id + "=1;" ) );
 	} catch(e) {}
 
 	root.insertBefore( script, root.firstChild );
 
 	// Make sure that the execution of code works by injecting a script
-	// tag with app***REMOVED***Child/createTextNode
+	// tag with appendChild/createTextNode
 	// (IE doesn't support this, fails, and uses .text instead)
 	if ( window[ id ] ) {
 		jQuery.support.scriptEval = true;
@@ -928,7 +928,7 @@ function now() {
 	div.innerHTML = "<input type='radio' name='radiotest' checked='checked'/>";
 
 	var fragment = document.createDocumentFragment();
-	fragment.app***REMOVED***Child( div.firstChild );
+	fragment.appendChild( div.firstChild );
 
 	// WebKit doesn't clone checked state correctly in fragments
 	jQuery.support.checkClone = fragment.cloneNode(true).cloneNode(true).lastChild.checked;
@@ -939,7 +939,7 @@ function now() {
 		var div = document.createElement("div");
 		div.style.width = div.style.paddingLeft = "1px";
 
-		document.body.app***REMOVED***Child( div );
+		document.body.appendChild( div );
 		jQuery.boxModel = jQuery.support.boxModel = div.offsetWidth === 2;
 		document.body.removeChild( div ).style.display = 'none';
 
@@ -983,7 +983,7 @@ jQuery.props = {
 };
 var expando = "jQuery" + now(), uuid = 0, windowData = {};
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	cache: {},
 	
 	expando:expando,
@@ -1020,7 +1020,7 @@ jQuery.ext***REMOVED***({
 		// want to manipulate it.
 		if ( typeof name === "object" ) {
 			elem[ expando ] = id;
-			thisCache = cache[ id ] = jQuery.ext***REMOVED***(true, {}, name);
+			thisCache = cache[ id ] = jQuery.extend(true, {}, name);
 
 		} else if ( !cache[ id ] ) {
 			elem[ expando ] = id;
@@ -1075,7 +1075,7 @@ jQuery.ext***REMOVED***({
 	}
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	data: function( key, value ) {
 		if ( typeof key === "undefined" && this.length ) {
 			return jQuery.data( this[0] );
@@ -1111,7 +1111,7 @@ jQuery.fn.ext***REMOVED***({
 		});
 	}
 });
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	queue: function( elem, type, data ) {
 		if ( !elem ) {
 			return;
@@ -1159,7 +1159,7 @@ jQuery.ext***REMOVED***({
 	}
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	queue: function( type, data ) {
 		if ( typeof type !== "string" ) {
 			data = type;
@@ -1210,7 +1210,7 @@ var rclass = /[\n\t]/g,
 	rclickable = /^(a|area)$/i,
 	rradiocheck = /radio|checkbox/;
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	attr: function( name, value ) {
 		return access( this, name, value, true, jQuery.attr );
 	},
@@ -1405,7 +1405,7 @@ jQuery.fn.ext***REMOVED***({
 				val = value.call(this, i, self.val());
 			}
 
-			// Typecast each time if the value is a Function and the app***REMOVED***ed
+			// Typecast each time if the value is a Function and the appended
 			// value is therefore different each time.
 			if ( typeof val === "number" ) {
 				val += "";
@@ -1432,7 +1432,7 @@ jQuery.fn.ext***REMOVED***({
 	}
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	attrFn: {
 		val: true,
 		css: true,
@@ -1611,7 +1611,7 @@ jQuery.event = {
 
 		while ( (type = types[ i++ ]) ) {
 			handleObj = handleObjIn ?
-				jQuery.ext***REMOVED***({}, handleObjIn) :
+				jQuery.extend({}, handleObjIn) :
 				{ handler: handler, data: data };
 
 			// Namespaced event handlers
@@ -1802,7 +1802,7 @@ jQuery.event = {
 				// jQuery.Event object
 				event[expando] ? event :
 				// Object literal
-				jQuery.ext***REMOVED***( jQuery.Event(type), event ) :
+				jQuery.extend( jQuery.Event(type), event ) :
 				// Just the event type (string)
 				jQuery.Event(type);
 
@@ -2024,7 +2024,7 @@ jQuery.event = {
 
 		live: {
 			add: function( handleObj ) {
-				jQuery.event.add( this, handleObj.origType, jQuery.ext***REMOVED***({}, handleObj, {handler: liveHandler}) ); 
+				jQuery.event.add( this, handleObj.origType, jQuery.extend({}, handleObj, {handler: liveHandler}) ); 
 			},
 
 			remove: function( handleObj ) {
@@ -2389,7 +2389,7 @@ jQuery.each(["bind", "one"], function( i, name ) {
 	};
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	unbind: function( type, fn ) {
 		// Handle object literals
 		if ( typeof type === "object" && !type.preventDefault ) {
@@ -3471,7 +3471,7 @@ function getText( elems ) {
 
 	// Create a fake element
 	var div = document.createElement("div");
-	div.app***REMOVED***Child( document.createComment("") );
+	div.appendChild( document.createComment("") );
 
 	// Make sure no comments are found
 	if ( div.getElementsByTagName("*").length > 0 ) {
@@ -3655,7 +3655,7 @@ var posProcess = function(selector, context){
 		root = context.nodeType ? [context] : context;
 
 	// Position selectors must be done after the filter
-	// And so must :not(positional) so we move all PSEUDOs to the ***REMOVED***
+	// And so must :not(positional) so we move all PSEUDOs to the end
 	while ( (match = Expr.match.PSEUDO.exec( selector )) ) {
 		later += match[0];
 		selector = selector.replace( Expr.match.PSEUDO, "" );
@@ -3719,7 +3719,7 @@ var winnow = function( elements, qualifier, keep ) {
 	});
 };
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	find: function( selector ) {
 		var ret = this.pushStack( "", "find", selector ), length = 0;
 
@@ -3910,7 +3910,7 @@ jQuery.each({
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	filter: function( expr, elems, not ) {
 		if ( not ) {
 			expr = ":not(" + expr + ")";
@@ -3971,7 +3971,7 @@ var rinlinejQuery = / jQuery\d+="(?:\d+|null)"/g,
 	},
 	wrapMap = {
 		option: [ 1, "<select multiple='multiple'>", "</select>" ],
-		leg***REMOVED***: [ 1, "<fieldset>", "</fieldset>" ],
+		legend: [ 1, "<fieldset>", "</fieldset>" ],
 		thead: [ 1, "<table>", "</table>" ],
 		tr: [ 2, "<table><tbody>", "</tbody></table>" ],
 		td: [ 3, "<table><tbody><tr>", "</tr></tbody></table>" ],
@@ -3989,7 +3989,7 @@ if ( !jQuery.support.htmlSerialize ) {
 	wrapMap._default = [ 1, "div<div>", "</div>" ];
 }
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	text: function( text ) {
 		if ( jQuery.isFunction(text) ) {
 			return this.each(function(i) {
@@ -3999,7 +3999,7 @@ jQuery.fn.ext***REMOVED***({
 		}
 
 		if ( typeof text !== "object" && text !== undefined ) {
-			return this.empty().app***REMOVED***( (this[0] && this[0].ownerDocument || document).createTextNode( text ) );
+			return this.empty().append( (this[0] && this[0].ownerDocument || document).createTextNode( text ) );
 		}
 
 		return jQuery.text( this );
@@ -4028,7 +4028,7 @@ jQuery.fn.ext***REMOVED***({
 				}
 
 				return elem;
-			}).app***REMOVED***(this);
+			}).append(this);
 		}
 
 		return this;
@@ -4048,7 +4048,7 @@ jQuery.fn.ext***REMOVED***({
 				contents.wrapAll( html );
 
 			} else {
-				self.app***REMOVED***( html );
+				self.append( html );
 			}
 		});
 	},
@@ -4064,18 +4064,18 @@ jQuery.fn.ext***REMOVED***({
 			if ( !jQuery.nodeName( this, "body" ) ) {
 				jQuery( this ).replaceWith( this.childNodes );
 			}
-		}).***REMOVED***();
+		}).end();
 	},
 
-	app***REMOVED***: function() {
+	append: function() {
 		return this.domManip(arguments, true, function( elem ) {
 			if ( this.nodeType === 1 ) {
-				this.app***REMOVED***Child( elem );
+				this.appendChild( elem );
 			}
 		});
 	},
 
-	prep***REMOVED***: function() {
+	prepend: function() {
 		return this.domManip(arguments, true, function( elem ) {
 			if ( this.nodeType === 1 ) {
 				this.insertBefore( elem, this.firstChild );
@@ -4156,7 +4156,7 @@ jQuery.fn.ext***REMOVED***({
 				var html = this.outerHTML, ownerDocument = this.ownerDocument;
 				if ( !html ) {
 					var div = ownerDocument.createElement("div");
-					div.app***REMOVED***Child( this.cloneNode(true) );
+					div.appendChild( this.cloneNode(true) );
 					html = div.innerHTML;
 				}
 
@@ -4203,19 +4203,19 @@ jQuery.fn.ext***REMOVED***({
 
 			// If using innerHTML throws an exception, use the fallback method
 			} catch(e) {
-				this.empty().app***REMOVED***( value );
+				this.empty().append( value );
 			}
 
 		} else if ( jQuery.isFunction( value ) ) {
 			this.each(function(i){
 				var self = jQuery(this), old = self.html();
-				self.empty().app***REMOVED***(function(){
+				self.empty().append(function(){
 					return value.call( this, i, old );
 				});
 			});
 
 		} else {
-			this.empty().app***REMOVED***( value );
+			this.empty().append( value );
 		}
 
 		return this;
@@ -4244,7 +4244,7 @@ jQuery.fn.ext***REMOVED***({
 				if ( next ) {
 					jQuery(next).before( value );
 				} else {
-					jQuery(parent).app***REMOVED***( value );
+					jQuery(parent).append( value );
 				}
 			});
 		} else {
@@ -4318,7 +4318,7 @@ jQuery.fn.ext***REMOVED***({
 		function root( elem, cur ) {
 			return jQuery.nodeName(elem, "table") ?
 				(elem.getElementsByTagName("tbody")[0] ||
-				elem.app***REMOVED***Child(elem.ownerDocument.createElement("tbody"))) :
+				elem.appendChild(elem.ownerDocument.createElement("tbody"))) :
 				elem;
 		}
 	}
@@ -4382,8 +4382,8 @@ function buildFragment( args, nodes, scripts ) {
 jQuery.fragments = {};
 
 jQuery.each({
-	app***REMOVED***To: "app***REMOVED***",
-	prep***REMOVED***To: "prep***REMOVED***",
+	appendTo: "append",
+	prependTo: "prepend",
 	insertBefore: "before",
 	insertAfter: "after",
 	replaceAll: "replaceWith"
@@ -4408,7 +4408,7 @@ jQuery.each({
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	clean: function( elems, context, fragment, scripts ) {
 		context = context || document;
 
@@ -4495,7 +4495,7 @@ jQuery.ext***REMOVED***({
 					if ( ret[i].nodeType === 1 ) {
 						ret.splice.apply( ret, [i + 1, 0].concat(jQuery.makeArray(ret[i].getElementsByTagName("script"))) );
 					}
-					fragment.app***REMOVED***Child( ret[i] );
+					fragment.appendChild( ret[i] );
 				}
 			}
 		}
@@ -4573,7 +4573,7 @@ jQuery.fn.css = function( name, value ) {
 	});
 };
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	style: function( elem, name, value ) {
 		// don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 ) {
@@ -4712,7 +4712,7 @@ jQuery.ext***REMOVED***({
 			// http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
 
 			// If we're not dealing with a regular pixel number
-			// but a number that has a weird ***REMOVED***ing, we need to convert it to pixels
+			// but a number that has a weird ending, we need to convert it to pixels
 			if ( !rnumpx.test( ret ) && rnum.test( ret ) ) {
 				// Remember the original values
 				var left = style.left, rsLeft = elem.runtimeStyle.left;
@@ -4779,7 +4779,7 @@ var jsc = now(),
 	// Keep a copy of the old load method
 	_load = jQuery.fn.load;
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	load: function( url, params, callback ) {
 		if ( typeof url !== "string" ) {
 			return _load.call( this, url );
@@ -4830,7 +4830,7 @@ jQuery.fn.ext***REMOVED***({
 						jQuery("<div />")
 							// inject the contents of the document in, removing the scripts
 							// to avoid any 'Permission Denied' errors in IE
-							.app***REMOVED***(res.responseText.replace(rscript, ""))
+							.append(res.responseText.replace(rscript, ""))
 
 							// Locate the specified elements
 							.find(selector) :
@@ -4875,13 +4875,13 @@ jQuery.fn.ext***REMOVED***({
 });
 
 // Attach a bunch of functions for handling common AJAX events
-jQuery.each( "ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxS***REMOVED***".split(" "), function( i, o ) {
+jQuery.each( "ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split(" "), function( i, o ) {
 	jQuery.fn[o] = function( f ) {
 		return this.bind(o, f);
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 
 	get: function( url, data, callback, type ) {
 		// shift arguments if data argument was omitted
@@ -4926,7 +4926,7 @@ jQuery.ext***REMOVED***({
 	},
 
 	ajaxSetup: function( settings ) {
-		jQuery.ext***REMOVED***( jQuery.ajaxSettings, settings );
+		jQuery.extend( jQuery.ajaxSettings, settings );
 	},
 
 	ajaxSettings: {
@@ -4971,7 +4971,7 @@ jQuery.ext***REMOVED***({
 	etag: {},
 
 	ajax: function( origSettings ) {
-		var s = jQuery.ext***REMOVED***(true, {}, jQuery.ajaxSettings, origSettings);
+		var s = jQuery.extend(true, {}, jQuery.ajaxSettings, origSettings);
 		
 		var jsonp, status, data,
 			callbackContext = origSettings && origSettings.context || s,
@@ -5037,11 +5037,11 @@ jQuery.ext***REMOVED***({
 			// try replacing _= if it is there
 			var ret = s.url.replace(rts, "$1_=" + ts + "$2");
 
-			// if nothing was replaced, add timestamp to the ***REMOVED***
+			// if nothing was replaced, add timestamp to the end
 			s.url = ret + ((ret === s.url) ? (rquery.test(s.url) ? "&" : "?") + "_=" + ts : "");
 		}
 
-		// If data is available, app***REMOVED*** data to url for get requests
+		// If data is available, append data to url for get requests
 		if ( s.data && type === "GET" ) {
 			s.url += (rquery.test(s.url) ? "&" : "?") + s.data;
 		}
@@ -5086,7 +5086,7 @@ jQuery.ext***REMOVED***({
 				};
 			}
 
-			// Use insertBefore instead of app***REMOVED***Child  to circumvent an IE6 bug.
+			// Use insertBefore instead of appendChild  to circumvent an IE6 bug.
 			// This arises when a base node is used (#2709 and #4378).
 			head.insertBefore( script, head.firstChild );
 
@@ -5130,19 +5130,19 @@ jQuery.ext***REMOVED***({
 			}
 
 			// Set header so the called script knows that it's an XMLHttpRequest
-			// Only s***REMOVED*** the header if it's not a remote XHR
+			// Only send the header if it's not a remote XHR
 			if ( !remote ) {
 				xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			}
 
-			// Set the Accepts header for the server, dep***REMOVED***ing on the dataType
+			// Set the Accepts header for the server, depending on the dataType
 			xhr.setRequestHeader("Accept", s.dataType && s.accepts[ s.dataType ] ?
 				s.accepts[ s.dataType ] + ", */*" :
 				s.accepts._default );
 		} catch(e) {}
 
 		// Allow custom headers/mimetypes and early abort
-		if ( s.beforeS***REMOVED*** && s.beforeS***REMOVED***.call(callbackContext, xhr, s) === false ) {
+		if ( s.beforeSend && s.beforeSend.call(callbackContext, xhr, s) === false ) {
 			// Handle the global AJAX counter
 			if ( s.global && ! --jQuery.active ) {
 				jQuery.event.trigger( "ajaxStop" );
@@ -5154,7 +5154,7 @@ jQuery.ext***REMOVED***({
 		}
 
 		if ( s.global ) {
-			trigger("ajaxS***REMOVED***", [xhr, s]);
+			trigger("ajaxSend", [xhr, s]);
 		}
 
 		// Wait for a response to come back
@@ -5245,9 +5245,9 @@ jQuery.ext***REMOVED***({
 			}, s.timeout);
 		}
 
-		// S***REMOVED*** the data
+		// Send the data
 		try {
-			xhr.s***REMOVED***( type === "POST" || type === "PUT" || type === "DELETE" ? s.data : null );
+			xhr.send( type === "POST" || type === "PUT" || type === "DELETE" ? s.data : null );
 		} catch(e) {
 			jQuery.handleError(s, xhr, null, e);
 			// Fire the complete handlers
@@ -5450,7 +5450,7 @@ var elemdisplay = {},
 		[ "opacity" ]
 	];
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	show: function( speed, callback ) {
 		if ( speed || speed === 0) {
 			return this.animate( genFx("show", 3), speed, callback);
@@ -5468,7 +5468,7 @@ jQuery.fn.ext***REMOVED***({
 						display = elemdisplay[ nodeName ];
 
 					} else {
-						var elem = jQuery("<" + nodeName + " />").app***REMOVED***To("body");
+						var elem = jQuery("<" + nodeName + " />").appendTo("body");
 
 						display = elem.css("display");
 
@@ -5540,7 +5540,7 @@ jQuery.fn.ext***REMOVED***({
 	},
 
 	fadeTo: function( speed, to, callback ) {
-		return this.filter(":hidden").css("opacity", 0).show().***REMOVED***()
+		return this.filter(":hidden").css("opacity", 0).show().end()
 					.animate({opacity: to}, speed, callback);
 	},
 
@@ -5552,7 +5552,7 @@ jQuery.fn.ext***REMOVED***({
 		}
 
 		return this[ optall.queue === false ? "each" : "queue" ](function() {
-			var opt = jQuery.ext***REMOVED***({}, optall), p,
+			var opt = jQuery.extend({}, optall), p,
 				hidden = this.nodeType === 1 && jQuery(this).is(":hidden"),
 				self = this;
 
@@ -5588,7 +5588,7 @@ jQuery.fn.ext***REMOVED***({
 				this.style.overflow = "hidden";
 			}
 
-			opt.curAnim = jQuery.ext***REMOVED***({}, prop);
+			opt.curAnim = jQuery.extend({}, prop);
 
 			jQuery.each( prop, function( name, val ) {
 				var e = new jQuery.fx( self, opt, name );
@@ -5601,22 +5601,22 @@ jQuery.fn.ext***REMOVED***({
 						start = e.cur(true) || 0;
 
 					if ( parts ) {
-						var ***REMOVED*** = parseFloat( parts[2] ),
+						var end = parseFloat( parts[2] ),
 							unit = parts[3] || "px";
 
 						// We need to compute starting value
 						if ( unit !== "px" ) {
-							self.style[ name ] = (***REMOVED*** || 1) + unit;
-							start = ((***REMOVED*** || 1) / e.cur(true)) * start;
+							self.style[ name ] = (end || 1) + unit;
+							start = ((end || 1) / e.cur(true)) * start;
 							self.style[ name ] = start + unit;
 						}
 
 						// If a +=/-= token was provided, we're doing a relative animation
 						if ( parts[1] ) {
-							***REMOVED*** = ((parts[1] === "-=" ? -1 : 1) * ***REMOVED***) + start;
+							end = ((parts[1] === "-=" ? -1 : 1) * end) + start;
 						}
 
-						e.custom( start, ***REMOVED***, unit );
+						e.custom( start, end, unit );
 
 					} else {
 						e.custom( start, val, "" );
@@ -5673,7 +5673,7 @@ jQuery.each({
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	speed: function( speed, easing, fn ) {
 		var opt = speed && typeof speed === "object" ? speed : {
 			complete: fn || !fn && easing ||
@@ -5751,7 +5751,7 @@ jQuery.fx.prototype = {
 	custom: function( from, to, unit ) {
 		this.startTime = now();
 		this.start = from;
-		this.***REMOVED*** = to;
+		this.end = to;
 		this.unit = unit || this.unit || "px";
 		this.now = this.start;
 		this.pos = this.state = 0;
@@ -5798,7 +5798,7 @@ jQuery.fx.prototype = {
 		var t = now(), done = true;
 
 		if ( gotoEnd || t >= this.options.duration + this.startTime ) {
-			this.now = this.***REMOVED***;
+			this.now = this.end;
 			this.pos = this.state = 1;
 			this.update();
 
@@ -5850,7 +5850,7 @@ jQuery.fx.prototype = {
 			var specialEasing = this.options.specialEasing && this.options.specialEasing[this.prop];
 			var defaultEasing = this.options.easing || (jQuery.easing.swing ? "swing" : "linear");
 			this.pos = jQuery.easing[specialEasing || defaultEasing](this.state, n, 0, 1, this.options.duration);
-			this.now = this.start + ((this.***REMOVED*** - this.start) * this.pos);
+			this.now = this.start + ((this.end - this.start) * this.pos);
 
 			// Perform the next step of the animation
 			this.update();
@@ -5860,7 +5860,7 @@ jQuery.fx.prototype = {
 	}
 };
 
-jQuery.ext***REMOVED***( jQuery.fx, {
+jQuery.extend( jQuery.fx, {
 	tick: function() {
 		var timers = jQuery.timers;
 
@@ -6019,7 +6019,7 @@ jQuery.offset = {
 		var body = document.body, container = document.createElement("div"), innerDiv, checkDiv, table, td, bodyMarginTop = parseFloat( jQuery.curCSS(body, "marginTop", true) ) || 0,
 			html = "<div style='position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;'><div></div></div><table style='position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>";
 
-		jQuery.ext***REMOVED***( container.style, { position: "absolute", top: 0, left: 0, margin: 0, border: 0, width: "1px", height: "1px", visibility: "hidden" } );
+		jQuery.extend( container.style, { position: "absolute", top: 0, left: 0, margin: 0, border: 0, width: "1px", height: "1px", visibility: "hidden" } );
 
 		container.innerHTML = html;
 		body.insertBefore( container, body.firstChild );
@@ -6086,7 +6086,7 @@ jQuery.offset = {
 };
 
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	position: function() {
 		if ( !this[0] ) {
 			return null;
@@ -6209,7 +6209,7 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 		}
 
 		return ("scrollTo" in elem && elem.document) ? // does it walk and quack like a window?
-			// Everyone else use document.documentElement or document.body dep***REMOVED***ing on Quirks vs Standards mode
+			// Everyone else use document.documentElement or document.body depending on Quirks vs Standards mode
 			elem.document.compatMode === "CSS1Compat" && elem.document.documentElement[ "client" + name ] ||
 			elem.document.body[ "client" + name ] :
 

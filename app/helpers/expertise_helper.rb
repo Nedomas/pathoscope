@@ -1,2 +1,2 @@
 module ExpertiseHelper
-***REMOVED***
+end

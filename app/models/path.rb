@@ -11,15 +11,15 @@ class Path < ActiveRecord::Base
 
   def item_id
     item.id
-***REMOVED***
+  end
 
   def node
     nodes.roots.first
-***REMOVED***
+  end
 
   def links
     nodes.map(&:item).select(&:link?).uniq
-***REMOVED***
+  end
 
   def add_color
     if last_path = Path.last
@@ -29,48 +29,48 @@ class Path < ActiveRecord::Base
       self.color = last_color + 1
     else
       self.color = 1
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   def roots
     nodes.roots.order(:id)
-***REMOVED***
+  end
 
   def root_for_user(user)
     user.nodes.roots.find_by(path: self)
-***REMOVED***
+  end
 
   def links_for_user(user)
     Node.sort_by_ancestry(Node.where(path: self, user: user))
-***REMOVED***
+  end
 
   def screenshot_path
     '/assets/paths/aerospace.png'
-***REMOVED***
+  end
 
   def thumbnail_path
     '/assets/paths/aerospace.png'
-***REMOVED***
+  end
 
   def hover_content
     "<img src='#{screenshot_path}' height='600'>"
-***REMOVED***
+  end
 
   def url
-***REMOVED***
+  end
 
   def show_title
     title
-***REMOVED***
+  end
 
   def show_url
-***REMOVED***
+  end
 
   def chosen
     if User.current
       User.current.user_paths.map(&:path).include?(self)
     else
       false
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

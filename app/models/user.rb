@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-***REMOVED*** Include default devise modules. Others available are:
-***REMOVED*** :confirmable, :lockable, :timeoutable and :omniauthable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,15 +12,15 @@ class User < ActiveRecord::Base
 
   def items
     nodes.map(&:item).uniq
-***REMOVED***
+  end
 
   def last_item_id
     items.last.andand.id
-***REMOVED***
+  end
 
   def item_ids
     items.map(&:id)
-***REMOVED***
+  end
 
   def self.authenticate!(email, password)
     user = User.where(email: email).first
@@ -28,21 +28,21 @@ class User < ActiveRecord::Base
     user.update_tracked_fields!(request_mock)
     return (user.valid_password?(password) ? user : nil) unless user.nil?
     nil
-***REMOVED***
+  end
 
   def self.current
     Thread.current[:user]
-***REMOVED***
+  end
 
   def self.current=(user)
     Thread.current[:user] = user
-***REMOVED***
+  end
 
-***REMOVED*** def paths
-***REMOVED***   nodes.map(&:path).uniq
-***REMOVED*** ***REMOVED***
+  # def paths
+  #   nodes.map(&:path).uniq
+  # end
 
-***REMOVED*** def paths_count
-***REMOVED***   nodes.map(&:path).uniq.count
-***REMOVED*** ***REMOVED***
-***REMOVED***
+  # def paths_count
+  #   nodes.map(&:path).uniq.count
+  # end
+end

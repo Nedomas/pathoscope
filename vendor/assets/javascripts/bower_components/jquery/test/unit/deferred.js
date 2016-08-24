@@ -46,7 +46,7 @@ jQuery.each( [ "", " - new operator" ], function( _, withNew ) {
 				func = function() {},
 				funcPromise = defer.promise( func );
 			strictEqual( defer.promise(), promise, "promise is always the same" );
-			strictEqual( funcPromise, func, "non objects get ext***REMOVED***ed" );
+			strictEqual( funcPromise, func, "non objects get extended" );
 			jQuery.each( promise, function( key ) {
 				if ( !jQuery.isFunction( promise[ key ] ) ) {
 					ok( false, key + " is a function (" + jQuery.type( promise[ key ] ) + ")" );
@@ -60,7 +60,7 @@ jQuery.each( [ "", " - new operator" ], function( _, withNew ) {
 		jQuery.expandedEach = jQuery.each;
 		jQuery.expandedEach( "resolve reject".split(" "), function( _, change ) {
 			createDeferred(function( defer ) {
-				strictEqual( defer.state(), "p***REMOVED***ing", "p***REMOVED***ing after creation" );
+				strictEqual( defer.state(), "pending", "pending after creation" );
 				var checked = 0;
 				defer.progress(function( value ) {
 					strictEqual( value, checked, "Progress: right value (" + value + ") received" );
@@ -68,9 +68,9 @@ jQuery.each( [ "", " - new operator" ], function( _, withNew ) {
 				for ( checked = 0; checked < 3; checked++ ) {
 					defer.notify( checked );
 				}
-				strictEqual( defer.state(), "p***REMOVED***ing", "p***REMOVED***ing after notification" );
+				strictEqual( defer.state(), "pending", "pending after notification" );
 				defer[ change ]();
-				notStrictEqual( defer.state(), "p***REMOVED***ing", "not p***REMOVED***ing after " + change );
+				notStrictEqual( defer.state(), "pending", "not pending after " + change );
 				defer.notify();
 			});
 		});

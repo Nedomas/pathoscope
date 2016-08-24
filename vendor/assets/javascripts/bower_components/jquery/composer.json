@@ -16,7 +16,7 @@
             "name": "John Resig",
             "email": "jeresig@gmail.com"
         }
-  ***REMOVED***,
+    ],
     "require": {
         "robloach/component-installer": "*"
     },
@@ -24,12 +24,12 @@
         "component": {
             "scripts": [
                 "jquery.js"
-          ***REMOVED***,
+            ],
             "files": [
                 "jquery.min.js",
                 "jquery-migrate.js",
                 "jquery-migrate.min.js"
-          ***REMOVED***
+            ]
         }
     }
 }

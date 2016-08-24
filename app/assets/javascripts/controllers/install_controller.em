@@ -1,4 +1,4 @@
-class PS.Web.InstallController ext***REMOVED***s Ember.ObjectController
+class PS.Web.InstallController extends Ember.ObjectController
   hover: null
 
   +computed hover

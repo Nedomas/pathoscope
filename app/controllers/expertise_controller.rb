@@ -6,33 +6,33 @@ class ExpertiseController < ApplicationController
       Node.find(node_id)
     else
       @full_path.middle
-***REMOVED***
+    end
 
     edge = @full_path.index(@node)
 
     @above = @full_path[edge..-1].middle
     @below = @full_path[0..edge].middle
 
-  ***REMOVED*** its done
+    # its done
     if [@above, @below].include?(@node)
       Node.build(@node.link.url, @path, current_user)
       flash[:notice] = "You have been successfully placed in #{@path.title}"
       redirect_to install_path
-***REMOVED***
+    end
 
     @link = @node.link
-***REMOVED***
+  end
 #
 #   def continue
 #     node = Node.find(params[:node_id])
 #     edge = @full_path.index(node)
-# ***REMOVED***
+#   end
 
-***REMOVED*** def finish
-***REMOVED***   @node = Node.find(params[:node_id])
-***REMOVED***   binding.pry
-***REMOVED*** ***REMOVED*** show first resource
-***REMOVED*** ***REMOVED***
+  # def finish
+  #   @node = Node.find(params[:node_id])
+  #   binding.pry
+  #   # show first resource
+  # end
 
   private
 
@@ -44,11 +44,11 @@ class ExpertiseController < ApplicationController
 
     @full_path = Node.sort_by_ancestry(deepest_node.ancestors)
     @full_path << deepest_node
-***REMOVED***
-***REMOVED***
+  end
+end
 
 class Array
   def middle
     self[count/2]
-***REMOVED***
-***REMOVED***
+  end
+end

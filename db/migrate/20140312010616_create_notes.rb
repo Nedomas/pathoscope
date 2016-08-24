@@ -6,6 +6,6 @@ class CreateNotes < ActiveRecord::Migration
       t.references :user, index: true
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

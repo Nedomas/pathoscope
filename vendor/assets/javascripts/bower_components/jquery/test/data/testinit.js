@@ -16,7 +16,7 @@ this.$ = original$;
 /**
  * Set up a mock AMD define function for testing AMD registration.
  */
-function define( name, dep***REMOVED***encies, callback ) {
+function define( name, dependencies, callback ) {
 	amdDefined = callback();
 }
 
@@ -185,8 +185,8 @@ this.ajaxTest = function( title, expect, options ) {
 						};
 					};
 
-				if ( options.afterS***REMOVED*** ) {
-					options.afterS***REMOVED***( request );
+				if ( options.afterSend ) {
+					options.afterSend( request );
 				}
 
 				return request
@@ -233,7 +233,7 @@ this.testIframe = function( fileName, name, fn ) {
 
 	function loadFixture() {
 		var src = url("./data/" + fileName + ".html"),
-			iframe = jQuery("<iframe />").app***REMOVED***To("body")[0];
+			iframe = jQuery("<iframe />").appendTo("body")[0];
 			iframe.style.cssText = "width: 500px; height: 500px; position: absolute; top: -600px; left: -600px; visibility: hidden;";
 		iframe.contentWindow.location = src;
 		return iframe;
@@ -257,8 +257,8 @@ this.testIframeWithCallback = function( title, fileName, func ) {
 				start();
 			}, 0 );
 		};
-		iframe = jQuery( "<div/>" ).app***REMOVED***(
+		iframe = jQuery( "<div/>" ).append(
 			jQuery( "<iframe/>" ).attr( "src", url( "./data/" + fileName ) )
-		).app***REMOVED***To( "body" );
+		).appendTo( "body" );
 	});
 };

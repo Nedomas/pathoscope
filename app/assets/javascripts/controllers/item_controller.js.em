@@ -1,1 +1,1 @@
-class PS.Web.ItemController ext***REMOVED***s PS.Core.ItemController
+class PS.Web.ItemController extends PS.Core.ItemController

@@ -1,4 +1,4 @@
-class PS.Web.MapController ext***REMOVED***s Ember.ObjectController with Tree
+class PS.Web.MapController extends Ember.ObjectController with Tree
   actions:
     childrenAction: (item_id) ->
       _this = this

@@ -8,6 +8,6 @@ class CreateBetaTesters < ActiveRecord::Migration
       t.boolean :logged_in
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

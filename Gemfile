@@ -66,9 +66,9 @@ gem 'rollbar'
 gem 'jbuilder'
 
 group :doc do
-***REMOVED*** bundle exec rake doc:rails generates the API under doc/api.
+  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
-***REMOVED***
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -86,12 +86,12 @@ group :development, :test do
   gem 'teaspoon'
   gem 'poltergeist'
   gem 'konacha-chai-matchers'
-***REMOVED*** gem 'minitap', "~> 0.5"
-***REMOVED*** gem 'minitap'
-***REMOVED***
+  # gem 'minitap', "~> 0.5"
+  # gem 'minitap'
+end
 
 group :test do
   gem 'webmock'
   gem 'rspec-rails'
   gem 'database_cleaner'
-***REMOVED***
+end

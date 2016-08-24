@@ -1,1 +1,1 @@
-class PS.Website.Note ext***REMOVED***s PS.Core.Note
+class PS.Website.Note extends PS.Core.Note

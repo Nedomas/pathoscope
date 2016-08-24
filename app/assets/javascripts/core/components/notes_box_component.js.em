@@ -1,4 +1,4 @@
-PS.Core.NotesBoxComponent = Ember.Component.ext***REMOVED***
+PS.Core.NotesBoxComponent = Ember.Component.extend
   actions:
     postAction: ->
-      @s***REMOVED***Action('s***REMOVED***NotePost')
+      @sendAction('sendNotePost')

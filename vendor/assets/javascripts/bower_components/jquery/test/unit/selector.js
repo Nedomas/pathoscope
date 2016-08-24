@@ -66,7 +66,7 @@ test("disconnected nodes", function() {
 test("disconnected nodes - jQuery only", function() {
 	expect( 3 );
 
-	var $opt = jQuery("<option></option>").attr("value", "whipit").app***REMOVED***To("#qunit-fixture").detach();
+	var $opt = jQuery("<option></option>").attr("value", "whipit").appendTo("#qunit-fixture").detach();
 	equal( $opt.val(), "whipit", "option value" );
 	equal( $opt.is(":selected"), false, "unselected option" );
 	$opt.prop("selected", true);

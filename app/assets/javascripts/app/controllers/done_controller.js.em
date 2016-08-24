@@ -1,2 +1,2 @@
-class PS.Standalone.DoneController ext***REMOVED***s PS.ObjectController with Tree
+class PS.Standalone.DoneController extends PS.ObjectController with Tree
   hasChildren: false

@@ -1,4 +1,4 @@
-class PS.Web.ApplicationRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
+class PS.Web.ApplicationRoute extends Ember.Route with Ember.SimpleAuth.ApplicationRouteMixin
   beforeModel: ->
     @get('session.user')
 

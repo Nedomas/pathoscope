@@ -18,9 +18,9 @@ module Pathoscope
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
-  ***REMOVED***
-***REMOVED***
+      end
+    end
 
-    config.assets.paths << Rails.root.join('v***REMOVED***or', 'assets', 'bower_components')
-***REMOVED***
-***REMOVED***
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+  end
+end

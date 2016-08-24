@@ -42,10 +42,10 @@ define(
   });
 define(
   'handlebars/utils',["./safe-string","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     
     /*jshint -W004 */
-    var SafeString = __dep***REMOVED***ency1__["default"];
+    var SafeString = __dependency1__["default"];
 
     var escape = {
       "&": "&amp;",
@@ -63,7 +63,7 @@ define(
       return escape[chr] || "&amp;";
     }
 
-    function ext***REMOVED***(obj, value) {
+    function extend(obj, value) {
       for(var key in value) {
         if(Object.prototype.hasOwnProperty.call(value, key)) {
           obj[key] = value[key];
@@ -71,7 +71,7 @@ define(
       }
     }
 
-    __exports__.ext***REMOVED*** = ext***REMOVED***;var toString = Object.prototype.toString;
+    __exports__.extend = extend;var toString = Object.prototype.toString;
     __exports__.toString = toString;
     // Sourced from lodash
     // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
@@ -99,7 +99,7 @@ define(
         return "";
       }
 
-      // Force a string conversion as this will be done by the app***REMOVED*** regardless and
+      // Force a string conversion as this will be done by the append regardless and
       // the regex test will do this transparently behind the scenes, causing issues if
       // an object's to string has escaped characters in it.
       string = "" + string;
@@ -154,10 +154,10 @@ define(
   });
 define(
   'handlebars/base',["./utils","./exception","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     
-    var Utils = __dep***REMOVED***ency1__;
-    var Exception = __dep***REMOVED***ency2__["default"];
+    var Utils = __dependency1__;
+    var Exception = __dependency2__["default"];
 
     var VERSION = "1.3.0";
     __exports__.VERSION = VERSION;var COMPILER_REVISION = 4;
@@ -190,7 +190,7 @@ define(
       registerHelper: function(name, fn, inverse) {
         if (toString.call(name) === objectType) {
           if (inverse || fn) { throw new Exception('Arg not supported with multiple helpers'); }
-          Utils.ext***REMOVED***(this.helpers, name);
+          Utils.extend(this.helpers, name);
         } else {
           if (inverse) { fn.not = inverse; }
           this.helpers[name] = fn;
@@ -199,7 +199,7 @@ define(
 
       registerPartial: function(name, str) {
         if (toString.call(name) === objectType) {
-          Utils.ext***REMOVED***(this.partials,  name);
+          Utils.extend(this.partials,  name);
         } else {
           this.partials[name] = str;
         }
@@ -280,7 +280,7 @@ define(
       instance.registerHelper('if', function(conditional, options) {
         if (isFunction(conditional)) { conditional = conditional.call(this); }
 
-        // Default behavior is to r***REMOVED***er the positive path if the value is truthy and not empty.
+        // Default behavior is to render the positive path if the value is truthy and not empty.
         // The `includeZero` option may be set to treat the condtional as purely not empty based on the
         // behavior of isEmpty. Effectively this determines if 0 is handled by the positive path or negative.
         if ((!options.hash.includeZero && !conditional) || Utils.isEmpty(conditional)) {
@@ -331,19 +331,19 @@ define(
 
     __exports__.log = log;var createFrame = function(object) {
       var obj = {};
-      Utils.ext***REMOVED***(obj, object);
+      Utils.extend(obj, object);
       return obj;
     };
     __exports__.createFrame = createFrame;
   });
 define(
   'handlebars/runtime',["./utils","./exception","./base","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
-    var Utils = __dep***REMOVED***ency1__;
-    var Exception = __dep***REMOVED***ency2__["default"];
-    var COMPILER_REVISION = __dep***REMOVED***ency3__.COMPILER_REVISION;
-    var REVISION_CHANGES = __dep***REMOVED***ency3__.REVISION_CHANGES;
+    var Utils = __dependency1__;
+    var Exception = __dependency2__["default"];
+    var COMPILER_REVISION = __dependency3__.COMPILER_REVISION;
+    var REVISION_CHANGES = __dependency3__.REVISION_CHANGES;
 
     function checkRevision(compilerInfo) {
       var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -404,8 +404,8 @@ define(
 
           if (param && common && (param !== common)) {
             ret = {};
-            Utils.ext***REMOVED***(ret, common);
-            Utils.ext***REMOVED***(ret, param);
+            Utils.extend(ret, common);
+            Utils.extend(ret, param);
           }
           return ret;
         },
@@ -479,23 +479,23 @@ define(
   });
 define(
   'handlebars.runtime',["./handlebars/base","./handlebars/safe-string","./handlebars/exception","./handlebars/utils","./handlebars/runtime","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     
     /*globals Handlebars: true */
-    var base = __dep***REMOVED***ency1__;
+    var base = __dependency1__;
 
     // Each of these augment the Handlebars object. No need to setup here.
     // (This is done to easily share code between commonjs and browse envs)
-    var SafeString = __dep***REMOVED***ency2__["default"];
-    var Exception = __dep***REMOVED***ency3__["default"];
-    var Utils = __dep***REMOVED***ency4__;
-    var runtime = __dep***REMOVED***ency5__;
+    var SafeString = __dependency2__["default"];
+    var Exception = __dependency3__["default"];
+    var Utils = __dependency4__;
+    var runtime = __dependency5__;
 
     // For compatibility and usage outside of module systems, make the Handlebars object a namespace
     var create = function() {
       var hb = new base.HandlebarsEnvironment();
 
-      Utils.ext***REMOVED***(hb, base);
+      Utils.extend(hb, base);
       hb.SafeString = SafeString;
       hb.Exception = Exception;
       hb.Utils = Utils;
@@ -515,9 +515,9 @@ define(
   });
 define(
   'handlebars/compiler/ast',["../exception","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     
-    var Exception = __dep***REMOVED***ency1__["default"];
+    var Exception = __dependency1__["default"];
 
     function LocationInfo(locInfo){
       locInfo = locInfo || {};
@@ -753,7 +753,7 @@ define(
     var handlebars = (function(){
     var parser = {trace: function trace() { },
     yy: {},
-    symbols_: {"error":2,"root":3,"statements":4,"EOF":5,"program":6,"simpleInverse":7,"statement":8,"openInverse":9,"closeBlock":10,"openBlock":11,"mustache":12,"partial":13,"CONTENT":14,"COMMENT":15,"OPEN_BLOCK":16,"sexpr":17,"CLOSE":18,"OPEN_INVERSE":19,"OPEN_ENDBLOCK":20,"path":21,"OPEN":22,"OPEN_UNESCAPED":23,"CLOSE_UNESCAPED":24,"OPEN_PARTIAL":25,"partialName":26,"partial_option0":27,"sexpr_repetition0":28,"sexpr_option0":29,"dataName":30,"param":31,"STRING":32,"INTEGER":33,"BOOLEAN":34,"OPEN_SEXPR":35,"CLOSE_SEXPR":36,"hash":37,"hash_repetition_plus0":38,"hashSegment":39,"ID":40,"EQUALS":41,"DATA":42,"pathSegments":43,"SEP":44,"$accept":0,"$***REMOVED***":1},
+    symbols_: {"error":2,"root":3,"statements":4,"EOF":5,"program":6,"simpleInverse":7,"statement":8,"openInverse":9,"closeBlock":10,"openBlock":11,"mustache":12,"partial":13,"CONTENT":14,"COMMENT":15,"OPEN_BLOCK":16,"sexpr":17,"CLOSE":18,"OPEN_INVERSE":19,"OPEN_ENDBLOCK":20,"path":21,"OPEN":22,"OPEN_UNESCAPED":23,"CLOSE_UNESCAPED":24,"OPEN_PARTIAL":25,"partialName":26,"partial_option0":27,"sexpr_repetition0":28,"sexpr_option0":29,"dataName":30,"param":31,"STRING":32,"INTEGER":33,"BOOLEAN":34,"OPEN_SEXPR":35,"CLOSE_SEXPR":36,"hash":37,"hash_repetition_plus0":38,"hashSegment":39,"ID":40,"EQUALS":41,"DATA":42,"pathSegments":43,"SEP":44,"$accept":0,"$end":1},
     terminals_: {2:"error",5:"EOF",14:"CONTENT",15:"COMMENT",16:"OPEN_BLOCK",18:"CLOSE",19:"OPEN_INVERSE",20:"OPEN_ENDBLOCK",22:"OPEN",23:"OPEN_UNESCAPED",24:"CLOSE_UNESCAPED",25:"OPEN_PARTIAL",32:"STRING",33:"INTEGER",34:"BOOLEAN",35:"OPEN_SEXPR",36:"CLOSE_SEXPR",40:"ID",41:"EQUALS",42:"DATA",44:"SEP"},
     productions_: [0,[3,2],[3,1],[6,2],[6,3],[6,2],[6,1],[6,1],[6,0],[4,1],[4,2],[8,3],[8,3],[8,1],[8,1],[8,1],[8,1],[11,3],[9,3],[10,3],[12,3],[12,3],[13,4],[7,2],[17,3],[17,1],[31,1],[31,1],[31,1],[31,1],[31,1],[31,3],[37,1],[39,3],[26,1],[26,1],[26,1],[30,2],[21,1],[43,3],[43,1],[27,0],[27,1],[28,0],[28,2],[29,0],[29,1],[38,1],[38,2]],
     performAction: function anonymous(yytext,yyleng,yylineno,yy,yystate,$$,_$) {
@@ -903,7 +903,7 @@ define(
                     if (this.lexer.showPosition) {
                         errStr = "Parse error on line " + (yylineno + 1) + ":\n" + this.lexer.showPosition() + "\nExpecting " + expected.join(", ") + ", got '" + (this.terminals_[symbol] || symbol) + "'";
                     } else {
-                        errStr = "Parse error on line " + (yylineno + 1) + ": Unexpected " + (symbol == 1?"***REMOVED*** of input":"'" + (this.terminals_[symbol] || symbol) + "'");
+                        errStr = "Parse error on line " + (yylineno + 1) + ": Unexpected " + (symbol == 1?"end of input":"'" + (this.terminals_[symbol] || symbol) + "'");
                     }
                     this.parseError(errStr, {text: this.lexer.match, token: this.terminals_[symbol] || symbol, line: this.lexer.yylineno, loc: yyloc, expected: expected});
                 }
@@ -1140,8 +1140,8 @@ define(
     lexer.performAction = function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 
 
-    function strip(start, ***REMOVED***) {
-      return yy_.yytext = yy_.yytext.substr(start, yy_.yyleng-***REMOVED***);
+    function strip(start, end) {
+      return yy_.yytext = yy_.yytext.substr(start, yy_.yyleng-end);
     }
 
 
@@ -1236,14 +1236,14 @@ define(
     function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
     return new Parser;
     })();__exports__["default"] = handlebars;
-    /* jshint ignore:***REMOVED*** */
+    /* jshint ignore:end */
   });
 define(
   'handlebars/compiler/base',["./parser","./ast","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     
-    var parser = __dep***REMOVED***ency1__["default"];
-    var AST = __dep***REMOVED***ency2__["default"];
+    var parser = __dependency1__["default"];
+    var AST = __dependency2__["default"];
 
     __exports__.parser = parser;
 
@@ -1259,9 +1259,9 @@ define(
   });
 define(
   'handlebars/compiler/compiler',["../exception","exports"],
-  function(__dep***REMOVED***ency1__, __exports__) {
+  function(__dependency1__, __exports__) {
     
-    var Exception = __dep***REMOVED***ency1__["default"];
+    var Exception = __dependency1__["default"];
 
     function Compiler() {}
 
@@ -1444,7 +1444,7 @@ define(
           this.opcode('ambiguousBlockValue');
         }
 
-        this.opcode('app***REMOVED***');
+        this.opcode('append');
       },
 
       hash: function(hash) {
@@ -1488,20 +1488,20 @@ define(
         }
 
         this.opcode('invokePartial', partialName.name);
-        this.opcode('app***REMOVED***');
+        this.opcode('append');
       },
 
       content: function(content) {
-        this.opcode('app***REMOVED***Content', content.string);
+        this.opcode('appendContent', content.string);
       },
 
       mustache: function(mustache) {
         this.sexpr(mustache.sexpr);
 
         if(mustache.escaped && !this.options.noEscape) {
-          this.opcode('app***REMOVED***Escaped');
+          this.opcode('appendEscaped');
         } else {
-          this.opcode('app***REMOVED***');
+          this.opcode('append');
         }
       },
 
@@ -1732,12 +1732,12 @@ define(
   });
 define(
   'handlebars/compiler/javascript-compiler',["../base","../exception","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __exports__) {
+  function(__dependency1__, __dependency2__, __exports__) {
     
-    var COMPILER_REVISION = __dep***REMOVED***ency1__.COMPILER_REVISION;
-    var REVISION_CHANGES = __dep***REMOVED***ency1__.REVISION_CHANGES;
-    var log = __dep***REMOVED***ency1__.log;
-    var Exception = __dep***REMOVED***ency2__["default"];
+    var COMPILER_REVISION = __dependency1__.COMPILER_REVISION;
+    var REVISION_CHANGES = __dependency1__.REVISION_CHANGES;
+    var log = __dependency1__.log;
+    var Exception = __dependency2__["default"];
 
     function Literal(value) {
       this.value = value;
@@ -1777,12 +1777,12 @@ define(
         return "this.compilerInfo = ["+revision+",'"+versions+"'];\n";
       },
 
-      app***REMOVED***ToBuffer: function(string) {
+      appendToBuffer: function(string) {
         if (this.environment.isSimple) {
           return "return " + string + ";";
         } else {
           return {
-            app***REMOVED***ToBuffer: true,
+            appendToBuffer: true,
             content: string,
             toString: function() { return "buffer += " + string + ";"; }
           };
@@ -1840,7 +1840,7 @@ define(
           }
         }
 
-        // Flush any trailing content that might be p***REMOVED***ing.
+        // Flush any trailing content that might be pending.
         this.pushSource('');
 
         if (this.stackSlot || this.inlineStack.length || this.compileStack.length) {
@@ -1930,12 +1930,12 @@ define(
       },
       mergeSource: function() {
         // WARN: We are not handling the case where buffer is still populated as the source should
-        // not have buffer app***REMOVED*** operations as their final action.
+        // not have buffer append operations as their final action.
         var source = '',
             buffer;
         for (var i = 0, len = this.source.length; i < len; i++) {
           var line = this.source[i];
-          if (line.app***REMOVED***ToBuffer) {
+          if (line.appendToBuffer) {
             if (buffer) {
               buffer = buffer + '\n    + ' + line.content;
             } else {
@@ -1991,21 +1991,21 @@ define(
         this.pushSource("if (!" + this.lastHelper + ") { " + current + " = blockHelperMissing.call(" + params.join(", ") + "); }");
       },
 
-      // [app***REMOVED***Content]
+      // [appendContent]
       //
       // On stack, before: ...
       // On stack, after: ...
       //
-      // App***REMOVED***s the string value of `content` to the current buffer
-      app***REMOVED***Content: function(content) {
-        if (this.p***REMOVED***ingContent) {
-          content = this.p***REMOVED***ingContent + content;
+      // Appends the string value of `content` to the current buffer
+      appendContent: function(content) {
+        if (this.pendingContent) {
+          content = this.pendingContent + content;
         }
         if (this.stripNext) {
           content = content.replace(/^\s+/, '');
         }
 
-        this.p***REMOVED***ingContent = content;
+        this.pendingContent = content;
       },
 
       // [strip]
@@ -2016,42 +2016,42 @@ define(
       // Removes any trailing whitespace from the prior content node and flags
       // the next operation for stripping if it is a content node.
       strip: function() {
-        if (this.p***REMOVED***ingContent) {
-          this.p***REMOVED***ingContent = this.p***REMOVED***ingContent.replace(/\s+$/, '');
+        if (this.pendingContent) {
+          this.pendingContent = this.pendingContent.replace(/\s+$/, '');
         }
         this.stripNext = 'strip';
       },
 
-      // [app***REMOVED***]
+      // [append]
       //
       // On stack, before: value, ...
       // On stack, after: ...
       //
-      // Coerces `value` to a String and app***REMOVED***s it to the current buffer.
+      // Coerces `value` to a String and appends it to the current buffer.
       //
-      // If `value` is truthy, or 0, it is coerced into a string and app***REMOVED***ed
-      // Otherwise, the empty string is app***REMOVED***ed
-      app***REMOVED***: function() {
+      // If `value` is truthy, or 0, it is coerced into a string and appended
+      // Otherwise, the empty string is appended
+      append: function() {
         // Force anything that is inlined onto the stack so we don't have duplication
         // when we examine local
         this.flushInline();
         var local = this.popStack();
-        this.pushSource("if(" + local + " || " + local + " === 0) { " + this.app***REMOVED***ToBuffer(local) + " }");
+        this.pushSource("if(" + local + " || " + local + " === 0) { " + this.appendToBuffer(local) + " }");
         if (this.environment.isSimple) {
-          this.pushSource("else { " + this.app***REMOVED***ToBuffer("''") + " }");
+          this.pushSource("else { " + this.appendToBuffer("''") + " }");
         }
       },
 
-      // [app***REMOVED***Escaped]
+      // [appendEscaped]
       //
       // On stack, before: value, ...
       // On stack, after: ...
       //
-      // Escape `value` and app***REMOVED*** it to the buffer
-      app***REMOVED***Escaped: function() {
+      // Escape `value` and append it to the buffer
+      appendEscaped: function() {
         this.context.aliases.escapeExpression = 'this.escapeExpression';
 
-        this.pushSource(this.app***REMOVED***ToBuffer("escapeExpression(" + this.popStack() + ")"));
+        this.pushSource(this.appendToBuffer("escapeExpression(" + this.popStack() + ")"));
       },
 
       // [getContext]
@@ -2423,9 +2423,9 @@ define(
       },
 
       pushSource: function(source) {
-        if (this.p***REMOVED***ingContent) {
-          this.source.push(this.app***REMOVED***ToBuffer(this.quotedString(this.p***REMOVED***ingContent)));
-          this.p***REMOVED***ingContent = undefined;
+        if (this.pendingContent) {
+          this.source.push(this.appendToBuffer(this.quotedString(this.pendingContent)));
+          this.pendingContent = undefined;
         }
 
         if (source) {
@@ -2653,7 +2653,7 @@ define(
       " do instanceof typeof" +
       " abstract enum int short" +
       " boolean export interface static" +
-      " byte ext***REMOVED***s long super" +
+      " byte extends long super" +
       " char final native synchronized" +
       " class float package throws" +
       " const goto private transient" +
@@ -2678,19 +2678,19 @@ define(
   });
 define(
   'handlebars',["./handlebars.runtime","./handlebars/compiler/ast","./handlebars/compiler/base","./handlebars/compiler/compiler","./handlebars/compiler/javascript-compiler","exports"],
-  function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__, __exports__) {
+  function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     
     /*globals Handlebars: true */
-    var Handlebars = __dep***REMOVED***ency1__["default"];
+    var Handlebars = __dependency1__["default"];
 
     // Compiler imports
-    var AST = __dep***REMOVED***ency2__["default"];
-    var Parser = __dep***REMOVED***ency3__.parser;
-    var parse = __dep***REMOVED***ency3__.parse;
-    var Compiler = __dep***REMOVED***ency4__.Compiler;
-    var compile = __dep***REMOVED***ency4__.compile;
-    var precompile = __dep***REMOVED***ency4__.precompile;
-    var JavaScriptCompiler = __dep***REMOVED***ency5__["default"];
+    var AST = __dependency2__["default"];
+    var Parser = __dependency3__.parser;
+    var parse = __dependency3__.parse;
+    var Compiler = __dependency4__.Compiler;
+    var compile = __dependency4__.compile;
+    var precompile = __dependency4__.precompile;
+    var JavaScriptCompiler = __dependency5__["default"];
 
     var _create = Handlebars.create;
     var create = function() {

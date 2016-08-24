@@ -340,23 +340,23 @@ module.exports = function( grunt ) {
 					}
 				};
 
-			// app***REMOVED*** commit id to version
+			// append commit id to version
 			if ( process.env.COMMIT ) {
 				version += " " + process.env.COMMIT;
 			}
 
 			// figure out which files to exclude based on these rules in this order:
-			//  dep***REMOVED***ency explicit exclude
+			//  dependency explicit exclude
 			//  > explicit exclude
 			//  > explicit include
-			//  > dep***REMOVED***ency implicit exclude
+			//  > dependency implicit exclude
 			//  > implicit exclude
 			// examples:
 			//  *                  none (implicit exclude)
 			//  *:*                all (implicit include)
-			//  *:*:-css           all except css and dep***REMOVED***ents (explicit > implicit)
-			//  *:*:-css:+effects  same (excludes effects because explicit include is trumped by explicit exclude of dep***REMOVED***ency)
-			//  *:+effects         none except effects and its dep***REMOVED***encies (explicit include trumps implicit exclude of dep***REMOVED***ency)
+			//  *:*:-css           all except css and dependents (explicit > implicit)
+			//  *:*:-css:+effects  same (excludes effects because explicit include is trumped by explicit exclude of dependency)
+			//  *:+effects         none except effects and its dependencies (explicit include trumps implicit exclude of dependency)
 			src.forEach(function( filepath ) {
 				var flag = filepath.flag;
 
@@ -364,7 +364,7 @@ module.exports = function( grunt ) {
 
 					excluder(flag);
 
-					// check for dep***REMOVED***encies
+					// check for dependencies
 					if ( filepath.needs ) {
 						deps[ flag ] = filepath.needs;
 						filepath.needs.forEach(function( needsFlag ) {
@@ -374,7 +374,7 @@ module.exports = function( grunt ) {
 				}
 			});
 
-			// app***REMOVED*** excluded modules to version
+			// append excluded modules to version
 			if ( Object.keys( excluded ).length ) {
 				version += " -" + Object.keys( excluded ).join( ",-" );
 				// set pkg.version to version with excludes, so minified file picks it up
@@ -477,9 +477,9 @@ module.exports = function( grunt ) {
 			var i, c,
 				text = fs.readFileSync( filename, "utf8" );
 
-			// Ensure files use only \n for line ***REMOVED***ings, not \r\n
+			// Ensure files use only \n for line endings, not \r\n
 			if ( /\x0d\x0a/.test( text ) ) {
-				grunt.log.writeln( filename + ": Incorrect line ***REMOVED***ings (\\r\\n)" );
+				grunt.log.writeln( filename + ": Incorrect line endings (\\r\\n)" );
 				nonascii = true;
 			}
 
@@ -569,11 +569,11 @@ module.exports = function( grunt ) {
 			// Rename the file to a temporary name.
 			fs.renameSync( mapFileName, mapping.dest);
 			grunt.file.write( mapFileName, grunt.file.read( mapping.dest )
-				// The uglify task erroneously prep***REMOVED***s dist/ to file names.
+				// The uglify task erroneously prepends dist/ to file names.
 				.replace( /"dist\//g, "\"" )
 				// Refer to the source jquery.js, not the temporary jquery.pre-min.js.
 				.replace( /\.pre-min\./g, "." )
-				// There's already a pragma at the beginning of the file, remove the one at the ***REMOVED***.
+				// There's already a pragma at the beginning of the file, remove the one at the end.
 				.replace( /\/\/@ sourceMappingURL=jquery\.min\.map$/g, "" ));
 		});
 

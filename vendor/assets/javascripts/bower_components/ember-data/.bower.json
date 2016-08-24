@@ -2,7 +2,7 @@
   "name": "ember-data",
   "version": "1.0.0-beta.7",
   "main": "ember-data.js",
-  "dep***REMOVED***encies": {
+  "dependencies": {
     "ember": ">= 1.0.0"
   },
   "homepage": "https://github.com/components/ember-data",

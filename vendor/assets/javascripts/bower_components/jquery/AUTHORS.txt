@@ -35,7 +35,7 @@ Karl Swedberg <kswedberg@gmail.com>
 Justin Meyer <justinbmeyer@gmail.com>
 Ben Alman <cowboy@rj3.net>
 James Padolsey <cla@padolsey.net>
-David Petersen <public@peters***REMOVED***idit.com>
+David Petersen <public@petersendidit.com>
 Batiste Bieler <batiste@gmail.com>
 Alexander Farkas <info@corrupt-system.de>
 Rick Waldron <waldron.rick@gmail.com>

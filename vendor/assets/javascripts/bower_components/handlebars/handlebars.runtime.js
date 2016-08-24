@@ -44,11 +44,11 @@ var __module3__ = (function() {
 })();
 
 // handlebars/utils.js
-var __module2__ = (function(__dep***REMOVED***ency1__) {
+var __module2__ = (function(__dependency1__) {
   "use strict";
   var __exports__ = {};
   /*jshint -W004 */
-  var SafeString = __dep***REMOVED***ency1__;
+  var SafeString = __dependency1__;
 
   var escape = {
     "&": "&amp;",
@@ -66,7 +66,7 @@ var __module2__ = (function(__dep***REMOVED***ency1__) {
     return escape[chr] || "&amp;";
   }
 
-  function ext***REMOVED***(obj, value) {
+  function extend(obj, value) {
     for(var key in value) {
       if(Object.prototype.hasOwnProperty.call(value, key)) {
         obj[key] = value[key];
@@ -74,7 +74,7 @@ var __module2__ = (function(__dep***REMOVED***ency1__) {
     }
   }
 
-  __exports__.ext***REMOVED*** = ext***REMOVED***;var toString = Object.prototype.toString;
+  __exports__.extend = extend;var toString = Object.prototype.toString;
   __exports__.toString = toString;
   // Sourced from lodash
   // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
@@ -102,7 +102,7 @@ var __module2__ = (function(__dep***REMOVED***ency1__) {
       return "";
     }
 
-    // Force a string conversion as this will be done by the app***REMOVED*** regardless and
+    // Force a string conversion as this will be done by the append regardless and
     // the regex test will do this transparently behind the scenes, causing issues if
     // an object's to string has escaped characters in it.
     string = "" + string;
@@ -160,11 +160,11 @@ var __module4__ = (function() {
 })();
 
 // handlebars/base.js
-var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__) {
+var __module1__ = (function(__dependency1__, __dependency2__) {
   "use strict";
   var __exports__ = {};
-  var Utils = __dep***REMOVED***ency1__;
-  var Exception = __dep***REMOVED***ency2__;
+  var Utils = __dependency1__;
+  var Exception = __dependency2__;
 
   var VERSION = "1.3.0";
   __exports__.VERSION = VERSION;var COMPILER_REVISION = 4;
@@ -197,7 +197,7 @@ var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
     registerHelper: function(name, fn, inverse) {
       if (toString.call(name) === objectType) {
         if (inverse || fn) { throw new Exception('Arg not supported with multiple helpers'); }
-        Utils.ext***REMOVED***(this.helpers, name);
+        Utils.extend(this.helpers, name);
       } else {
         if (inverse) { fn.not = inverse; }
         this.helpers[name] = fn;
@@ -206,7 +206,7 @@ var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
 
     registerPartial: function(name, str) {
       if (toString.call(name) === objectType) {
-        Utils.ext***REMOVED***(this.partials,  name);
+        Utils.extend(this.partials,  name);
       } else {
         this.partials[name] = str;
       }
@@ -287,7 +287,7 @@ var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
     instance.registerHelper('if', function(conditional, options) {
       if (isFunction(conditional)) { conditional = conditional.call(this); }
 
-      // Default behavior is to r***REMOVED***er the positive path if the value is truthy and not empty.
+      // Default behavior is to render the positive path if the value is truthy and not empty.
       // The `includeZero` option may be set to treat the condtional as purely not empty based on the
       // behavior of isEmpty. Effectively this determines if 0 is handled by the positive path or negative.
       if ((!options.hash.includeZero && !conditional) || Utils.isEmpty(conditional)) {
@@ -338,7 +338,7 @@ var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
 
   __exports__.log = log;var createFrame = function(object) {
     var obj = {};
-    Utils.ext***REMOVED***(obj, object);
+    Utils.extend(obj, object);
     return obj;
   };
   __exports__.createFrame = createFrame;
@@ -346,13 +346,13 @@ var __module1__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
 })(__module2__, __module4__);
 
 // handlebars/runtime.js
-var __module5__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__) {
+var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
   "use strict";
   var __exports__ = {};
-  var Utils = __dep***REMOVED***ency1__;
-  var Exception = __dep***REMOVED***ency2__;
-  var COMPILER_REVISION = __dep***REMOVED***ency3__.COMPILER_REVISION;
-  var REVISION_CHANGES = __dep***REMOVED***ency3__.REVISION_CHANGES;
+  var Utils = __dependency1__;
+  var Exception = __dependency2__;
+  var COMPILER_REVISION = __dependency3__.COMPILER_REVISION;
+  var REVISION_CHANGES = __dependency3__.REVISION_CHANGES;
 
   function checkRevision(compilerInfo) {
     var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -413,8 +413,8 @@ var __module5__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
 
         if (param && common && (param !== common)) {
           ret = {};
-          Utils.ext***REMOVED***(ret, common);
-          Utils.ext***REMOVED***(ret, param);
+          Utils.extend(ret, common);
+          Utils.extend(ret, param);
         }
         return ret;
       },
@@ -489,24 +489,24 @@ var __module5__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__
 })(__module2__, __module4__, __module1__);
 
 // handlebars.runtime.js
-var __module0__ = (function(__dep***REMOVED***ency1__, __dep***REMOVED***ency2__, __dep***REMOVED***ency3__, __dep***REMOVED***ency4__, __dep***REMOVED***ency5__) {
+var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__) {
   "use strict";
   var __exports__;
   /*globals Handlebars: true */
-  var base = __dep***REMOVED***ency1__;
+  var base = __dependency1__;
 
   // Each of these augment the Handlebars object. No need to setup here.
   // (This is done to easily share code between commonjs and browse envs)
-  var SafeString = __dep***REMOVED***ency2__;
-  var Exception = __dep***REMOVED***ency3__;
-  var Utils = __dep***REMOVED***ency4__;
-  var runtime = __dep***REMOVED***ency5__;
+  var SafeString = __dependency2__;
+  var Exception = __dependency3__;
+  var Utils = __dependency4__;
+  var runtime = __dependency5__;
 
   // For compatibility and usage outside of module systems, make the Handlebars object a namespace
   var create = function() {
     var hb = new base.HandlebarsEnvironment();
 
-    Utils.ext***REMOVED***(hb, base);
+    Utils.extend(hb, base);
     hb.SafeString = SafeString;
     hb.Exception = Exception;
     hb.Utils = Utils;

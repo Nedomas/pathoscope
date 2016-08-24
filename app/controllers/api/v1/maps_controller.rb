@@ -3,12 +3,12 @@ class Api::V1::MapsController < ApplicationController
 
   def index
     respond_with maps: all_records
-***REMOVED***
+  end
 
   def show
     record = all_records.find { |record| record[:id] == params[:id].to_i }
     respond_with map: record
-***REMOVED***
+  end
 
   def all_records
     all_records = []
@@ -35,12 +35,12 @@ class Api::V1::MapsController < ApplicationController
           item_id: link_item.id
         }
         path_record[:children_ids] << link_item.id
-  ***REMOVED***
+      end
 
       all_records << path_record
-***REMOVED***
+    end
 
     all_records
-***REMOVED***
-***REMOVED***
+  end
+end
 

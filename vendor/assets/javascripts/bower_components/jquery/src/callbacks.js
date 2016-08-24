@@ -38,7 +38,7 @@ jQuery.Callbacks = function( options ) {
 	// (we check in cache first)
 	options = typeof options === "string" ?
 		( optionsCache[ options ] || createOptions( options ) ) :
-		jQuery.ext***REMOVED***( {}, options );
+		jQuery.extend( {}, options );
 
 	var // Last fire value (for non-forgettable lists)
 		memory,

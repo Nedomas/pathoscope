@@ -1,12 +1,12 @@
 Pathoscope::Application.routes.draw do
   use_doorkeeper do
-  ***REMOVED*** it accepts :authorizations, :tokens, :applications and :authorized_applications
+    # it accepts :authorizations, :tokens, :applications and :authorized_applications
     controllers tokens: 'api/v1/tokens'
-***REMOVED***
+  end
   use_doorkeeper
-***REMOVED*** devise_scope :user do
-***REMOVED***   get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
-***REMOVED*** ***REMOVED***
+  # devise_scope :user do
+  #   get "/sessions/current" => "ember_devise_simple_auth/sessions#show"
+  # end
 
   devise_for :users, controllers: { sessions: 'sessions' }
 
@@ -24,19 +24,19 @@ Pathoscope::Application.routes.draw do
       resources :notes
       get 'credentials/me' => 'credentials#me'
       get 'expertise/road' => 'expertise#road'
-***REMOVED***
-***REMOVED***
+    end
+  end
 
   get "launching/index"
   post "launching/get" => 'launching#get'
   delete 'home/sign_out' => 'home#sign_out'
   get 'explore' => 'bookmarks#redirect_explore'
 
-***REMOVED*** devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
+  # devise_for :users, controllers: { sessions: 'ember_devise_simple_auth/sessions' }
 
-***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
-***REMOVED*** See how all your routes lay out with "rake routes".
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
-***REMOVED*** You can have the root of your site routed with "root"
+  # You can have the root of your site routed with "root"
   root 'launching#index'
-***REMOVED***
+end

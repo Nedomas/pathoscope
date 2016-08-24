@@ -1,1 +1,1 @@
-class PS.Bookmarklet.User ext***REMOVED***s PS.Core.User
+class PS.Bookmarklet.User extends PS.Core.User

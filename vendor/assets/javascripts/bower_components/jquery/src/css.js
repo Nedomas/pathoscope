@@ -17,15 +17,15 @@ var curCSS, iframe,
 	cssExpand = [ "Top", "Right", "Bottom", "Left" ],
 	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
 
-// return a css property mapped to a potentially v***REMOVED***or prefixed property
-function v***REMOVED***orPropName( style, name ) {
+// return a css property mapped to a potentially vendor prefixed property
+function vendorPropName( style, name ) {
 
-	// shortcut for names that are not v***REMOVED***or prefixed
+	// shortcut for names that are not vendor prefixed
 	if ( name in style ) {
 		return name;
 	}
 
-	// check for v***REMOVED***or prefixed names
+	// check for vendor prefixed names
 	var capName = name.charAt(0).toUpperCase() + name.slice(1),
 		origName = name,
 		i = cssPrefixes.length;
@@ -107,7 +107,7 @@ function showHide( elements, show ) {
 	return elements;
 }
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	css: function( name, value ) {
 		return jQuery.access( this, function( elem, name, value ) {
 			var styles, len,
@@ -151,7 +151,7 @@ jQuery.fn.ext***REMOVED***({
 	}
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
 	cssHooks: {
@@ -199,7 +199,7 @@ jQuery.ext***REMOVED***({
 			origName = jQuery.camelCase( name ),
 			style = elem.style;
 
-		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = v***REMOVED***orPropName( style, origName ) );
+		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( style, origName ) );
 
 		// gets hook for the prefixed version
 		// followed by the unprefixed version
@@ -253,7 +253,7 @@ jQuery.ext***REMOVED***({
 			origName = jQuery.camelCase( name );
 
 		// Make sure that we're working with the right name
-		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = v***REMOVED***orPropName( elem.style, origName ) );
+		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
 		// gets hook for the prefixed version
 		// followed by the unprefixed version
@@ -428,7 +428,7 @@ function css_defaultDisplay( nodeName ) {
 			iframe = ( iframe ||
 				jQuery("<iframe frameborder='0' width='0' height='0'/>")
 				.css( "cssText", "display:block !important" )
-			).app***REMOVED***To( doc.documentElement );
+			).appendTo( doc.documentElement );
 
 			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = ( iframe[0].contentWindow || iframe[0].contentDocument ).document;
@@ -448,7 +448,7 @@ function css_defaultDisplay( nodeName ) {
 
 // Called ONLY from within css_defaultDisplay
 function actualDisplay( name, doc ) {
-	var elem = jQuery( doc.createElement( name ) ).app***REMOVED***To( doc.body ),
+	var elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
 		display = jQuery.css( elem[0], "display" );
 	elem.remove();
 	return display;
@@ -503,7 +503,7 @@ jQuery(function() {
 
 	// Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 	// getComputedStyle returns percent when specified for top/left/bottom/right
-	// rather than make the css module dep***REMOVED*** on the offset module, we just check for it here
+	// rather than make the css module depend on the offset module, we just check for it here
 	if ( !jQuery.support.pixelPosition && jQuery.fn.position ) {
 		jQuery.each( [ "top", "left" ], function( i, prop ) {
 			jQuery.cssHooks[ prop ] = {

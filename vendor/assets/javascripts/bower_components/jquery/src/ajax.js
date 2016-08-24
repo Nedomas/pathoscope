@@ -72,12 +72,12 @@ function addToPrefiltersOrTransports( structure ) {
 		if ( jQuery.isFunction( func ) ) {
 			// For each dataType in the dataTypeExpression
 			while ( (dataType = dataTypes[i++]) ) {
-				// Prep***REMOVED*** if requested
+				// Prepend if requested
 				if ( dataType[0] === "+" ) {
 					dataType = dataType.slice( 1 ) || "*";
 					(structure[ dataType ] = structure[ dataType ] || []).unshift( func );
 
-				// Otherwise app***REMOVED***
+				// Otherwise append
 				} else {
 					(structure[ dataType ] = structure[ dataType ] || []).push( func );
 				}
@@ -111,10 +111,10 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 	return inspect( options.dataTypes[ 0 ] ) || !inspected[ "*" ] && inspect( "*" );
 }
 
-// A special ext***REMOVED*** for ajax options
-// that takes "flat" options (not to be deep ext***REMOVED***ed)
+// A special extend for ajax options
+// that takes "flat" options (not to be deep extended)
 // Fixes #9887
-function ajaxExt***REMOVED***( target, src ) {
+function ajaxExtend( target, src ) {
 	var key, deep,
 		flatOptions = jQuery.ajaxSettings.flatOptions || {};
 
@@ -124,7 +124,7 @@ function ajaxExt***REMOVED***( target, src ) {
 		}
 	}
 	if ( deep ) {
-		jQuery.ext***REMOVED***( true, target, deep );
+		jQuery.extend( true, target, deep );
 	}
 
 	return target;
@@ -174,7 +174,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors
-				jQuery("<div>").app***REMOVED***( jQuery.parseHTML( responseText ) ).find( selector ) :
+				jQuery("<div>").append( jQuery.parseHTML( responseText ) ).find( selector ) :
 
 				// Otherwise use the full result
 				responseText );
@@ -188,13 +188,13 @@ jQuery.fn.load = function( url, params, callback ) {
 };
 
 // Attach a bunch of functions for handling common AJAX events
-jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxS***REMOVED***" ], function( i, type ){
+jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ){
 	jQuery.fn[ type ] = function( fn ){
 		return this.on( type, fn );
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 
 	// Counter for holding the number of active queries
 	active: 0,
@@ -260,10 +260,10 @@ jQuery.ext***REMOVED***({
 			"text xml": jQuery.parseXML
 		},
 
-		// For options that shouldn't be deep ext***REMOVED***ed:
+		// For options that shouldn't be deep extended:
 		// you can add your own custom options here if
 		// and when you create one that shouldn't be
-		// deep ext***REMOVED***ed (see ajaxExt***REMOVED***)
+		// deep extended (see ajaxExtend)
 		flatOptions: {
 			url: true,
 			context: true
@@ -277,10 +277,10 @@ jQuery.ext***REMOVED***({
 		return settings ?
 
 			// Building a settings object
-			ajaxExt***REMOVED***( ajaxExt***REMOVED***( target, jQuery.ajaxSettings ), settings ) :
+			ajaxExtend( ajaxExtend( target, jQuery.ajaxSettings ), settings ) :
 
-			// Ext***REMOVED***ing ajaxSettings
-			ajaxExt***REMOVED***( jQuery.ajaxSettings, target );
+			// Extending ajaxSettings
+			ajaxExtend( jQuery.ajaxSettings, target );
 	},
 
 	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),
@@ -323,7 +323,7 @@ jQuery.ext***REMOVED***({
 			// Deferreds
 			deferred = jQuery.Deferred(),
 			completeDeferred = jQuery.Callbacks("once memory"),
-			// Status-dep***REMOVED***ent callbacks
+			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
 			// Headers (they are sent all at once)
 			requestHeaders = {},
@@ -374,7 +374,7 @@ jQuery.ext***REMOVED***({
 					return this;
 				},
 
-				// Status-dep***REMOVED***ent callbacks
+				// Status-dependent callbacks
 				statusCode: function( map ) {
 					var code;
 					if ( map ) {
@@ -464,7 +464,7 @@ jQuery.ext***REMOVED***({
 		// More options handling for requests with no content
 		if ( !s.hasContent ) {
 
-			// If data is available, app***REMOVED*** data to url
+			// If data is available, append data to url
 			if ( s.data ) {
 				cacheURL = ( s.url += ( ajax_rquery.test( cacheURL ) ? "&" : "?" ) + s.data );
 				// #9682: remove data so that it's not used in an eventual retry
@@ -478,7 +478,7 @@ jQuery.ext***REMOVED***({
 					// If there is already a '_' parameter, set its value
 					cacheURL.replace( rts, "$1_=" + ajax_nonce++ ) :
 
-					// Otherwise add one to the ***REMOVED***
+					// Otherwise add one to the end
 					cacheURL + ( ajax_rquery.test( cacheURL ) ? "&" : "?" ) + "_=" + ajax_nonce++;
 			}
 		}
@@ -498,7 +498,7 @@ jQuery.ext***REMOVED***({
 			jqXHR.setRequestHeader( "Content-Type", s.contentType );
 		}
 
-		// Set the Accepts header for the server, dep***REMOVED***ing on the dataType
+		// Set the Accepts header for the server, depending on the dataType
 		jqXHR.setRequestHeader(
 			"Accept",
 			s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[0] ] ?
@@ -512,7 +512,7 @@ jQuery.ext***REMOVED***({
 		}
 
 		// Allow custom headers/mimetypes and early abort
-		if ( s.beforeS***REMOVED*** && ( s.beforeS***REMOVED***.call( callbackContext, jqXHR, s ) === false || state === 2 ) ) {
+		if ( s.beforeSend && ( s.beforeSend.call( callbackContext, jqXHR, s ) === false || state === 2 ) ) {
 			// Abort if not done already and return
 			return jqXHR.abort();
 		}
@@ -534,9 +534,9 @@ jQuery.ext***REMOVED***({
 		} else {
 			jqXHR.readyState = 1;
 
-			// S***REMOVED*** global event
+			// Send global event
 			if ( fireGlobals ) {
-				globalEventContext.trigger( "ajaxS***REMOVED***", [ jqXHR, s ] );
+				globalEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
 			}
 			// Timeout
 			if ( s.async && s.timeout > 0 ) {
@@ -547,7 +547,7 @@ jQuery.ext***REMOVED***({
 
 			try {
 				state = 1;
-				transport.s***REMOVED***( requestHeaders, done );
+				transport.send( requestHeaders, done );
 			} catch ( e ) {
 				// Propagate exception as error if not done
 				if ( state < 2 ) {
@@ -651,7 +651,7 @@ jQuery.ext***REMOVED***({
 				deferred.rejectWith( callbackContext, [ jqXHR, statusText, error ] );
 			}
 
-			// Status-dep***REMOVED***ent callbacks
+			// Status-dependent callbacks
 			jqXHR.statusCode( statusCode );
 			statusCode = undefined;
 

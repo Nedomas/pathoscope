@@ -9,7 +9,7 @@ PathoscopeLoader = (->
     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js", loadLeanModal)
 
   loadLeanModal = ->
-  ***REMOVED*** setup jQuery
+    # setup jQuery
     window.$ps = jQuery.noConflict()
     load('head', 'script', server + '/assets/jquery.leanModal.min', loadNormalize)
 
@@ -30,7 +30,7 @@ PathoscopeLoader = (->
     load('head', 'script', "//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.7/ember-data.min.js", loadPathoscopeApp)
 
   loadPathoscopeApp = ->
-    $ps('body').app***REMOVED***(
+    $ps('body').append(
       "<div id='pathoscope'>" +
         "<a id='pathoscope-trigger' name='pathoscope-app' href='#pathoscope-app'></a>" +
         "<div id='pathoscope-app'>" +
@@ -51,7 +51,7 @@ PathoscopeLoader = (->
        $ps('#lean_overlay').click()
 
   showLoading = ->
-    $ps('body').app***REMOVED***(
+    $ps('body').append(
       "<a id='pathoscope-loading-trigger' name='pathoscope-loading' href='#pathoscope-loading'></a>" +
       '<div id="pathoscope-loading">' +
         '<div class="dot-left"></div>' +
@@ -76,7 +76,7 @@ PathoscopeLoader = (->
         done = true
         callback?()
 
-    document.getElementsByTagName(place)[0].app***REMOVED***Child(element)
+    document.getElementsByTagName(place)[0].appendChild(element)
 
   return { init: init }
 )()

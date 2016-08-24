@@ -1,27 +1,27 @@
 class BookmarksController < ApplicationController
   def begin
-  ***REMOVED*** resp = {}
+    # resp = {}
 
-  ***REMOVED*** if user_signed_in?
-  ***REMOVED***   resp[:logged_in] = true
+    # if user_signed_in?
+    #   resp[:logged_in] = true
 
-  ***REMOVED***   paths = current_user.paths.map do |path|
-  ***REMOVED***     { id: path.id, title: path.title, color: path.color, count: path.nodes.count }
-  ***REMOVED*** ***REMOVED***
+    #   paths = current_user.paths.map do |path|
+    #     { id: path.id, title: path.title, color: path.color, count: path.nodes.count }
+    #   end
 
-  ***REMOVED***   resp[:paths] = paths.to_json
-  ***REMOVED*** else
-  ***REMOVED***   resp[:logged_in] = false
-  ***REMOVED*** ***REMOVED***
+    #   resp[:paths] = paths.to_json
+    # else
+    #   resp[:logged_in] = false
+    # end
 
-    r***REMOVED***er json: {
+    render json: {
       logged_in: user_signed_in?
     }
-***REMOVED***
+  end
 
   def redirect_explore
     redirect_to '/beta#/explore'
-***REMOVED***
+  end
 
   def data
     links = Array(Link.all).join_with_extra_fields
@@ -38,24 +38,24 @@ class BookmarksController < ApplicationController
         title: item.context.title,
         paths: item_paths
       )
-***REMOVED***
+    end
 
-    r***REMOVED***er json: {
+    render json: {
       user_path_item_ids: user_path_item_ids,
       links: links,
       paths: paths,
       items: items
     }
-***REMOVED***
+  end
 
   def tag
-  ***REMOVED*** User logged in
+    # User logged in
     item = Item.find(params[:item_id])
     path = item.context
     url = params[:href]
     node = Node.build(url, path, current_user)
-    r***REMOVED***er json: { node_id: node.id }
-***REMOVED***
+    render json: { node_id: node.id }
+  end
 
   def links
     node = Node.find(params[:node_id])
@@ -70,43 +70,43 @@ class BookmarksController < ApplicationController
         thumbnail_path: link.external_thumbnail_path,
         count: link.nodes.count
       }
-***REMOVED***
+    end
 
-    r***REMOVED***er json: { link: link, tag: tag, links: links }
-***REMOVED***
+    render json: { link: link, tag: tag, links: links }
+  end
 
-***REMOVED*** def create
-***REMOVED***   query = URI::parse(params[:bookmarklet]).query
-***REMOVED***   data = Rack::Utils.parse_nested_query(query)
-***REMOVED***   path = Path.find(1) # TODO
-***REMOVED***   url = params[:href]
-***REMOVED***   node = Node.build(url, path, current_user)
-***REMOVED***   r***REMOVED***er json: true
+  # def create
+  #   query = URI::parse(params[:bookmarklet]).query
+  #   data = Rack::Utils.parse_nested_query(query)
+  #   path = Path.find(1) # TODO
+  #   url = params[:href]
+  #   node = Node.build(url, path, current_user)
+  #   render json: true
 
-***REMOVED*** ***REMOVED*** # check if its from our app
-***REMOVED*** ***REMOVED*** if request.host == URI(url).host
-***REMOVED*** ***REMOVED***   redirect_to paths_path(path) and return
-***REMOVED*** ***REMOVED*** ***REMOVED***
+  #   # # check if its from our app
+  #   # if request.host == URI(url).host
+  #   #   redirect_to paths_path(path) and return
+  #   # end
 
-***REMOVED*** ***REMOVED*** result = {}
+  #   # result = {}
 
-***REMOVED*** ***REMOVED*** if user_signed_in?
-***REMOVED*** ***REMOVED***   node = Node.build(url, path, current_user)
-***REMOVED*** ***REMOVED***   result[:logged_in] = true
+  #   # if user_signed_in?
+  #   #   node = Node.build(url, path, current_user)
+  #   #   result[:logged_in] = true
 
-***REMOVED*** ***REMOVED***   paths = Explore.children_links(node.link).map do |link|
-***REMOVED*** ***REMOVED***     { title: link.title, url: link.url, count: link.nodes.count }
-***REMOVED*** ***REMOVED*** ***REMOVED***
+  #   #   paths = Explore.children_links(node.link).map do |link|
+  #   #     { title: link.title, url: link.url, count: link.nodes.count }
+  #   #   end
 
-***REMOVED*** ***REMOVED***   result[:paths] = paths.to_json
-***REMOVED*** ***REMOVED*** else
-***REMOVED*** ***REMOVED***   result[:logged_in] = false
-***REMOVED*** ***REMOVED*** ***REMOVED***
+  #   #   result[:paths] = paths.to_json
+  #   # else
+  #   #   result[:logged_in] = false
+  #   # end
 
-***REMOVED*** ***REMOVED***
+  # end
 
   def templates
-    r***REMOVED***er layout: false
-***REMOVED***
+    render layout: false
+  end
 
-***REMOVED***
+end

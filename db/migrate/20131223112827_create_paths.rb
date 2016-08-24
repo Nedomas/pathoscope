@@ -4,6 +4,6 @@ class CreatePaths < ActiveRecord::Migration
       t.string :title
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

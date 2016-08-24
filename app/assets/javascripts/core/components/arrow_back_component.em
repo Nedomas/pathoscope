@@ -1,3 +1,3 @@
-class PS.Core.ArrowBackComponent ext***REMOVED***s Ember.Component
+class PS.Core.ArrowBackComponent extends Ember.Component
   tagName: 'span'
 

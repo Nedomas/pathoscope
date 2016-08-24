@@ -1,1 +1,1 @@
-class PS.Bookmarklet.Link ext***REMOVED***s PS.Core.Link
+class PS.Bookmarklet.Link extends PS.Core.Link

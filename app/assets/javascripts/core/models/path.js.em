@@ -1,4 +1,4 @@
-class PS.Core.Path ext***REMOVED***s DS.Model
+class PS.Core.Path extends DS.Model
   title: DS.attr('string')
   color: DS.attr('string')
   users_count: DS.attr('string')
@@ -17,10 +17,10 @@ class PS.Core.Path ext***REMOVED***s DS.Model
   color_class: ->
     'color-' + @get('color')
 
-***REMOVED*** +computed session.user
-***REMOVED*** chosen: ->
-***REMOVED***   debugger
-  ***REMOVED*** if @get('session')
+  # +computed session.user
+  # chosen: ->
+  #   debugger
+    # if @get('session')
 # #     _this = this
 # #     Ember.run ->
 # #       user_paths = _this.get('session.user.user_paths')
@@ -33,7 +33,7 @@ class PS.Core.Path ext***REMOVED***s DS.Model
 # #             if user_path.get('path') == path
 # #               path.set('chosen', true)
 # #
-# #       ***REMOVED*** Find saved paths
+# #         # Find saved paths
 # #         saved_paths = paths.filter (path) ->
 # #           !path.get('isNew')
 # #

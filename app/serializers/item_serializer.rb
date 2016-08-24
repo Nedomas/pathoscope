@@ -1,46 +1,46 @@
 class ItemSerializer < ApplicationSerializer
-***REMOVED*** attributes *Item.column_names.map(&:to_sym)
+  # attributes *Item.column_names.map(&:to_sym)
   attributes *Item.column_names.map(&:to_sym).concat(
     [:child_ids, :parent_ids, :sibling_ids, :note_ids, :path_ids, :link_id])
 
   def context
     object.context
-***REMOVED***
+  end
 
-***REMOVED*** def link
-***REMOVED***   object.context if object.link?
-***REMOVED*** ***REMOVED***
+  # def link
+  #   object.context if object.link?
+  # end
 
-***REMOVED*** def path
-***REMOVED***   object.context if object.path?
-***REMOVED*** ***REMOVED***
+  # def path
+  #   object.context if object.path?
+  # end
 
-***REMOVED*** def map_structure
-***REMOVED***   binding.pry
+  # def map_structure
+  #   binding.pry
 
-***REMOVED*** ***REMOVED***
+  # end
 
-***REMOVED*** def map_parents
-***REMOVED***   user_nodes = Node.where(user: current_user) & Item.last.nodes
-***REMOVED***   user_nodes.map(&:path)
-***REMOVED*** ***REMOVED*** binding.pry
-***REMOVED*** ***REMOVED*** object.path if object.link?
-***REMOVED*** ***REMOVED***
+  # def map_parents
+  #   user_nodes = Node.where(user: current_user) & Item.last.nodes
+  #   user_nodes.map(&:path)
+  #   # binding.pry
+  #   # object.path if object.link?
+  # end
 
-***REMOVED*** def map_children
-***REMOVED*** ***REMOVED***
+  # def map_children
+  # end
 
-***REMOVED*** def map_structure
-***REMOVED***   current_user.paths.map do |path|
-***REMOVED***     user_path_nodes = Node.where(path: path, user: current_user)
-***REMOVED***     sorted_nodes = Node.sort_by_ancestry(user_path_nodes)
+  # def map_structure
+  #   current_user.paths.map do |path|
+  #     user_path_nodes = Node.where(path: path, user: current_user)
+  #     sorted_nodes = Node.sort_by_ancestry(user_path_nodes)
 
-***REMOVED***     links = sorted_nodes.map(&:item).select(&:link?).map do |item|
-***REMOVED***       { item.id => [] }
-***REMOVED*** ***REMOVED***
+  #     links = sorted_nodes.map(&:item).select(&:link?).map do |item|
+  #       { item.id => [] }
+  #     end
 
-***REMOVED***     { path.item.id => links }
-***REMOVED*** ***REMOVED***
-***REMOVED*** ***REMOVED***
-***REMOVED***
+  #     { path.item.id => links }
+  #   end
+  # end
+end
 

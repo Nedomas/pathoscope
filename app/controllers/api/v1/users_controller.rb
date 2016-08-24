@@ -18,24 +18,24 @@ class Api::V1::UsersController < ApplicationController
       users = ActiveModel::ArraySerializer.new(MODEL.where(username: params[:username]),
         each_serializer: UserSerializer).serializable_array
 
-      r***REMOVED***er json: {
+      render json: {
         users: users,
         notes: notes,
         paths: paths,
         items: items,
         user_paths: user_paths
       } and return
-***REMOVED***
+    end
 
 
-    r***REMOVED***er json: {
+    render json: {
       users: users,
       notes: notes,
       paths: paths,
       items: items,
       user_paths: user_paths
     }
-***REMOVED***
+  end
 
   def show
     notes = ActiveModel::ArraySerializer.new(Note.all,
@@ -47,19 +47,19 @@ class Api::V1::UsersController < ApplicationController
     user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
       each_serializer: UserPathSerializer).serializable_array
 
-    r***REMOVED***er json: {
+    render json: {
       user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
       notes: notes,
       paths: paths,
       items: items,
       user_paths: user_paths
     }
-***REMOVED***
+  end
 
   def create
     @model = MODEL.create(permitted_params)
     respond_with @model
-***REMOVED***
+  end
 
   def update
     @model = MODEL.find(params[:id])
@@ -74,25 +74,25 @@ class Api::V1::UsersController < ApplicationController
     user_paths = ActiveModel::ArraySerializer.new(UserPath.all,
       each_serializer: UserPathSerializer).serializable_array
 
-    r***REMOVED***er json: {
+    render json: {
       user: UserSerializer.new(MODEL.find(params[:id])).serializable_hash,
       notes: notes,
       paths: paths,
       items: items,
       user_paths: user_paths
     }
-***REMOVED***
+  end
 
   def destroy
     @model = MODEL.find(params[:id])
     @model.destroy
     respond_with @model
-***REMOVED***
+  end
 
   private
 
   def permitted_params
     params.require(controller_name.singularize.to_sym).permit(*MODEL.column_names.map(&:to_sym))
-***REMOVED***
-***REMOVED***
+  end
+end
 

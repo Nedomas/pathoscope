@@ -1,4 +1,4 @@
-class PS.Web.ExpertiseLiView ext***REMOVED***s Ember.View
+class PS.Web.ExpertiseLiView extends Ember.View
   templateName: 'expertise-li-view'
   classNameBindings: ['hover:hover', 'beforeStart:before-start']
   tagName: 'li'
@@ -9,7 +9,7 @@ class PS.Web.ExpertiseLiView ext***REMOVED***s Ember.View
     @get('controller.before_items').contains(@get('item'))
 
   mouseEnter: ->
-    @get('controller').s***REMOVED***('hovered', @get('item'))
+    @get('controller').send('hovered', @get('item'))
     @set('hover', true)
   mouseLeave: ->
     @set('hover', false)

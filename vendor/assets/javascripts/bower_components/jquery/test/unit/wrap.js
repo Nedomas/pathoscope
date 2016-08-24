@@ -211,7 +211,7 @@ test( "unwrap()", function() {
 
 	expect( 9 );
 
-	jQuery("body").app***REMOVED***("  <div id='unwrap' style='display: none;'> <div id='unwrap1'> <span class='unwrap'>a</span> <span class='unwrap'>b</span> </div> <div id='unwrap2'> <span class='unwrap'>c</span> <span class='unwrap'>d</span> </div> <div id='unwrap3'> <b><span class='unwrap unwrap3'>e</span></b> <b><span class='unwrap unwrap3'>f</span></b> </div> </div>");
+	jQuery("body").append("  <div id='unwrap' style='display: none;'> <div id='unwrap1'> <span class='unwrap'>a</span> <span class='unwrap'>b</span> </div> <div id='unwrap2'> <span class='unwrap'>c</span> <span class='unwrap'>d</span> </div> <div id='unwrap3'> <b><span class='unwrap unwrap3'>e</span></b> <b><span class='unwrap unwrap3'>f</span></b> </div> </div>");
 
 	var abcd = jQuery("#unwrap1 > span, #unwrap2 > span").get(),
 		abcdef = jQuery("#unwrap span").get();
@@ -239,8 +239,8 @@ test( "jQuery(<tag>) & wrap[Inner/All]() handle unknown elems (#10667)", functio
 
 	expect( 2 );
 
-	var $wraptarget = jQuery( "<div id='wrap-target'>Target</div>" ).app***REMOVED***To( "#qunit-fixture" ),
-		$section = jQuery( "<section>" ).app***REMOVED***To( "#qunit-fixture" );
+	var $wraptarget = jQuery( "<div id='wrap-target'>Target</div>" ).appendTo( "#qunit-fixture" ),
+		$section = jQuery( "<section>" ).appendTo( "#qunit-fixture" );
 
 	$wraptarget.wrapAll("<aside style='background-color:green'></aside>");
 
@@ -256,7 +256,7 @@ test( "wrapping scripts (#10470)", function() {
 	script.text = script.textContent = "ok( !document.eval10470, 'script evaluated once' ); document.eval10470 = true;";
 
 	document.eval10470 = false;
-	jQuery("#qunit-fixture").empty()[0].app***REMOVED***Child( script );
+	jQuery("#qunit-fixture").empty()[0].appendChild( script );
 	jQuery("#qunit-fixture script").wrap("<b></b>");
 	strictEqual( script.parentNode, jQuery("#qunit-fixture > b")[ 0 ], "correctly wrapped" );
 	jQuery( script ).remove();

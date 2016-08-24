@@ -12,13 +12,13 @@ class Api::V1::UserPathsController < ApplicationController
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
 
-    r***REMOVED***er json: {
+    render json: {
       users: users,
       paths: paths,
       user_paths: user_paths,
       items: items
     }
-***REMOVED***
+  end
 
   def show
     users = ActiveModel::ArraySerializer.new(User.all,
@@ -28,13 +28,13 @@ class Api::V1::UserPathsController < ApplicationController
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
 
-    r***REMOVED***er json: {
+    render json: {
       user_path: UserPathSerializer.new(MODEL.find(params[:id])).serializable_hash,
       users: users,
       paths: paths,
       items: items
     }
-***REMOVED***
+  end
 
   def create
     user_path = params[:user_path]
@@ -50,31 +50,31 @@ class Api::V1::UserPathsController < ApplicationController
     items = ActiveModel::ArraySerializer.new(Item.all,
       each_serializer: ItemSerializer).serializable_array
 
-    r***REMOVED***er json: {
+    render json: {
       user_path: UserPathSerializer.new(created_user_path).serializable_hash,
       users: users,
       paths: paths,
       items: items
     }
-***REMOVED***
+  end
 
   def update
     @model = MODEL.find(params[:id])
     @model.update_attributes(permitted_params)
     respond_with @model
-***REMOVED***
+  end
 
   def destroy
     @model = MODEL.find(params[:id])
     @model.destroy
     respond_with @model
-***REMOVED***
+  end
 
   private
 
   def permitted_params
     params.require(controller_name.singularize.to_sym).permit(*MODEL.column_names.map(&:to_sym))
-***REMOVED***
-***REMOVED***
+  end
+end
 
 

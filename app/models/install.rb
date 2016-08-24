@@ -4,8 +4,8 @@ class Install
     (function(){
       s = document.createElement('script');
       s.src = '#{SERVER}/assets/app/loader.js';
-      document.body.app***REMOVED***Child(s);
+      document.body.appendChild(s);
     })();
     ).delete(' ').delete("\n")
-***REMOVED***
-***REMOVED***
+  end
+end

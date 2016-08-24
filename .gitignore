@@ -13,6 +13,6 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/v***REMOVED***or/bundle
+/vendor/bundle
 newrelic.yml
 .env.production

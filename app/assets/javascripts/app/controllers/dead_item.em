@@ -1,1 +1,1 @@
-class PS.Standalone.DeadItemController ext***REMOVED***s PS.Core.DeadItemController
+class PS.Standalone.DeadItemController extends PS.Core.DeadItemController

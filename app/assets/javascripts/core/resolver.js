@@ -2,7 +2,7 @@ window._ps = _.noConflict();
 window.$ps = jQuery.noConflict();
 
 /**
- * Super namespace that all our libs and apps will live on. We also ext***REMOVED*** all
+ * Super namespace that all our libs and apps will live on. We also extend all
  * of the native Ember classes as well and exclusely use them that way so we can
  * alter the behavior in one place without needing to reopen the original class.
  *
@@ -12,7 +12,7 @@ window.PS = Ember.Namespace.create();
 
 // Create our custom resolver so we can have Ember look up classes on multiple
 // namespaces
-PS.Resolver = Ember.DefaultResolver.ext***REMOVED***({
+PS.Resolver = Ember.DefaultResolver.extend({
   resolveOther: function (parsedName) {
     var value = this._super(parsedName);
     var childNamespaces = Ember.get(parsedName, 'root.childNamespaces');
@@ -38,8 +38,8 @@ PS.Resolver = Ember.DefaultResolver.ext***REMOVED***({
   }
 });
 
-// Ext***REMOVED***ing the default Ember.Application behavior
-PS.Application = Ember.Application.ext***REMOVED***({
+// Extending the default Ember.Application behavior
+PS.Application = Ember.Application.extend({
   // Here is where we tell Ember to use our custom Resolver, defined above
   Resolver: PS.Resolver,
   childNamespaces: null,
@@ -54,14 +54,14 @@ PS.Application = Ember.Application.ext***REMOVED***({
   }
 });
 
-// Ext***REMOVED***ing the default ObjectController behavior
-PS.ObjectController = Ember.ObjectController.ext***REMOVED***({
+// Extending the default ObjectController behavior
+PS.ObjectController = Ember.ObjectController.extend({
   // Add common helpers/properties/features you always use
 });
-PS.ArrayController = Ember.ArrayController.ext***REMOVED***({
+PS.ArrayController = Ember.ArrayController.extend({
   // Add common helpers/properties/features you always use
 });
-PS.Route = Ember.Route.ext***REMOVED***({
+PS.Route = Ember.Route.extend({
   // Add common helpers/properties/features you always use
 });
 
@@ -73,7 +73,7 @@ PS.Web = Ember.Namespace.create();
 PS.Standalone = Ember.Namespace.create();
 
 // Just an example from today, put on PS.Core
-PS.Core.IndexController = PS.ObjectController.ext***REMOVED***({
+PS.Core.IndexController = PS.ObjectController.extend({
   firstName: null,
   lastName: null
 });

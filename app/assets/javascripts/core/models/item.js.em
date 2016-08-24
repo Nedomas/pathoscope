@@ -1,4 +1,4 @@
-class PS.Core.Item ext***REMOVED***s DS.Model
+class PS.Core.Item extends DS.Model
   context_id: DS.attr('string')
   context_type: DS.attr('string')
   parents: DS.hasMany('item', inverse: 'children')

@@ -9,9 +9,9 @@
     "emberjs",
     "testing",
     "mocha"
-***REMOVED***,
+  ],
   "ignore": [],
-  "dep***REMOVED***encies": {},
+  "dependencies": {},
   "homepage": "https://github.com/teddyzeenny/ember-mocha-adapter",
   "_release": "0.2.0",
   "_resolution": {

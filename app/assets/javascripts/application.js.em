@@ -2,9 +2,9 @@
 #= require underscore.string.min
 #= require md5.min
 #= require jquery.timeago
-#= require ../../../v***REMOVED***or/assets/javascripts/flash-message
-#= require ../../../v***REMOVED***or/assets/javascripts/md5.min
-#= require ../../../v***REMOVED***or/assets/javascripts/bower_components/ember-simple-auth/ember-simple-auth
+#= require ../../../vendor/assets/javascripts/flash-message
+#= require ../../../vendor/assets/javascripts/md5.min
+#= require ../../../vendor/assets/javascripts/bower_components/ember-simple-auth/ember-simple-auth
 #= require ember-google-analytics
 #= require ./core/resolver
 #= require_self

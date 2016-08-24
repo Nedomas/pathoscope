@@ -1,2 +1,2 @@
 class BetaTester < ActiveRecord::Base
-***REMOVED***
+end

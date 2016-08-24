@@ -19,7 +19,7 @@ section.arrow class={ item.context.color_class }
         else
           == arrow-down
     else
-      .dead-***REMOVED***
+      .dead-end
         == filled-circle
 / section.indicator
 section.meta

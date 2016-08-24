@@ -11,16 +11,16 @@
         "component": {
             "scripts": [
                 "ember.js"
-          ***REMOVED***,
+            ],
             "files": [
                 "ember.min.js"
-          ***REMOVED***,
+            ],
             "shim": {
                 "exports": "Ember",
                 "deps": [
                     "jquery",
                     "handlebars"
-              ***REMOVED***
+                ]
             }
         }
     }

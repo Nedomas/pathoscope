@@ -16,7 +16,7 @@ test( "find(String) under non-elements", function() {
 test( "find(leading combinator)", function() {
 	expect( 4 );
 
-	deepEqual( jQuery("#qunit-fixture").find("> div").get(), q( "foo", "nothidd***REMOVED***iv", "moretests", "tabindex-tests", "liveHandlerOrder", "siblingTest", "fx-test-group" ), "find child elements" );
+	deepEqual( jQuery("#qunit-fixture").find("> div").get(), q( "foo", "nothiddendiv", "moretests", "tabindex-tests", "liveHandlerOrder", "siblingTest", "fx-test-group" ), "find child elements" );
 	deepEqual( jQuery("#qunit-fixture").find("> #foo, > #moretests").get(), q( "foo", "moretests" ), "find child elements" );
 	deepEqual( jQuery("#qunit-fixture").find("> #foo > p").get(), q( "sndp", "en", "sap" ), "find child elements" );
 
@@ -147,7 +147,7 @@ test("is() with positional selectors", function() {
 		posp = jQuery(
 			"<p id='posp'><a class='firsta' href='#'><em>first</em></a>" +
 			"<a class='seconda' href='#'><b>test</b></a><em></em></p>"
-		).app***REMOVED***To( "#qunit-fixture" ),
+		).appendTo( "#qunit-fixture" ),
 		isit = function( sel, match, expect ) {
 			equal(
 				jQuery( sel ).is( match ),
@@ -294,7 +294,7 @@ test("filter() with positional selectors", function() {
 				"<b>test</b>" +
 			"</a>" +
 			"<em></em>" +
-		"</p>" ).app***REMOVED***To( "#qunit-fixture" );
+		"</p>" ).appendTo( "#qunit-fixture" );
 
 	filterit( "#posp", "#posp:first", 1);
 	filterit( "#posp", "#posp:eq(2)", 0 );
@@ -332,10 +332,10 @@ test("closest()", function() {
 	deepEqual( jQuery("#qunit-fixture").closest("span,#html").get(), q("html"), "closest(span,#html)" );
 
 	// Test .closest() limited by the context
-	jq = jQuery("#nothidd***REMOVED***ivchild");
+	jq = jQuery("#nothiddendivchild");
 	deepEqual( jq.closest("html", document.body).get(), [], "Context limited." );
 	deepEqual( jq.closest("body", document.body).get(), [], "Context limited." );
-	deepEqual( jq.closest("#nothidd***REMOVED***iv", document.body).get(), q("nothidd***REMOVED***iv"), "Context not reached." );
+	deepEqual( jq.closest("#nothiddendiv", document.body).get(), q("nothiddendiv"), "Context not reached." );
 
 	//Test that .closest() returns unique'd set
 	equal( jQuery("#qunit-fixture p").closest("#qunit-fixture").length, 1, "Closest should return a unique set" );
@@ -362,18 +362,18 @@ test("closest() with positional selectors", function() {
 
 test("closest(jQuery)", function() {
 	expect(8);
-	var $child = jQuery("#nothidd***REMOVED***ivchild"),
-		$parent = jQuery("#nothidd***REMOVED***iv"),
+	var $child = jQuery("#nothiddendivchild"),
+		$parent = jQuery("#nothiddendiv"),
 		$sibling = jQuery("#foo"),
 		$body = jQuery("body");
-	ok( $child.closest( $parent ).is("#nothidd***REMOVED***iv"), "closest( jQuery('#nothidd***REMOVED***iv') )" );
-	ok( $child.closest( $parent[0] ).is("#nothidd***REMOVED***iv"), "closest( jQuery('#nothidd***REMOVED***iv') ) :: node" );
-	ok( $child.closest( $child ).is("#nothidd***REMOVED***ivchild"), "child is included" );
-	ok( $child.closest( $child[0] ).is("#nothidd***REMOVED***ivchild"), "child is included  :: node" );
+	ok( $child.closest( $parent ).is("#nothiddendiv"), "closest( jQuery('#nothiddendiv') )" );
+	ok( $child.closest( $parent[0] ).is("#nothiddendiv"), "closest( jQuery('#nothiddendiv') ) :: node" );
+	ok( $child.closest( $child ).is("#nothiddendivchild"), "child is included" );
+	ok( $child.closest( $child[0] ).is("#nothiddendivchild"), "child is included  :: node" );
 	equal( $child.closest( document.createElement("div") ).length, 0, "created element is not related" );
 	equal( $child.closest( $sibling ).length, 0, "Sibling not a parent of child" );
 	equal( $child.closest( $sibling[0] ).length, 0, "Sibling not a parent of child :: node" );
-	ok( $child.closest( $body.add($parent) ).is("#nothidd***REMOVED***iv"), "Closest ancestor retrieved." );
+	ok( $child.closest( $body.add($parent) ).is("#nothiddendiv"), "Closest ancestor retrieved." );
 });
 
 test("not(Selector|undefined)", function() {
@@ -430,13 +430,13 @@ test("has(Element)", function() {
 	var obj, detached, multipleParent;
 
 	obj = jQuery("#qunit-fixture").has(jQuery("#sndp")[0]);
-	deepEqual( obj.get(), q("qunit-fixture"), "Keeps elements that have the element as a desc***REMOVED***ant" );
+	deepEqual( obj.get(), q("qunit-fixture"), "Keeps elements that have the element as a descendant" );
 
 	detached = jQuery("<a><b><i/></b></a>");
 	deepEqual( detached.has( detached.find("i")[0] ).get(), detached.get(), "...Even when detached" );
 
 	multipleParent = jQuery("#qunit-fixture, #header").has(jQuery("#sndp")[0]);
-	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have the element as a desc***REMOVED***ant" );
+	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have the element as a descendant" );
 });
 
 test("has(Selector)", function() {
@@ -445,13 +445,13 @@ test("has(Selector)", function() {
 	var obj, detached, multipleParent, multipleHas;
 
 	obj = jQuery("#qunit-fixture").has("#sndp");
-	deepEqual( obj.get(), q("qunit-fixture"), "Keeps elements that have any element matching the selector as a desc***REMOVED***ant" );
+	deepEqual( obj.get(), q("qunit-fixture"), "Keeps elements that have any element matching the selector as a descendant" );
 
 	detached = jQuery("<a><b><i/></b></a>");
 	deepEqual( detached.has("i").get(), detached.get(), "...Even when detached" );
 
 	multipleParent = jQuery("#qunit-fixture, #header").has("#sndp");
-	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have the element as a desc***REMOVED***ant" );
+	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have the element as a descendant" );
 
 	multipleParent = jQuery("#select1, #select2, #select3").has("#option1a, #option3a");
 	deepEqual( multipleParent.get(), q("select1", "select3"), "Multiple contexts are checks correctly" );
@@ -466,13 +466,13 @@ test("has(Arrayish)", function() {
 	var simple, detached, multipleParent, multipleHas;
 
 	simple = jQuery("#qunit-fixture").has(jQuery("#sndp"));
-	deepEqual( simple.get(), q("qunit-fixture"), "Keeps elements that have any element in the jQuery list as a desc***REMOVED***ant" );
+	deepEqual( simple.get(), q("qunit-fixture"), "Keeps elements that have any element in the jQuery list as a descendant" );
 
 	detached = jQuery("<a><b><i/></b></a>");
 	deepEqual( detached.has( detached.find("i") ).get(), detached.get(), "...Even when detached" );
 
 	multipleParent = jQuery("#qunit-fixture, #header").has(jQuery("#sndp"));
-	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have an element in the jQuery list as a desc***REMOVED***ant" );
+	deepEqual( multipleParent.get(), q("qunit-fixture"), "Does not include elements that do not have an element in the jQuery list as a descendant" );
 
 	multipleHas = jQuery("#qunit-fixture").has(jQuery("#sndp, #first"));
 	deepEqual( multipleHas.get(), q("qunit-fixture"), "Only adds elements once" );
@@ -650,7 +650,7 @@ test("contents()", function() {
 
 	equal( jQuery("span", ibody).text(), "span text", "Find span in IFrame and check its text" );
 
-	jQuery(ibody).app***REMOVED***("<div>init text</div>");
+	jQuery(ibody).append("<div>init text</div>");
 	equal( jQuery("div", ibody).length, 2, "Check the original div and the new div are in IFrame" );
 
 	equal( jQuery("div", ibody).last().text(), "init text", "Add text to div in IFrame" );
@@ -663,7 +663,7 @@ test("contents()", function() {
 
 	equal( jQuery("div", ibody).text(), "span text", "Make sure the correct div is still left after deletion in IFrame" );
 
-	jQuery("<table/>", ibody).app***REMOVED***("<tr><td>cell</td></tr>").app***REMOVED***To(ibody);
+	jQuery("<table/>", ibody).append("<tr><td>cell</td></tr>").appendTo(ibody);
 	jQuery("table", ibody).remove();
 	equal( jQuery("div", ibody).length, 1, "Check for JS error on add and delete of a table in IFrame" );
 
@@ -725,11 +725,11 @@ test("add(String|Element|Array|undefined)", function() {
 
 	tmp = jQuery("<div/>");
 
-	x = jQuery([]).add(jQuery("<p id='x1'>xxx</p>").app***REMOVED***To(tmp)).add(jQuery("<p id='x2'>xxx</p>").app***REMOVED***To(tmp));
+	x = jQuery([]).add(jQuery("<p id='x1'>xxx</p>").appendTo(tmp)).add(jQuery("<p id='x2'>xxx</p>").appendTo(tmp));
 	equal( x[0].id, "x1", "Check on-the-fly element1" );
 	equal( x[1].id, "x2", "Check on-the-fly element2" );
 
-	x = jQuery([]).add(jQuery("<p id='x1'>xxx</p>").app***REMOVED***To(tmp)[0]).add(jQuery("<p id='x2'>xxx</p>").app***REMOVED***To(tmp)[0]);
+	x = jQuery([]).add(jQuery("<p id='x1'>xxx</p>").appendTo(tmp)[0]).add(jQuery("<p id='x2'>xxx</p>").appendTo(tmp)[0]);
 	equal( x[0].id, "x1", "Check on-the-fly element1" );
 	equal( x[1].id, "x2", "Check on-the-fly element2" );
 
@@ -774,12 +774,12 @@ test("index(no arg) #10977", function() {
 	var $list, fragment, div;
 
 	$list = jQuery("<ul id='indextest'><li class='zero'>THIS ONE</li><li class='one'>a</li><li class='two'>b</li><li class='three'>c</li></ul>");
-	jQuery("#qunit-fixture").app***REMOVED***( $list );
+	jQuery("#qunit-fixture").append( $list );
 	strictEqual ( jQuery( "#indextest li.zero" ).first().index() , 0, "No Argument Index Check" );
 	$list.remove();
 
 	fragment = document.createDocumentFragment();
-	div = fragment.app***REMOVED***Child( document.createElement("div") );
+	div = fragment.appendChild( document.createElement("div") );
 
 	equal( jQuery( div ).index(), 0, "If jQuery#index called on element whose parent is fragment, it still should work correctly" );
 });

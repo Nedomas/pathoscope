@@ -12,33 +12,33 @@ describe Node do
   before(:each) do
     stub_request(:any, wiki_url).to_return(body: '<title>Mocked title</title>')
     stub_request(:any, lecture_url)
-***REMOVED***
+  end
 
   it 'should build all parts' do
     Node.build(wiki_url, aerospace_path, user)
     link = Link.last
     expect(link.url).to eq(wiki_url)
-  ***REMOVED*** expect(link.title).to eq('Mocked title')
-***REMOVED***
+    # expect(link.title).to eq('Mocked title')
+  end
 
   it 'should build different nodes with same link' do
     first_node = Node.build(wiki_url, aerospace_path, user)
     second_node = Node.build(wiki_url, aerospace_path, second_user)
     expect(Link.count).to eq(1)
     expect(first_node.link_id).to eq(second_node.link_id)
-***REMOVED***
+  end
 
   it 'should go down the tree for single user on a single aerospace_path' do
     first_node = Node.build(wiki_url, aerospace_path, user)
     second_node = Node.build(lecture_url, aerospace_path, user)
     expect(first_node.ancestry).to eq(nil)
     expect(second_node.ancestry).to eq("#{first_node.id}")
-***REMOVED***
+  end
 
   it 'should be careful of duplicates' do
     first_node = Node.build(wiki_url, aerospace_path, user)
     second_node = Node.build(wiki_url, aerospace_path, user)
     expect(first_node == second_node).to eq(true)
-***REMOVED***
+  end
 
-***REMOVED***
+end

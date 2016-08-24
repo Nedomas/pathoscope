@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
-***REMOVED*** include Devise::Controllers::Helpers
+  # include Devise::Controllers::Helpers
 
   def index
-***REMOVED***
+  end
 
   def sign_out
-    r***REMOVED***er json: true
-***REMOVED***
-***REMOVED***
+    render json: true
+  end
+end

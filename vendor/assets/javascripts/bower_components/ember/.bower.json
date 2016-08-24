@@ -3,8 +3,8 @@
   "version": "1.5.0-beta.4",
   "main": [
     "./ember.js"
-***REMOVED***,
-  "dep***REMOVED***encies": {
+  ],
+  "dependencies": {
     "jquery": ">= 1.7 <= 2.1",
     "handlebars": ">= 1.0.0 < 2.0.0"
   },

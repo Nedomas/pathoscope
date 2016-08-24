@@ -1,1 +1,1 @@
-class PS.Bookmarklet.Item ext***REMOVED***s PS.Core.Item
+class PS.Bookmarklet.Item extends PS.Core.Item

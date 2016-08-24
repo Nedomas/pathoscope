@@ -3,23 +3,23 @@ class Api::V1::WorldsController < ApplicationController
 
   def index
     if id = params[:id]
-      r***REMOVED***er json: {
+      render json: {
         worlds: [all_records([id]).last],
-      ***REMOVED*** meta: { current_user: current_user }
+        # meta: { current_user: current_user }
       }
     elsif params[:parent_id] == ""
-      r***REMOVED***er json: {
+      render json: {
         worlds: all_records.select { |record| !record[:parent_id] },
-      ***REMOVED*** meta: { current_user: current_user }
+        # meta: { current_user: current_user }
       }
     else
-      r***REMOVED***er json: {
+      render json: {
         worlds: all_records(params[:ids]),
-      ***REMOVED*** meta: { current_user: current_user }
+        # meta: { current_user: current_user }
       }
-***REMOVED***
-  ***REMOVED*** respond_with worlds: all_records
-***REMOVED***
+    end
+    # respond_with worlds: all_records
+  end
 
   def show
     node = Node.find(params[:id])
@@ -32,11 +32,11 @@ class Api::V1::WorldsController < ApplicationController
       item_id: node.item.id
     }
 
-    r***REMOVED***er json: {
+    render json: {
       world: record,
-    ***REMOVED*** meta: { current_user: current_user }
+      # meta: { current_user: current_user }
     }
-***REMOVED***
+  end
 
   def all_records(ids=nil)
     all_records = []
@@ -45,7 +45,7 @@ class Api::V1::WorldsController < ApplicationController
       Node.find(ids)
     else
       Node.where("ancestry_depth <= ?", 1)
-***REMOVED***
+    end
 
     nodes.each do |node|
       all_records << {
@@ -56,10 +56,10 @@ class Api::V1::WorldsController < ApplicationController
         item: node.item,
         item_id: node.item.id
       }
-***REMOVED***
+    end
 
     all_records.uniq
-***REMOVED***
+  end
 
   def item_structure
     result = []
@@ -73,11 +73,11 @@ class Api::V1::WorldsController < ApplicationController
         item: node.item,
         item_id: node.item.id
       }
-***REMOVED***
+    end
 
     all_records.uniq
-***REMOVED***
-***REMOVED***
+  end
+end
 
 class World
   def path_tree
@@ -89,37 +89,37 @@ class World
     siblings = last_node.item.nodes
     last_last = get_last_children(last_node)
     binding.pry
-***REMOVED***
+  end
 
   def get_last_children(node)
     siblings.each do |sibling|
       sibling.children.each do |child|
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
+      end
+    end
+  end
 
   def find_no_children
     Item.all.select do |item|
       item.nodes.select {|n| n.path_id == Path.last.id }.none?
-    ***REMOVED***   binding.pry
-    ***REMOVED*** ***REMOVED*** child.children
-    ***REMOVED*** ***REMOVED***
-***REMOVED***
-  ***REMOVED*** nodes.select do |node|
-  ***REMOVED***   node.item
-  ***REMOVED*** ***REMOVED***
-  ***REMOVED*** nodes.map(&:children).flatten
-***REMOVED***
+      #   binding.pry
+      #   # child.children
+      # end
+    end
+    # nodes.select do |node|
+    #   node.item
+    # end
+    # nodes.map(&:children).flatten
+  end
 
   def all
     result = []
 
     Node.all.each do |node|
 
-***REMOVED***
+    end
 
     binding.pry
-***REMOVED***
+  end
 
   def all_records
     all_records = []
@@ -128,7 +128,7 @@ class World
       Node.find(ids)
     else
       Node.where("ancestry_depth <= ?", 1)
-***REMOVED***
+    end
 
     nodes.each do |node|
       all_records << {
@@ -139,18 +139,18 @@ class World
         item: node.item,
         item_id: node.item.id
       }
-***REMOVED***
+    end
 
     all_records.uniq
-***REMOVED***
-***REMOVED***
+  end
+end
 # class World
 #   def initialize
 #     @all = []
 #     @id_index = 0
-# ***REMOVED***
+#   end
 #
 #   def add(node)
-#   ***REMOVED*** @all <<
-# ***REMOVED***
-# ***REMOVED***
+#     # @all <<
+#   end
+# end

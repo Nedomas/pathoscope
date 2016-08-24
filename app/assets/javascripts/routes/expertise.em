@@ -1,4 +1,4 @@
-class PS.Web.ExpertiseRoute ext***REMOVED***s Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
+class PS.Web.ExpertiseRoute extends Ember.Route with Ember.SimpleAuth.AuthenticatedRouteMixin
   model: (params) ->
     _this = this
     @set('path_id', params.path_id)

@@ -1,1 +1,1 @@
-class PS.Website.Link ext***REMOVED***s PS.Core.Link
+class PS.Website.Link extends PS.Core.Link

@@ -1,4 +1,4 @@
-class PS.Core.NotesNewController ext***REMOVED***s Ember.ObjectController
+class PS.Core.NotesNewController extends Ember.ObjectController
   placeholder: 'What do you think about this?'
   needs: ['world']
 

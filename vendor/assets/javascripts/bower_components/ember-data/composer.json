@@ -10,16 +10,16 @@
         "component": {
             "scripts": [
                 "ember-data.js"
-          ***REMOVED***,
+            ],
             "files": [
                 "ember-data.min.js",
                 "ember-data.prod.js"
-          ***REMOVED***,
+            ],
             "shim": {
                 "exports": "Ember",
                 "deps": [
                     "ember"
-              ***REMOVED***
+                ]
             }
         }
     }

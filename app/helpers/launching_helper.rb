@@ -1,2 +1,2 @@
 module LaunchingHelper
-***REMOVED***
+end

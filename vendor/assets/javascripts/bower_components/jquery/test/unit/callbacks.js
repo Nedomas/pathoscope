@@ -281,7 +281,7 @@ test( "jQuery.Callbacks.remove - should remove all instances", function() {
 	}
 
 	cb.add( fn, fn, function() {
-		ok( true, "***REMOVED*** of test" );
+		ok( true, "end of test" );
 	}).remove( fn ).fire();
 });
 

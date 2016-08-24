@@ -5,7 +5,7 @@ describe "Login feature", ->
     Ember.run ->
       visit('/')
       .then ->
-      ***REMOVED*** debugger
+        # debugger
         expect(find('h1').text()).to.equal('Sign in')
         mockPathsApi().then ->
         login()

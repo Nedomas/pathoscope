@@ -1,5 +1,5 @@
 h1 Success!
 article.choose-path
-  r***REMOVED***er 'item' model
+  render 'item' model
 
 outlet

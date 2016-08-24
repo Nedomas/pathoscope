@@ -28,8 +28,8 @@ mozilla	1.0.2	Mozilla/5.0 (Windows; U; WinNT; en; rv:1.0.2) Gecko/20030311 Beone
 mozilla	1.9	Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9) Gecko/2008120120 Blackbird/0.9991
 webkit	527	Mozilla/5.0 (X11; 78; CentOS; US-en) AppleWebKit/527+ (KHTML, like Gecko) Bolt/0.862 Version/3.0 Safari/523.15
 msie	6.0	Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Browzar)
-	0	Bunjalloo/0.7.4(Nint***REMOVED***o DS;U;en)
-	0	Bunjalloo/0.7.6(Nint***REMOVED***o DS;U;en)
+	0	Bunjalloo/0.7.4(Nintendo DS;U;en)
+	0	Bunjalloo/0.7.6(Nintendo DS;U;en)
 mozilla	1.8.1.4pre	Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en; rv:1.8.1.4pre) Gecko/20070511 Camino/1.6pre
 mozilla	1.7.2	Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7.2) Gecko/20040825 Camino/0.8.1
 mozilla	1.8.1.12	Mozilla/5.0 (Macintosh; U; Intel Mac OS X Mach-O; en; rv:1.8.1.12) Gecko/20080206 Camino/1.5.5

@@ -1,4 +1,4 @@
-PS.Standalone.TagController = PS.ArrayController.ext***REMOVED***
+PS.Standalone.TagController = PS.ArrayController.extend
   actions:
     tagAction: (item_id) ->
       store = @store

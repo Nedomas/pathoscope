@@ -94,7 +94,7 @@ test("jQuery()", function() {
 	/* // Disabled until we add this functionality in
 	var pass = true;
 	try {
-		jQuery("<div>Testing</div>").app***REMOVED***To(document.getElementById("iframe").contentDocument.body);
+		jQuery("<div>Testing</div>").appendTo(document.getElementById("iframe").contentDocument.body);
 	} catch(e){
 		pass = false;
 	}
@@ -371,7 +371,7 @@ asyncTest("isPlainObject", function() {
 	};
 
 	try {
-		iframe = jQuery("#qunit-fixture")[0].app***REMOVED***Child( document.createElement("iframe") );
+		iframe = jQuery("#qunit-fixture")[0].appendChild( document.createElement("iframe") );
 		doc = iframe.contentDocument || iframe.contentWindow.document;
 		doc.open();
 		doc.write("<body onload='window.parent.iframeCallback(Object);'>");
@@ -437,7 +437,7 @@ test("isFunction", function() {
 
 	input = document.createElement("input");
 	input.type = "text";
-	document.body.app***REMOVED***Child( input );
+	document.body.appendChild( input );
 
 	// IE says this is an object
 	// Since 1.3, this isn't supported (#2968)
@@ -447,7 +447,7 @@ test("isFunction", function() {
 
 	a = document.createElement("a");
 	a.href = "some-function";
-	document.body.app***REMOVED***Child( a );
+	document.body.appendChild( a );
 
 	// This serializes with the word 'function' in it
 	ok( !jQuery.isFunction(a), "Anchor Element" );
@@ -533,7 +533,7 @@ test("isXMLDoc - HTML", function() {
 
 	var body,
 		iframe = document.createElement("iframe");
-	document.body.app***REMOVED***Child( iframe );
+	document.body.appendChild( iframe );
 
 	try {
 		body = jQuery(iframe).contents()[0];
@@ -563,7 +563,7 @@ test("XSS via location.hash", function() {
 	};
 	try {
 		// This throws an error because it's processed like an id
-		jQuery( "#<img id='check9521' src='no-such-.gif' onerror='jQuery._check9521(false)'>" ).app***REMOVED***To("#qunit-fixture");
+		jQuery( "#<img id='check9521' src='no-such-.gif' onerror='jQuery._check9521(false)'>" ).appendTo("#qunit-fixture");
 	} catch (err) {
 		jQuery["_check9521"](true);
 	}
@@ -606,7 +606,7 @@ test("jQuery('html')", function() {
 	s = jQuery("<script>jQuery.foo='test';</script>")[0];
 	ok( s, "Creating a script" );
 	ok( !jQuery["foo"], "Make sure the script wasn't executed prematurely" );
-	jQuery("body").app***REMOVED***("<script>jQuery.foo='test';</script>");
+	jQuery("body").append("<script>jQuery.foo='test';</script>");
 	ok( jQuery["foo"], "Executing a scripts contents in the right context" );
 
 	// Test multi-line HTML
@@ -674,10 +674,10 @@ test("jQuery(selector, xml).text(str) - loaded via xml document", function() {
 	equal( tab.text(), "newtext", "verify new text correct" );
 });
 
-test("***REMOVED***()", function() {
+test("end()", function() {
 	expect(3);
-	equal( "Yahoo", jQuery("#yahoo").parent().***REMOVED***().text(), "check for ***REMOVED***" );
-	ok( jQuery("#yahoo").***REMOVED***(), "check for ***REMOVED*** with nothing to ***REMOVED***" );
+	equal( "Yahoo", jQuery("#yahoo").parent().end().text(), "check for end" );
+	ok( jQuery("#yahoo").end(), "check for end with nothing to end" );
 
 	var x = jQuery("#yahoo");
 	x.parent();
@@ -707,19 +707,19 @@ test("inArray()", function() {
 	var selections = {
 		p:   q("firstp", "sap", "ap", "first"),
 		em:  q("siblingnext", "siblingfirst"),
-		div: q("qunit-testrunner-toolbar", "nothidd***REMOVED***iv", "nothidd***REMOVED***ivchild", "foo"),
+		div: q("qunit-testrunner-toolbar", "nothiddendiv", "nothiddendivchild", "foo"),
 		a:   q("mark", "groups", "google", "simon1"),
 		empty: []
 	},
 	tests = {
 		p:    { elem: jQuery("#ap")[0],           index: 2 },
 		em:   { elem: jQuery("#siblingfirst")[0], index: 1 },
-		div:  { elem: jQuery("#nothidd***REMOVED***iv")[0], index: 1 },
+		div:  { elem: jQuery("#nothiddendiv")[0], index: 1 },
 		a:    { elem: jQuery("#simon1")[0],       index: 3 }
 	},
 	falseTests = {
 		p:  jQuery("#liveSpan1")[0],
-		em: jQuery("#nothidd***REMOVED***iv")[0],
+		em: jQuery("#nothiddendiv")[0],
 		empty: ""
 	};
 
@@ -936,7 +936,7 @@ test("jQuery.merge()", function() {
 		"First array like");
 });
 
-test("jQuery.ext***REMOVED***(Object, Object)", function() {
+test("jQuery.extend(Object, Object)", function() {
 	expect(28);
 
 	var empty, optionsWithLength, optionsWithDate, myKlass,
@@ -954,33 +954,33 @@ test("jQuery.ext***REMOVED***(Object, Object)", function() {
 		arr = [1, 2, 3],
 		nestedarray = { "arr": arr };
 
-	jQuery.ext***REMOVED***(settings, options);
-	deepEqual( settings, merged, "Check if ext***REMOVED***ed: settings must be ext***REMOVED***ed" );
+	jQuery.extend(settings, options);
+	deepEqual( settings, merged, "Check if extended: settings must be extended" );
 	deepEqual( options, optionsCopy, "Check if not modified: options must not be modified" );
 
-	jQuery.ext***REMOVED***(settings, null, options);
-	deepEqual( settings, merged, "Check if ext***REMOVED***ed: settings must be ext***REMOVED***ed" );
+	jQuery.extend(settings, null, options);
+	deepEqual( settings, merged, "Check if extended: settings must be extended" );
 	deepEqual( options, optionsCopy, "Check if not modified: options must not be modified" );
 
-	jQuery.ext***REMOVED***(true, deep1, deep2);
-	deepEqual( deep1["foo"], deepmerged["foo"], "Check if foo: settings must be ext***REMOVED***ed" );
+	jQuery.extend(true, deep1, deep2);
+	deepEqual( deep1["foo"], deepmerged["foo"], "Check if foo: settings must be extended" );
 	deepEqual( deep2["foo"], deep2copy["foo"], "Check if not deep2: options must not be modified" );
 	equal( deep1["foo2"], document, "Make sure that a deep clone was not attempted on the document" );
 
-	ok( jQuery.ext***REMOVED***(true, {}, nestedarray)["arr"] !== arr, "Deep ext***REMOVED*** of object must clone child array" );
+	ok( jQuery.extend(true, {}, nestedarray)["arr"] !== arr, "Deep extend of object must clone child array" );
 
 	// #5991
-	ok( jQuery.isArray( jQuery.ext***REMOVED***(true, { "arr": {} }, nestedarray)["arr"] ), "Cloned array have to be an Array" );
-	ok( jQuery.isPlainObject( jQuery.ext***REMOVED***(true, { "arr": arr }, { "arr": {} })["arr"] ), "Cloned object have to be an plain object" );
+	ok( jQuery.isArray( jQuery.extend(true, { "arr": {} }, nestedarray)["arr"] ), "Cloned array have to be an Array" );
+	ok( jQuery.isPlainObject( jQuery.extend(true, { "arr": arr }, { "arr": {} })["arr"] ), "Cloned object have to be an plain object" );
 
 	empty = {};
 	optionsWithLength = { "foo": { "length": -1 } };
-	jQuery.ext***REMOVED***(true, empty, optionsWithLength);
+	jQuery.extend(true, empty, optionsWithLength);
 	deepEqual( empty["foo"], optionsWithLength["foo"], "The length property must copy correctly" );
 
 	empty = {};
 	optionsWithDate = { "foo": { "date": new Date() } };
-	jQuery.ext***REMOVED***(true, empty, optionsWithDate);
+	jQuery.extend(true, empty, optionsWithDate);
 	deepEqual( empty["foo"], optionsWithDate["foo"], "Dates copy correctly" );
 
 	/** @constructor */
@@ -988,51 +988,51 @@ test("jQuery.ext***REMOVED***(Object, Object)", function() {
 	customObject = new myKlass();
 	optionsWithCustomObject = { "foo": { "date": customObject } };
 	empty = {};
-	jQuery.ext***REMOVED***(true, empty, optionsWithCustomObject);
+	jQuery.extend(true, empty, optionsWithCustomObject);
 	ok( empty["foo"] && empty["foo"]["date"] === customObject, "Custom objects copy correctly (no methods)" );
 
 	// Makes the class a little more realistic
 	myKlass.prototype = { "someMethod": function(){} };
 	empty = {};
-	jQuery.ext***REMOVED***(true, empty, optionsWithCustomObject);
+	jQuery.extend(true, empty, optionsWithCustomObject);
 	ok( empty["foo"] && empty["foo"]["date"] === customObject, "Custom objects copy correctly" );
 
 	MyNumber = Number;
 
-	ret = jQuery.ext***REMOVED***(true, { "foo": 4 }, { "foo": new MyNumber(5) } );
+	ret = jQuery.extend(true, { "foo": 4 }, { "foo": new MyNumber(5) } );
 	ok( parseInt(ret.foo, 10) === 5, "Wrapped numbers copy correctly" );
 
 	nullUndef;
-	nullUndef = jQuery.ext***REMOVED***({}, options, { "xnumber2": null });
+	nullUndef = jQuery.extend({}, options, { "xnumber2": null });
 	ok( nullUndef["xnumber2"] === null, "Check to make sure null values are copied");
 
-	nullUndef = jQuery.ext***REMOVED***({}, options, { "xnumber2": undefined });
+	nullUndef = jQuery.extend({}, options, { "xnumber2": undefined });
 	ok( nullUndef["xnumber2"] === options["xnumber2"], "Check to make sure undefined values are not copied");
 
-	nullUndef = jQuery.ext***REMOVED***({}, options, { "xnumber0": null });
+	nullUndef = jQuery.extend({}, options, { "xnumber0": null });
 	ok( nullUndef["xnumber0"] === null, "Check to make sure null values are inserted");
 
 	target = {};
 	recursive = { foo:target, bar:5 };
-	jQuery.ext***REMOVED***(true, target, recursive);
-	deepEqual( target, { bar:5 }, "Check to make sure a recursive obj doesn't go never-***REMOVED***ing loop by not copying it over" );
+	jQuery.extend(true, target, recursive);
+	deepEqual( target, { bar:5 }, "Check to make sure a recursive obj doesn't go never-ending loop by not copying it over" );
 
-	ret = jQuery.ext***REMOVED***(true, { foo: [] }, { foo: [0] } ); // 1907
+	ret = jQuery.extend(true, { foo: [] }, { foo: [0] } ); // 1907
 	equal( ret.foo.length, 1, "Check to make sure a value with coercion 'false' copies over when necessary to fix #1907" );
 
-	ret = jQuery.ext***REMOVED***(true, { foo: "1,2,3" }, { foo: [1, 2, 3] } );
+	ret = jQuery.extend(true, { foo: "1,2,3" }, { foo: [1, 2, 3] } );
 	ok( typeof ret.foo !== "string", "Check to make sure values equal with coercion (but not actually equal) overwrite correctly" );
 
-	ret = jQuery.ext***REMOVED***(true, { foo:"bar" }, { foo:null } );
-	ok( typeof ret.foo !== "undefined", "Make sure a null value doesn't crash with deep ext***REMOVED***, for #1908" );
+	ret = jQuery.extend(true, { foo:"bar" }, { foo:null } );
+	ok( typeof ret.foo !== "undefined", "Make sure a null value doesn't crash with deep extend, for #1908" );
 
 	obj = { foo:null };
-	jQuery.ext***REMOVED***(true, obj, { foo:"notnull" } );
+	jQuery.extend(true, obj, { foo:"notnull" } );
 	equal( obj.foo, "notnull", "Make sure a null value can be overwritten" );
 
 	function func() {}
-	jQuery.ext***REMOVED***(func, { key: "value" } );
-	equal( func.key, "value", "Verify a function can be ext***REMOVED***ed" );
+	jQuery.extend(func, { key: "value" } );
+	equal( func.key, "value", "Verify a function can be extended" );
 
 	defaults = { xnumber1: 5, xnumber2: 7, xstring1: "peter", xstring2: "pan" };
 	defaultsCopy = { xnumber1: 5, xnumber2: 7, xstring1: "peter", xstring2: "pan" };
@@ -1042,14 +1042,14 @@ test("jQuery.ext***REMOVED***(Object, Object)", function() {
 	options2Copy = { xstring2: "xx", xxx: "newstringx" };
 	merged2 = { xnumber1: 5, xnumber2: 1, xstring1: "peter", xstring2: "xx", xxx: "newstringx" };
 
-	settings = jQuery.ext***REMOVED***({}, defaults, options1, options2);
-	deepEqual( settings, merged2, "Check if ext***REMOVED***ed: settings must be ext***REMOVED***ed" );
+	settings = jQuery.extend({}, defaults, options1, options2);
+	deepEqual( settings, merged2, "Check if extended: settings must be extended" );
 	deepEqual( defaults, defaultsCopy, "Check if not modified: options1 must not be modified" );
 	deepEqual( options1, options1Copy, "Check if not modified: options1 must not be modified" );
 	deepEqual( options2, options2Copy, "Check if not modified: options2 must not be modified" );
 });
 
-test("jQuery.ext***REMOVED***(true,{},{a:[], o:{}}); deep copy with array, followed by object", function() {
+test("jQuery.extend(true,{},{a:[], o:{}}); deep copy with array, followed by object", function() {
 	expect(2);
 
 	var result, initial = {
@@ -1064,7 +1064,7 @@ test("jQuery.ext***REMOVED***(true,{},{a:[], o:{}}); deep copy with array, follo
 		object: {}
 	};
 
-	result = jQuery.ext***REMOVED***( true, {}, initial );
+	result = jQuery.extend( true, {}, initial );
 
 	deepEqual( result, initial, "The [result] and [initial] have equal shape and values" );
 	ok( !jQuery.isArray( result.object ), "result.object wasn't paved with an empty array" );

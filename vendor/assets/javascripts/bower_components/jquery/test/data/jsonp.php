@@ -2,7 +2,7 @@
 error_reporting(0);
 $callback = $_REQUEST['callback'];
 if ( ! $callback ) {
-	$callback = explode("?",***REMOVED***(explode("/",$_SERVER['REQUEST_URI'])));
+	$callback = explode("?",end(explode("/",$_SERVER['REQUEST_URI'])));
 	$callback = $callback[0];
 }
 $json = $_REQUEST['json'];

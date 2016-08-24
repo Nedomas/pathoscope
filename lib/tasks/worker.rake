@@ -6,9 +6,9 @@ namespace :worker do
   methods.each do |method|
     desc method.to_s.humanize
     task method => :environment do
-      Worker.s***REMOVED***(method)
-***REMOVED***
-***REMOVED***
+      Worker.send(method)
+    end
+  end
 
 
-***REMOVED***
+end

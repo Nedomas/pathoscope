@@ -5,6 +5,6 @@ class CreateInvitations < ActiveRecord::Migration
       t.boolean :sent, default: false
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

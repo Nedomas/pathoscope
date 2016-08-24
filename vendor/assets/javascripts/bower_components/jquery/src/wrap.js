@@ -1,4 +1,4 @@
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	wrapAll: function( html ) {
 		var wrap;
 
@@ -25,7 +25,7 @@ jQuery.fn.ext***REMOVED***({
 				}
 
 				return elem;
-			}).app***REMOVED***( this );
+			}).append( this );
 		}
 
 		return this;
@@ -46,7 +46,7 @@ jQuery.fn.ext***REMOVED***({
 				contents.wrapAll( html );
 
 			} else {
-				self.app***REMOVED***( html );
+				self.append( html );
 			}
 		});
 	},
@@ -64,6 +64,6 @@ jQuery.fn.ext***REMOVED***({
 			if ( !jQuery.nodeName( this, "body" ) ) {
 				jQuery( this ).replaceWith( this.childNodes );
 			}
-		}).***REMOVED***();
+		}).end();
 	}
 });

@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "main": [
     "./ember-simple-auth.js"
-***REMOVED***,
+  ],
   "homepage": "https://github.com/simplabs/ember-simple-auth-component",
   "_release": "0.2.0",
   "_resolution": {

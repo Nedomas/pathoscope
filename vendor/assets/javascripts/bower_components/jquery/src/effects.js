@@ -45,7 +45,7 @@ var fxNow, timerId,
 				start = tween.start = +start || +target || 0;
 				tween.unit = unit;
 				// If a +=/-= token was provided, we're doing a relative animation
-				tween.***REMOVED*** = parts[ 1 ] ?
+				tween.end = parts[ 1 ] ?
 					start + ( parts[ 1 ] + 1 ) * parts[ 2 ] :
 					+parts[ 2 ];
 			}
@@ -112,22 +112,22 @@ function Animation( elem, properties, options ) {
 		},
 		animation = deferred.promise({
 			elem: elem,
-			props: jQuery.ext***REMOVED***( {}, properties ),
-			opts: jQuery.ext***REMOVED***( true, { specialEasing: {} }, options ),
+			props: jQuery.extend( {}, properties ),
+			opts: jQuery.extend( true, { specialEasing: {} }, options ),
 			originalProperties: properties,
 			originalOptions: options,
 			startTime: fxNow || createFxNow(),
 			duration: options.duration,
 			tweens: [],
-			createTween: function( prop, ***REMOVED*** ) {
-				var tween = jQuery.Tween( elem, animation.opts, prop, ***REMOVED***,
+			createTween: function( prop, end ) {
+				var tween = jQuery.Tween( elem, animation.opts, prop, end,
 						animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
 			stop: function( gotoEnd ) {
 				var index = 0,
-					// if we are going to the ***REMOVED***, we want to run all the tweens
+					// if we are going to the end, we want to run all the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -166,7 +166,7 @@ function Animation( elem, properties, options ) {
 	}
 
 	jQuery.fx.timer(
-		jQuery.ext***REMOVED***( tick, {
+		jQuery.extend( tick, {
 			elem: elem,
 			anim: animation,
 			queue: animation.opts.queue
@@ -203,7 +203,7 @@ function propFilter( props, specialEasing ) {
 			value = hooks.expand( value );
 			delete props[ name ];
 
-			// not quite $.ext***REMOVED***, this wont overwrite keys already present.
+			// not quite $.extend, this wont overwrite keys already present.
 			// also - reusing 'index' from above because we have the correct "name"
 			for ( index in value ) {
 				if ( !( index in props ) ) {
@@ -217,7 +217,7 @@ function propFilter( props, specialEasing ) {
 	}
 }
 
-jQuery.Animation = jQuery.ext***REMOVED***( Animation, {
+jQuery.Animation = jQuery.extend( Animation, {
 
 	tweener: function( props, callback ) {
 		if ( jQuery.isFunction( props ) ) {
@@ -238,8 +238,8 @@ jQuery.Animation = jQuery.ext***REMOVED***( Animation, {
 		}
 	},
 
-	prefilter: function( callback, prep***REMOVED*** ) {
-		if ( prep***REMOVED*** ) {
+	prefilter: function( callback, prepend ) {
+		if ( prepend ) {
 			animationPrefilters.unshift( callback );
 		} else {
 			animationPrefilters.push( callback );
@@ -317,7 +317,7 @@ function defaultPrefilter( elem, props, opts ) {
 			toggle = toggle || value === "toggle";
 			if ( value === ( hidden ? "hide" : "show" ) ) {
 
-				// If there is dataShow left over from a stopped hide or show and we are going to proceed with show, we should pret***REMOVED*** to be hidden
+				// If there is dataShow left over from a stopped hide or show and we are going to proceed with show, we should pretend to be hidden
 				if ( value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
 					hidden = true;
 				} else {
@@ -362,7 +362,7 @@ function defaultPrefilter( elem, props, opts ) {
 			if ( !( prop in dataShow ) ) {
 				dataShow[ prop ] = tween.start;
 				if ( hidden ) {
-					tween.***REMOVED*** = tween.start;
+					tween.end = tween.start;
 					tween.start = prop === "width" || prop === "height" ? 1 : 0;
 				}
 			}
@@ -370,20 +370,20 @@ function defaultPrefilter( elem, props, opts ) {
 	}
 }
 
-function Tween( elem, options, prop, ***REMOVED***, easing ) {
-	return new Tween.prototype.init( elem, options, prop, ***REMOVED***, easing );
+function Tween( elem, options, prop, end, easing ) {
+	return new Tween.prototype.init( elem, options, prop, end, easing );
 }
 jQuery.Tween = Tween;
 
 Tween.prototype = {
 	constructor: Tween,
-	init: function( elem, options, prop, ***REMOVED***, easing, unit ) {
+	init: function( elem, options, prop, end, easing, unit ) {
 		this.elem = elem;
 		this.prop = prop;
 		this.easing = easing || "swing";
 		this.options = options;
 		this.start = this.now = this.cur();
-		this.***REMOVED*** = ***REMOVED***;
+		this.end = end;
 		this.unit = unit || ( jQuery.cssNumber[ prop ] ? "" : "px" );
 	},
 	cur: function() {
@@ -404,7 +404,7 @@ Tween.prototype = {
 		} else {
 			this.pos = eased = percent;
 		}
-		this.now = ( this.***REMOVED*** - this.start ) * eased + this.start;
+		this.now = ( this.end - this.start ) * eased + this.start;
 
 		if ( this.options.step ) {
 			this.options.step.call( this.elem, this.now, this );
@@ -473,21 +473,21 @@ jQuery.each([ "toggle", "show", "hide" ], function( i, name ) {
 	};
 });
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	fadeTo: function( speed, to, easing, callback ) {
 
 		// show any hidden elements after setting opacity to 0
 		return this.filter( isHidden ).css( "opacity", 0 ).show()
 
 			// animate to the value specified
-			.***REMOVED***().animate({ opacity: to }, speed, easing, callback );
+			.end().animate({ opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
 		var empty = jQuery.isEmptyObject( prop ),
 			optall = jQuery.speed( speed, easing, callback ),
 			doAnimation = function() {
 				// Operate on a copy of prop so per-property easing won't be lost
-				var anim = Animation( this, jQuery.ext***REMOVED***( {}, prop ), optall );
+				var anim = Animation( this, jQuery.extend( {}, prop ), optall );
 
 				// Empty animations, or finishing resolves immediately
 				if ( empty || data_priv.get( this, "finish" ) ) {
@@ -629,7 +629,7 @@ jQuery.each({
 });
 
 jQuery.speed = function( speed, easing, fn ) {
-	var opt = speed && typeof speed === "object" ? jQuery.ext***REMOVED***( {}, speed ) : {
+	var opt = speed && typeof speed === "object" ? jQuery.extend( {}, speed ) : {
 		complete: fn || !fn && easing ||
 			jQuery.isFunction( speed ) && speed,
 		duration: speed,

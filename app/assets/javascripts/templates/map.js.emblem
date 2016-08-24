@@ -9,15 +9,15 @@ h1 Map
 
 article.map
   ul
-    r***REMOVED***er 'item' model.path.item
+    render 'item' model.path.item
 
     if childrenExpanded
       div.padded
         each child in model.path.item.children itemController='deadItem'
-          r***REMOVED***er 'item' child
+          render 'item' child
 
     each user_path in model.siblings
-      r***REMOVED***er 'item' user_path.path.item
+      render 'item' user_path.path.item
 
     unless model
       p You have no paths chosen

@@ -3,7 +3,7 @@ var nodeHook, boolHook,
 	rreturn = /\r/g,
 	rfocusable = /^(?:input|select|textarea|button)$/i;
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	attr: function( name, value ) {
 		return jQuery.access( this, jQuery.attr, name, value, arguments.length > 1 );
 	},
@@ -220,7 +220,7 @@ jQuery.fn.ext***REMOVED***({
 	}
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	valHooks: {
 		option: {
 			get: function( elem ) {

@@ -35,7 +35,7 @@ jQuery.ajaxTransport(function( options ) {
 	// Cross domain only allowed if supported through XMLHttpRequest
 	if ( jQuery.support.cors || xhrSupported && !options.crossDomain ) {
 		return {
-			s***REMOVED***: function( headers, complete ) {
+			send: function( headers, complete ) {
 				var i, id,
 					xhr = options.xhr();
 				xhr.open( options.type, options.url, options.async, options.username, options.password );
@@ -96,10 +96,10 @@ jQuery.ajaxTransport(function( options ) {
 				xhr.onerror = callback("error");
 				// Create the abort callback
 				callback = xhrCallbacks[( id = xhrId++ )] = callback("abort");
-				// Do s***REMOVED*** the request
+				// Do send the request
 				// This may raise an exception which is actually
 				// handled in jQuery.ajax (so no try/catch here)
-				xhr.s***REMOVED***( options.hasContent && options.data || null );
+				xhr.send( options.hasContent && options.data || null );
 			},
 			abort: function() {
 				if ( callback ) {

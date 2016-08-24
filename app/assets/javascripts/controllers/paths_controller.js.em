@@ -1,6 +1,6 @@
-class PS.Web.PathsController ext***REMOVED***s PS.ArrayController
+class PS.Web.PathsController extends PS.ArrayController
   sortProperties: ['title']
-  sortAsc***REMOVED***ing: true
+  sortAscending: true
 
   actions:
     choose: (path) ->
@@ -9,10 +9,10 @@ class PS.Web.PathsController ext***REMOVED***s PS.ArrayController
       @get('session.user').then (user) ->
         _this.transitionToRoute('expertise', path.get('id'))
 
-class PS.Web.PathsNewController ext***REMOVED***s Ember.ObjectController
+class PS.Web.PathsNewController extends Ember.ObjectController
   needs: ['application', 'paths']
   sortProperties: ['title']
-  sortAsc***REMOVED***ing: true
+  sortAscending: true
 
   actions:
     createAction: (param) ->

@@ -5,6 +5,6 @@ class CreateLinks < ActiveRecord::Migration
       t.string :url
 
       t.timestamps
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    end
+  end
+end

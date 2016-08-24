@@ -9,11 +9,11 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recomm***REMOVED***ed that you check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140328232745) do
 
-***REMOVED*** These are extensions that must be enabled in order to support this database
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beta_testers", force: true do |t|
@@ -24,21 +24,21 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.boolean  "logged_in"
     t.datetime "created_at"
     t.datetime "updated_at"
-***REMOVED***
+  end
 
   create_table "invitations", force: true do |t|
     t.string   "email"
     t.boolean  "sent",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-***REMOVED***
+  end
 
   create_table "items", force: true do |t|
     t.integer  "context_id"
     t.string   "context_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-***REMOVED***
+  end
 
   create_table "links", force: true do |t|
     t.string   "title"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-***REMOVED***
+  end
 
   create_table "nodes", force: true do |t|
     t.integer  "item_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "updated_at"
     t.string   "ancestry"
     t.integer  "ancestry_depth", default: 0
-***REMOVED***
+  end
 
   add_index "nodes", ["ancestry"], name: "index_nodes_on_ancestry", using: :btree
   add_index "nodes", ["item_id"], name: "index_nodes_on_item_id", using: :btree
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-***REMOVED***
+  end
 
   add_index "notes", ["item_id"], name: "index_notes_on_item_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "created_at",        null: false
     t.datetime "revoked_at"
     t.string   "scopes"
-***REMOVED***
+  end
 
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "revoked_at"
     t.datetime "created_at",        null: false
     t.string   "scopes"
-***REMOVED***
+  end
 
   add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
   add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.text     "redirect_uri", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-***REMOVED***
+  end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
@@ -119,12 +119,12 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "updated_at"
     t.text     "description"
     t.integer  "color"
-***REMOVED***
+  end
 
   create_table "user_paths", force: true do |t|
     t.integer "user_id"
     t.integer "path_id"
-***REMOVED***
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -141,9 +141,9 @@ ActiveRecord::Schema.define(version: 20140328232745) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "installed",              default: false
-***REMOVED***
+  end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-***REMOVED***
+end

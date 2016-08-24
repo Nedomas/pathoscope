@@ -9,7 +9,7 @@ var isSimple = /^.[^:#\[\.,]*$/,
 		prev: true
 	};
 
-jQuery.fn.ext***REMOVED***({
+jQuery.fn.extend({
 	find: function( selector ) {
 		var i,
 			ret = [],
@@ -209,7 +209,7 @@ jQuery.each({
 	};
 });
 
-jQuery.ext***REMOVED***({
+jQuery.extend({
 	filter: function( expr, elems, not ) {
 		var elem = elems[ 0 ];
 

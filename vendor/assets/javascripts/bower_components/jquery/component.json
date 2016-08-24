@@ -6,10 +6,10 @@
   "keywords": [
     "jquery",
     "component"
-***REMOVED***,
+  ],
   "main": "jquery.js",
   "scripts": [
     "jquery.js"
-***REMOVED***,
+  ],
   "license": "MIT"
 }

@@ -92,8 +92,8 @@ function dataTests (elem) {
 	jQuery.data(elem, "foo", "foo1");
 
 	jQuery.data(elem, { "bar" : "baz", "boom" : "bloz" });
-	strictEqual( jQuery.data(elem, "foo"), "foo1", "Passing an object ext***REMOVED***s the data object instead of replacing it" );
-	equal( jQuery.data(elem, "boom"), "bloz", "Ext***REMOVED***ing the data object works" );
+	strictEqual( jQuery.data(elem, "foo"), "foo1", "Passing an object extends the data object instead of replacing it" );
+	equal( jQuery.data(elem, "boom"), "bloz", "Extending the data object works" );
 
 	jQuery._data(elem, "foo", "foo2", true);
 	equal( jQuery._data(elem, "foo"), "foo2", "Setting internal data works" );
@@ -190,7 +190,7 @@ test(".data()", function() {
 	obj = { foo: "bar" };
 	jQuery(obj).data("foo", "baz");
 
-	dataObj = jQuery.ext***REMOVED***(true, {}, jQuery(obj).data());
+	dataObj = jQuery.extend(true, {}, jQuery(obj).data());
 
 	deepEqual( dataObj, { "foo": "baz" }, "Retrieve data object from a wrapped JS object (#7524)" );
 });
@@ -247,7 +247,7 @@ test("jQuery(plain Object).data(String, Object).data(String)", function() {
 test(".data(object) does not retain references. #13815", function() {
 	expect( 2 );
 
-	var $divs = jQuery("<div></div><div></div>").app***REMOVED***To("#qunit-fixture");
+	var $divs = jQuery("<div></div><div></div>").appendTo("#qunit-fixture");
 
 	$divs.data({ "type": "foo" });
 	$divs.eq( 0 ).data( "type", "bar" );
@@ -277,7 +277,7 @@ test("data-* attributes", function() {
 
 	div.remove();
 
-	child.app***REMOVED***To("#qunit-fixture");
+	child.appendTo("#qunit-fixture");
 	equal( child.data("myobj"), "old data", "Value accessed from data-* attribute");
 
 	child.data("myobj", "replaced");
@@ -377,7 +377,7 @@ test("data-* attributes", function() {
 	}
 
 	metadata = "<ol><li class='test test2' data-foo='bar' data-bar='baz' data-arr='[1,2]'>Some stuff</li><li class='test test2' data-test='bar' data-bar='baz'>Some stuff</li><li class='test test2' data-zoooo='bar' data-bar='{\"test\":\"baz\"}'>Some stuff</li><li class='test test2' data-number=true data-stuff='[2,8]'>Some stuff</li></ol>";
-	elem = jQuery(metadata).app***REMOVED***To("#qunit-fixture");
+	elem = jQuery(metadata).appendTo("#qunit-fixture");
 
 	elem.find("li").each(testData);
 	elem.remove();
@@ -398,8 +398,8 @@ test(".data(Object)", function() {
 
 	jqobj.data("test", "unset");
 	jqobj.data({ "test": "in", "test2": "in2" });
-	equal( jQuery.data(obj)["test"], "in", "Verify setting an object on an object ext***REMOVED***s the data object" );
-	equal( obj["test2"], undefined, "Verify setting an object on an object does not ext***REMOVED*** the object" );
+	equal( jQuery.data(obj)["test"], "in", "Verify setting an object on an object extends the data object" );
+	equal( obj["test2"], undefined, "Verify setting an object on an object does not extend the object" );
 
 	// manually clean up detached elements
 	div.remove();
@@ -488,7 +488,7 @@ test(".data should follow html5 specification regarding camel casing", function(
 	expect(12);
 
 	var div = jQuery("<div id='myObject' data-w-t-f='ftw' data-big-a-little-a='bouncing-b' data-foo='a' data-foo-bar='b' data-foo-bar-baz='c'></div>")
-		.prep***REMOVED***To("body");
+		.prependTo("body");
 
 	equal( div.data()["wTF"], "ftw", "Verify single letter data-* key" );
 	equal( div.data()["bigALittleA"], "bouncing-b", "Verify single letter mixed data-* key" );
@@ -516,7 +516,7 @@ test(".data should not miss preset data-* w/ hyphenated property names", functio
 
 	expect(2);
 
-	var div = jQuery("<div/>", { id: "hyphened" }).app***REMOVED***To("#qunit-fixture"),
+	var div = jQuery("<div/>", { id: "hyphened" }).appendTo("#qunit-fixture"),
 		test = {
 			"camelBar": "camelBar",
 			"hyphen-foo": "hyphen-foo"
@@ -545,14 +545,14 @@ test(".data should not miss attr() set data-* with hyphenated property names", f
 
 	var a, b;
 
-	a = jQuery("<div/>").app***REMOVED***To("#qunit-fixture");
+	a = jQuery("<div/>").appendTo("#qunit-fixture");
 
 	a.attr( "data-long-param", "test" );
 	a.data( "long-param", { a: 2 });
 
 	deepEqual( a.data("long-param"), { a: 2 }, "data with property long-param was found, 1" );
 
-	b = jQuery("<div/>").app***REMOVED***To("#qunit-fixture");
+	b = jQuery("<div/>").appendTo("#qunit-fixture");
 
 	b.attr( "data-long-param", "test" );
 	b.data( "long-param" );
@@ -563,7 +563,7 @@ test(".data should not miss attr() set data-* with hyphenated property names", f
 
 test(".data supports interoperable hyphenated/camelCase get/set of properties with arbitrary non-null|NaN|undefined values", function() {
 
-	var div = jQuery("<div/>", { id: "hyphened" }).app***REMOVED***To("#qunit-fixture"),
+	var div = jQuery("<div/>", { id: "hyphened" }).appendTo("#qunit-fixture"),
 		datas = {
 			"non-empty": "a string",
 			"empty-string": "",
@@ -578,7 +578,7 @@ test(".data supports interoperable hyphenated/camelCase get/set of properties wi
 			// so we need escaped double quotes here
 			"some-json": "{ \"foo\": \"bar\" }",
 			"num-1-middle": true,
-			"num-***REMOVED***-2": true,
+			"num-end-2": true,
 			"2-num-start": true
 		};
 
@@ -593,7 +593,7 @@ test(".data supports interoperable hyphenated/camelCase get/set of properties wi
 });
 
 test(".data supports interoperable removal of hyphenated/camelCase properties", function() {
-	var div = jQuery("<div/>", { id: "hyphened" }).app***REMOVED***To("#qunit-fixture"),
+	var div = jQuery("<div/>", { id: "hyphened" }).appendTo("#qunit-fixture"),
 		datas = {
 			"non-empty": "a string",
 			"empty-string": "",
@@ -625,7 +625,7 @@ test(".data supports interoperable removal of hyphenated/camelCase properties", 
 });
 
 test(".data supports interoperable removal of properties SET TWICE #13850", function() {
-	var div = jQuery("<div>").app***REMOVED***To("#qunit-fixture"),
+	var div = jQuery("<div>").appendTo("#qunit-fixture"),
 		datas = {
 			"non-empty": "a string",
 			"empty-string": "",
@@ -658,7 +658,7 @@ test( ".removeData supports removal of hyphenated properties via array (#12786)"
 
 	var div, plain, compare;
 
-	div = jQuery("<div>").app***REMOVED***To("#qunit-fixture");
+	div = jQuery("<div>").appendTo("#qunit-fixture");
 	plain = jQuery({});
 
 	// When data is batch assigned (via plain object), the properties
@@ -747,7 +747,7 @@ test("jQuery.acceptData", 6, function() {
 	ok( !jQuery.acceptData( document.createDocumentFragment() ), "documentFragment" );
 });
 
-test("Check proper data removal of non-element desc***REMOVED***ants nodes (#8335)", 1, function() {
+test("Check proper data removal of non-element descendants nodes (#8335)", 1, function() {
 	var div = jQuery("<div>text</div>"),
 		text = div.contents();
 

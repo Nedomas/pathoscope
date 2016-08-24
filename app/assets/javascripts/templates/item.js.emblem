@@ -1,5 +1,5 @@
-single-item item=model childrenExpanded=childrenExpanded hasChildren=hasChildren notesExpanded=notesExpanded s***REMOVED***ItemChildren='childrenAction' s***REMOVED***ItemNotes='notesAction'
+single-item item=model childrenExpanded=childrenExpanded hasChildren=hasChildren notesExpanded=notesExpanded sendItemChildren='childrenAction' sendItemNotes='notesAction'
 
 if notesExpanded
   / give item
-  r***REMOVED***er 'notes' model
+  render 'notes' model
